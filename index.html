@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرور کلمات زبان عمومی ۱</title>
+    <style>
+        :root {
+            --primary-color: #0ea5e9; /* یک رنگ آبی زیبا و پزشکی */
+            --primary-hover: #0284c7;
+            --bg-color: #f0fdfa;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            /* استفاده از فونت های سیستمی برای لود صد در صد آفلاین و سریع */
+            font-family: 'Segoe UI', Tahoma, 'Roya', 'Yekan', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .header h1 {
+            margin: 0 0 15px 0;
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+
+        /* Lesson Selector */
+        .lesson-selector {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background-color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .lesson-selector:focus {
+            border-color: var(--primary-color);
+        }
+
+        .hint-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        /* Flashcard Container */
+        .flashcard-container {
+            width: 100%;
+            max-width: 350px;
+            height: 220px;
+            perspective: 1000px;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .flashcard-front {
+            transform: rotateY(0deg);
+        }
+
+        .flashcard-front .word {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            direction: ltr;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .flashcard-back .meaning {
+            font-size: 1.6rem;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            max-width: 350px;
+            /* در حالت راست‌چین (RTL)، عنصر اول در سمت راست قرار می‌گیرد */
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            background-color: white;
+            color: var(--text-main);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .progress {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-weight: bold;
+            background: #e2e8f0;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* Footer Attribution */
+        .footer {
+            margin-top: auto; /* هُل دادن به پایین صفحه */
+            padding-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .footer span.heart {
+            color: #e11d48;
+            font-size: 1rem;
+        }
+
+        .footer strong {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>مرور کلمات زبان عمومی ۱</h1>
+        
+        <!-- انتخاب درس -->
+        <select id="lessonSelect" class="lesson-selector" onchange="changeLesson()">
+            <!-- گزینه ها توسط جاوااسکریپت پر می شوند -->
+        </select>
+        
+        <div class="hint-text">برای دیدن معنی، روی کارت ضربه بزنید</div>
+    </div>
+
+    <!-- فلش کارت -->
+    <div class="flashcard-container" id="cardContainer" onclick="flipCard()">
+        <div class="flashcard" id="flashcard">
+            <div class="flashcard-face flashcard-front">
+                <div class="word" id="en-word">...</div>
+            </div>
+            <div class="flashcard-face flashcard-back">
+                <div class="meaning" id="fa-meaning">...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- دکمه های کنترل -->
+    <div class="controls">
+        <!-- در HTML با جهت rtl، المان اول در سمت راست قرار می گیرد -->
+        <button id="nextBtn" onclick="nextWord()">🡪 بعدی</button>
+        <button id="prevBtn" onclick="prevWord()">قبلی 🡨</button>
+    </div>
+
+    <div class="progress" id="progress">
+        کلمه ۱ از X
+    </div>
+
+    <!-- فوتر و نام سازنده -->
+    <div class="footer">
+        ساخته شده با <span class="heart">♥</span> توسط <strong>MahradH</strong><br>
+        با هدف سربلندی علوم آزمایشگاهی
+    </div>
+
+    <script>
+        // ==========================================
+        // بخش دیتابیس: کلمات خود را اینجا وارد کنید
+        // ==========================================
+        const lessonsData = {
+            "lesson1": {
+                title: "درس ۱",
+                words: [
+                    { en: "deal with", fa: "سروکله زدن با / پرداختن به" },
+                    { en: "registered", fa: "ثبت شده / ثبت نام شده" },
+                    { en: "degree", fa: "درجه / مدرک دانشگاهی" },
+                    { en: "allow", fa: "اجازه دادن" },
+                    { en: "self-image", fa: "خودپنداره" },
+                    { en: "Ailment", fa: "ناخوشی / بیماری / کسالت" },
+                    { en: "serious", fa: "جدی" },
+                    { en: "method", fa: "روش" }
+                ]
+            },
+            "lesson2": {
+                title: "درس ۲",
+                words: [
+                    { en: "blood test", fa: "آزمایش خون" },
+                    { en: "laboratory", fa: "آزمایشگاه" },
+                    { en: "sample", fa: "نمونه" },
+                    { en: "result", fa: "نتیجه" }
+                ]
+            },
+            "lesson3": {
+                title: "درس ۳",
+                words: [
+                    { en: "microscope", fa: "میکروسکوپ" },
+                    { en: "cell", fa: "سلول" }
+                ]
+            }
+        };
+
+        // ==========================================
+        // متغیرهای سیستم
+        // ==========================================
+        let currentLessonKey = "lesson1";
+        let currentIndex = 0;
+        let isFlipped = false;
+
+        const flashcard = document.getElementById('flashcard');
+        const enWordEl = document.getElementById('en-word');
+        const faMeaningEl = document.getElementById('fa-meaning');
+        const progressEl = document.getElementById('progress');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const lessonSelect = document.getElementById('lessonSelect');
+
+        // ==========================================
+        // توابع اجرایی
+        // ==========================================
+
+        // راه اندازی اولیه سایت
+        function initApp() {
+            // پر کردن لیست کشویی درس ها
+            for (let key in lessonsData) {
+                let option = document.createElement("option");
+                option.value = key;
+                option.text = lessonsData[key].title;
+                lessonSelect.appendChild(option);
+            }
+
+            // بازیابی پیشرفت ذخیره شده کاربر از حافظه دستگاه
+            const savedLesson = localStorage.getItem("mahrad_saved_lesson");
+            const savedIndex = localStorage.getItem("mahrad_saved_index");
+
+            if (savedLesson && lessonsData[savedLesson]) {
+                currentLessonKey = savedLesson;
+                lessonSelect.value = savedLesson;
+            }
+            if (savedIndex) {
+                currentIndex = parseInt(savedIndex);
+            }
+
+            // جلوگیری از خطای ایندکس (اگر کلمات پاک شده بودند)
+            if (currentIndex >= lessonsData[currentLessonKey].words.length) {
+                currentIndex = 0;
+            }
+
+            updateCard();
+        }
+
+        // ذخیره وضعیت فعلی
+        function saveProgress() {
+            localStorage.setItem("mahrad_saved_lesson", currentLessonKey);
+            localStorage.setItem("mahrad_saved_index", currentIndex);
+        }
+
+        // تغییر درس توسط کاربر
+        function changeLesson() {
+            currentLessonKey = lessonSelect.value;
+            currentIndex = 0; // رفتن به اول درس جدید
+            
+            if (isFlipped) {
+                flipCard();
+                setTimeout(() => { updateCard(); }, 300);
+            } else {
+                updateCard();
+            }
+        }
+
+        // آپدیت متن و دکمه ها
+        function updateCard() {
+            const currentWords = lessonsData[currentLessonKey].words;
+            const wordData = currentWords[currentIndex];
+
+            // اگر درس کلمه‌ای نداشت
+            if (!wordData) {
+                enWordEl.textContent = "خالی";
+                faMeaningEl.textContent = "کلمه‌ای اضافه نشده";
+                return;
+            }
+
+            enWordEl.textContent = wordData.en;
+            faMeaningEl.textContent = wordData.fa;
+            
+            prevBtn.disabled = (currentIndex === 0);
+            nextBtn.disabled = (currentIndex === currentWords.length - 1);
+            
+            progressEl.textContent = `کلمه ${currentIndex + 1} از ${currentWords.length}`;
+
+            // ذخیره اتوماتیک پیشرفت
+            saveProgress();
+        }
+
+        // چرخش کارت
+        function flipCard() {
+            isFlipped = !isFlipped;
+            if (isFlipped) {
+                flashcard.classList.add('is-flipped');
+            } else {
+                flashcard.classList.remove('is-flipped');
+            }
+        }
+
+        // کلمه بعدی (سمت راست)
+        function nextWord() {
+            const currentWords = lessonsData[currentLessonKey].words;
+            if (currentIndex < currentWords.length - 1) {
+                if (isFlipped) {
+                    flipCard();
+                    setTimeout(() => {
+                        currentIndex++;
+                        updateCard();
+                    }, 300);
+                } else {
+                    currentIndex++;
+                    updateCard();
+                }
+            }
+        }
+
+        // کلمه قبلی (سمت چپ)
+        function prevWord() {
+            if (currentIndex > 0) {
+                if (isFlipped) {
+                    flipCard();
+                    setTimeout(() => {
+                        currentIndex--;
+                        updateCard();
+                    }, 300);
+                } else {
+                    currentIndex--;
+                    updateCard();
+                }
+            }
+        }
+
+        // ==========================================
+        // پشتیبانی از Swipe (کشیدن انگشت در موبایل)
+        // ==========================================
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.getElementById('cardContainer').addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.getElementById('cardContainer').addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            // در فارسی چون بعدی سمت راست است:
+            // کشیدن انگشت به چپ (Swipe Left) = رفتن به بعدی
+            // کشیدن انگشت به راست (Swipe Right) = رفتن به قبلی
+            if (touchendX < touchstartX - 40) nextWord();
+            if (touchendX > touchstartX + 40) prevWord();
+        }
+
+        // اجرای اولیه برنامه هنگام باز شدن
+        initApp();
+    </script>
+</body>
+</html>
