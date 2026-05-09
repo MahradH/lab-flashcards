@@ -6,7 +6,7 @@
     <title>مرور کلمات زبان عمومی ۱</title>
     <style>
         :root {
-            --primary-color: #0ea5e9; /* یک رنگ آبی زیبا و پزشکی */
+            --primary-color: #0ea5e9;
             --primary-hover: #0284c7;
             --bg-color: #f0fdfa;
             --card-bg: #ffffff;
@@ -16,7 +16,6 @@
 
         * {
             box-sizing: border-box;
-            /* استفاده از فونت های سیستمی برای لود صد در صد آفلاین و سریع */
             font-family: 'Segoe UI', Tahoma, 'Roya', 'Yekan', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
@@ -24,7 +23,7 @@
         body {
             background-color: var(--bg-color);
             margin: 0;
-            padding: 20px 15px;
+            padding: 10px 15px; /* کاهش پدینگ برای جا شدن بهتر در موبایل */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -34,21 +33,20 @@
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             width: 100%;
             max-width: 350px;
         }
 
         .header h1 {
-            margin: 0 0 15px 0;
-            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
             color: var(--text-main);
         }
 
-        /* Lesson Selector */
         .lesson-selector {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border-radius: 12px;
             border: 2px solid #e2e8f0;
             background-color: white;
@@ -57,7 +55,7 @@
             color: var(--text-main);
             outline: none;
             cursor: pointer;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .lesson-selector:focus {
@@ -67,16 +65,15 @@
         .hint-text {
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
-        /* Flashcard Container */
         .flashcard-container {
             width: 100%;
             max-width: 350px;
-            height: 220px;
+            height: 200px; /* کاهش ارتفاع کارت */
             perspective: 1000px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             cursor: pointer;
         }
 
@@ -122,6 +119,14 @@
             direction: ltr;
         }
 
+        /* استایل مربوط به تلفظ کلمه */
+        .flashcard-front .pronunciation {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: normal;
+        }
+
         .flashcard-back {
             transform: rotateY(180deg);
             background-color: var(--primary-color);
@@ -135,18 +140,16 @@
             line-height: 1.6;
         }
 
-        /* Controls */
         .controls {
             display: flex;
             gap: 15px;
             width: 100%;
             max-width: 350px;
-            /* در حالت راست‌چین (RTL)، عنصر اول در سمت راست قرار می‌گیرد */
         }
 
         button {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             font-size: 1rem;
             font-weight: bold;
             border: none;
@@ -170,7 +173,7 @@
         }
 
         .progress {
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 0.95rem;
             color: var(--text-main);
             font-weight: bold;
@@ -179,14 +182,14 @@
             border-radius: 20px;
         }
 
-        /* Footer Attribution */
         .footer {
-            margin-top: auto; /* هُل دادن به پایین صفحه */
-            padding-top: 40px;
+            margin-top: auto;
+            padding-top: 15px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            line-height: 1.8;
+            line-height: 1.6;
+            padding-bottom: 10px;
         }
 
         .footer span.heart {
@@ -198,6 +201,12 @@
             color: var(--primary-color);
             font-size: 0.95rem;
         }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -205,19 +214,17 @@
     <div class="header">
         <h1>مرور کلمات زبان عمومی ۱</h1>
         
-        <!-- انتخاب درس -->
         <select id="lessonSelect" class="lesson-selector" onchange="changeLesson()">
-            <!-- گزینه ها توسط جاوااسکریپت پر می شوند -->
         </select>
         
         <div class="hint-text">برای دیدن معنی، روی کارت ضربه بزنید</div>
     </div>
 
-    <!-- فلش کارت -->
     <div class="flashcard-container" id="cardContainer" onclick="flipCard()">
         <div class="flashcard" id="flashcard">
             <div class="flashcard-face flashcard-front">
                 <div class="word" id="en-word">...</div>
+                <div class="pronunciation" id="fa-pron">...</div>
             </div>
             <div class="flashcard-face flashcard-back">
                 <div class="meaning" id="fa-meaning">...</div>
@@ -225,81 +232,535 @@
         </div>
     </div>
 
-    <!-- دکمه های کنترل -->
     <div class="controls">
-        <!-- در HTML با جهت rtl، المان اول در سمت راست قرار می گیرد -->
-        <button id="nextBtn" onclick="nextWord()">🡪 بعدی</button>
-        <button id="prevBtn" onclick="prevWord()">قبلی 🡨</button>
+        <!-- استفاده از کاراکترهای استاندارد جهت پشتیبانی در اندروید -->
+        <button id="nextBtn" onclick="nextWord()">&#8594; بعدی</button>
+        <button id="prevBtn" onclick="prevWord()">قبلی &#8592;</button>
     </div>
 
     <div class="progress" id="progress">
         کلمه ۱ از X
     </div>
 
-    <!-- فوتر و نام سازنده -->
     <div class="footer">
         ساخته شده با <span class="heart">♥</span> توسط <strong>MahradH</strong><br>
-        با هدف سربلندی علوم آزمایشگاهی
+        با هدف سربلندی علوم آزمایشگاهی<br>
+        این یک پروژه آزاد و اپن سورس است، شما هم می‌توانید <a href="https://github.com/MahradH/lab-flashcards" target="_blank">مشارکت کنید</a>.
     </div>
 
     <script>
-        // ==========================================
-        // بخش دیتابیس: کلمات خود را اینجا وارد کنید
-        // ==========================================
+        // اضافه شدن فیلد pron برای تلفظ
         const lessonsData = {
-            "lesson1": {
-                title: "درس ۱",
-                words: [
-                    { en: "deal with", fa: "سروکله زدن با / پرداختن به" },
-                    { en: "registered", fa: "ثبت شده / ثبت نام شده" },
-                    { en: "degree", fa: "درجه / مدرک دانشگاهی" },
-                    { en: "allow", fa: "اجازه دادن" },
-                    { en: "self-image", fa: "خودپنداره" },
-                    { en: "Ailment", fa: "ناخوشی / بیماری / کسالت" },
-                    { en: "serious", fa: "جدی" },
-                    { en: "method", fa: "روش" }
-                ]
-            },
-            "lesson2": {
-                title: "درس ۲",
-                words: [
-                    { en: "blood test", fa: "آزمایش خون" },
-                    { en: "laboratory", fa: "آزمایشگاه" },
-                    { en: "sample", fa: "نمونه" },
-                    { en: "result", fa: "نتیجه" }
-                ]
-            },
-            "lesson3": {
-                title: "درس ۳",
-                words: [
-                    { en: "microscope", fa: "میکروسکوپ" },
-                    { en: "cell", fa: "سلول" }
-                ]
-            }
-        };
+    "lesson1": {
+        title: "درس ۱",
+        words: [
+            { en: "region", pron: "ریجِن", fa: "منطقه / ناحیه" },
+            { en: "Linguist", pron: "لینگویست", fa: "زبان شناس" },
+            { en: "specialist", pron: "اِسپِشالیست", fa: "متخصص" },
+            { en: "acquisition", pron: "اِکوئیزیشِن", fa: "مالکیت" },
+            { en: "Workaholism", pron: "وُرکاهولیزم", fa: "اعتیاد به کار" },
+            { en: "addiction", pron: "اَدیکشِن", fa: "اعتیاد" },
+            { en: "advantage", pron: "اَدْوَنتیج", fa: "مزیت / برتری" },
+            { en: "disadvantage", pron: "دیس‌اَدْوَنتیج", fa: "اشکال / عیب / کاستی / ضرر" },
+            { en: "medicine", pron: "مِدیسین", fa: "دارو / پزشکی" },
+            { en: "production", pron: "پروداکشِن", fa: "تولید" },
+            { en: "survive", pron: "سِروایْو", fa: "زنده ماندن / جان سالم به در بردن" },
+            { en: "gaunt", pron: "گانت", fa: "لاغر" },
+            { en: "obese", pron: "اوبیس", fa: "چاق" },
+            { en: "diagnose", pron: "دایِگْنوز", fa: "تشخیص دادن" },
+            { en: "treat", pron: "تریت", fa: "درمان کردن / رفتار کردن" },
+            { en: "treatment", pron: "تریتْمِنت", fa: "درمان" },
+            { en: "depend on", pron: "دیپِند آن", fa: "وابسته به" },
+            { en: "sophisticated", pron: "سوفیستیکِیتِد", fa: "پیچیده / فرهیخته / شیک" },
+            { en: "decline", pron: "دیکْلاین", fa: "تنزل / کاهش یافتن / رد کردن" },
+            { en: "mental", pron: "مِنتال", fa: "روانی / ذهنی" },
+            { en: "experience", pron: "اِکسپریِنس", fa: "تجربه / پیشامد / تجربه کردن" },
+            { en: "haughty", pron: "هاتی", fa: "متکبرانه" },
+            { en: "manner", pron: "مَنِر", fa: "روش / رفتار / حالت" },
+            { en: "continually", pron: "کانتینیوالی", fa: "به طور پیوسته" },
+            { en: "deal with", pron: "دیل ویث", fa: "سروکله زدن با / پرداختن به" },
+            { en: "registered", pron: "رِجیستِرد", fa: "ثبت شده / ثبت نام شده" },
+            { en: "degree", pron: "دیگْری", fa: "درجه / مدرک دانشگاهی" },
+            { en: "allow", pron: "اِلاو", fa: "اجازه دادن" },
+            { en: "Ailment", pron: "اِیلمِنت", fa: "ناخوشی / بیماری / کسالت" },
+            { en: "serious", pron: "سیریوس", fa: "جدی" },
+            { en: "method", pron: "مِتُد", fa: "روش" },
+            { en: "reduce", pron: "ریدیوس", fa: "کاهش دادن / کم شدن" },
+            { en: "contain", pron: "کانتِین", fa: "شامل بودن" },
+            { en: "equipment", pron: "اِکوئیپمِنت", fa: "وسایل / ابزار" },
+            { en: "plant", pron: "پلَنت", fa: "گیاه" },
+            { en: "carry", pron: "کَری", fa: "حمل کردن" },
+            { en: "information", pron: "اینفورمِیشِن", fa: "اطلاعات" },
+            { en: "Skimming", pron: "اِسکیمینگ", fa: "سریع خواندن" },
+            { en: "general", pron: "جِنِرال", fa: "کلی / عمومی" },
+            { en: "context", pron: "کانتِکست", fa: "متن / زمینه / فضا / شرایط" },
+            { en: "appropriate", pron: "اِپروپْریِت", fa: "مناسب" },
+            { en: "situation", pron: "سیچُوِیشِن", fa: "وضعیت" },
+            { en: "proper", pron: "پراپِر", fa: "مناسب" },
+            { en: "correct", pron: "کُرِکت", fa: "صحیح / درست" },
+            { en: "detectives", pron: "دیتِکتیوز", fa: "کارآگاه" },
+            { en: "expert", pron: "اِکسپِرت", fa: "کارشناس / متخصص" },
+            { en: "find out", pron: "فایند اوت", fa: "فهمیدن" },
+            { en: "reason", pron: "ریزِن", fa: "دلیل" },
+            { en: "tough", pron: "تاف", fa: "سخت / سفت / محکم" },
+            { en: "competent", pron: "کامپیتِنت", fa: "شایسته" },
+            { en: "sharp", pron: "شارپ", fa: "تیز" },
+            { en: "knife", pron: "نایْف", fa: "چاقو" },
+            { en: "slice", pron: "اِسلایْس", fa: "تکه / حلقه حلقه کردن / برش" },
+            { en: "handwriting", pron: "هَندْرایتینگ", fa: "دستخط" },
+            { en: "illegible", pron: "ایلیجیبِل", fa: "ناخوانا / بدخط" },
+            { en: "self-image", pron: "سِلف-ایمِیج", fa: "خودپنداره" },
+            { en: "therapy", pron: "تِراپی", fa: "درمان" },
+            { en: "injured", pron: "اینجِرد", fa: "آسیب دیده" },
+            { en: "resentful", pron: "ریزِنتفول", fa: "آزرده / رنجیده / عصبانی" },
+            { en: "unfair", pron: "آنفِیر", fa: "غیرعادلانه" },
+            { en: "cancer", pron: "کَنسِر", fa: "سرطان" },
+            { en: "patient", pron: "پِیشِنت", fa: "بیمار / صبور" },
+            { en: "ache", pron: "اِیک", fa: "درد / درد کردن (به طور مداوم)" },
+            { en: "sore", pron: "سور", fa: "دردناک / آزرده / زخم" },
+            { en: "painful", pron: "پِینفول", fa: "دردناک" },
+            { en: "fever", pron: "فیوِر", fa: "تب" },
+            { en: "flu", pron: "فلو", fa: "آنفلوآنزا" },
+            { en: "sleeplessness", pron: "اِسلیپ‌لِسنِس", fa: "بی خوابی" },
+            { en: "hallucinate", pron: "هالوسینِیت", fa: "توهم زدن" },
+            { en: "person", pron: "پِرسِن", fa: "شخص / فرد" }
+        ]
+    },
+    "lesson2": {
+        title: "درس ۲",
+        words: [
+            // Vocabulary Reading & Others (Page 62)
+            { en: "contrast", pron: "کانترَست", fa: "تضاد / مقایسه کردن" },
+            { en: "egalitarian", pron: "ایگَلیتِریَن", fa: "مساوات خواه / مساوات طلب" },
+            { en: "consider", pron: "کانسیدِر", fa: "در نظر گرفتن" },
+            { en: "equal", pron: "ایکوال", fa: "مساوی / هم رتبه" },
+            { en: "material", pron: "مِتِریال", fa: "ماده / پارچه / مطلب" },
+            { en: "reach", pron: "ریچ", fa: "رسیدن" },
+            { en: "goal", pron: "گول", fa: "هدف" },
+            { en: "hell", pron: "هِل", fa: "جهنم" },
+            { en: "difficult", pron: "دیفیکالت", fa: "مشکل" },
+            { en: "entrance", pron: "اینترِنس", fa: "ورودی" },
+            { en: "kindergarten", pron: "کیندِرگارتِن", fa: "مهدکودک" },
+            { en: "discipline", pron: "دیسیپلین", fa: "نظم / انضباط" },
+            { en: "in order to", pron: "این اوردِر تو", fa: "برای اینکه" },
+            { en: "hobby", pron: "هابی", fa: "سرگرمی / تفریح" },
+            { en: "status", pron: "اِستِیتِس", fa: "وضعیت / جایگاه" },
+            { en: "whole", pron: "هول", fa: "تمام / کل" },
+            { en: "national", pron: "نَشنال", fa: "ملی" },
+            { en: "quit", pron: "کوئیت", fa: "استعفا دادن / دست کشیدن / بستن برنامه" },
+            { en: "quiet", pron: "کوایِت", fa: "ساکت" },
+            { en: "quite", pron: "کوایت", fa: "کاملا / نسبتا" },
+            { en: "attend", pron: "اَتِند", fa: "حضور داشتن / شرکت کردن / همراه بودن" },
+            { en: "preparatory", pron: "پریپَرِتوری", fa: "مقدماتی / ابتدایی" },
+            { en: "vocational", pron: "ووکِیشِنال", fa: "فنی حرفه ای" },
+            { en: "culture", pron: "کالچِر", fa: "فرهنگ / تمدن / کشت" },
+            { en: "clue", pron: "کلو", fa: "سرنخ" },
+            { en: "educational", pron: "اِجوکِیشِنال", fa: "آموزشی" },
+            { en: "reflect", pron: "ریفْلِکت", fa: "بازتاب کردن / نشان دادن" },
+            { en: "economy", pron: "ایکونومی", fa: "اقتصاد" },
+            { en: "values", pron: "وَلیوز", fa: "ارزش ها / ارزش گذاری کردن" },
+            { en: "structure", pron: "اِستراکچِر", fa: "ساختار" },
+            { en: "society", pron: "سوسایِتی", fa: "جامعه" },
+            { en: "notice", pron: "نوتیس", fa: "آگهی / اطلاع / توجه" },
+            { en: "develop", pron: "دیوِلوپ", fa: "رشد کردن / توسعه دادن" },
+            { en: "coast", pron: "کوست", fa: "ساحل" },
+            { en: "population", pron: "پاپيولِیشِن", fa: "جمعیت" },
+            { en: "agriculture", pron: "اَگریکالچِر", fa: "کشاورزی" },
+            { en: "especially", pron: "اِسپِشِلی", fa: "مخصوصا" },
+            { en: "leaves", pron: "لیوز", fa: "برگ ها" },
+            { en: "startled", pron: "اِستارتِلد", fa: "شوکه / ترسیده" },
+            { en: "statistic", pron: "اِستَتیستیک", fa: "رقم / آمار" },
+            { en: "percent", pron: "پِرسِنت", fa: "درصد" },
+            { en: "tuition", pron: "توئیشِن", fa: "شهریه / آموزش" },
+            { en: "afford", pron: "اِفورد", fa: "از عهده چیزی برآمدن / بضاعت داشتن" },
+            { en: "rural", pron: "رورال", fa: "روستایی" },
+            { en: "tribe", pron: "ترایْب", fa: "قبیله" },
+            { en: "relevance", pron: "رِلِوِنس", fa: "ربط / ارتباط" },
+            { en: "role", pron: "رول", fa: "نقش" },
+            { en: "assume", pron: "اَسیوم", fa: "فرض کردن / پنداشتن / گرفتن" },
+            { en: "hold", pron: "هولد", fa: "نگه داشتن / برگزار کردن" },
+            { en: "future", pron: "فیوچِر", fa: "آینده" },
+            { en: "decision", pron: "دیسیژِن", fa: "تصمیم" },
+            { en: "majority", pron: "مِجوریتی", fa: "اکثریت" },
+            { en: "drawback", pron: "دِرابَک", fa: "ایراد / اشکال / عیب" },
+            { en: "advantage", pron: "اَدْوَنتیج", fa: "مزیت / برتری" },
+            { en: "noticed", pron: "نوتیسد", fa: "متوجه شدن" },
+            { en: "guessed", pron: "گِسد", fa: "حدس زدن / فکر کردن" },
+            { en: "regretted", pron: "ریگرِتِد", fa: "پشیمان شدن / متاسف بودن" },
+            { en: "attended", pron: "اَتِندِد", fa: "حضور داشتن / شرکت کردن" },
+            { en: "lacks", pron: "لَکس", fa: "کم داشتن / کمبود" },
+            { en: "reflects", pron: "ریفْلِکتس", fa: "بازتاب کردن / نشان دادن" },
+            { en: "receives", pron: "ریسیوز", fa: "دریافت کردن / قبول کردن" },
+            { en: "pleased", pron: "پلیزد", fa: "خوشحال / راضی" },
+            { en: "prepared", pron: "پریپِرد", fa: "آماده / حاضر" },
+            { en: "educated", pron: "اِجوکِیتِد", fa: "تحصیل کرده" },
+            { en: "initiate", pron: "اینیشیِیت", fa: "شروع کردن" },
+            { en: "training", pron: "تِرِینینگ", fa: "آموزش / کارآموزی" },
+            { en: "comprehensive", pron: "کامپریهِنسیو", fa: "جامع / کامل" },
+            { en: "comprehensive school", pron: "کامپریهِنسیو اِسکول", fa: "مدرسه ای که همه رشته ها رو داشته باشه و جامع باشه" },
+            { en: "graduate", pron: "گرَجوئِیت", fa: "فارغ التحصیل / فارغ التحصیل شدن" },
+            { en: "decide", pron: "دیساید", fa: "تصمیم گرفتن" },
+            { en: "determine", pron: "دیتِرمین", fa: "تعیین کردن / تصمیم گرفتن" },
+            { en: "opportunity", pron: "آپُرچونیتی", fa: "فرصت / شانس" },
+            { en: "lack", pron: "لَک", fa: "کم داشتن / کمبود" },
+            { en: "crime", pron: "کرایم", fa: "جرم / گناه" },
+            { en: "tax", pron: "تَکس", fa: "مالیات / مالیات گرفتن" },
+            { en: "enough", pron: "ایناف", fa: "کافی" },
+            { en: "equipment", pron: "اِکوئیپمِنت", fa: "ابزار / وسایل" },
+            { en: "exist", pron: "اِگزیست", fa: "وجود داشتن / زنده ماندن" },
+            { en: "similar", pron: "سیمیلار", fa: "مشابه" },
+            { en: "attribute", pron: "اَتریبیوت", fa: "نسبت دادن / شاخصه" },
+            { en: "relatively", pron: "رِلِتیولی", fa: "نسبتا / به نسبت" },
+            
+            // Vocabulary E & Further (Page 64)
+            { en: "possess", pron: "پوزِس", fa: "داشتن" },
+            { en: "grant", pron: "گرَنت", fa: "اهدا کردن / کمک هزینه" },
+            { en: "instruct", pron: "اینستراکت", fa: "دستور دادن / تعلیم دادن" },
+            { en: "sign", pron: "ساین", fa: "نشانه / تابلو / امضا کردن" },
+            { en: "aim", pron: "اِیم", fa: "هدف" },
+            { en: "opposite", pron: "آپوزیت", fa: "رو به رو / مخالف / مقابل" },
+            { en: "failure", pron: "فِیلور", fa: "شکست" },
+            { en: "profession", pron: "پروفِشِن", fa: "شغل" },
+            { en: "unlawful", pron: "آنلافول", fa: "غیرقانونی / نامشروع" },
+            { en: "income", pron: "اینکام", fa: "درآمد" },
+            { en: "property", pron: "پراپِرتی", fa: "دارایی / خاصیت / ملک" },
+            { en: "continue", pron: "کانتینیو", fa: "ادامه دادن / از سرگرفتن" },
+            { en: "success", pron: "ساکسِس", fa: "موفقیت" },
+            { en: "priority", pron: "پرایوریتی", fa: "اولویت / حق تقدم" },
+            { en: "tribal", pron: "ترایبال", fa: "قبیله ای" },
+            { en: "disciplined", pron: "دیسیپلیند", fa: "انضباطی / منضبط" },
+            { en: "belief", pron: "بیلیف", fa: "باور / اعتقاد / عقیده" },
+            { en: "campus", pron: "کَمپِس", fa: "محوطه دانشگاه / پردیس دانشگاه" },
+            { en: "foreign", pron: "فورِین", fa: "خارجی" },
+            { en: "technology", pron: "تِکنولوژی", fa: "تکنولوژی" },
+            { en: "secondary", pron: "سِکِندِری", fa: "آموزش متوسطه / فرعی" },
+            { en: "democratic", pron: "دِموکْرَتیک", fa: "مردمی" },
+            { en: "tuitions", pron: "توئیشِنز", fa: "شهریه / آموزش" },
+            { en: "knowledge", pron: "نالیج", fa: "دانش" },
+            { en: "charges", pron: "چارجِز", fa: "هزینه / اتهام / شارژ" },
+            { en: "available", pron: "اِوِیلِبِل", fa: "در دسترس" },
+            { en: "charge", pron: "چارج", fa: "هزینه / شارژ" },
+            { en: "experience", pron: "اِکسپریِنس", fa: "تجربه" },
+            { en: "recreations", pron: "رِکْری‌اِیشِنز", fa: "سرگرمی / تفریح" },
+            { en: "preservation", pron: "پریزِروِیشِن", fa: "حفظ / حراست" },
+            { en: "environment", pron: "اینوایِرنْمِنت", fa: "محیط زیست / محیط" },
+            { en: "confidence", pron: "کانفیدِنس", fa: "اعتماد به نفس" },
+            { en: "museums", pron: "میوزیِمز", fa: "موزه" },
+            { en: "admissions", pron: "اَدمیشِنز", fa: "هزینه ورودی / پذیرش / اجازه ورود" }
+        ]
+    },
+    "lesson3": {
+        title: "درس ۳",
+        words: [
+            // Image 1 & 2 Combined (Duplicates Merged)
+            { en: "social", pron: "سُشال", fa: "اجتماعی" },
+            { en: "economic", pron: "اِکونامیک", fa: "اقتصادی" },
+            { en: "marital", pron: "مَریتال", fa: "زن و شوهری / زناشویی" },
+            { en: "marital status", pron: "مَریتال اِستِیتِس", fa: "وضعیت تاهل" },
+            { en: "marital problem", pron: "مَریتال پرابْلِم", fa: "مشکلات زناشویی" },
+            { en: "genuine", pron: "جِنیوئِن", fa: "واقعی / بی ریا / صادقانه" },
+            { en: "local", pron: "لوکال", fa: "محلی" },
+            { en: "national", pron: "نَشنال", fa: "ملی" },
+            { en: "domestic", pron: "دومِستیک", fa: "داخلی / اهلی" },
+            { en: "came up with", pron: "کِیم آپ ویث", fa: "ایده به ذهن رسیدن / مطرح کردن یک موضوع" },
+            { en: "looked in", pron: "لوکد این", fa: "نگاه کردن" },
+            { en: "affected", pron: "اِفِکْتِد", fa: "تحت تاثیر قرار گرفته" },
+            { en: "investigated", pron: "اینوِستیگِیتِد", fa: "بررسی کردن" },
+            { en: "decline", pron: "دیکْلاین", fa: "تنزل / کاهش یافتن / رد کردن" },
+            { en: "drop", pron: "دِراپ", fa: "کاهش / قطره / انداختن / رها کردن" },
+            { en: "maintain", pron: "مِینتِین", fa: "نگه داشتن / ادعا کردن / رسیدگی کردن" },
+            { en: "borrow", pron: "بارو", fa: "قرض گرفتن / وام گرفتن" },
+            { en: "deficit", pron: "دِفیسیت", fa: "کمبود" },
+            { en: "credit", pron: "کرِدیت", fa: "وام / اعتبار / تمجید" },
+            { en: "supplement", pron: "ساپلیمِنت", fa: "مکمل / افزایش دادن / ضمیمه" },
+            { en: "deprivation", pron: "دِپریوِیشِن", fa: "محرومیت" },
+            { en: "input", pron: "اینپوت", fa: "ورودی / وارد کردن اطلاعات" },
+            { en: "cutting", pron: "کاتینگ", fa: "برش دادن" },
+            { en: "reducing", pron: "ریدیوسینگ", fa: "کاهش دادن" },
+            { en: "generating", pron: "جِنِرِیتینگ", fa: "تولید کردن" },
+            { en: "rejecting", pron: "ریجِکْتینگ", fa: "رد کردن" },
+            { en: "appropriate", pron: "اِپروپریِت", fa: "مناسب" },
+            { en: "risky", pron: "ریسکی", fa: "پرمخاطره" },
+            { en: "vicious", pron: "ویشِس", fa: "بدجنس / بی رحمانه" },
+            { en: "adequate", pron: "اَدیکوئِت", fa: "کافی" },
+            { en: "contradicted", pron: "کانترَدیکْتِد", fa: "مخالفت کردن / نفی کردن / مغایرت داشتن" },
+            { en: "approved", pron: "اِپروود", fa: "تصویب کردن / موافقت کردن" },
+            { en: "classified", pron: "کلَسیفاید", fa: "رده بندی شده / مرتب شده" },
+            { en: "encountered", pron: "اینکاونتِرد", fa: "مواجه شدن / برخورد کردن" },
+            { en: "abundance", pron: "اِبانْدِنس", fa: "فراوانی" },
+            { en: "lack", pron: "لَک", fa: "کم داشتن / کمبود" },
+            { en: "perfection", pron: "پِرفِکْشِن", fa: "کمال" },
+            { en: "plan", pron: "پْلَن", fa: "برنامه / نقشه" },
+            { en: "amount", pron: "اِماونت", fa: "مقدار / میزان" },
+            { en: "impact", pron: "ایمپَکت", fa: "تاثیر / تاثیر داشتن" },
+            { en: "diagnosis", pron: "دایاگنوسیس", fa: "تشخیص بیماری" },
+            { en: "performance", pron: "پِرفورمَنس", fa: "اجرا / عملکرد" },
+            { en: "financial", pron: "فاینَنشال", fa: "مالی" },
+            { en: "prevention", pron: "پریوِنشِن", fa: "پیشگیری" },
+            { en: "pollution", pron: "پولوشِن", fa: "آلودگی" },
+            { en: "existent", pron: "اِگزیستِنت", fa: "موجود" },
+            { en: "withstanding", pron: "ویث‌اِستَندینگ", fa: "پایداری / تحمل کردن" },
+            { en: "deteriorate", pron: "دیتِریورِیت", fa: "عیب دار کردن / بدتر کردن / خراب کردن / فاسد شدن" },
+            { en: "passenger", pron: "پَسِنجِر", fa: "مسافر" },
+            { en: "worthwhile", pron: "وُرث‌وایل", fa: "ارزشمند" },
+            { en: "cheerful", pron: "چیرفول", fa: "شاد / خوشحال" },
+            { en: "complaining", pron: "کامپلِینینگ", fa: "شکایت / شاکی" },
+            { en: "afford", pron: "اِفورد", fa: "بضاعت داشتن / وسع مالی داشتن / از عهده برآمدن" },
+            { en: "foolish", pron: "فولیش", fa: "احمقانه" },
+            { en: "diagnosed", pron: "دایاگنوست", fa: "تشخیص داده شده / تشخیص دادن" },
+            { en: "crash", pron: "کرَش", fa: "فروپاشی / تصادف" },
+            { en: "mood", pron: "مود", fa: "حالت" },
+            { en: "feed", pron: "فید", fa: "غذا دادن / دادن / تغذیه کردن" },
+            { en: "lazy", pron: "لِيزی", fa: "تنبل / آهسته" },
+            { en: "valued", pron: "وَلیود", fa: "ارزشمند" },
+            { en: "retired", pron: "ریتایِرد", fa: "بازنشسته" },
+            { en: "passion", pron: "پَشِن", fa: "شور و اشتیاق / علاقه شدید" },
+            { en: "contract", pron: "کانترَکت", fa: "قرار داد / مبتلا شدن / منقبض کردن" },
+            { en: "diagnose", pron: "دایاگنوز", fa: "تشخیص دادن" },
+            { en: "through", pron: "ثرو", fa: "از میان / سراسر / از طریق" },
+            { en: "acceptable", pron: "اَکسِپتِبِل", fa: "قابل قبول / مناسب" },
+            { en: "pressure", pron: "پرِشِر", fa: "فشار" },
+            { en: "effective", pron: "اِفِکتیو", fa: "موثر" },
+            { en: "longevity", pron: "لانجِویتی", fa: "عمر طولانی" },
+            { en: "diet", pron: "دایِت", fa: "رژیم غذایی" },
+            { en: "equation", pron: "ایکوئِیشِن", fa: "معادله" },
+            { en: "quality", pron: "کوآلیتی", fa: "کیفیت" },
+            { en: "output", pron: "اوت‌پوت", fa: "بازده / تولید کردن / خروجی" },
+            { en: "generate", pron: "جِنِرِیت", fa: "تولید کردن" },
+            { en: "bombard", pron: "بامبارد", fa: "بمباران کردن" },
+            { en: "provide", pron: "پرووایْد", fa: "فراهم کردن / ارائه دادن / آماده کردن" },
+            { en: "literally", pron: "لیتِرِلی", fa: "به معنای واقعی کلمه" },
+            { en: "encounter", pron: "اینکاونتِر", fa: "مواجه شدن / برخورد" },
+            { en: "negative", pron: "نِگِتیو", fa: "منفی" },
+            { en: "suffer", pron: "سافِر", fa: "رنج کشیدن" },
+            { en: "care for", pron: "کِیر فور", fa: "مراقبت کردن" },
+            { en: "wellness", pron: "وِلنِس", fa: "سلامتی" },
+            { en: "issues", pron: "ایشوز", fa: "مسئله / مشکل" },
+            { en: "fight", pron: "فایْت", fa: "دعوا کردن / مبارزه کردن" },
+            { en: "against", pron: "اِگِنست", fa: "در مقابل / کنار / مخالف" },
+            { en: "personal", pron: "پِرسونال", fa: "شخصی / فردی" },
+            { en: "various", pron: "وِریِس", fa: "گوناگون" },
+            { en: "anti-aging", pron: "اَنتی-اِیجینگ", fa: "ضد پیری" },
+            { en: "rock", pron: "راک", fa: "سنگ / صخره" },
+            { en: "solid", pron: "سالید", fa: "مستحکم / جامد" },
+            { en: "conviction", pron: "کانویِکْشِن", fa: "محکومیت / اعتقاد راسخ" },
+            { en: "came up with a rock solid conviction", pron: "کِیم آپ ویث اِ راک سالید کانویکشِن", fa: "به یک عقیده محکم رسیدن" },
+            { en: "insurance", pron: "اینشورِنس", fa: "بیمه" },
+            { en: "policy", pron: "پالیسی", fa: "سیاست / بیمه نامه" },
+            { en: "deterioration", pron: "دیتِریورِیشِن", fa: "انحطاط / زوال / بدتر شدن" },
+            { en: "occur", pron: "اِکِر", fa: "اتفاق افتادن" },
+            { en: "contracted", pron: "کانترَکتِد", fa: "منقبض / مبتلا شدن" },
+            { en: "overcome", pron: "اووِرکام", fa: "غلبه کردن" },
+            { en: "known", pron: "نون", fa: "شناخته شده" },
+            { en: "supporting", pron: "ساپورتینگ", fa: "حمایت کننده" },
+            { en: "reminding", pron: "ریمایندینگ", fa: "یادآوری کردن" },
+            { en: "forgetting", pron: "فورگِتینگ", fa: "فراموش کردن" },
+            { en: "firing", pron: "فایِرینگ", fa: "آتش زدن / شلیک کردن" },
+            { en: "access", pron: "اَکسِس", fa: "دسترسی / دسترسی داشتن" },
+            { en: "above", pron: "اِباو", fa: "بالا" },
+            { en: "approach", pron: "اِپروچ", fa: "رویکرد" },
+            { en: "recommendations", pron: "رِکُمِندِیشِنز", fa: "توصیه" },
+            { en: "cure", pron: "کیور", fa: "درمان / درمان کردن" },
+            { en: "prescribe", pron: "پریسکرایب", fa: "امر کردن / تجویز کردن (نسخه)" },
+            { en: "endanger", pron: "ایندِنجِر", fa: "به خطر انداختن" },
+            { en: "poisonous", pron: "پویزِنِس", fa: "سمی" },
+            { en: "tension", pron: "تِنشِن", fa: "تنش / درگیری / استرس" },
+            { en: "insufficient", pron: "اینسافیشِنت", fa: "ناکافی" },
+            { en: "traditional", pron: "ترَدیشِنال", fa: "سنتی" },
+            { en: "definitely", pron: "دِفینیتْلی", fa: "قطعا" },
+            { en: "expert", pron: "اِکسپِرت", fa: "کارشناس / متخصص / ماهر" },
+            { en: "field", pron: "فیلد", fa: "زمینه / زمین / رشته" },
+            { en: "bored", pron: "بورد", fa: "کسل / خسته" },
+            { en: "frequent", pron: "فریکوئِنت", fa: "مکرر" },
+            { en: "merely", pron: "میرلی", fa: "فقط" },
+            { en: "consultation", pron: "کانسالتِیشِن", fa: "مشاوره / رایزنی" },
+            { en: "substance", pron: "سابستَنس", fa: "ماده" },
+            { en: "contribute", pron: "کانتریبیوت", fa: "اعطا کردن / تاثیر داشتن / افزودن / کمک کردن" },
+            { en: "aim", pron: "اِیم", fa: "هدف" },
+            { en: "lecture", pron: "لِکچِر", fa: "سخنرانی" },
+            { en: "recommend", pron: "رِکُمِند", fa: "پیشنهاد کردن" },
+            { en: "environmental", pron: "اینوایِرنْمِنتال", fa: "محیطی" },
+            { en: "hazard", pron: "هَزِرد", fa: "خطر" },
+            { en: "guarantee", pron: "گَرِنتی", fa: "ضمانت / گارانتی" },
+            { en: "endless", pron: "اِندلِس", fa: "بی پایان" },
+            { en: "additional", pron: "اَدیشِنال", fa: "اضافی" },
+            { en: "enhance", pron: "اینهَنس", fa: "افزایش دادن" }
+        ]
+    },
+    "lesson4": {
+        title: "درس ۴",
+        words: [
+    { en: 'encourage', pron: 'اینکارِج', fa: 'تشویق کردن' },
+    { en: 'consuming', pron: 'کانسیومینگ', fa: 'مصرف' },
+    { en: 'wastefulness', pron: 'وِیست‌فولنِس', fa: 'اسراف' },
+    { en: 'dissatisfied', pron: 'دیس‌سَتیسفاید', fa: 'ناراضی' },
+    { en: 'purchase', pron: 'پِرچِس', fa: 'خرید / خریدن' },
+    { en: 'specific', pron: 'اسپِسیفیک', fa: 'خاص / مشخص' },
+    { en: 'emphasize', pron: 'اِمفِسایز', fa: 'تاکید کردن' },
+    { en: 'diversity', pron: 'دایوِرسیتی', fa: 'تنوع' },
+    { en: 'comparison', pron: 'کَمپَریسِن', fa: 'مقایسه' },
+    { en: 'disregard', pron: 'دیس‌ریگارد', fa: 'نادیده گرفتن' },
+    { en: 'vehicle', pron: 'ویِکِل', fa: 'وسیله نقلیه' },
+    { en: 'pollution', pron: 'پُلوشِن', fa: 'آلودگی' },
+    { en: 'commercial', pron: 'کِمِرشال', fa: 'تجاری / آگهی بازرگانی' },
+    { en: 'climbing', pron: 'کلایمینگ', fa: 'بالا رفتن / صعود' },
+    { en: 'commute', pron: 'کِمیوت', fa: 'رفت و آمد (به محل کار)' },
+    { en: 'gridlock', pron: 'گریدلاک', fa: 'ترافیک سنگین / گره ترافیکی' },
+    { en: 'mountain', pron: 'ماونتِن', fa: 'کوه' },
+    { en: 'opinion', pron: 'اُپینیِن', fa: 'عقیده / نظر' },
+    { en: 'decision', pron: 'دِسیژِن', fa: 'تصمیم' },
+    { en: 'pair', pron: 'پِیر', fa: 'جفت' },
+    { en: 'sneakers', pron: 'اسنیکِرز', fa: 'کفش ورزشی' },
+    { en: 'volunteer', pron: 'والِنتیر', fa: 'داوطلب' },
+    { en: 'prefer', pron: 'پریفِر', fa: 'ترجیح دادن' },
+    { en: 'floral', pron: 'فلورال', fa: 'گلی / طرح گل' },
+    { en: 'self-fulfilling', pron: 'سِلف-فولفیلینگ', fa: 'خود کامبخش / خود برآورده ساز' },
+    { en: 'prophecies', pron: 'پرافِسیز', fa: 'پیشگویی‌ها' },
+    { en: 'prediction', pron: 'پریدیکشِن', fa: 'پیش‌بینی' },
+    { en: 'employee', pron: 'ایمپلویی', fa: 'کارمند' },
+    { en: 'intelligent', pron: 'اینتِلیجِنت', fa: 'باهوش' },
+    { en: 'semester', pron: 'سِمِستِر', fa: 'ترم تحصیلی' },
+    { en: 'especially', pron: 'ایسپِشِلی', fa: 'مخصوصاً' },
+    { en: 'independent', pron: 'ایندیپِندِنت', fa: 'مستقل' },
+    { en: 'compulsion', pron: 'کَمپالشِن', fa: 'اجبار' },
+    { en: 'realize', pron: 'ریِلایز', fa: 'متوجه شدن / درک کردن' },
+    { en: 'popularity', pron: 'پاپیولَریتی', fa: 'محبوبیت' },
+    { en: 'prophecy', pron: 'پرافِسی', fa: 'پیشگویی' },
+    { en: 'efficiency', pron: 'ایفیشِنسی', fa: 'کارایی / بهره‌وری' },
+    { en: 'fulfillment', pron: 'فولفِلمِنت', fa: 'تحقق / انجام' },
+    { en: 'independence', pron: 'ایندیپِندِنس', fa: 'استقلال' },
+    { en: 'compulsive', pron: 'کَمپالسیو', fa: 'اجباری / وسواسی' },
+    { en: 'reasonable', pron: 'ریزِنِبِل', fa: 'معقول' },
+    { en: 'knowledgeable', pron: 'نالِجِبِل', fa: 'مطلع / با دانش' },
+    { en: 'considered', pron: 'کِنسیدِرد', fa: 'در نظر گرفته شده' },
+    { en: 'monitored', pron: 'مانیتِرد', fa: 'تحت نظارت' },
+    { en: 'projected', pron: 'پروجِکتِد', fa: 'پیش‌بینی شده / طرح‌ریزی شده' },
+    { en: 'established', pron: 'اِستَبلیشد', fa: 'تاسیس شده / تثبیت شده' },
+    { en: 'consumer', pron: 'کِنسیومِر', fa: 'مصرف کننده' },
+    { en: 'criminal', pron: 'کریمینال', fa: 'مجرم' },
+    { en: 'enhance', pron: 'اینهَنس', fa: 'بهبود بخشیدن / افزایش دادن' },
+    { en: 'conduct', pron: 'کانداکت', fa: 'انجام دادن / هدایت کردن' },
+    { en: 'predict', pron: 'پریدیکت', fa: 'پیش‌بینی کردن' },
+    { en: 'target', pron: 'تارگِت', fa: 'هدف' },
+    { en: 'adventurous', pron: 'اَدوِنچِرِس', fa: 'ماجراجو' },
+    { en: 'wasteful', pron: 'وِیست‌فول', fa: 'اسراف کار' },
+    { en: 'excited', pron: 'ایکسایتِد', fa: 'هیجان‌زده' },
+    { en: 'persuade', pron: 'پِرسوِید', fa: 'متقاعد کردن' },
+    { en: 'require', pron: 'ریکوایِر', fa: 'نیاز داشتن / مستلزم بودن' },
+    { en: 'determine', pron: 'دیتِرمین', fa: 'تعیین کردن' },
+    { en: 'circulate', pron: 'سِرکیولِیت', fa: 'چرخیدن / به گردش درآوردن' },
+    { en: 'relax', pron: 'ریلَکس', fa: 'آرام شدن / استراحت کردن' },
+    { en: 'promote', pron: 'پروموت', fa: 'ترویج دادن / ارتقا دادن' },
+    { en: 'verify', pron: 'وِریفای', fa: 'تایید کردن' },
+    { en: 'satisfying', pron: 'سَتیسفایینگ', fa: 'رضایت بخش' },
+    { en: 'pleasant', pron: 'پلِزِنت', fa: 'دلپذیر' },
+    { en: 'perfect', pron: 'پِرفِکت', fa: 'عالی / بی نقص' },
+    { en: 'offensive', pron: 'آفِنسیو', fa: 'توهین آمیز' },
+    { en: 'cover', pron: 'کاوِر', fa: 'پوشاندن / پوشش' },
+    { en: 'explain', pron: 'ایکسپلِین', fa: 'توضیح دادن' },
+    { en: 'outweigh', pron: 'اوت‌وِی', fa: 'بیشتر بودن از / سنگینی کردن بر' },
+    { en: 'influence', pron: 'اینفلوئِنس', fa: 'تاثیر / تاثیر گذاشتن' },
+    { en: 'utility', pron: 'یوتیلیتی', fa: 'سودمندی / کاربرد' },
+    { en: 'thinker', pron: 'ثینکِر', fa: 'متفکر' },
+    { en: 'operation', pron: 'آپِرِیشِن', fa: 'عملیات / عمل' },
+    { en: 'conclusion', pron: 'کِنکلوژِن', fa: 'نتیجه‌گیری' },
+    { en: 'expect', pron: 'ایکسپِکت', fa: 'انتظار داشتن' },
+    { en: 'financial', pron: 'فاینَنشال', fa: 'مالی' },
+    { en: 'benefits', pron: 'بِنِفیتس', fa: 'مزایا / فواید' },
+    { en: 'pharmaceutical', pron: 'فارماسوتیکال', fa: 'دارویی' },
+    { en: 'tend', pron: 'تِند', fa: 'گرایش داشتن / تمایل داشتن' },
+    { en: 'adolescent', pron: 'اَدولِسِنت', fa: 'نوجوان' },
+    { en: 'activity', pron: 'اَکتیویتی', fa: 'فعالیت' },
+    { en: 'marketing', pron: 'مارکِتینگ', fa: 'بازاریابی' },
+    { en: 'breath', pron: 'برِث', fa: 'نفس' },
+    { en: 'access', pron: 'اَکسِس', fa: 'دسترسی' },
+    { en: 'offending', pron: 'آفِندینگ', fa: 'توهین کننده / آزاردهنده' },
+    { en: 'pleasing', pron: 'پلیزینگ', fa: 'خوشایند' },
+    { en: 'forcing', pron: 'فورسینگ', fa: 'مجبور کردن (در حال)' },
+    { en: 'attracting', pron: 'اَترَکتینگ', fa: 'جذب کردن (در حال)' },
+    { en: 'destructive', pron: 'دیسترِکتیو', fa: 'مخرب' },
+    { en: 'variety', pron: 'وِرایِتی', fa: 'تنوع / گوناگونی' },
+    { en: 'identical', pron: 'آیدِنتیکال', fa: 'یکسان / کاملاً مشابه' },
+    { en: 'successful', pron: 'ساکسِسفول', fa: 'موفق' },
+    { en: 'essential', pron: 'ایسِنشال', fa: 'ضروری' },
+    { en: 'typical', pron: 'تیپیکال', fa: 'معمولی / نمونه' },
+    { en: 'freshener', pron: 'فرِشِنِر', fa: 'تازه کننده / خوشبو کننده' },
+    { en: 'irrational', pron: 'ای‌رَشِنال', fa: 'غیر منطقی' },
+    { en: 'original', pron: 'اُریجینال', fa: 'اصلی / اولیه' },
+    { en: 'expensive', pron: 'ایکسپِنسیو', fa: 'گران' },
+    { en: 'possibility', pron: 'پاسیبیلیتی', fa: 'امکان / احتمال' },
+    { en: 'desire', pron: 'دیزایِر', fa: 'میل / آرزو' },
+    { en: 'blame', pron: 'بلِیم', fa: 'سرزنش کردن / مقصر دانستن' },
+    { en: 'lost', pron: 'لاست', fa: 'گم شده / از دست رفته' },
+    { en: 'reason', pron: 'ریزِن', fa: 'دلیل' },
+    { en: 'fair', pron: 'فِیر', fa: 'منصفانه / نمایشگاه' },
+    { en: 'sensible', pron: 'سِنسِبِل', fa: 'معقول و منطقی' },
+    { en: 'choice', pron: 'چویس', fa: 'انتخاب' },
+    { en: 'consume', pron: 'کِنسیوم', fa: 'مصرف کردن' },
+    { en: 'waste', pron: 'وِیست', fa: 'هدر دادن / زباله' },
+    { en: 'destroy', pron: 'دیستروی', fa: 'تخریب کردن' },
+    { en: 'weakness', pron: 'ویکنِس', fa: 'نقطه ضعف' },
+    { en: 'quality', pron: 'کوالیتی', fa: 'کیفیت' },
+    { en: 'offend', pron: 'آفِند', fa: 'رنجاندن / توهین کردن' },
+    { en: 'rude', pron: 'رود', fa: 'گستاخ / بی ادب' },
+    { en: 'upset', pron: 'آپ‌سِت', fa: 'ناراحت / آشفته' },
+    { en: 'insulted', pron: 'اینسالتِد', fa: 'توهین شده' },
+    { en: 'annoyed', pron: 'اِنوید', fa: 'آزرده' },
+    { en: 'annoy', pron: 'اِنوی', fa: 'آزار دادن' },
+    { en: 'intended', pron: 'اینتِندِد', fa: 'مورد نظر / قصد شده' },
+    { en: 'fresh', pron: 'فرِش', fa: 'تازه' },
+    { en: 'pure', pron: 'پیور', fa: 'خالص' },
+    { en: 'popular', pron: 'پاپیولِر', fa: 'محبوب / پرطرفدار' },
+    { en: 'succeed', pron: 'سِکسید', fa: 'موفق شدن' },
+    { en: 'achieve', pron: 'اِچیو', fa: 'دستیابی پیدا کردن' },
+    { en: 'spend', pron: 'اسپِند', fa: 'خرج کردن / سپری کردن' },
+    { en: 'mints', pron: 'مینتس', fa: 'قرص نعناع' },
+    { en: 'appear', pron: 'اِپیِر', fa: 'ظاهر شدن / به نظر رسیدن' },
+    { en: 'attractive', pron: 'اَترَکتیو', fa: 'جذاب' },
+    { en: 'even', pron: 'ایوِن', fa: 'حتی' },
+    { en: 'exciting', pron: 'ایکسایتینگ', fa: 'هیجان انگیز' },
+    { en: 'dozen', pron: 'دازِن', fa: 'دوجین / دوازده تا' },
+    { en: 'instead of', pron: 'اینستِد آو', fa: 'به جای' },
+    { en: 'lies in', pron: 'لایز این', fa: 'نهفته است در' },
+    { en: 'dissatisfaction', pron: 'دیس‌سَتیسفَکشِن', fa: 'نارضایتی' },
+    { en: 'fear', pron: 'فیِر', fa: 'ترس' },
+    { en: 'dental', pron: 'دِنتال', fa: 'دندانی / مربوط به دندان' },
+    { en: 'hygiene', pron: 'هایجین', fa: 'بهداشت' },
+    { en: 'queasy', pron: 'کوییزی', fa: 'دچار حالت تهوع / دلواپس' },
+    { en: 'lose', pron: 'لوز', fa: 'گم کردن / باختن' },
+    { en: 'rural', pron: 'رورال', fa: 'روستایی' },
+    { en: 'village', pron: 'ویلِیج', fa: 'روستا' },
+    { en: 'handsome', pron: 'هَندسِم', fa: 'خوش تیپ' },
+    { en: 'although', pron: 'آلذو', fa: 'اگرچه' },
+    { en: 'reasonably', pron: 'ریزِنِبلی', fa: 'به طور معقولانه / نسبتا' },
+    { en: 'addicted', pron: 'اَدیکتِد', fa: 'معتاد' },
+    { en: 'lung', pron: 'لانگ', fa: 'ریه' },
+    { en: 'consumerism', pron: 'کانسیومِریزم', fa: 'مصرف گرایی' },
+    { en: 'worldwide', pron: 'وُرلدواید', fa: 'جهانی' },
+    { en: 'huge', pron: 'هیوج', fa: 'بسیار بزرگ' },
+    { en: 'advertising', pron: 'اَدوِرتایزینگ', fa: 'تبلیغات' },
+    { en: 'advertiser', pron: 'اَدوِرتایزِر', fa: 'تبلیغ کننده' },
+    { en: 'floss', pron: 'فلاس', fa: 'نخ دندان کشیدن' }
+    ]
+}
 
-        // ==========================================
-        // متغیرهای سیستم
-        // ==========================================
+};
+
+
         let currentLessonKey = "lesson1";
         let currentIndex = 0;
         let isFlipped = false;
 
         const flashcard = document.getElementById('flashcard');
         const enWordEl = document.getElementById('en-word');
+        const faPronEl = document.getElementById('fa-pron');
         const faMeaningEl = document.getElementById('fa-meaning');
         const progressEl = document.getElementById('progress');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const lessonSelect = document.getElementById('lessonSelect');
 
-        // ==========================================
-        // توابع اجرایی
-        // ==========================================
-
-        // راه اندازی اولیه سایت
         function initApp() {
-            // پر کردن لیست کشویی درس ها
             for (let key in lessonsData) {
                 let option = document.createElement("option");
                 option.value = key;
@@ -307,7 +768,6 @@
                 lessonSelect.appendChild(option);
             }
 
-            // بازیابی پیشرفت ذخیره شده کاربر از حافظه دستگاه
             const savedLesson = localStorage.getItem("mahrad_saved_lesson");
             const savedIndex = localStorage.getItem("mahrad_saved_index");
 
@@ -319,7 +779,6 @@
                 currentIndex = parseInt(savedIndex);
             }
 
-            // جلوگیری از خطای ایندکس (اگر کلمات پاک شده بودند)
             if (currentIndex >= lessonsData[currentLessonKey].words.length) {
                 currentIndex = 0;
             }
@@ -327,16 +786,14 @@
             updateCard();
         }
 
-        // ذخیره وضعیت فعلی
         function saveProgress() {
             localStorage.setItem("mahrad_saved_lesson", currentLessonKey);
             localStorage.setItem("mahrad_saved_index", currentIndex);
         }
 
-        // تغییر درس توسط کاربر
         function changeLesson() {
             currentLessonKey = lessonSelect.value;
-            currentIndex = 0; // رفتن به اول درس جدید
+            currentIndex = 0;
             
             if (isFlipped) {
                 flipCard();
@@ -346,19 +803,19 @@
             }
         }
 
-        // آپدیت متن و دکمه ها
         function updateCard() {
             const currentWords = lessonsData[currentLessonKey].words;
             const wordData = currentWords[currentIndex];
 
-            // اگر درس کلمه‌ای نداشت
             if (!wordData) {
                 enWordEl.textContent = "خالی";
+                faPronEl.textContent = "";
                 faMeaningEl.textContent = "کلمه‌ای اضافه نشده";
                 return;
             }
 
             enWordEl.textContent = wordData.en;
+            faPronEl.textContent = wordData.pron || "";
             faMeaningEl.textContent = wordData.fa;
             
             prevBtn.disabled = (currentIndex === 0);
@@ -366,11 +823,9 @@
             
             progressEl.textContent = `کلمه ${currentIndex + 1} از ${currentWords.length}`;
 
-            // ذخیره اتوماتیک پیشرفت
             saveProgress();
         }
 
-        // چرخش کارت
         function flipCard() {
             isFlipped = !isFlipped;
             if (isFlipped) {
@@ -380,7 +835,6 @@
             }
         }
 
-        // کلمه بعدی (سمت راست)
         function nextWord() {
             const currentWords = lessonsData[currentLessonKey].words;
             if (currentIndex < currentWords.length - 1) {
@@ -397,7 +851,6 @@
             }
         }
 
-        // کلمه قبلی (سمت چپ)
         function prevWord() {
             if (currentIndex > 0) {
                 if (isFlipped) {
@@ -413,9 +866,6 @@
             }
         }
 
-        // ==========================================
-        // پشتیبانی از Swipe (کشیدن انگشت در موبایل)
-        // ==========================================
         let touchstartX = 0;
         let touchendX = 0;
         
@@ -429,14 +879,10 @@
         });
 
         function handleSwipe() {
-            // در فارسی چون بعدی سمت راست است:
-            // کشیدن انگشت به چپ (Swipe Left) = رفتن به بعدی
-            // کشیدن انگشت به راست (Swipe Right) = رفتن به قبلی
             if (touchendX < touchstartX - 40) nextWord();
             if (touchendX > touchstartX + 40) prevWord();
         }
 
-        // اجرای اولیه برنامه هنگام باز شدن
         initApp();
     </script>
 </body>
