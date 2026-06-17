@@ -4,40 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مرور کلمات زبان عمومی ۱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #0ea5e9;
             --primary-hover: #0284c7;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.9);
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --shadow-color: rgba(0, 0, 0, 0.06);
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --border-color: rgba(226, 232, 240, 0.9);
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
             --accent-hard: #ef4444;
             --accent-easy: #10b981;
+            --option-bg: #f8fafc;
+            --option-hover: #e2e8f0;
+            --bg-color-1: #f0f9ff;
+            --bg-color-2: #e0f2fe;
         }
 
         [data-theme="dark"] {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.9);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: #334155;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --border-color: rgba(51, 65, 85, 0.9);
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --card-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.3);
+            --option-bg: #1e293b;
+            --option-hover: #334155;
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e293b;
         }
 
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
         }
 
         body {
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+            background-attachment: fixed;
             margin: 0;
             padding: 10px 15px;
             display: flex;
@@ -45,6 +56,7 @@
             align-items: center;
             min-height: 100vh;
             color: var(--text-main);
+            overflow-x: hidden;
         }
 
         .top-bar {
@@ -52,15 +64,21 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
             margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .top-bar-actions {
+            display: flex;
+            gap: 8px;
         }
 
         .theme-toggle {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 8px;
+            padding: 10px;
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 5px var(--shadow-color);
@@ -69,16 +87,47 @@
             justify-content: center;
         }
 
+        .mode-switcher {
+            display: flex;
+            background: var(--option-bg);
+            padding: 4px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            flex: 1;
+            overflow-x: auto;
+        }
+        
+        .mode-switcher::-webkit-scrollbar { display: none; }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            border-radius: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex: 1;
+        }
+
+        .mode-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+        }
+
         .header {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
         }
 
         .header h1 {
-            margin: 0 0 12px 0;
-            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            font-size: 1.35rem;
             color: var(--text-main);
             font-weight: 800;
         }
@@ -110,16 +159,20 @@
         .hint-text {
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin-top: 8px;
+            margin-top: 4px;
             margin-bottom: 5px;
+            min-height: 20px;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
         }
 
         .flashcard-container {
-            width: 100%;
-            max-width: 380px;
-            height: 230px;
+            height: 240px;
             perspective: 1000px;
-            margin-bottom: 20px;
             cursor: pointer;
             position: relative;
         }
@@ -160,7 +213,7 @@
         }
 
         .flashcard-front .word {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--primary-color);
             direction: ltr;
@@ -170,7 +223,6 @@
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-top: 8px;
-            font-weight: normal;
         }
 
         .flashcard-back {
@@ -181,12 +233,83 @@
         }
 
         .flashcard-back .meaning {
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             font-weight: bold;
             line-height: 1.5;
         }
 
-        /* دکمه بوکمارک و تگ سختی روی کارت */
+        .speaker-btn {
+            background: var(--option-bg);
+            border: none;
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px;
+            cursor: pointer;
+            z-index: 5;
+        }
+        .speaker-btn:hover { background: var(--option-hover); transform: scale(1.1); }
+
+        .quiz-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .quiz-question {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            direction: ltr;
+            text-align: center;
+        }
+
+        .options-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 14px;
+            text-align: right;
+            background: var(--option-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .option-btn:hover { background: var(--option-hover); }
+
+        .option-btn.correct {
+            background: var(--accent-easy) !important;
+            color: white !important;
+            border-color: var(--accent-easy) !important;
+        }
+
+        .option-btn.wrong {
+            background: var(--accent-hard) !important;
+            color: white !important;
+            border-color: var(--accent-hard) !important;
+        }
+        
+        .option-btn:disabled { cursor: default; }
+
         .card-badge {
             position: absolute;
             top: 15px;
@@ -212,26 +335,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: none;
         }
-        .bookmark-btn svg {
-            width: 26px;
-            height: 26px;
-            fill: #cbd5e1;
-            transition: fill 0.2s, transform 0.2s;
-        }
-        .bookmark-btn.is-active svg {
-            fill: #ef4444;
-        }
-        .bookmark-btn:active svg {
-            transform: scale(1.2);
-        }
+        .bookmark-btn svg { width: 26px; height: 26px; fill: #cbd5e1; transition: fill 0.3s; }
+        .bookmark-btn.is-active svg { fill: #ef4444; }
 
         .controls {
             display: flex;
             gap: 15px;
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
         }
 
         button.nav-btn {
@@ -252,16 +364,8 @@
             gap: 8px;
         }
 
-        button.nav-btn:active {
-            transform: scale(0.97);
-        }
-
-        button.nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+        button.nav-btn:active { transform: scale(0.97); }
+        button.nav-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
         .progress {
             margin-top: 15px;
@@ -284,42 +388,48 @@
             line-height: 1.6;
             padding-bottom: 10px;
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
         }
 
-        .footer span.heart {
-            color: #e11d48;
-            font-size: 1rem;
-        }
+        .footer span.heart { color: #e11d48; font-size: 1rem; }
+        .footer strong { color: var(--primary-color); font-size: 0.95rem; }
+        .footer a { color: var(--primary-color); text-decoration: none; font-weight: bold; }
 
-        .footer strong {
-            color: var(--primary-color);
-            font-size: 0.95rem;
-        }
-
-        .footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
+        .exam-intro { text-align: center; padding: 20px; }
+        .exam-intro h2 { color: var(--primary-color); margin-top: 0;}
+        .exam-intro p { color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; font-size: 0.9rem; }
+        .exam-result-box { text-align: center; padding: 20px; }
+        .exam-result-box h2 { font-size: 2rem; margin: 10px 0; color: var(--primary-color); }
+        .exam-result-box p { color: var(--text-main); font-weight: bold; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <div></div> <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم">
-            <svg id="sunIcon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
+        <div class="mode-switcher">
+            <button id="modeFlashcard" class="mode-btn active" onclick="switchMode('flashcard')">مرور با کارت</button>
+            <button id="modeQuiz" class="mode-btn" onclick="switchMode('quiz')">مرور با گزینه</button>
+            <button id="modeExam" class="mode-btn" onclick="switchMode('exam')">آزمون</button>
+        </div>
+
+        <div class="top-bar-actions">
+            <button class="theme-toggle" id="muteToggle" onclick="toggleMute()" title="قطع/وصل صدا">
+                <svg id="volumeUpIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <svg id="volumeMuteIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم">
+                <svg id="sunIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
     </div>
 
     <div class="header">
         <h1>مرور کلمات زبان عمومی ۱</h1>
         
-        <div class="selectors-grid">
-            <select id="lessonSelect" class="custom-select" onchange="handleFilterChange()">
-            </select>
-            
+        <div class="selectors-grid" id="mainSelectors">
+            <select id="lessonSelect" class="custom-select" onchange="handleFilterChange()"></select>
             <select id="filterSelect" class="custom-select" onchange="handleFilterChange()">
                 <option value="all">همه کلمات</option>
                 <option value="hard">فقط سخت 🔥</option>
@@ -331,31 +441,66 @@
         <div class="hint-text" id="hintText">برای دیدن معنی، روی کارت ضربه بزنید</div>
     </div>
 
-    <div class="flashcard-container" id="cardContainer" onclick="flipCard()">
-        <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark(event)" title="نشان کردن کلمه">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        </button>
-
-        <div class="flashcard" id="flashcard">
-            <div class="flashcard-face flashcard-front">
-                <div id="difficultyBadge" class="card-badge"></div>
-                <div class="word" id="en-word">...</div>
-                <div class="pronunciation" id="fa-pron">...</div>
-            </div>
-            <div class="flashcard-face flashcard-back">
-                <div class="meaning" id="fa-meaning">...</div>
+    <div class="main-container">
+        
+        <div class="flashcard-container" id="cardContainer" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-face flashcard-front">
+                    <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark(event)" title="نشان کردن کلمه">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                    <div id="difficultyBadge" class="card-badge"></div>
+                    <div class="word" id="en-word">...</div>
+                    <div class="pronunciation" id="fa-pron">...</div>
+                    <button class="speaker-btn" onclick="speakCurrentWord(event)" title="تلفظ صوتی">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                    </button>
+                </div>
+                <div class="flashcard-face flashcard-back">
+                    <div class="meaning" id="fa-meaning">...</div>
+                </div>
             </div>
         </div>
+
+        <div class="quiz-box" id="quizContainer" style="display: none;">
+            <div class="quiz-question" id="quizQuestion">Word</div>
+            <div class="options-grid" id="quizOptions"></div>
+        </div>
+
+        <div class="quiz-box" id="examContainer" style="display: none;">
+            <div class="exam-intro" id="examIntro">
+                <h2>آزمون یادگیری</h2>
+                <p>در این بخش می‌توانید با سوالات چهارگزینه‌ای، میزان تسلط خود را در این درس بسنجید. پس از پاسخ به هر سوال، جواب درست نمایش داده می‌شود.</p>
+                <button class="nav-btn" onclick="startExam()">شروع آزمون</button>
+            </div>
+            
+            <div id="examPlay" style="display: none; width: 100%; flex-direction: column; align-items: center;">
+                <div class="quiz-question" style="direction: rtl; font-size: 1.2rem; line-height: 1.6;" id="examQuestionText">سوال؟</div>
+                <div class="options-grid" id="examOptions"></div>
+                <div class="controls" id="examControls" style="margin-top: 15px; width: 100%; max-width: none; gap: 15px;">
+                    <button id="examNextBtn" class="nav-btn" onclick="nextExamQuestion()">&#8594; بعدی</button>
+                    <button id="examPrevBtn" class="nav-btn" onclick="prevExamQuestion()">قبلی &#8592;</button>
+                </div>
+            </div>
+
+            <div class="exam-result-box" id="examResult" style="display: none;">
+                <h2 id="examScoreText">۰٪</h2>
+                <p id="examFeedbackText">عالی بود!</p>
+                <div style="display: flex; gap: 10px;">
+                    <button class="nav-btn" onclick="startExam()">تکرار آزمون</button>
+                    <button class="nav-btn" onclick="switchMode('flashcard')">بازگشت به مرور</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="controls">
+    <div class="controls" id="mainControls">
         <button id="nextBtn" class="nav-btn" onclick="nextWord()">&#8594; بعدی</button>
         <button id="prevBtn" class="nav-btn" onclick="prevWord()">قبلی &#8592;</button>
     </div>
 
-    <div class="progress" id="progress">
-        کلمه ۱ از X
-    </div>
+    <div class="progress" id="progress">کلمه ۱ از X</div>
 
     <div class="footer">
         ساخته شده با <span class="heart">♥</span> توسط <strong>MahradH</strong><br>
@@ -364,195 +509,49 @@
     </div>
 
     <script>
-        // دیتای توسعه یافته شامل دروس مختلف و تگ سختی (difficulty: hard / easy)
         const lessonsData = {
             "lesson5": {
                 title: "درس ۵",
                 words: [
-                    // --- کلمات بخش آسان (easy) ---
                     { en: "sleepy", pron: "اسلیپی", fa: "خواب آلود", difficulty: "easy" },
                     { en: "influence", pron: "اینفلوئنس", fa: "تاثیر / تاثیر گذاشتن", difficulty: "easy" },
                     { en: "raise", pron: "ریز", fa: "بلند کردن / افزایش دادن / پرورش دادن / بزرگ کردن", difficulty: "easy" },
                     { en: "however", pron: "هاوِوِر", fa: "با این حال", difficulty: "easy" },
                     { en: "also", pron: "آلسو", fa: "همچنین", difficulty: "easy" },
-                    { en: "childhood", pron: "چایْلدهود", fa: "بچگی", difficulty: "easy" },
-                    { en: "illnesses", pron: "ایلنِسِز", fa: "بیماری‌ها", difficulty: "easy" },
-                    { en: "deadly", pron: "دِدلی", fa: "مهلک / کشنده", difficulty: "easy" },
-                    { en: "aspect", pron: "اَسپِکت", fa: "جنبه / ویژگی / لحاظ", difficulty: "easy" },
-                    { en: "society", pron: "سوسایِتی", fa: "جامعه / انجمن", difficulty: "easy" },
-                    { en: "desire", pron: "دیزایِر", fa: "میل / آرزو داشتن / اشتیاق", difficulty: "easy" },
-                    { en: "care for", pron: "کِر فور", fa: "نگهداری کردن / مراقبت کردن", difficulty: "easy" },
-                    { en: "suicide", pron: "سوئیساید", fa: "خودکشی", difficulty: "easy" },
-                    { en: "advantage", pron: "اَدوَنتِج", fa: "مزیت / برتری / امتیاز", difficulty: "easy" },
-                    { en: "pleasure", pron: "پلِژِر", fa: "لذت / تفریح", difficulty: "easy" },
-                    { en: "through", pron: "ثرو", fa: "از میان / از طریق / سراسر", difficulty: "easy" },
-                    { en: "gain", pron: "گِین", fa: "به دست آوردن / زیاد کردن (وزن)", difficulty: "easy" },
-                    { en: "during", pron: "دیورینگ", fa: "در طول", difficulty: "easy" },
-                    { en: "future", pron: "فیوچِر", fa: "آینده", difficulty: "easy" },
-                    { en: "stove", pron: "اِستوو", fa: "اجاق / بخاری", difficulty: "easy" },
-                    { en: "trained", pron: "ترِیند", fa: "آموزش دیده", difficulty: "easy" },
-                    { en: "worldwide", pron: "وُرد‌واید", fa: "جهانی / در سرتاسر جهان", difficulty: "easy" },
-                    { en: "associated", pron: "اَسوسی‌اِیتِد", fa: "مرتبط با", difficulty: "easy" },
-                    { en: "violence", pron: "وایولنس", fa: "خشونت / شدت", difficulty: "easy" },
-                    { en: "relationship", pron: "ریلیشن‌شیپ", fa: "رابطه", difficulty: "easy" },
-                    { en: "parental", pron: "پَرِنتال", fa: "مادرانه و پدرانه / والد", difficulty: "easy" },
-                    { en: "occur", pron: "آکِر", fa: "اتفاق افتادن", difficulty: "easy" },
-                    { en: "primarily", pron: "پرایمِریلی", fa: "در درجه اول", difficulty: "easy" },
-                    { en: "issues", pron: "ایشوز", fa: "موضوع / مسئله", difficulty: "easy" },
-                    { en: "introduction", pron: "اینتروداکشن", fa: "مقدمه / معرفی", difficulty: "easy" },
-                    { en: "hygiene", pron: "هایجین", fa: "بهداشت", difficulty: "easy" },
-                    { en: "mental", pron: "مِنتال", fa: "ذهنی", difficulty: "easy" },
-                    { en: "motor", pron: "موتور", fa: "موتور / محرک / خودرو", difficulty: "easy" },
-                    { en: "regarding", pron: "ریگاردینگ", fa: "راجع به / درباره", difficulty: "easy" },
-                    { en: "except", pron: "ایکسِپت", fa: "به جز", difficulty: "easy" },
-                    { en: "compared", pron: "کامپِرد", fa: "در مقایسه با", difficulty: "easy" },
-                    { en: "opportunity", pron: "آپُرتونیتی", fa: "فرصت", difficulty: "easy" },
-                    { en: "situation", pron: "سیچو‌اِیشن", fa: "وضعیت / موقعیت", difficulty: "easy" },
-                    { en: "environment", pron: "این‌وایرومنت", fa: "محیط / محیط زیست", difficulty: "easy" },
-                    { en: "include", pron: "اینکلود", fa: "شامل شدن / شامل کردن", difficulty: "easy" },
-                    { en: "fitness", pron: "فیتنِس", fa: "تناسب اندام / تندرستی", difficulty: "easy" },
-                    { en: "obesity", pron: "اوبیسیتی", fa: "چاقی", difficulty: "easy" },
-                    { en: "decided", pron: "دیسایدِد", fa: "مصمم / مطمئن / واضح", difficulty: "easy" },
-                    { en: "vehicle", pron: "ویهیکِل", fa: "وسیله نقلیه / وسیله", difficulty: "easy" },
-                    { en: "survived", pron: "سِروایود", fa: "زنده ماندن / جان سالم به در بردن", difficulty: "easy" },
-                    { en: "growth", pron: "گروث", fa: "رشد / افزایش", difficulty: "easy" },
-                    { en: "Scientist", pron: "سایِنتیست", fa: "دانشمند", difficulty: "easy" },
-                    { en: "patient", pron: "پِیشنت", fa: "بیمار / صبور", difficulty: "easy" },
-                    { en: "participate", pron: "پارتیسیپِیت", fa: "شرکت کردن", difficulty: "easy" },
-                    { en: "current", pron: "کارِنت", fa: "فعلی / جاری / کنونی", difficulty: "easy" },
-                    { en: "period", pron: "پیریود", fa: "دوره", difficulty: "easy" },
-
-                    // --- کلمات بخش سخت (hard) ---
-                    { en: "promote", pron: "پروموت", fa: "بهبود بخشیدن / ترفیع دادن / تبلیغ کردن", difficulty: "hard" },
-                    { en: "moreover", pron: "مورووِر", fa: "علاوه بر این", difficulty: "hard" },
-                    { en: "therefore", pron: "ذِرفور", fa: "بنابراین", difficulty: "hard" },
-                    { en: "Acute", pron: "اکیوت", fa: "حاد", difficulty: "hard" },
-                    { en: "chronic", pron: "کرونیک", fa: "مزمن", difficulty: "hard" },
-                    { en: "Prevention", pron: "پریوِنشن", fa: "پیشگیری", difficulty: "hard" },
-                    { en: "prevention", pron: "پریوِنشن", fa: "پیشگیری", difficulty: "hard" }, // تکرار در تصویر
-                    { en: "infancy", pron: "اینفَنسی", fa: "نوزادی / شیرخوارگی", difficulty: "hard" },
-                    { en: "Protection", pron: "پروتکشن", fa: "حفاظت", difficulty: "hard" },
-                    { en: "assist", pron: "اَسیست", fa: "کمک کردن", difficulty: "hard" },
-                    { en: "achieve", pron: "اچیود", fa: "رسیدن (به هدف) / به دست آوردن", difficulty: "hard" },
-                    { en: "prevent", pron: "پریوِنت", fa: "جلوگیری کردن / پیشگیری کردن", difficulty: "hard" },
-                    { en: "nutritional", pron: "نوتریشنال", fa: "غذایی", difficulty: "hard" },
-                    { en: "burden", pron: "بِردِن", fa: "بار (مسئولیت) / سنگینی / زحمت", difficulty: "hard" },
-                    { en: "Burdens", pron: "بِردِنز", fa: "بار / مسئولیت / سنگینی / زحمت", difficulty: "hard" },
-                    { en: "adolescent", pron: "اَدولِسِنت", fa: "نوجوان", difficulty: "hard" },
-                    { en: "reproductive", pron: "ریپروداکتیو", fa: "وابسته به تولید مثل / تناسلی", difficulty: "hard" },
-                    { en: "prematurely", pron: "پریمچورلی", fa: "زود هنگام / زودتر از زمان مقرر", difficulty: "hard" },
-                    { en: "premature", pron: "پریمچور", fa: "زودرس", difficulty: "hard" },
-                    { en: "complication", pron: "کامپلیکیشن", fa: "پیچیدگی / مشکل / (جمع) عوارض", difficulty: "hard" },
-                    { en: "Approximately", pron: "اَپراکسیمِتلی", fa: "تقریبا", difficulty: "hard" },
-                    { en: "moderate", pron: "مادرِت", fa: "متوسط", difficulty: "hard" },
-                    { en: "vigorous", pron: "ویگوروس", fa: "نیرومند", difficulty: "hard" },
-                    { en: "preceding", pron: "پریسیدینگ", fa: "قبلی / پیشین", difficulty: "hard" },
-                    { en: "intoxicated", pron: "اینتاکسیکِیتِد", fa: "مست / از خود بیخود شده", difficulty: "hard" },
-                    { en: "facilities", pron: "فسیلیتیز", fa: "امکانات", difficulty: "hard" },
-                    { en: "Diarrhea", pron: "دایریا", fa: "اسهال", difficulty: "hard" },
-                    { en: "sanitary", pron: "سَنیتِری", fa: "بهداشتی", difficulty: "hard" },
-                    { en: "insecticide", pron: "اینسکتیساید", fa: "حشره کش", difficulty: "hard" },
-                    { en: "essential", pron: "اِسِنشال", fa: "لازم / ضروری", difficulty: "hard" },
-                    { en: "treat", pron: "تریت", fa: "رفتار کردن / درمان کردن / نگهداری کردن", difficulty: "hard" },
-                    { en: "respiratory", pron: "رسپیراتوری", fa: "تنفسی", difficulty: "hard" },
-                    { en: "Respirations", pron: "رسپیرِیشِنز", fa: "تنفس", difficulty: "hard" },
-                    { en: "contributing", pron: "کانتریبیوتینگ", fa: "موثر / کمک کننده", difficulty: "hard" },
-                    { en: "pollution", pron: "پلوشن", fa: "آلودگی", difficulty: "hard" },
-                    { en: "Malnutrition", pron: "مال‌نوتریشن", fa: "سوء تغذیه", difficulty: "hard" },
-                    { en: "malnutrition", pron: "مال‌نوتریشن", fa: "سوء تغذیه", difficulty: "hard" },
-                    { en: "contributor", pron: "کانتریبیوتُر", fa: "اهدا کننده", difficulty: "hard" },
-                    { en: "malnourished", pron: "مال‌نوریشد", fa: "دچار سوء تغذیه", difficulty: "hard" },
-                    { en: "tuberculosis", pron: "تيوبرکلوزیس", fa: "سل", difficulty: "hard" },
-                    { en: "industrialized", pron: "اینداستریالایزد", fa: "صنعتی", difficulty: "hard" },
-                    { en: "estimate", pron: "اِستیمِیت", fa: "تخمین زدن", difficulty: "hard" },
-                    { en: "pregnancy", pron: "پرگننسی", fa: "بارداری", difficulty: "hard" },
-                    { en: "optimal", pron: "آپتیمال", fa: "بهینه / بهترین", difficulty: "hard" },
-                    { en: "decade", pron: "دِکِید", fa: "دهه", difficulty: "hard" },
-                    { en: "intervention", pron: "اینتِروِنشن", fa: "مداخله / میانجی‌گری", difficulty: "hard" },
-                    { en: "responsive", pron: "ریسپانسیو", fa: "واکنش دهنده / پاسخگو", difficulty: "hard" },
-                    { en: "maturity", pron: "مچوریتی", fa: "پختگی / بلوغ", difficulty: "hard" },
-                    { en: "cognitive", pron: "کاگنیتیو", fa: "شناختی", difficulty: "hard" },
-                    { en: "temperament", pron: "تِمپرامنت", fa: "خلق و خوی / منش / فطرت", difficulty: "hard" },
-                    { en: "temperaments", pron: "تِمپرامنتس", fa: "خلق و خوی / زودجوشی / منش / فطرت / تند مزاجی", difficulty: "hard" },
-                    { en: "fine", pron: "فاین", fa: "خوب / نازک / ریز / ظریف", difficulty: "hard" },
-                    { en: "gross", pron: "گروس", fa: "چندش آور / درشت / شرم آور / کسب کردن / ناخالص / قبیح / چاق و زشت", difficulty: "hard" },
-                    { en: "ensure", pron: "اینشور", fa: "اطمینان حاصل کردن", difficulty: "hard" },
-                    { en: "delivery", pron: "دِلیوِری", fa: "تحویل", difficulty: "hard" },
-                    { en: "complementary", pron: "کامپلمِنتِری", fa: "مکمل", difficulty: "hard" },
-                    { en: "contribute", pron: "کانتریبیوت", fa: "اعطا کردن / کمک کردن", difficulty: "hard" },
-                    { en: "recognize", pron: "رِکاگنایز", fa: "تشخیص دادن / شناختن", difficulty: "hard" },
-                    { en: "treatable", pron: "تریت‌اَبِل", fa: "قابل درمان", difficulty: "hard" },
-                    { en: "advocate", pron: "اَدوُکِیت", fa: "طرفداری کردن / وکیل مدافع", difficulty: "hard" },
-                    { en: "accelerate", pron: "اکسلِرِیت", fa: "شتاب دادن / تسریع کردن", difficulty: "hard" },
-                    { en: "approach", pron: "آپروچ", fa: "رویکرد / روش", difficulty: "hard" },
-                    { en: "Acquire", pron: "اَکوایر", fa: "به دست آوردن", difficulty: "hard" },
-                    { en: "accurate", pron: "اکیورِت", fa: "دقیق / صحیح", difficulty: "hard" },
-                    { en: "Obtain", pron: "آبتِین", fa: "به دست آوردن", difficulty: "hard" },
-                    { en: "counseling", pron: "کاونسلینگ", fa: "مشاوره", difficulty: "hard" },
-                    { en: "especially", pron: "اسپشالی", fa: "مخصوصا", difficulty: "hard" },
-                    { en: "crisis", pron: "کرایسیس", fa: "بحران", difficulty: "hard" },
-                    { en: "supportive", pron: "ساپورتیو", fa: "حامی / حمایتی", difficulty: "hard" },
-                    { en: "enhance", pron: "اینهَنس", fa: "افزایش دادن", difficulty: "hard" },
-                    { en: "expert", pron: "اکسپرت", fa: "کارشناس / ماهر / متخصص", difficulty: "hard" },
-                    { en: "investigation", pron: "این‌وستیگیشن", fa: "تحقیق / بازرسی / رسیدگی", difficulty: "hard" },
-                    { en: "in addition to", pron: "این اَدیشن تو", fa: "علاوه بر", difficulty: "hard" },
-                    { en: "in spite of", pron: "این اسپایت آف", fa: "علارغم", difficulty: "hard" },
-                    { en: "disregarding", pron: "دیس‌ریگاردینگ", fa: "بی اعتنا", difficulty: "hard" },
-                    { en: "deal with", pron: "دیل ویذ", fa: "رسیدگی کردن / سروکله زدن با / پرداختن به", difficulty: "hard" },
-                    { en: "Societies", pron: "سوسایِتیز", fa: "جامعه / انجمن", difficulty: "hard" },
-                    { en: "Interventions", pron: "اینتِروِنشنز", fa: "مداخلات", difficulty: "hard" },
-                    { en: "feed", pron: "فید", fa: "غذا دادن / تغذیه کردن", difficulty: "hard" },
-                    { en: "complicate", pron: "کامپلیکِیت", fa: "پیچیده کردن", difficulty: "hard" },
-                    { en: "outline", pron: "اوت‌لاین", fa: "خلاصه / شکل اجمالی / خلاصه گفتن", difficulty: "hard" },
-                    { en: "precede", pron: "پریسید", fa: "پیش قرار گرفتن / جلو بودن", difficulty: "hard" },
-                    { en: "consequence", pron: "کانسیکوئنس", fa: "اهمیت / پیامد / نتیجه / اثر", difficulty: "hard" },
-                    { en: "dropped", pron: "دراپد", fa: "کاهش یافته / تنزل یافته / افتاده", difficulty: "hard" },
-                    { en: "restrained", pron: "ریستریند", fa: "آرام / ملایم / متین", difficulty: "hard" },
-                    { en: "baseline", pron: "بیس‌لاین", fa: "خط انتهای زمین (تنیس، والیبال و...) / خط پایه", difficulty: "hard" },
-                    { en: "vigor", pron: "ویگور", fa: "انرژی / توان / اشتیاق", difficulty: "hard" },
-                    { en: "appropriate", pron: "آپروپریت", fa: "مناسب", difficulty: "hard" },
-                    { en: "contributed to", pron: "کانتریبیوتِد تو", fa: "کمک کردن به / نقش داشتن در", difficulty: "hard" },
-                    { en: "differed from", pron: "دیفِرد فرام", fa: "متفاوت از", difficulty: "hard" },
-                    { en: "acquired", pron: "اَکوایرد", fa: "اکتسابی", difficulty: "hard" },
-                    { en: "risky", pron: "ریسکی", fa: "پر خطر", difficulty: "hard" },
-                    { en: "potential", pron: "پوتنشال", fa: "پتانسیل / توانایی / بالقوه", difficulty: "hard" },
-                    { en: "timely", pron: "تایملی", fa: "به موقع", difficulty: "hard" },
-                    { en: "mature", pron: "مچور", fa: "بالغ / رسیده / بالغ شدن", difficulty: "hard" },
-                    { en: "emotional", pron: "ایموشنال", fa: "عاطفی", difficulty: "hard" },
-                    { d_en: "shifts", pron: "شیفتس", fa: "تغییر / سوق دادن / منتقل کردن", difficulty: "hard" },
-                    { en: "remainder", pron: "ریمیندر", Earth: "باقیمانده / بقیه", difficulty: "hard" },
-                    { en: "guidelines", pron: "گایدلاینز", fa: "دستورالعمل ها", difficulty: "hard" },
-                    { en: "initiate", pron: "اینیشی‌اِیت", fa: "شروع کردن", difficulty: "hard" },
-                    { en: "prenatal", pron: "پرینیتال", fa: "پیش از زایمان", difficulty: "hard" },
-                    { en: "neonatal", pron: "نیونیتال", fa: "نوزادی", difficulty: "hard" },
-                    { en: "dehydrated", pron: "دیهایدریتِد", fa: "کم آب شده", difficulty: "hard" },
-                    { en: "overweight", pron: "اووِروِیت", fa: "اضافه وزن", difficulty: "hard" },
-                    { en: "hypertension", pron: "هایپرتنشن", fa: "افزایش فشار خون", difficulty: "hard" },
-                    { en: "overactive", pron: "اووراکتیو", fa: "بیش فعال", difficulty: "hard" },
-                    { en: "represent", pron: "ریپرِزِنت", fa: "نشان دادن / بیان کردن", difficulty: "hard" },
-                    { en: "onset", pron: "آنست", fa: "آغاز", difficulty: "hard" },
-                    { en: "consolidate", pron: "کانسالیدِیت", fa: "ادغام کردن / تلفیق کردن", difficulty: "hard" },
-                    { en: "thereby", pron: "ذِربای", fa: "درنتیجه / به موجب آن / بنابراین", difficulty: "hard" },
-                    { en: "infection", pron: "اینفکشن", fa: "عفونت", difficulty: "hard" },
-                    { en: "compensate", pron: "کامپِنسِیت", fa: "جبران کردن / غرامت دادن", difficulty: "hard" },
-                    { en: "deficiency", pron: "دیفیشنسی", fa: "نقص / فقدان", difficulty: "hard" },
-                    { en: "announce", pron: "اَنانس", fa: "اعلام کردن", difficulty: "hard" },
-                    { en: "breakthrough", pron: "بریک‌ثرو", fa: "پیشرفت / کشف مهم", difficulty: "hard" },
-                    { en: "encourage", pron: "اینکاریج", fa: "تشویق کردن / ترغیب کردن", difficulty: "hard" },
-                    { en: "development", pron: "دیولوپمنت", fa: "توسعه / رشد", difficulty: "hard" },
-                    { en: "occurrence", pron: "آکارِنس", fa: "پیشامد / رویداد / واقعه", difficulty: "hard" }
+                    { en: "childhood", pron: "چایْلدهود", fa: "بچگی", difficulty: "easy" }
                 ]
             }
         };
 
-        // متغیرهای وضعیت برنامه
+        const examData = {
+            "lesson5": [
+                { q: "معنی کلمه 'influence' چیست؟", options: ["خواب آلود", "تاثیر گذاشتن", "بیماری", "مهلک"], ans: 1 },
+                { q: "کدام کلمه به معنی 'پرورش دادن / بزرگ کردن' است؟", options: ["suicide", "pleasure", "raise", "growth"], ans: 2 },
+                { q: "معنی 'childhood' چیست؟", options: ["جلوگیری کردن", "بچگی", "مراقبت کردن", "ترفیع دادن"], ans: 1 },
+                { q: "کلمه انگلیسی 'sleepy' به چه معناست？", options: ["سلامتی", "ذهنی", "مهلک", "خواب آلود"], ans: 3 }
+            ]
+        };
+
         let currentLessonKey = "";
         let filteredWords = [];
         let currentIndex = 0;
         let isFlipped = false;
         let bookmarks = [];
+        let currentMode = "flashcard";
+        let isQuizAnswered = false;
+        let isMuted = false;
 
-        // المان‌های DOM
+        // متغیرهای آرایه وضعیت پاسخ‌ها در آزمون جهت مدیریت رفت‌وآمد بین سوالات
+        let currentExamQuestions = [];
+        let currentExamQuestionIndex = 0;
+        let examUserAnswers = []; 
+
+        const sfx = {
+            tap: new Audio('sounds/tap.mp3'),
+            success: new Audio('sounds/success.mp3'),
+            fail: new Audio('sounds/fail.mp3')
+        };
+
         const flashcard = document.getElementById('flashcard');
         const enWordEl = document.getElementById('en-word');
         const faPronEl = document.getElementById('fa-pron');
@@ -564,21 +563,34 @@
         const filterSelect = document.getElementById('filterSelect');
         const difficultyBadge = document.getElementById('difficultyBadge');
         const bookmarkBtn = document.getElementById('bookmarkBtn');
-        const themeToggle = document.getElementById('themeToggle');
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIcon = document.getElementById('moonIcon');
+        const hintText = document.getElementById('hintText');
+        
+        const cardContainer = document.getElementById('cardContainer');
+        const quizContainer = document.getElementById('quizContainer');
+        const examContainer = document.getElementById('examContainer');
+        
+        const mainControls = document.getElementById('mainControls');
+        const mainSelectors = document.getElementById('mainSelectors');
 
-        // تابع راه‌اندازی اولیه
+        // تابع کمکی برای تبدیل کلیه اعداد انگلیسی به فارسی در رابط کاربری
+        function toPersianDigits(str) {
+            if (str === null || str === undefined) return '';
+            const id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            return str.toString().replace(/[0-9]/g, function (w) {
+                return id[+w];
+            });
+        }
+
         function initApp() {
-            // ۱. بارگذاری بوکمارک‌ها از لوکال استوریج
             bookmarks = JSON.parse(localStorage.getItem("mahrad_bookmarks")) || [];
-
-            // ۲. بارگذاری تم ذخیره شده
             const savedTheme = localStorage.getItem("mahrad_theme") || "light";
             document.documentElement.setAttribute('data-theme', savedTheme);
             updateThemeIcons(savedTheme);
 
-            // ۳. پر کردن لیست آبشار درس‌ها به صورت پویا
+            // بازیابی وضعیت میوت صوتی
+            isMuted = localStorage.getItem("mahrad_muted") === "true";
+            updateMuteIcons();
+
             lessonSelect.innerHTML = "";
             for (let key in lessonsData) {
                 let option = document.createElement("option");
@@ -587,7 +599,6 @@
                 lessonSelect.appendChild(option);
             }
 
-            // ۴. لود کردن آخرین درس و کلمه مرور شده
             const savedLesson = localStorage.getItem("mahrad_saved_lesson");
             const savedIndex = localStorage.getItem("mahrad_saved_index");
 
@@ -595,23 +606,82 @@
                 currentLessonKey = savedLesson;
                 lessonSelect.value = savedLesson;
             } else {
-                // اگر چیزی نبود، اولین کلید موجود در دیتا را انتخاب کن
                 currentLessonKey = Object.keys(lessonsData)[0] || "";
                 lessonSelect.value = currentLessonKey;
             }
 
-            if (savedIndex) {
-                currentIndex = parseInt(savedIndex);
-            }
-
-            // ۵. اعمال فیلتر و بروزرسانی کارت
+            if (savedIndex) currentIndex = parseInt(savedIndex);
             applyFiltering(false); 
         }
 
-        // تابع فیلتر کردن کلمات بر اساس درس و نوع فیلتر (آسان/سخت/بوکمارک)
+        function playSoundEffect(type) {
+            if (isMuted) return; // اگر برنامه میوت باشد صدایی پخش نخواهد شد
+            if (sfx[type]) {
+                sfx[type].currentTime = 0;
+                sfx[type].play().catch(e => {});
+            }
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            localStorage.setItem("mahrad_muted", isMuted);
+            updateMuteIcons();
+        }
+
+        function updateMuteIcons() {
+            document.getElementById('volumeUpIcon').style.display = isMuted ? "none" : "block";
+            document.getElementById('volumeMuteIcon').style.display = isMuted ? "block" : "none";
+        }
+
+        function speakCurrentWord(event) {
+            if(event) event.stopPropagation();
+            const wordData = filteredWords[currentIndex];
+            if (!wordData) return;
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(wordData.en);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function switchMode(mode) {
+            currentMode = mode;
+            
+            document.getElementById('modeFlashcard').classList.toggle('active', mode === 'flashcard');
+            document.getElementById('modeQuiz').classList.toggle('active', mode === 'quiz');
+            document.getElementById('modeExam').classList.toggle('active', mode === 'exam');
+
+            cardContainer.style.display = "none";
+            quizContainer.style.display = "none";
+            examContainer.style.display = "none";
+            
+            if(mode === 'exam') {
+                examContainer.style.display = "flex";
+                mainControls.style.display = "none";
+                filterSelect.style.display = "none"; 
+                hintText.textContent = "آزمون ارزیابی یادگیری";
+                resetExamUI();
+            } else {
+                mainControls.style.display = "flex";
+                filterSelect.style.display = "block";
+                
+                if (mode === 'flashcard') {
+                    cardContainer.style.display = "block";
+                    hintText.textContent = "برای دیدن معنی، روی کارت ضربه بزنید";
+                } else if (mode === 'quiz') {
+                    quizContainer.style.display = "flex";
+                    hintText.textContent = "گزینه درست را حدس بزنید!";
+                    isQuizAnswered = false;
+                }
+                updateCard();
+            }
+        }
+
         function applyFiltering(resetIndex = true) {
             if (!currentLessonKey) return;
-            
             const allWordsInLesson = lessonsData[currentLessonKey].words || [];
             const activeFilter = filterSelect.value;
 
@@ -620,21 +690,19 @@
                 if (activeFilter === "hard") return word.difficulty === "hard";
                 if (activeFilter === "easy") return word.difficulty === "easy";
                 if (activeFilter === "bookmarked") return isBookmarked;
-                return true; // برای حالت "all"
+                return true;
             });
 
-            if (resetIndex || currentIndex >= filteredWords.length) {
-                currentIndex = 0;
-            }
-
+            if (resetIndex || currentIndex >= filteredWords.length) currentIndex = 0;
+            isQuizAnswered = false;
             updateCard();
+            
+            if(currentMode === 'exam') resetExamUI();
         }
 
-        // تغییر فیلترها توسط کاربر
         function handleFilterChange() {
             currentLessonKey = lessonSelect.value;
-            
-            if (isFlipped) {
+            if (isFlipped && currentMode === "flashcard") {
                 flipCard();
                 setTimeout(() => { applyFiltering(true); }, 250);
             } else {
@@ -642,33 +710,25 @@
             }
         }
 
-        // بروزرسانی محتوای کارت گرافیکی
         function updateCard() {
+            if(currentMode === 'exam') return;
+
             const wordData = filteredWords[currentIndex];
 
-            // مدیریت وضعیت لیست خالی در فیلتر انتخابی
             if (!wordData) {
-                enWordEl.textContent = "!خالی";
-                faPronEl.textContent = "";
-                faMeaningEl.textContent = "کلمه‌ای در این بخش پیدا نشد.";
-                difficultyBadge.style.display = "none";
-                bookmarkBtn.style.display = "none";
-                prevBtn.disabled = true;
-                nextBtn.disabled = true;
-                progressEl.textContent = "۰ از ۰";
+                enWordEl.textContent = "خالی!";
+                faMeaningEl.textContent = "کلمه‌ای پیدا نشد.";
+                document.getElementById('quizQuestion').textContent = "خالی!";
+                document.getElementById('quizOptions').innerHTML = "";
+                prevBtn.disabled = true; nextBtn.disabled = true;
+                progressEl.textContent = toPersianDigits("۰ از ۰");
                 return;
             }
 
-            // نمایش مجدد المان‌های پنهان شده
-            bookmarkBtn.style.display = "flex";
-            difficultyBadge.style.display = "block";
-
-            // پر کردن اطلاعات کلمه
             enWordEl.textContent = wordData.en;
             faPronEl.textContent = wordData.pron || "";
             faMeaningEl.textContent = wordData.fa;
 
-            // تنظیم وضعیت تگ سختی کلمه
             if (wordData.difficulty === "hard") {
                 difficultyBadge.textContent = "سخت 🔥";
                 difficultyBadge.className = "card-badge badge-hard";
@@ -677,29 +737,203 @@
                 difficultyBadge.className = "card-badge badge-easy";
             }
 
-            // تنظیم وضعیت دکمه بوکمارک (قلب)
             const isBookmarked = bookmarks.includes(`${currentLessonKey}_${wordData.en}`);
-            if (isBookmarked) {
-                bookmarkBtn.classList.add('is-active');
-            } else {
-                bookmarkBtn.classList.remove('is-active');
-            }
+            bookmarkBtn.classList.toggle('is-active', isBookmarked);
             
-            // مدیریت دکمه‌های ناوبری
             prevBtn.disabled = (currentIndex === 0);
             nextBtn.disabled = (currentIndex === filteredWords.length - 1);
-            
-            // نمایش پیشرفت
-            progressEl.textContent = `کلمه ${currentIndex + 1} از ${filteredWords.length}`;
+            progressEl.textContent = toPersianDigits(`کلمه ${currentIndex + 1} از ${filteredWords.length}`);
 
-            // ذخیره وضعیت پیشرفت در مرورگر
+            if (currentMode === "quiz") {
+                generateQuizOptions(wordData);
+            }
+
             localStorage.setItem("mahrad_saved_lesson", currentLessonKey);
             localStorage.setItem("mahrad_saved_index", currentIndex);
         }
 
-        // لایک یا بوکمارک کردن کلمه
+        // ---------- بخش آزمون بهینه‌سازی شده (Exam) ----------
+        function resetExamUI() {
+            document.getElementById('examIntro').style.display = 'block';
+            document.getElementById('examPlay').style.display = 'none';
+            document.getElementById('examResult').style.display = 'none';
+            progressEl.textContent = `آماده برای آزمون`;
+        }
+
+        function startExam() {
+            currentExamQuestions = examData[currentLessonKey] || [];
+            
+            if(currentExamQuestions.length === 0) {
+                alert("هنوز آزمونی برای این درس ثبت نشده است!");
+                return;
+            }
+
+            currentExamQuestions.sort(() => 0.5 - Math.random());
+            currentExamQuestionIndex = 0;
+            // ریست کردن و پر کردن آرایه پاسخ کاربر به تعداد سوالات موجود
+            examUserAnswers = new Array(currentExamQuestions.length).fill(null);
+
+            document.getElementById('examIntro').style.display = 'none';
+            document.getElementById('examResult').style.display = 'none';
+            document.getElementById('examPlay').style.display = 'flex';
+            
+            loadExamQuestion();
+        }
+
+        function loadExamQuestion() {
+            const qData = currentExamQuestions[currentExamQuestionIndex];
+            document.getElementById('examQuestionText').textContent = qData.q;
+            const optionsContainer = document.getElementById('examOptions');
+            optionsContainer.innerHTML = '';
+
+            const savedAnswer = examUserAnswers[currentExamQuestionIndex];
+
+            qData.options.forEach((optText, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn";
+                btn.textContent = optText;
+                
+                // بررسی اینکه آیا قبلاً به این سوال پاسخ داده شده یا خیر
+                if (savedAnswer !== null) {
+                    btn.disabled = true;
+                    if (index === savedAnswer) {
+                        btn.classList.add(savedAnswer === qData.ans ? 'correct' : 'wrong');
+                    }
+                    if (index === qData.ans) {
+                        btn.classList.add('correct');
+                    }
+                } else {
+                    btn.onclick = () => checkExamAnswer(btn, index, qData.ans);
+                }
+                optionsContainer.appendChild(btn);
+            });
+
+            // تنظیم دکمه بازگشت به سوال قبلی
+            document.getElementById('examPrevBtn').disabled = (currentExamQuestionIndex === 0);
+            
+            // قفل بودن دکمه بعدی تا زمان انتخاب گزینه
+            document.getElementById('examNextBtn').disabled = (savedAnswer === null);
+
+            // تغییر نام داینامیک دکمه در سوال آخر
+            if (currentExamQuestionIndex === currentExamQuestions.length - 1) {
+                document.getElementById('examNextBtn').innerHTML = "مشاهده نتیجه";
+            } else {
+                document.getElementById('examNextBtn').innerHTML = "&#8594; بعدی";
+            }
+
+            progressEl.textContent = toPersianDigits(`سوال ${currentExamQuestionIndex + 1} از ${currentExamQuestions.length}`);
+        }
+
+        function checkExamAnswer(selectedBtn, selectedIndex, correctIndex) {
+            examUserAnswers[currentExamQuestionIndex] = selectedIndex;
+            const optionsContainer = document.getElementById('examOptions');
+            const buttons = optionsContainer.querySelectorAll('.option-btn');
+            
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === correctIndex) {
+                selectedBtn.classList.add('correct');
+                playSoundEffect('success');
+            } else {
+                selectedBtn.classList.add('wrong');
+                buttons[correctIndex].classList.add('correct');
+                playSoundEffect('fail');
+            }
+
+            document.getElementById('examNextBtn').disabled = false;
+        }
+
+        function nextExamQuestion() {
+            playSoundEffect('tap'); // پخش انحصاری تپ برای ناوبری کلمات و سوالات
+            currentExamQuestionIndex++;
+            if(currentExamQuestionIndex < currentExamQuestions.length) {
+                loadExamQuestion();
+            } else {
+                finishExam();
+            }
+        }
+
+        function prevExamQuestion() {
+            if (currentExamQuestionIndex > 0) {
+                playSoundEffect('tap'); // پخش انحصاری تپ برای ناوبری کلمات و سوالات
+                currentExamQuestionIndex--;
+                loadExamQuestion();
+            }
+        }
+
+        function finishExam() {
+            document.getElementById('examPlay').style.display = 'none';
+            document.getElementById('examResult').style.display = 'block';
+            
+            // محاسبه امتیاز نهایی بر اساس وضعیت پاسخ‌های ثبت شده در آرایه
+            let totalCorrect = 0;
+            currentExamQuestions.forEach((q, idx) => {
+                if (examUserAnswers[idx] === q.ans) totalCorrect++;
+            });
+
+            const percentage = Math.round((totalCorrect / currentExamQuestions.length) * 100);
+            document.getElementById('examScoreText').textContent = toPersianDigits(`${percentage}٪`);
+            
+            let feedback = "";
+            if(percentage === 100) feedback = "فوق‌العاده بود! تسلط کامل داری.";
+            else if(percentage >= 70) feedback = "خیلی خوب بود! نیاز به کمی مرور بیشتر داری.";
+            else feedback = "بهتره کلمات این درس رو دوباره با دقت مرور کنی.";
+            
+            document.getElementById('examFeedbackText').textContent = feedback;
+            progressEl.textContent = `پایان آزمون`;
+        }
+        // ------------------------------------
+
+        // ---------- بخش مرور با گزینه (Quiz) ----------
+        function generateQuizOptions(correctWord) {
+            const quizOptions = document.getElementById('quizOptions');
+            document.getElementById('quizQuestion').textContent = correctWord.en;
+            quizOptions.innerHTML = "";
+            
+            const allWordsInLesson = lessonsData[currentLessonKey].words || [];
+            let pool = allWordsInLesson.filter(w => w.en !== correctWord.en);
+            
+            pool.sort(() => 0.5 - Math.random());
+            let choices = pool.slice(0, 3);
+            choices.push(correctWord);
+            
+            choices.sort(() => 0.5 - Math.random());
+
+            choices.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn";
+                btn.textContent = choice.fa;
+                btn.onclick = () => checkQuizAnswer(btn, choice.en, correctWord.en);
+                quizOptions.appendChild(btn);
+            });
+            isQuizAnswered = false;
+        }
+
+        function checkQuizAnswer(selectedBtn, selectedEn, correctEn) {
+            if (isQuizAnswered) return;
+            isQuizAnswered = true;
+
+            const quizOptions = document.getElementById('quizOptions');
+            const buttons = quizOptions.querySelectorAll('.option-btn');
+            
+            if (selectedEn === correctEn) {
+                selectedBtn.classList.add('correct');
+                playSoundEffect('success');
+            } else {
+                selectedBtn.classList.add('wrong');
+                playSoundEffect('fail');
+                buttons.forEach(btn => {
+                    const currentWordObj = lessonsData[currentLessonKey].words.find(w => w.fa === btn.textContent);
+                    if (currentWordObj && currentWordObj.en === correctEn) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+        }
+        // ------------------------------------
+
         function toggleBookmark(event) {
-            event.stopPropagation(); // جلوگیری از چرخش کارت زمان کلیک بر روی قلب
+            event.stopPropagation();
             const wordData = filteredWords[currentIndex];
             if (!wordData) return;
 
@@ -707,45 +941,40 @@
             const index = bookmarks.indexOf(bookmarkKey);
 
             if (index > -1) {
-                bookmarks.splice(index, 1); // حذف از بوکمارک
+                bookmarks.splice(index, 1);
                 bookmarkBtn.classList.remove('is-active');
             } else {
-                bookmarks.push(bookmarkKey); // اضافه کردن به بوکمارک
+                bookmarks.push(bookmarkKey);
                 bookmarkBtn.classList.add('is-active');
             }
 
             localStorage.setItem("mahrad_bookmarks", JSON.stringify(bookmarks));
-
-            // اگر کاربر در تب "نشان شده‌ها" بود و لایک را برداشت، لیست مجددا ارزیابی شود
             if (filterSelect.value === "bookmarked") {
                 setTimeout(() => { applyFiltering(false); }, 300);
             }
         }
 
-        // چرخش کارت
         function flipCard() {
-            if (filteredWords.length === 0) return; // کارت خالی نچرخد
+            if (filteredWords.length === 0 || currentMode !== "flashcard") return;
             isFlipped = !isFlipped;
             flashcard.classList.toggle('is-flipped', isFlipped);
         }
 
-        // کلمه بعدی
         function nextWord() {
             if (currentIndex < filteredWords.length - 1) {
                 changeWordWithAnimation(() => { currentIndex++; });
             }
         }
 
-        // کلمه قبلی
         function prevWord() {
             if (currentIndex > 0) {
                 changeWordWithAnimation(() => { currentIndex--; });
             }
         }
 
-        // انیمیشن نرم بازگشت کارت در صورت چرخیده بودن هنگام حرکت بین کلمات
         function changeWordWithAnimation(indexChangeCallback) {
-            if (isFlipped) {
+            playSoundEffect('tap'); // افکت صوتی ناوبری کلمات فعال باقی ماند
+            if (isFlipped && currentMode === "flashcard") {
                 flipCard();
                 setTimeout(() => {
                     indexChangeCallback();
@@ -757,7 +986,6 @@
             }
         }
 
-        // مدیریت تم تاریک/روشن
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -769,33 +997,34 @@
 
         function updateThemeIcons(theme) {
             if (theme === 'dark') {
-                sunIcon.style.display = "block";
-                moonIcon.style.display = "none";
+                document.getElementById('sunIcon').style.display = "block";
+                document.getElementById('moonIcon').style.display = "none";
             } else {
-                sunIcon.style.display = "none";
-                moonIcon.style.display = "block";
+                document.getElementById('sunIcon').style.display = "none";
+                document.getElementById('moonIcon').style.display = "block";
             }
         }
 
-        // سیستم تشخیص سوایپ لمسی (Swipe) در موبایل
         let touchstartX = 0;
         let touchendX = 0;
         
-        document.getElementById('cardContainer').addEventListener('touchstart', e => {
+        const interactionArea = document.body;
+        interactionArea.addEventListener('touchstart', e => {
             touchstartX = e.changedTouches[0].screenX;
         }, {passive: true});
 
-        document.getElementById('cardContainer').addEventListener('touchend', e => {
+        interactionArea.addEventListener('touchend', e => {
             touchendX = e.changedTouches[0].screenX;
             handleSwipe();
         }, {passive: true});
 
         function handleSwipe() {
-            if (touchendX < touchstartX - 50) nextWord(); // سوایپ به چپ -> بعدی
-            if (touchendX > touchstartX + 50) prevWord(); // سوایپ به راست -> قبلی
+            if(currentMode !== 'exam') {
+                if (touchendX < touchstartX - 60) nextWord();
+                if (touchendX > touchstartX + 60) prevWord();
+            }
         }
 
-        // اجرای اولیه نرم‌افزار
         initApp();
     </script>
 </body>
