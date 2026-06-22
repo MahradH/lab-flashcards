@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مرور کلمات زبان عمومی ۱</title>
+    
+    <!-- اضافه شدن فاوآیکون (لوگوی تب مرورگر) -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -12,31 +16,37 @@
         :root {
             --primary-color: #0ea5e9;
             --primary-hover: #0284c7;
-            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border-color: rgba(226, 232, 240, 0.9);
-            --shadow-color: rgba(0, 0, 0, 0.05);
-            --card-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+            --border-color: rgba(226, 232, 240, 0.8);
+            --shadow-color: rgba(0, 0, 0, 0.04);
+            --card-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.1);
             --accent-hard: #ef4444;
             --accent-easy: #10b981;
-            --option-bg: #f8fafc;
+            --option-bg: rgba(248, 250, 252, 0.8);
             --option-hover: #e2e8f0;
-            --bg-color-1: #f0f9ff;
-            --bg-color-2: #e0f2fe;
+            
+            /* رنگ‌های بکگراند لایت */
+            --bg-base: #f0f9ff;
+            --bg-glow-1: #7dd3fc;
+            --bg-glow-2: #a78bfa;
         }
 
         [data-theme="dark"] {
-            --card-bg: rgba(30, 41, 59, 0.9);
+            --card-bg: rgba(30, 41, 59, 0.85);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(51, 65, 85, 0.9);
-            --shadow-color: rgba(0, 0, 0, 0.2);
-            --card-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.3);
-            --option-bg: #1e293b;
+            --border-color: rgba(51, 65, 85, 0.8);
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+            --option-bg: rgba(30, 41, 59, 0.7);
             --option-hover: #334155;
-            --bg-color-1: #0f172a;
-            --bg-color-2: #1e293b;
+            
+            /* رنگ‌های بکگراند دارک */
+            --bg-base: #0f172a;
+            --bg-glow-1: #0284c7;
+            --bg-glow-2: #3730a3;
         }
 
         * {
@@ -47,8 +57,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
-            background-attachment: fixed;
+            background-color: var(--bg-base);
             margin: 0;
             padding: 10px 15px;
             display: flex;
@@ -57,6 +66,48 @@
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
+            position: relative;
+            z-index: 0;
+        }
+
+        /* انیمیشن پویای پس‌زمینه */
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: -1;
+            opacity: 0.5;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        body::before {
+            width: 350px;
+            height: 350px;
+            background: var(--bg-glow-1);
+            top: -10%;
+            left: -10%;
+            animation: float1 14s infinite alternate ease-in-out;
+        }
+
+        body::after {
+            width: 450px;
+            height: 450px;
+            background: var(--bg-glow-2);
+            bottom: -15%;
+            right: -10%;
+            animation: float2 18s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(35vw, 25vh) scale(1.3); }
+        }
+
+        @keyframes float2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30vw, -20vh) scale(1.1); }
         }
 
         .top-bar {
@@ -67,6 +118,7 @@
             max-width: 400px;
             margin-bottom: 10px;
             gap: 10px;
+            z-index: 10;
         }
 
         .top-bar-actions {
@@ -85,6 +137,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .mode-switcher {
@@ -95,6 +149,8 @@
             border: 1px solid var(--border-color);
             flex: 1;
             overflow-x: auto;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
         
         .mode-switcher::-webkit-scrollbar { display: none; }
@@ -123,10 +179,14 @@
             margin-bottom: 12px;
             width: 100%;
             max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 5;
         }
 
         .header h1 {
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             font-size: 1.35rem;
             color: var(--text-main);
             font-weight: 800;
@@ -150,6 +210,8 @@
             color: var(--text-main);
             outline: none;
             cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .custom-select:focus {
@@ -168,6 +230,7 @@
             width: 100%;
             max-width: 400px;
             margin-bottom: 15px;
+            z-index: 5;
         }
 
         .flashcard-container {
@@ -206,6 +269,8 @@
             padding: 24px;
             text-align: center;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .flashcard-front {
@@ -263,6 +328,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .quiz-question {
@@ -344,6 +411,7 @@
             gap: 15px;
             width: 100%;
             max-width: 400px;
+            z-index: 5;
         }
 
         button.nav-btn {
@@ -362,6 +430,8 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         button.nav-btn:active { transform: scale(0.97); }
@@ -377,6 +447,9 @@
             padding: 6px 18px;
             border-radius: 20px;
             box-shadow: 0 2px 4px var(--shadow-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 5;
         }
 
         .footer {
@@ -389,6 +462,7 @@
             padding-bottom: 10px;
             width: 100%;
             max-width: 400px;
+            z-index: 5;
         }
 
         .footer span.heart { color: #e11d48; font-size: 1rem; }
@@ -430,6 +504,9 @@
         
         <div class="selectors-grid" id="mainSelectors">
             <select id="lessonSelect" class="custom-select" onchange="handleFilterChange()"></select>
+            
+            <select id="examSelect" class="custom-select" style="display: none;" onchange="resetExamUI()"></select>
+
             <select id="filterSelect" class="custom-select" onchange="handleFilterChange()">
                 <option value="all">همه کلمات</option>
                 <option value="hard">فقط سخت 🔥</option>
@@ -452,7 +529,7 @@
                     <div id="difficultyBadge" class="card-badge"></div>
                     <div class="word" id="en-word">...</div>
                     <div class="pronunciation" id="fa-pron">...</div>
-                    <button class="speaker-btn" onclick="speakCurrentWord(event)" title="تلفظ صوتی">
+                    <button class="speaker-btn" id="speakerBtn" onclick="speakCurrentWord(event)" title="تلفظ صوتی">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
                     </button>
                 </div>
@@ -508,148 +585,9 @@
         این یک پروژه آزاد و اپن سورس است، شما هم می‌توانید <a href="https://github.com/MahradH/lab-flashcards" target="_blank">مشارکت کنید</a>.
     </div>
 
+    <script src="data.js"></script>
+
     <script>
-const lessonsData = {
-    "lesson6": {
-        title: "درس ۶",
-        words: [
-            { en: "breadwinner", pron: "بِرِد وینِر", fa: "نان‌آور", difficulty: "hard" },
-            { en: "obligatory", pron: "اُبلیگِتوری", fa: "اجباری", difficulty: "hard" },
-            { en: "tuition", pron: "تیوئیشِن", fa: "شهریه / آموزش / تعلیم", difficulty: "hard" },
-            { en: "afford", pron: "اِفورد", fa: "بضاعت داشتن / از عهده بر آمدن", difficulty: "easy" },
-            { en: "relevance", pron: "رِلِوِنس", fa: "ربط / ارتباط", difficulty: "hard" },
-            { en: "extended families", pron: "اِکس تِندید فَمِلیز", fa: "خانواده‌های گسترده", difficulty: "easy" },
-            { en: "irritability", pron: "ایریتِبیلیتی", fa: "کج‌خلقی / حساسیت / زودرنجی", difficulty: "hard" },
-            { en: "vocalize", pron: "وُکالایز", fa: "صدا زدن / سروصدا کردن", difficulty: "hard" },
-            { en: "clerical", pron: "کِلِریکال", fa: "دفتری / مربوط به منشی‌گری / روحانی", difficulty: "hard" },
-            { en: "schedules", pron: "اِسکِجولز", fa: "برنامه / زمانبندی", difficulty: "easy" },
-            { en: "glances", pron: "گِلَنسِز", fa: "نگاه اجمالی / نگاه انداختن", difficulty: "easy" },
-            { en: "images", pron: "ایماِجِز", fa: "وجهه / تصویر", difficulty: "easy" },
-            { en: "occupy", pron: "آکیوپای", fa: "اشغال کردن / مشغول کردن / تصرف کردن", difficulty: "easy" },
-            { en: "executive", pron: "اِگزِکیوتیو", fa: "مدیر / قوه مجریه / اجرایی", difficulty: "hard" },
-            { en: "obstacle", pron: "آبستِکِل", fa: "مانع / سد / مشکل", difficulty: "hard" },
-            { en: "previously", pron: "پریویِسلی", fa: "قبلاً", difficulty: "easy" },
-            { en: "combine", pron: "کامباین", fa: "ترکیب کردن", difficulty: "easy" },
-            { en: "chore", pron: "چُر", fa: "کار عادی و روزانه", difficulty: "easy" },
-            { en: "capable", pron: "کِیپِبِل", fa: "توانا / با استعداد", difficulty: "easy" },
-            { en: "laundry", pron: "لاندری", fa: "لباس شستن / لباس‌شویی", difficulty: "easy" },
-            { en: "employed", pron: "ایمپلُید", fa: "شاغل", difficulty: "easy" },
-            { en: "employer", pron: "ایمپلُیِر", fa: "کارفرما", difficulty: "easy" },
-            { en: "employ", pron: "ایمپلُی", fa: "استخدام کردن / به کار بردن", difficulty: "easy" },
-            { en: "necessitates", pron: "نِسِسیتِیتس", fa: "مستلزم بودن / ضروری ساختن", difficulty: "hard" },
-            { en: "engineer", pron: "اِنجینیر", fa: "مهندس", difficulty: "easy" },
-            { en: "politician", pron: "پالیتیشِن", fa: "سیاستمدار", difficulty: "easy" },
-            { en: "lawyer", pron: "لایِر", fa: "وکیل", difficulty: "easy" },
-            { en: "glass ceiling", pron: "گِلَس سیلینگ", fa: "سقف شیشه‌ای (موانع نامرئی ارتقاء زنان)", difficulty: "hard" },
-            { en: "Monetary", pron: "مانیتِری", fa: "مالی", difficulty: "hard" },
-            { en: "seek", pron: "سیک", fa: "جستجو کردن / طلب کردن", difficulty: "easy" },
-            { en: "creative", pron: "کریئِیتیو", fa: "خلاق", difficulty: "easy" },
-            { en: "raising", pron: "رِیزینگ", fa: "بلند کردن / پرورش دادن / بزرگ کردن", difficulty: "easy" },
-            { en: "reveal", pron: "ریویل", fa: "آشکار کردن", difficulty: "hard" },
-            { en: "radically", pron: "رَدیکِلی", fa: "به طور اساسی", difficulty: "hard" },
-            { en: "portray", pron: "پُرترِی", fa: "به تصویر کشیدن / در نقش کسی ظاهر شدن", difficulty: "hard" },
-            { en: "advertising", pron: "اَدوِرتایزینگ", fa: "تبلیغات", difficulty: "easy" },
-            { en: "exclusive", pron: "اِکسکلوسیو", fa: "اختصاصی / انحصاری", difficulty: "hard" },
-            { en: "Industrial", pron: "اینداستریال", fa: "صنعتی", difficulty: "easy" },
-            { en: "Revolution", pron: "رِوِلوشِن", fa: "انقلاب", difficulty: "easy" },
-            { en: "variation", pron: "وِریئِیشِن", fa: "اختلاف / تغییر", difficulty: "hard" },
-            { en: "informal", pron: "اینفُرمال", fa: "غیررسمی", difficulty: "easy" },
-            { en: "productive", pron: "پروداکتیو", fa: "پربازده", difficulty: "hard" },
-            { en: "Individual", pron: "ایندیویدجوال", fa: "انفرادی / فرد / شخص", difficulty: "easy" },
-            { en: "wealthy", pron: "وِلثی", fa: "ثروتمند", difficulty: "easy" },
-            { en: "nanny", pron: "نَنی", fa: "پرستار بچه", difficulty: "easy" },
-            { en: "trend", pron: "تِرِند", fa: "روند / جریان / مد", difficulty: "easy" },
-            { en: "emerged", pron: "ای مِرجِد", fa: "بیرون آمدن / آشکار شدن / به وجود آمدن", difficulty: "hard" },
-            { en: "responsibilities", pron: "ریسپانسیبیلیتیز", fa: "وظایف", difficulty: "easy" },
-            { en: "arrange", pron: "اِرِینج", fa: "مقرر کردن / مرتب کردن", difficulty: "easy" },
-            { en: "establish", pron: "اِستَبلیش", fa: "تاسیس کردن / برقرار کردن / ثابت کردن", difficulty: "hard" },
-            { en: "secure", pron: "سِکیور", fa: "مطمئن / محکم / تامین کردن / محکم بستن", difficulty: "easy" },
-            { en: "fairly", pron: "فِرلی", fa: "نسبتاً / منصفانه", difficulty: "easy" },
-            { en: "rare", pron: "رِر", fa: "نادر / نیمه‌پخته", difficulty: "easy" },
-            { en: "survey", pron: "سِروِی", fa: "پژوهش / بررسی کردن / نظرسنجی کردن", difficulty: "easy" },
-            { en: "significant", pron: "سیگنیفیکِنت", fa: "مهم / چشمگیر", difficulty: "hard" },
-            { en: "cultural", pron: "کالچِرال", fa: "فرهنگی", difficulty: "easy" },
-            { en: "dramatic", pron: "درَماتیک", fa: "مهیج / نمایشی / چشمگیر", difficulty: "hard" },
-            { en: "involvement", pron: "اینوالومِنت", fa: "درگیری / دخالت", difficulty: "hard" },
-            { en: "involve", pron: "اینوالو", fa: "شامل بودن / شامل کردن / رابطه داشتن", difficulty: "easy" },
-            { en: "decision", pron: "دیسیژِن", fa: "تصمیم", difficulty: "easy" },
-            { en: "Financial", pron: "فاینَنشال", fa: "مالی", difficulty: "easy" },
-            { en: "insufficient", pron: "اینسافیشِنت", fa: "ناکافی", difficulty: "hard" },
-            { en: "grant", pron: "گِرَنت", fa: "اهدا کردن / کمک هزینه (تحصیلی)", difficulty: "hard" },
-            { en: "bored", pron: "بُرد", fa: "خسته (کسل)", difficulty: "easy" },
-            { en: "tendency", pron: "تِندِنسی", fa: "تمایل / عادت / میل", difficulty: "hard" },
-            { en: "earn", pron: "اِرن", fa: "به دست آوردن / پول در آوردن", difficulty: "easy" },
-            { en: "revolutionized", pron: "رِوِلوشِنایزد", fa: "منقلب / متحول / دگرگون", difficulty: "hard" },
-            { en: "critical", pron: "کریتیکال", fa: "بحرانی / انتقادی / منتقدانه", difficulty: "hard" },
-            { en: "skeptical", pron: "اِسکِپتیکال", fa: "شک‌گرایانه", difficulty: "hard" },
-            { en: "event", pron: "ایوِنت", fa: "اتفاق / حادثه / رویداد", difficulty: "easy" },
-            { en: "revealed", pron: "ریویلد", fa: "آشکار", difficulty: "hard" },
-            { en: "occupied", pron: "آکیوپاید", fa: "مشغول / اشغال شده", difficulty: "hard" },
-            { en: "portrayed", pron: "پُرترِید", fa: "به تصویر کشیدن / در نقش کسی ظاهر شدن", difficulty: "hard" },
-            { en: "facilitated", pron: "فَسیلیتِیتِد", fa: "تسهیل کردن", difficulty: "hard" },
-            { en: "vary", pron: "وِری", fa: "متفاوت بودن / تنوع دادن / تغییر کردن", difficulty: "easy" },
-            { en: "fluctuate", pron: "فِلَکچوئِیت", fa: "نوسان داشتن", difficulty: "hard" },
-            { en: "emerge", pron: "ای مِرج", fa: "بیرون آمدن / فاش شدن / به وجود آمدن", difficulty: "hard" },
-            { en: "denying", pron: "دینایینگ", fa: "تکذیب کردن / رد کردن / محروم کردن", difficulty: "easy" },
-            { en: "removing", pron: "ریمووینگ", fa: "در آوردن / برکنار کردن / حذف کردن", difficulty: "easy" },
-            { en: "ignoring", pron: "ایگنُرینگ", fa: "بی‌توجهی کردن / نادیده گرفتن", difficulty: "easy" },
-            { en: "seeking", pron: "سیکینگ", fa: "به دنبال گشتن / جستجو کردن / طلب کردن", difficulty: "easy" },
-            { en: "lethal", pron: "لیتال", fa: "مهلک / کشنده / مرگبار", difficulty: "hard" },
-            { en: "immediate", pron: "ایمیدیت", fa: "فوری", difficulty: "easy" },
-            { en: "adequate", pron: "اَدِکویت", fa: "کافی", difficulty: "hard" },
-            { en: "private", pron: "پرایوِت", fa: "خصوصی / محرمانه", difficulty: "easy" },
-            { en: "blended", pron: "بِلِندِد", fa: "ترکیبی", difficulty: "easy" },
-            { en: "relative", pron: "رِلِتیو", fa: "خویشاوند / نسبی / نسبت به", difficulty: "easy" },
-            { en: "necessity", pron: "نِسِسیتی", fa: "نیاز / وسیله ضروری / اجبار / ضرورت", difficulty: "hard" },
-            { en: "combination", pron: "کامبینِیشِن", fa: "ترکیب", difficulty: "easy" },
-            { en: "shared", pron: "شِرد", fa: "تقسیم کردن / سهیم بودن / در میان گذاشتن", difficulty: "easy" },
-            { en: "necessitated", pron: "نِسِسیتِیتِد", fa: "ایجاب کردن / مجبور کردن / مستلزم بودن", difficulty: "hard" },
-            { en: "former", pron: "فُرمِر", fa: "قبلی / سابق / اولی بین دو چیز", difficulty: "hard" },
-            { en: "latter", pron: "لَتِر", fa: "آخری / دومی از بین دو چیز", difficulty: "hard" },
-            { en: "part-time", pron: "پارت تایم", fa: "نیمه‌وقت / پاره‌وقت", difficulty: "easy" },
-            { en: "flex-time", pron: "فِلِکس تایم", fa: "زمان انعطاف‌پذیر", difficulty: "easy" },
-            { en: "full-time", pron: "فول تایم", fa: "تمام‌وقت", difficulty: "easy" },
-            { en: "overtime", pron: "اووِرتایم", fa: "اضافه‌کاری", difficulty: "easy" },
-            { en: "blend", pron: "بِلِند", fa: "مخلوط کردن / ترکیب / مخلوط", difficulty: "easy" }
-        ]
-    }
-};
-
-        const examData = {
-    "lesson6": [
-        { q: "The company launched a __ marketing campaign that attracted many customers.", options: ["wealthy", "creative", "rare", "secure"], ans: 1 },
-        { q: "Parents are responsible for __ their children properly.", options: ["raising", "portraying", "arranging", "surveying"], ans: 0 },
-        { q: "The report will __ the truth about the accident.", options: ["reveal", "involve", "secure", "establish"], ans: 0 },
-        { q: "Technology has __ changed the way we communicate.", options: ["fairly", "informally", "radically", "culturally"], ans: 2 },
-        { q: "The actor was able to __ the character perfectly.", options: ["secure", "portray", "arrange", "raise"], ans: 1 },
-        { q: "Television __ influences people's buying decisions.", options: ["variation", "revolution", "advertising", "survey"], ans: 2 },
-        { q: "This club offers __ services for its members only.", options: ["productive", "exclusive", "dramatic", "informal"], ans: 1 },
-        { q: "The city became an important __ center.", options: ["industrial", "wealthy", "cultural", "individual"], ans: 0 },
-        { q: "The Internet caused a __ in communication.", options: ["variation", "decision", "revolution", "responsibility"], ans: 2 },
-        { q: "There is a slight __ in color between the two products.", options: ["variation", "trend", "survey", "involvement"], ans: 0 },
-        { q: "We had an __ discussion with our friends.", options: ["secure", "informal", "exclusive", "significant"], ans: 1 },
-        { q: "She is very __ and always finishes her work on time.", options: ["productive", "dramatic", "wealthy", "rare"], ans: 0 },
-        { q: "Every __ has different goals and interests.", options: ["revolution", "individual", "survey", "variation"], ans: 1 },
-        { q: "The __ businessman donated a large amount of money.", options: ["informal", "wealthy", "productive", "radical"], ans: 1 },
-        { q: "They hired a __ to take care of the baby.", options: ["nanny", "surveyor", "advertiser", "actor"], ans: 0 },
-        { q: "Online shopping has become a popular __ in recent years.", options: ["trend", "decision", "variation", "involvement"], ans: 0 },
-        { q: "New problems __ after the policy was implemented.", options: ["arranged", "emerged", "secured", "portrayed"], ans: 1 },
-        { q: "One of your main __ is to complete the project on time.", options: ["surveys", "responsibilities", "variations", "revolutions"], ans: 1 },
-        { q: "We need to __ a meeting for next week.", options: ["arrange", "reveal", "involve", "raise"], ans: 0 },
-        { q: "The organization was __ in 1995.", options: ["established", "emerged", "surveyed", "portrayed"], ans: 0 },
-        { q: "Make sure to __ all the doors before leaving.", options: ["establish", "secure", "reveal", "portray"], ans: 1 },
-        { q: "The exam was __ difficult for most students.", options: ["fairly", "radically", "dramatically", "exclusively"], ans: 0 },
-        { q: "Finding such a flower is very __.", options: ["productive", "significant", "rare", "cultural"], ans: 2 },
-        { q: "A recent __ showed that most people prefer online learning.", options: ["survey", "trend", "variation", "revolution"], ans: 0 },
-        { q: "She made a __ contribution to the success of the project.", options: ["dramatic", "informal", "significant", "individual"], ans: 2 },
-        { q: "Music is an important part of our __ heritage.", options: ["cultural", "industrial", "secure", "productive"], ans: 0 },
-        { q: "There was a __ increase in sales after the advertisement.", options: ["wealthy", "dramatic", "rare", "informal"], ans: 1 },
-        { q: "His active __ in the project helped the team succeed.", options: ["involvement", "variation", "survey", "revolution"], ans: 0 },
-        { q: "This job will __ working with many different people.", options: ["reveal", "involve", "secure", "establish"], ans: 1 },
-        { q: "After careful consideration, she made the final __.", options: ["trend", "decision", "responsibility", "variation"], ans: 1 }
-    ]
-};
-
         let currentLessonKey = "";
         let filteredWords = [];
         let currentIndex = 0;
@@ -659,7 +597,6 @@ const lessonsData = {
         let isQuizAnswered = false;
         let isMuted = false;
 
-        // متغیرهای آرایه وضعیت پاسخ‌ها در آزمون جهت مدیریت رفت‌وآمد بین سوالات
         let currentExamQuestions = [];
         let currentExamQuestionIndex = 0;
         let examUserAnswers = []; 
@@ -670,6 +607,20 @@ const lessonsData = {
             fail: new Audio('sounds/fail.mp3')
         };
 
+        function unlockAudioEngine() {
+            Object.keys(sfx).forEach(key => {
+                sfx[key].muted = true;
+                sfx[key].play().then(() => {
+                    sfx[key].pause();
+                    sfx[key].muted = false;
+                }).catch(e => console.log("Audio unlock skipped"));
+            });
+            document.removeEventListener('click', unlockAudioEngine);
+            document.removeEventListener('touchstart', unlockAudioEngine);
+        }
+        document.addEventListener('click', unlockAudioEngine);
+        document.addEventListener('touchstart', unlockAudioEngine);
+
         const flashcard = document.getElementById('flashcard');
         const enWordEl = document.getElementById('en-word');
         const faPronEl = document.getElementById('fa-pron');
@@ -678,9 +629,11 @@ const lessonsData = {
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const lessonSelect = document.getElementById('lessonSelect');
+        const examSelect = document.getElementById('examSelect');
         const filterSelect = document.getElementById('filterSelect');
         const difficultyBadge = document.getElementById('difficultyBadge');
         const bookmarkBtn = document.getElementById('bookmarkBtn');
+        const speakerBtn = document.getElementById('speakerBtn');
         const hintText = document.getElementById('hintText');
         
         const cardContainer = document.getElementById('cardContainer');
@@ -690,7 +643,6 @@ const lessonsData = {
         const mainControls = document.getElementById('mainControls');
         const mainSelectors = document.getElementById('mainSelectors');
 
-        // تابع کمکی برای تبدیل کلیه اعداد انگلیسی به فارسی در رابط کاربری
         function toPersianDigits(str) {
             if (str === null || str === undefined) return '';
             const id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
@@ -705,7 +657,6 @@ const lessonsData = {
             document.documentElement.setAttribute('data-theme', savedTheme);
             updateThemeIcons(savedTheme);
 
-            // بازیابی وضعیت میوت صوتی
             isMuted = localStorage.getItem("mahrad_muted") === "true";
             updateMuteIcons();
 
@@ -728,12 +679,26 @@ const lessonsData = {
                 lessonSelect.value = currentLessonKey;
             }
 
+            updateExamSelectorOptions();
+
             if (savedIndex) currentIndex = parseInt(savedIndex);
             applyFiltering(false); 
         }
 
+        function updateExamSelectorOptions() {
+            examSelect.innerHTML = "";
+            if (examData[currentLessonKey]) {
+                Object.keys(examData[currentLessonKey]).forEach((examKey, index) => {
+                    let option = document.createElement("option");
+                    option.value = examKey;
+                    option.text = toPersianDigits(`آزمون شماره ${index + 1}`);
+                    examSelect.appendChild(option);
+                });
+            }
+        }
+
         function playSoundEffect(type) {
-            if (isMuted) return; // اگر برنامه میوت باشد صدایی پخش نخواهد شد
+            if (isMuted) return; 
             if (sfx[type]) {
                 sfx[type].currentTime = 0;
                 sfx[type].play().catch(e => {});
@@ -780,11 +745,13 @@ const lessonsData = {
                 examContainer.style.display = "flex";
                 mainControls.style.display = "none";
                 filterSelect.style.display = "none"; 
+                examSelect.style.display = "block";
                 hintText.textContent = "آزمون ارزیابی یادگیری";
                 resetExamUI();
             } else {
                 mainControls.style.display = "flex";
                 filterSelect.style.display = "block";
+                examSelect.style.display = "none";
                 
                 if (mode === 'flashcard') {
                     cardContainer.style.display = "block";
@@ -820,6 +787,7 @@ const lessonsData = {
 
         function handleFilterChange() {
             currentLessonKey = lessonSelect.value;
+            updateExamSelectorOptions();
             if (isFlipped && currentMode === "flashcard") {
                 flipCard();
                 setTimeout(() => { applyFiltering(true); }, 250);
@@ -834,14 +802,25 @@ const lessonsData = {
             const wordData = filteredWords[currentIndex];
 
             if (!wordData) {
-                enWordEl.textContent = "خالی!";
+                enWordEl.textContent = "!خالی";
+                faPronEl.textContent = ""; 
                 faMeaningEl.textContent = "کلمه‌ای پیدا نشد.";
-                document.getElementById('quizQuestion').textContent = "خالی!";
+                document.getElementById('quizQuestion').textContent = "!خالی";
                 document.getElementById('quizOptions').innerHTML = "";
                 prevBtn.disabled = true; nextBtn.disabled = true;
                 progressEl.textContent = toPersianDigits("۰ از ۰");
+                
+                // مخفی کردن دکمه‌ها و بج‌ها در صورت نبود کلمه
+                difficultyBadge.style.display = "none";
+                bookmarkBtn.style.display = "none";
+                speakerBtn.style.display = "none";
                 return;
             }
+
+            // نمایش مجدد المان‌ها وقتی کلمه‌ای وجود دارد
+            difficultyBadge.style.display = "block";
+            bookmarkBtn.style.display = "flex";
+            speakerBtn.style.display = "flex";
 
             enWordEl.textContent = wordData.en;
             faPronEl.textContent = wordData.pron || "";
@@ -870,7 +849,6 @@ const lessonsData = {
             localStorage.setItem("mahrad_saved_index", currentIndex);
         }
 
-        // ---------- بخش آزمون بهینه‌سازی شده (Exam) ----------
         function resetExamUI() {
             document.getElementById('examIntro').style.display = 'block';
             document.getElementById('examPlay').style.display = 'none';
@@ -879,16 +857,15 @@ const lessonsData = {
         }
 
         function startExam() {
-            currentExamQuestions = examData[currentLessonKey] || [];
+            const selectedExamKey = examSelect.value;
+            currentExamQuestions = (examData[currentLessonKey] && examData[currentLessonKey][selectedExamKey]) ? examData[currentLessonKey][selectedExamKey] : [];
             
             if(currentExamQuestions.length === 0) {
-                alert("هنوز آزمونی برای این درس ثبت نشده است!");
+                alert("هنوز آزمونی برای این بخش ثبت نشده است!");
                 return;
             }
 
-            //currentExamQuestions.sort(() => 0.5 - Math.random());
             currentExamQuestionIndex = 0;
-            // ریست کردن و پر کردن آرایه پاسخ کاربر به تعداد سوالات موجود
             examUserAnswers = new Array(currentExamQuestions.length).fill(null);
 
             document.getElementById('examIntro').style.display = 'none';
@@ -911,7 +888,6 @@ const lessonsData = {
                 btn.className = "option-btn";
                 btn.textContent = optText;
                 
-                // بررسی اینکه آیا قبلاً به این سوال پاسخ داده شده یا خیر
                 if (savedAnswer !== null) {
                     btn.disabled = true;
                     if (index === savedAnswer) {
@@ -926,13 +902,9 @@ const lessonsData = {
                 optionsContainer.appendChild(btn);
             });
 
-            // تنظیم دکمه بازگشت به سوال قبلی
             document.getElementById('examPrevBtn').disabled = (currentExamQuestionIndex === 0);
-            
-            // قفل بودن دکمه بعدی تا زمان انتخاب گزینه
             document.getElementById('examNextBtn').disabled = (savedAnswer === null);
 
-            // تغییر نام داینامیک دکمه در سوال آخر
             if (currentExamQuestionIndex === currentExamQuestions.length - 1) {
                 document.getElementById('examNextBtn').innerHTML = "مشاهده نتیجه";
             } else {
@@ -962,7 +934,7 @@ const lessonsData = {
         }
 
         function nextExamQuestion() {
-            playSoundEffect('tap'); // پخش انحصاری تپ برای ناوبری کلمات و سوالات
+            playSoundEffect('tap'); 
             currentExamQuestionIndex++;
             if(currentExamQuestionIndex < currentExamQuestions.length) {
                 loadExamQuestion();
@@ -973,7 +945,7 @@ const lessonsData = {
 
         function prevExamQuestion() {
             if (currentExamQuestionIndex > 0) {
-                playSoundEffect('tap'); // پخش انحصاری تپ برای ناوبری کلمات و سوالات
+                playSoundEffect('tap'); 
                 currentExamQuestionIndex--;
                 loadExamQuestion();
             }
@@ -983,7 +955,6 @@ const lessonsData = {
             document.getElementById('examPlay').style.display = 'none';
             document.getElementById('examResult').style.display = 'block';
             
-            // محاسبه امتیاز نهایی بر اساس وضعیت پاسخ‌های ثبت شده در آرایه
             let totalCorrect = 0;
             currentExamQuestions.forEach((q, idx) => {
                 if (examUserAnswers[idx] === q.ans) totalCorrect++;
@@ -1000,9 +971,7 @@ const lessonsData = {
             document.getElementById('examFeedbackText').textContent = feedback;
             progressEl.textContent = `پایان آزمون`;
         }
-        // ------------------------------------
 
-        // ---------- بخش مرور با گزینه (Quiz) ----------
         function generateQuizOptions(correctWord) {
             const quizOptions = document.getElementById('quizOptions');
             document.getElementById('quizQuestion').textContent = correctWord.en;
@@ -1048,7 +1017,6 @@ const lessonsData = {
                 });
             }
         }
-        // ------------------------------------
 
         function toggleBookmark(event) {
             event.stopPropagation();
@@ -1091,7 +1059,7 @@ const lessonsData = {
         }
 
         function changeWordWithAnimation(indexChangeCallback) {
-            playSoundEffect('tap'); // افکت صوتی ناوبری کلمات فعال باقی ماند
+            playSoundEffect('tap'); 
             if (isFlipped && currentMode === "flashcard") {
                 flipCard();
                 setTimeout(() => {
