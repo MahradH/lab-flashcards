@@ -104,9 +104,42 @@ const lessonsData = {
     }
 };
 
+
 const examData = {
     "lesson6": {
         "exam1": [
+            { q: "The person who earns money for a family", options: ["breadwinner", "teacher", "doctor", "driver"], ans: 0 },
+            { q: "Something you must do, it's required", options: ["optional", "fun", "obligatory", "free"], ans: 2 },
+            { q: "The money you pay for school or university", options: ["rent", "tuition", "tax", "fare"], ans: 1 },
+            { q: "To have enough money to buy something", options: ["afford", "buy", "sell", "borrow"], ans: 0 },
+            { q: "The connection or importance to a topic", options: ["length", "age", "relevance", "color"], ans: 2 },
+            { q: "A family with grandparents, aunts, uncles, and cousins", options: ["nuclear family", "single parent", "extended family", "small family"], ans: 2 },
+            { q: "Getting angry very easily", options: ["happiness", "irritability", "calmness", "patience"], ans: 1 },
+            { q: "To make sounds with your voice", options: ["whisper", "vocalize", "shout", "cry"], ans: 1 },
+            { q: "Related to office work (filing, typing)", options: ["clerical", "medical", "technical", "manual"], ans: 0 },
+            { q: "A plan that shows when to do things", options: ["schedule", "map", "list", "calendar"], ans: 0 },
+            { q: "A very quick look", options: ["stare", "glance", "watch", "gaze"], ans: 1 },
+            { q: "Pictures or photos", options: ["words", "sounds", "images", "numbers"], ans: 2 },
+            { q: "To fill or take up your time or space", options: ["occupy", "empty", "leave", "save"], ans: 0 },
+            { q: "A high-level manager in a company", options: ["worker", "executive", "intern", "cleaner"], ans: 1 },
+            { q: "Something that blocks your way", options: ["help", "obstacle", "tool", "gift"], ans: 1 },
+            { q: "Happening before now, earlier", options: ["later", "now", "previously", "never"], ans: 2 },
+            { q: "To put two or more things together", options: ["combine", "separate", "divide", "remove"], ans: 0 },
+            { q: "A small, boring daily task (like washing dishes)", options: ["game", "chore", "hobby", "party"], ans: 1 },
+            { q: "Being able to do something", options: ["weak", "incapable", "capable", "tired"], ans: 2 },
+            { q: "Clothes that need washing or have been washed", options: ["laundry", "closet", "uniform", "towel"], ans: 0 },
+            { q: "Someone who has a job and is working is called _.", options: ["employed", "employer", "employ"], ans: 0 },
+            { q: "A person who gives jobs to other people is a(n) _.", options: ["employer", "employed", "engineer"], ans: 0 },
+            { q: "Which word means 'to hire someone for a job'?", options: ["seek", "employ", "reveal"], ans: 1 },
+            { q: "When something makes something else necessary, it _.", options: ["seeks", "employs", "necessitates"], ans: 2 },
+            { q: "A person who designs machines, roads, or buildings is a(n) _.", options: ["politician", "engineer", "lawyer"], ans: 1 },
+            { q: "A person who works in government and makes laws is a(n) _.", options: ["politician", "engineer", "lawyer"], ans: 0 },
+            { q: "A person who helps people with legal problems in court is a(n) _.", options: ["employer", "politician", "lawyer"], ans: 2 },
+            { q: "The invisible barrier that stops women from getting top jobs is called the _.", options: ["glass ceiling", "monetary", "variation"], ans: 0 },
+            { q: "Which word is about money and finance?", options: ["industrial", "monetary", "cultural"], ans: 1 },
+            { q: "Which word means 'to look for' something?", options: ["seek", "arrange", "establish"], ans: 0 }
+        ],
+        "exam2": [
             { q: "The company launched a __ marketing campaign that attracted many customers.", options: ["wealthy", "creative", "rare", "secure"], ans: 1 },
             { q: "Parents are responsible for __ their children properly.", options: ["raising", "portraying", "arranging", "surveying"], ans: 0 },
             { q: "The report will __ the truth about the accident.", options: ["reveal", "involve", "secure", "establish"], ans: 0 },
@@ -116,9 +149,7 @@ const examData = {
             { q: "This club offers __ services for its members only.", options: ["productive", "exclusive", "dramatic", "informal"], ans: 1 },
             { q: "The city became an important __ center.", options: ["industrial", "wealthy", "cultural", "individual"], ans: 0 },
             { q: "The Internet caused a __ in communication.", options: ["variation", "decision", "revolution", "responsibility"], ans: 2 },
-            { q: "There is a slight __ in color between the two products.", options: ["variation", "trend", "survey", "involvement"], ans: 0 }
-        ],
-        "exam2": [
+            { q: "There is a slight __ in color between the two products.", options: ["variation", "trend", "survey", "involvement"], ans: 0 },
             { q: "We had an __ discussion with our friends.", options: ["secure", "informal", "exclusive", "significant"], ans: 1 },
             { q: "She is very __ and always finishes her work on time.", options: ["productive", "dramatic", "wealthy", "rare"], ans: 0 },
             { q: "Every __ has different goals and interests.", options: ["revolution", "individual", "survey", "variation"], ans: 1 },
@@ -128,9 +159,7 @@ const examData = {
             { q: "New problems __ after the policy was implemented.", options: ["arranged", "emerged", "secured", "portrayed"], ans: 1 },
             { q: "One of your main __ is to complete the project on time.", options: ["surveys", "responsibilities", "variations", "revolutions"], ans: 1 },
             { q: "We need to __ a meeting for next week.", options: ["arrange", "reveal", "involve", "raise"], ans: 0 },
-            { q: "The organization was __ in 1995.", options: ["established", "emerged", "surveyed", "portrayed"], ans: 0 }
-        ],
-        "exam3": [
+            { q: "The organization was __ in 1995.", options: ["established", "emerged", "surveyed", "portrayed"], ans: 0 },
             { q: "Make sure to __ all the doors before leaving.", options: ["establish", "secure", "reveal", "portray"], ans: 1 },
             { q: "The exam was __ difficult for most students.", options: ["fairly", "radically", "dramatically", "exclusively"], ans: 0 },
             { q: "Finding such a flower is very __.", options: ["productive", "significant", "rare", "cultural"], ans: 2 },
@@ -141,6 +170,46 @@ const examData = {
             { q: "His active __ in the project helped the team succeed.", options: ["involvement", "variation", "survey", "revolution"], ans: 0 },
             { q: "This job will __ working with many different people.", options: ["reveal", "involve", "secure", "establish"], ans: 1 },
             { q: "After careful consideration, she made the final __.", options: ["trend", "decision", "responsibility", "variation"], ans: 1 }
+        ],
+        "exam3": [
+            { q: "The company faced serious __ problems last year.", options: ["financial", "private", "relative", "lethal"], ans: 0 },
+            { q: "There was __ food for everyone at the party.", options: ["adequate", "immediate", "insufficient", "blended"], ans: 2 },
+            { q: "She received a university __ to study abroad.", options: ["event", "grant", "tendency", "necessity"], ans: 1 },
+            { q: "The students looked __ during the long lecture.", options: ["skeptical", "occupied", "bored", "critical"], ans: 2 },
+            { q: "He has a __ to forget people's names.", options: ["tendency", "combination", "revolution", "event"], ans: 0 },
+            { q: "Many teenagers work to __ extra money.", options: ["emerge", "earn", "deny", "vary"], ans: 1 },
+            { q: "The internet has __ the way we learn.", options: ["occupied", "revealed", "revolutionized", "ignored"], ans: 2 },
+            { q: "Water is __ for survival.", options: ["former", "critical", "private", "shared"], ans: 1 },
+            { q: "The police were __ about his explanation.", options: ["adequate", "occupied", "skeptical", "blended"], ans: 2 },
+            { q: "Thousands attended the sporting __.", options: ["necessity", "event", "grant", "tendency"], ans: 1 },
+            { q: "The investigation __ new evidence.", options: ["revealed", "denied", "blended", "fluctuated"], ans: 0 },
+            { q: "She was __ with work all day.", options: ["occupied", "bored", "shared", "immediate"], ans: 0 },
+            { q: "The actor __ a brave soldier in the film.", options: ["earned", "portrayed", "varied", "emerged"], ans: 1 },
+            { q: "Good communication __ teamwork.", options: ["fluctuates", "denies", "facilitates", "ignores"], ans: 2 },
+            { q: "Opinions __ from person to person.", options: ["vary", "earn", "occupy", "remove"], ans: 0 },
+            { q: "Prices often __ during economic crises.", options: ["reveal", "fluctuate", "portray", "share"], ans: 1 },
+            { q: "New opportunities began to __ after graduation.", options: ["deny", "emerge", "blend", "occupy"], ans: 1 },
+            { q: "He kept __ the accusations.", options: ["sharing", "fluctuating", "denying", "varying"], ans: 2 },
+            { q: "The doctor recommended __ unhealthy foods from your diet.", options: ["seeking", "removing", "portraying", "emerging"], ans: 1 },
+            { q: "__ a problem will not make it disappear.", options: ["Revealing", "Seeking", "Ignoring", "Facilitating"], ans: 2 },
+            { q: "She is __ a better job.", options: ["seeking", "denying", "blending", "occupying"], ans: 0 },
+            { q: "The snake's bite can be __.", options: ["adequate", "private", "relative", "lethal"], ans: 3 },
+            { q: "We need an __ response to this emergency.", options: ["immediate", "skeptical", "former", "shared"], ans: 0 },
+            { q: "The amount of water was __ for the trip.", options: ["insufficient", "adequate", "critical", "occupied"], ans: 1 },
+            { q: "This information is __ and should not be shared.", options: ["relative", "blended", "private", "overtime"], ans: 2 },
+            { q: "This juice is made from a __ mix of fruits.", options: ["former", "blended", "critical", "immediate"], ans: 1 },
+            { q: "My uncle is a close __.", options: ["event", "tendency", "relative", "grant"], ans: 2 },
+            { q: "Food is a basic __ of life.", options: ["necessity", "combination", "event", "fluctuation"], ans: 0 },
+            { q: "The meal is a __ of rice and vegetables.", options: ["denial", "combination", "tendency", "grant"], ans: 1 },
+            { q: "The children __ their toys with each other.", options: ["varied", "denied", "shared", "emerged"], ans: 2 },
+            { q: "The bad weather __ a change of plans.", options: ["necessitated", "occupied", "portrayed", "revealed"], ans: 0 },
+            { q: "Of the two choices, the __ is cheaper.", options: ["latter", "critical", "private", "blended"], ans: 0 },
+            { q: "Ali likes math and physics. The __ is his favorite subject.", options: ["former", "latter", "shared", "adequate"], ans: 1 },
+            { q: "She has a __ job while studying.", options: ["overtime", "full-time", "part-time", "critical"], ans: 2 },
+            { q: "Employees can choose their hours under a __ system.", options: ["flex-time", "event", "grant", "tendency"], ans: 0 },
+            { q: "He has a __ position at the company.", options: ["former", "full-time", "latter", "shared"], ans: 1 },
+            { q: "The workers were paid extra for their __.", options: ["necessity", "event", "overtime", "relative"], ans: 2 },
+            { q: "Oil and water do not __ easily.", options: ["fluctuate", "blend", "reveal", "deny"], ans: 1 }
         ]
     }
 };
