@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مرور کلمات زبان عمومی ۱</title>
     
-    <!-- اضافه شدن فاوآیکون (لوگوی تب مرورگر) -->
     <link rel="icon" type="image/png" href="logo.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +26,6 @@
             --option-bg: rgba(248, 250, 252, 0.8);
             --option-hover: #e2e8f0;
             
-            /* رنگ‌های بکگراند لایت */
             --bg-base: #f0f9ff;
             --bg-glow-1: #7dd3fc;
             --bg-glow-2: #a78bfa;
@@ -43,7 +41,6 @@
             --option-bg: rgba(30, 41, 59, 0.7);
             --option-hover: #334155;
             
-            /* رنگ‌های بکگراند دارک */
             --bg-base: #0f172a;
             --bg-glow-1: #0284c7;
             --bg-glow-2: #3730a3;
@@ -70,44 +67,50 @@
             z-index: 0;
         }
 
-        /* انیمیشن پویای پس‌زمینه */
-        body::before, body::after {
-            content: "";
+        /* بهینه سازی انیمیشن پس‌زمینه */
+        .bg-layer {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(70px);
+            top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
-            opacity: 0.5;
             pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.5;
             will-change: transform;
         }
 
-        body::before {
-            width: 350px;
-            height: 350px;
+        .bg-blob-1 {
+            width: 350px; height: 350px;
             background: var(--bg-glow-1);
-            top: -10%;
-            left: -10%;
+            top: -10%; left: -10%;
             animation: float1 14s infinite alternate ease-in-out;
         }
 
-        body::after {
-            width: 450px;
-            height: 450px;
+        .bg-blob-2 {
+            width: 450px; height: 450px;
             background: var(--bg-glow-2);
-            bottom: -15%;
-            right: -10%;
+            bottom: -15%; right: -10%;
             animation: float2 18s infinite alternate-reverse ease-in-out;
         }
 
+        /* کلاس برای خاموش کردن انیمیشن */
+        body.no-anim .bg-blob-1, body.no-anim .bg-blob-2 {
+            animation: none !important;
+        }
+
         @keyframes float1 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(35vw, 25vh) scale(1.3); }
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(35vw, 25vh, 0) scale(1.3); }
         }
 
         @keyframes float2 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-30vw, -20vh) scale(1.1); }
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(-30vw, -20vh, 0) scale(1.1); }
         }
 
         .top-bar {
@@ -130,7 +133,7 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 10px;
+            padding: 8px;
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 5px var(--shadow-color);
@@ -466,8 +469,76 @@
         }
 
         .footer span.heart { color: #e11d48; font-size: 1rem; }
-        .footer strong { color: var(--primary-color); font-size: 0.95rem; }
         .footer a { color: var(--primary-color); text-decoration: none; font-weight: bold; }
+        
+        /* Modal Styles */
+        .credits-link {
+            cursor: pointer;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+            width: 90%;
+            max-width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: var(--option-bg);
+            border: none;
+            border-radius: 50%;
+            width: 30px; height: 30px;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .credits-section {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .credits-section h3 { margin-top: 0; color: var(--primary-color); text-align: center; }
+        .credits-section h4 { margin: 10px 0 5px; color: var(--text-main); font-size: 0.95rem; }
+        .credits-section p, .credits-section ul { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+        .credits-section ul { padding-right: 20px; }
+        .credits-section li { margin-bottom: 3px; }
 
         .exam-intro { text-align: center; padding: 20px; }
         .exam-intro h2 { color: var(--primary-color); margin-top: 0;}
@@ -478,6 +549,15 @@
     </style>
 </head>
 <body>
+    
+    <audio id="audio-tap" src="sounds/tap.mp3" preload="auto"></audio>
+    <audio id="audio-success" src="sounds/success.mp3" preload="auto"></audio>
+    <audio id="audio-fail" src="sounds/fail.mp3" preload="auto"></audio>
+
+    <div class="bg-layer">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+    </div>
 
     <div class="top-bar">
         <div class="mode-switcher">
@@ -487,6 +567,11 @@
         </div>
 
         <div class="top-bar-actions">
+            <button class="theme-toggle" id="animToggle" onclick="toggleAnimation()" title="توقف/پخش انیمیشن پس‌زمینه">
+                <svg id="animPlayIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg id="animPauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            </button>
+
             <button class="theme-toggle" id="muteToggle" onclick="toggleMute()" title="قطع/وصل صدا">
                 <svg id="volumeUpIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
                 <svg id="volumeMuteIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
@@ -580,9 +665,38 @@
     <div class="progress" id="progress">کلمه ۱ از X</div>
 
     <div class="footer">
-        ساخته شده با <span class="heart">♥</span> توسط <strong>MahradH</strong><br>
-        با هدف سربلندی علوم آزمایشگاهی<br>
-        این یک پروژه آزاد و اپن سورس است، شما هم می‌توانید <a href="https://github.com/MahradH/lab-flashcards" target="_blank">مشارکت کنید</a>.
+        ساخته شده با <span class="heart">♥</span> در قالب یک پروژه آزاد<br>
+        <span class="credits-link" onclick="toggleModal(true)">لیست تیم توسعه و محتوا (کلیک کنید)</span><br>
+        شما هم در گیتهاب <a href="https://github.com/MahradH/lab-flashcards" target="_blank">مشارکت کنید</a>.
+    </div>
+
+    <div id="creditsModal" class="modal-overlay" onclick="toggleModal(false)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            <div class="credits-section">
+                <h3>تیم توسعه و محتوا</h3>
+                <p style="text-align: center; margin-bottom: 15px;">با افتخار تقدیم به جامعه علوم آزمایشگاهی</p>
+
+                <h4>مدیریت</h4>
+                <p>فاطمه ابراهیمی</p>
+
+                <h4>برنامه‌نویسی و ساخت فلش‌کارت</h4>
+                <p>مهراد اسدی</p>
+
+                <h4>استخراج واژگان</h4>
+                <ul>
+                    <li><strong>درس ۵ و ۶:</strong> آقای علی احمدی</li>
+                    <li><strong>درس ۷ و ۸:</strong> ملیکا حسینی</li>
+                </ul>
+
+                <h4>طراحی سوالات آزمون</h4>
+                <ul>
+                    <li><strong>درس ۵:</strong> امیر محمد دهقان، ابوالفضل نیازمند، آوین باقر زاده، مریم احراری، امیر حسین محمودی</li>
+                    <li><strong>درس ۶:</strong> غزل چاکر الحسینی، مهدیه نوروزی، مهسا صالحی</li>
+                    <li><strong>درس ۷:</strong> آوین باقر زاده، امیر محمد دهقان</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script src="data.js"></script>
@@ -596,24 +710,26 @@
         let currentMode = "flashcard";
         let isQuizAnswered = false;
         let isMuted = false;
+        let isAnimDisabled = false;
 
         let currentExamQuestions = [];
         let currentExamQuestionIndex = 0;
         let examUserAnswers = []; 
+        let examShuffledOptions = []; // ذخیره ترتیب رندوم گزینه‌ها
 
-        const sfx = {
-            tap: new Audio('sounds/tap.mp3'),
-            success: new Audio('sounds/success.mp3'),
-            fail: new Audio('sounds/fail.mp3')
-        };
-
+        // سیستم بازنویسی شده آنلاک صوتی
         function unlockAudioEngine() {
-            Object.keys(sfx).forEach(key => {
-                sfx[key].muted = true;
-                sfx[key].play().then(() => {
-                    sfx[key].pause();
-                    sfx[key].muted = false;
-                }).catch(e => console.log("Audio unlock skipped"));
+            const sounds = ['tap', 'success', 'fail'];
+            sounds.forEach(id => {
+                const audio = document.getElementById('audio-' + id);
+                if (audio) {
+                    audio.volume = 0;
+                    audio.play().then(() => {
+                        audio.pause();
+                        audio.currentTime = 0;
+                        audio.volume = 1;
+                    }).catch(e => console.log("Unlock bypassed: " + id));
+                }
             });
             document.removeEventListener('click', unlockAudioEngine);
             document.removeEventListener('touchstart', unlockAudioEngine);
@@ -651,14 +767,45 @@
             });
         }
 
+        function toggleModal(show) {
+            const modal = document.getElementById('creditsModal');
+            if (show) {
+                modal.classList.add('show');
+            } else {
+                modal.classList.remove('show');
+            }
+        }
+
+        function toggleAnimation() {
+            isAnimDisabled = !isAnimDisabled;
+            localStorage.setItem("mahrad_noanim", isAnimDisabled);
+            updateAnimIcons();
+        }
+
+        function updateAnimIcons() {
+            if (isAnimDisabled) {
+                document.body.classList.add('no-anim');
+                document.getElementById('animPlayIcon').style.display = "block";
+                document.getElementById('animPauseIcon').style.display = "none";
+            } else {
+                document.body.classList.remove('no-anim');
+                document.getElementById('animPlayIcon').style.display = "none";
+                document.getElementById('animPauseIcon').style.display = "block";
+            }
+        }
+
         function initApp() {
             bookmarks = JSON.parse(localStorage.getItem("mahrad_bookmarks")) || [];
+            
             const savedTheme = localStorage.getItem("mahrad_theme") || "light";
             document.documentElement.setAttribute('data-theme', savedTheme);
             updateThemeIcons(savedTheme);
 
             isMuted = localStorage.getItem("mahrad_muted") === "true";
             updateMuteIcons();
+
+            isAnimDisabled = localStorage.getItem("mahrad_noanim") === "true";
+            updateAnimIcons();
 
             lessonSelect.innerHTML = "";
             for (let key in lessonsData) {
@@ -687,7 +834,7 @@
 
         function updateExamSelectorOptions() {
             examSelect.innerHTML = "";
-            if (examData[currentLessonKey]) {
+            if (examData && examData[currentLessonKey]) {
                 Object.keys(examData[currentLessonKey]).forEach((examKey, index) => {
                     let option = document.createElement("option");
                     option.value = examKey;
@@ -698,12 +845,22 @@
         }
 
         function playSoundEffect(type) {
-            if (isMuted) return; 
-            if (sfx[type]) {
-                sfx[type].currentTime = 0;
-                sfx[type].play().catch(e => {});
-            }
-        }
+    if (isMuted) return; 
+    
+    const originalAudio = document.getElementById('audio-' + type);
+    if (originalAudio) {
+        // ساخت یک کپی موقت از فایل صوتی برای جلوگیری از تداخل و رفع باگ فایرفاکس
+        const clonedAudio = originalAudio.cloneNode();
+        
+        // پخش کردن نسخه کپی شده
+        clonedAudio.play().catch(e => console.log("Playback prevented:", e));
+        
+        // پس از اتمام صدا، برای جلوگیری از اشغال حافظه (Memory Leak) مرجعش رو پاک می‌کنیم
+        clonedAudio.onended = function() {
+            clonedAudio.remove();
+        };
+    }
+}
 
         function toggleMute() {
             isMuted = !isMuted;
@@ -766,7 +923,7 @@
         }
 
         function applyFiltering(resetIndex = true) {
-            if (!currentLessonKey) return;
+            if (!currentLessonKey || !lessonsData[currentLessonKey]) return;
             const allWordsInLesson = lessonsData[currentLessonKey].words || [];
             const activeFilter = filterSelect.value;
 
@@ -810,14 +967,12 @@
                 prevBtn.disabled = true; nextBtn.disabled = true;
                 progressEl.textContent = toPersianDigits("۰ از ۰");
                 
-                // مخفی کردن دکمه‌ها و بج‌ها در صورت نبود کلمه
                 difficultyBadge.style.display = "none";
                 bookmarkBtn.style.display = "none";
                 speakerBtn.style.display = "none";
                 return;
             }
 
-            // نمایش مجدد المان‌ها وقتی کلمه‌ای وجود دارد
             difficultyBadge.style.display = "block";
             bookmarkBtn.style.display = "flex";
             speakerBtn.style.display = "flex";
@@ -858,15 +1013,21 @@
 
         function startExam() {
             const selectedExamKey = examSelect.value;
-            currentExamQuestions = (examData[currentLessonKey] && examData[currentLessonKey][selectedExamKey]) ? examData[currentLessonKey][selectedExamKey] : [];
-            
-            if(currentExamQuestions.length === 0) {
+            if(!examData || !examData[currentLessonKey] || !examData[currentLessonKey][selectedExamKey]) {
                 alert("هنوز آزمونی برای این بخش ثبت نشده است!");
                 return;
             }
 
+            currentExamQuestions = examData[currentLessonKey][selectedExamKey];
             currentExamQuestionIndex = 0;
             examUserAnswers = new Array(currentExamQuestions.length).fill(null);
+            
+            // تولید گزینه‌های رندوم برای هر سوال پیش از شروع آزمون
+            examShuffledOptions = currentExamQuestions.map(q => {
+                let optionsWithOriginalIndex = q.options.map((optText, index) => ({ text: optText, originalIndex: index }));
+                // شافل کردن با حفظ ایندکس اصلی
+                return optionsWithOriginalIndex.sort(() => Math.random() - 0.5);
+            });
 
             document.getElementById('examIntro').style.display = 'none';
             document.getElementById('examResult').style.display = 'none';
@@ -877,33 +1038,37 @@
 
         function loadExamQuestion() {
             const qData = currentExamQuestions[currentExamQuestionIndex];
+            const currentShuffledOpts = examShuffledOptions[currentExamQuestionIndex];
+            
             document.getElementById('examQuestionText').textContent = qData.q;
             const optionsContainer = document.getElementById('examOptions');
             optionsContainer.innerHTML = '';
 
-            const savedAnswer = examUserAnswers[currentExamQuestionIndex];
+            const savedAnswerOriginalIndex = examUserAnswers[currentExamQuestionIndex];
 
-            qData.options.forEach((optText, index) => {
+            currentShuffledOpts.forEach((optObj, renderIndex) => {
                 const btn = document.createElement('button');
                 btn.className = "option-btn";
-                btn.textContent = optText;
+                btn.textContent = optObj.text;
                 
-                if (savedAnswer !== null) {
+                if (savedAnswerOriginalIndex !== null) {
                     btn.disabled = true;
-                    if (index === savedAnswer) {
-                        btn.classList.add(savedAnswer === qData.ans ? 'correct' : 'wrong');
+                    // اگر این گزینه همون دکمه ایه که کاربر قبلا زده
+                    if (optObj.originalIndex === savedAnswerOriginalIndex) {
+                        btn.classList.add(savedAnswerOriginalIndex === qData.ans ? 'correct' : 'wrong');
                     }
-                    if (index === qData.ans) {
+                    // همیشه دکمه درست واقعی رو سبز کن
+                    if (optObj.originalIndex === qData.ans) {
                         btn.classList.add('correct');
                     }
                 } else {
-                    btn.onclick = () => checkExamAnswer(btn, index, qData.ans);
+                    btn.onclick = () => checkExamAnswer(btn, optObj.originalIndex, qData.ans);
                 }
                 optionsContainer.appendChild(btn);
             });
 
             document.getElementById('examPrevBtn').disabled = (currentExamQuestionIndex === 0);
-            document.getElementById('examNextBtn').disabled = (savedAnswer === null);
+            document.getElementById('examNextBtn').disabled = (savedAnswerOriginalIndex === null);
 
             if (currentExamQuestionIndex === currentExamQuestions.length - 1) {
                 document.getElementById('examNextBtn').innerHTML = "مشاهده نتیجه";
@@ -914,20 +1079,25 @@
             progressEl.textContent = toPersianDigits(`سوال ${currentExamQuestionIndex + 1} از ${currentExamQuestions.length}`);
         }
 
-        function checkExamAnswer(selectedBtn, selectedIndex, correctIndex) {
-            examUserAnswers[currentExamQuestionIndex] = selectedIndex;
+        function checkExamAnswer(selectedBtn, selectedOriginalIndex, correctIndex) {
+            examUserAnswers[currentExamQuestionIndex] = selectedOriginalIndex;
             const optionsContainer = document.getElementById('examOptions');
             const buttons = optionsContainer.querySelectorAll('.option-btn');
             
             buttons.forEach(btn => btn.disabled = true);
 
-            if (selectedIndex === correctIndex) {
+            if (selectedOriginalIndex === correctIndex) {
                 selectedBtn.classList.add('correct');
                 playSoundEffect('success');
             } else {
                 selectedBtn.classList.add('wrong');
-                buttons[correctIndex].classList.add('correct');
                 playSoundEffect('fail');
+                // پیدا کردن دکمه درست در گزینه‌های شافل شده برای نمایش سبز رنگ
+                const currentShuffledOpts = examShuffledOptions[currentExamQuestionIndex];
+                const correctRenderIndex = currentShuffledOpts.findIndex(opt => opt.originalIndex === correctIndex);
+                if(correctRenderIndex !== -1) {
+                    buttons[correctRenderIndex].classList.add('correct');
+                }
             }
 
             document.getElementById('examNextBtn').disabled = false;
