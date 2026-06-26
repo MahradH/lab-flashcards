@@ -2884,4 +2884,582 @@ const examData = {
             },
         ],
     },
+    lesson7: {
+        exam1: [
+            {
+                q: "He was proud of his biggest ____ in school, which made his family very happy.",
+                options: ["achievement", "resistance", "decline", "opinion"],
+                ans: 0,
+            },
+            {
+                q: "The weather is so ____ that we can plan our picnic without worrying.",
+                options: ["emotional", "predictable", "stubborn", "opposite"],
+                ans: 1,
+            },
+            {
+                q: "Her ____ helped her create a new and useful invention.",
+                options: ["passion", "wisdom", "ingenuity", "operation"],
+                ans: 2,
+            },
+            {
+                q: "The teacher checked the homework with great ____.",
+                options: ["talent", "youth", "thoroughness", "fairness"],
+                ans: 2,
+            },
+            {
+                q: "He works with great ____ and never loses interest in his goals.",
+                options: ["passion", "survey", "decline", "computation"],
+                ans: 0,
+            },
+            {
+                q: "It was very ____ of her to share the last piece of cake with everyone.",
+                options: ["wise", "sharp", "acceptable", "fair"],
+                ans: 3,
+            },
+            {
+                q: "This school is the ____ one in our city because of its excellent results.",
+                options: ["prime", "opposing", "modest", "stubborn"],
+                ans: 0,
+            },
+            {
+                q: "His words were ____ because they calmed the frightened child.",
+                options: ["pessimistic", "reassuring", "opposite", "sharp"],
+                ans: 1,
+            },
+            {
+                q: "My grandfather is very ____ and gives good advice to everyone.",
+                options: ["predictable", "emotional", "wise", "creative"],
+                ans: 2,
+            },
+            {
+                q: "She is very ____ and notices tiny details that others miss.",
+                options: ["sharp", "acceptable", "capable", "reassuring"],
+                ans: 0,
+            },
+            {
+                q: "We will ____ the experiment carefully to get accurate results.",
+                options: ["invent", "perform", "decline", "explain"],
+                ans: 1,
+            },
+            {
+                q: "The scientist used a lot of ____ to solve the complex problem.",
+                options: ["passion", "ministry", "computation", "opinion"],
+                ans: 2,
+            },
+            {
+                q: "She ____ from university last year with top grades.",
+                options: ["denied", "graduated", "composed", "fostered"],
+                ans: 1,
+            },
+            {
+                q: "Good parents always ____ love and care for their children.",
+                options: ["possess", "utilize", "inspire", "encourage"],
+                ans: 3,
+            },
+            {
+                q: "There is always a ____ between speed and accuracy.",
+                options: ["breakdown", "survey", "trade-off", "ministry"],
+                ans: 2,
+            },
+            {
+                q: "His mistake ____ to a serious problem at work.",
+                options: ["led", "denied", "promoted", "explained"],
+                ans: 0,
+            },
+            {
+                q: "Ancient people valued ____ and asked older people for advice.",
+                options: ["resistance", "wisdom", "figure", "drive"],
+                ans: 1,
+            },
+            {
+                q: "The soldiers showed great ____ during the battle.",
+                options: [
+                    "passionate",
+                    "operation",
+                    "resistance",
+                    "achievement",
+                ],
+                ans: 2,
+            },
+            {
+                q: "Students should ____ technology to improve their learning.",
+                options: ["utilize", "predict", "deny", "decline"],
+                ans: 0,
+            },
+            {
+                q: "Sales began to ____ after the holiday season ended.",
+                options: ["perform", "foster", "decline", "invent"],
+                ans: 2,
+            },
+            {
+                q: "He chose the ____ of honesty instead of lying.",
+                options: ["prime", "opposite", "opinion", "youth"],
+                ans: 1,
+            },
+            {
+                q: "The exact ____ of the crowd was not clear at first.",
+                options: ["passion", "survey", "figure", "ministry"],
+                ans: 2,
+            },
+            {
+                q: "The dog is too ____ to follow orders easily.",
+                options: ["wise", "stubborn", "acceptable", "predictable"],
+                ans: 1,
+            },
+            {
+                q: "She felt ____ about the exam and thought she would fail.",
+                options: ["realistic", "reassuring", "pessimistic", "creative"],
+                ans: 2,
+            },
+            {
+                q: "He is a very ____ writer with many fresh ideas.",
+                options: ["creative", "stubborn", "sharp", "fair"],
+                ans: 0,
+            },
+            {
+                q: "We went to a ____ restaurant that serves special local food.",
+                options: ["prime", "particular", "acceptable", "opposing"],
+                ans: 1,
+            },
+            {
+                q: "Your answer is ____, so you can continue to the next step.",
+                options: ["pessimistic", "emotional", "acceptable", "opposite"],
+                ans: 2,
+            },
+            {
+                q: "The two teams had ____ views on the new rule.",
+                options: ["wise", "reassuring", "opposing", "creative"],
+                ans: 2,
+            },
+            {
+                q: "Scientists hope to ____ new cures for diseases.",
+                options: ["perform", "invent", "utilize", "explain"],
+                ans: 1,
+            },
+            {
+                q: "I ____ you will arrive on time for the meeting.",
+                options: ["decline", "expect", "foster", "deny"],
+                ans: 1,
+            },
+            {
+                q: "She has a lot of life ____ from living in different countries.",
+                options: ["wisdom", "resistance", "experience", "opinion"],
+                ans: 2,
+            },
+        ],
+        exam2: [
+            {
+                q: "Teachers should always ____ students to do their best.",
+                options: ["deny", "decline", "encourage", "oppose"],
+                ans: 2,
+            },
+            {
+                q: "The company plans to ____ its products through social media.",
+                options: ["perform", "promote", "possess", "figure"],
+                ans: 1,
+            },
+            {
+                q: "The surgeon performed a difficult ____ successfully.",
+                options: ["survey", "trade-off", "operation", "breakdown"],
+                ans: 2,
+            },
+            {
+                q: "Our main ____ is to help children read better.",
+                options: ["ministry", "aim", "passion", "figure"],
+                ans: 1,
+            },
+            {
+                q: "The ____ of Education announced the new policy.",
+                options: ["operation", "ministry", "figure", "youth"],
+                ans: 1,
+            },
+            {
+                q: "She showed great ____ in music from an early age.",
+                options: ["talent", "wisdom", "resistance", "decline"],
+                ans: 0,
+            },
+            {
+                q: "The old machine finally suffered a complete ____.",
+                options: ["achievement", "breakdown", "opinion", "figure"],
+                ans: 1,
+            },
+            {
+                q: "He is ____ late for class, which annoys his teacher.",
+                options: ["predictably", "constantly", "wisely", "fairly"],
+                ans: 1,
+            },
+            {
+                q: "The doctor is an ____ in heart surgery.",
+                options: ["expert", "survey", "youth", "passion"],
+                ans: 0,
+            },
+            {
+                q: "He tried to ____ that he had broken the window.",
+                options: ["explain", "expect", "deny", "accept"],
+                ans: 2,
+            },
+            {
+                q: "She is a ____ dancer and has years of training.",
+                options: [
+                    "professional",
+                    "emotional",
+                    "stubborn",
+                    "predictable",
+                ],
+                ans: 0,
+            },
+            {
+                q: "His ____ about politics was too negative.",
+                options: ["optimism", "pessimism", "passion", "wisdom"],
+                ans: 1,
+            },
+            {
+                q: "A recent ____ showed that most students prefer online classes.",
+                options: ["survey", "operation", "invention", "breakdown"],
+                ans: 0,
+            },
+            {
+                q: "The test was easier than I had ____.",
+                options: ["explained", "performed", "expected", "promoted"],
+                ans: 2,
+            },
+            {
+                q: "He gave a very ____ answer and looked at both sides of the issue.",
+                options: ["creative", "realistic", "emotional", "stubborn"],
+                ans: 1,
+            },
+            {
+                q: "She became ____ while watching the sad movie.",
+                options: ["emotional", "wise", "acceptable", "sharp"],
+                ans: 0,
+            },
+            {
+                q: "What is your ____ on this matter?",
+                options: ["operation", "opinion", "figure", "talent"],
+                ans: 1,
+            },
+            {
+                q: "She did not ____ how serious the problem was at first.",
+                options: ["utilize", "invent", "realize", "promote"],
+                ans: 2,
+            },
+            {
+                q: "____ people often have lots of energy and big dreams.",
+                options: ["Youth", "Wisdom", "Resistance", "Prediction"],
+                ans: 0,
+            },
+            {
+                q: "____, nobody knew the truth about the incident.",
+                options: ["Thoroughly", "Apparently", "Constantly", "Wisely"],
+                ans: 1,
+            },
+            {
+                q: "During __, many teenagers undergo significant hormonal and psychological changes.",
+                options: ["infancy", "senescence", "adolescence", "adulthood"],
+                ans: 2,
+            },
+            {
+                q: "The patient reported a _____ state of mind after being relieved of their chronic pain.",
+                options: ["blissful", "acute", "neurotic", "narrow"],
+                ans: 0,
+            },
+            {
+                q: "New educational programs aim to _____ a sense of responsibility in young students.",
+                options: ["diminish", "foster", "compose", "announce"],
+                ans: 1,
+            },
+            {
+                q: "A strong internal _____ to achieve academic excellence is crucial for medical students.",
+                options: ["ailment", "structure", "drive", "incidence"],
+                ans: 2,
+            },
+            {
+                q: "The doctor noted that the patient's symptoms began to _____ after the new medication was administered.",
+                options: ["diminish", "foster", "compose", "lead"],
+                ans: 0,
+            },
+            {
+                q: "The rapid growth of the global _____ is placing unprecedented pressure on healthcare resources.",
+                options: [
+                    "civilization",
+                    "population",
+                    "structure",
+                    "maturity",
+                ],
+                ans: 1,
+            },
+            {
+                q: "The human body is _____ of many complex systems working in harmony.",
+                options: ["announced", "fostered", "diminished", "composed"],
+                ans: 3,
+            },
+            {
+                q: "The discovery of the new gene therapy was a _____ achievement for modern medicine.",
+                options: ["monumental", "statistical", "narrow", "neurotic"],
+                ans: 0,
+            },
+            {
+                q: "The virus can spread _____ the respiratory tract, causing widespread inflammation.",
+                options: [
+                    "throughout",
+                    "eventually",
+                    "practically",
+                    "statistically",
+                ],
+                ans: 0,
+            },
+            {
+                q: "The medical specialist was asked to _____ the mechanism of the rare disease.",
+                options: ["announce", "explain", "foster", "lead"],
+                ans: 1,
+            },
+            {
+                q: "The patient's rapid and unexpected recovery from the critical state was _____.",
+                options: ["definite", "chronic", "marvelous", "narrow"],
+                ans: 2,
+            },
+            {
+                q: "In some medical journals, _____ is used to critique the inefficiencies of healthcare administration.",
+                options: ["science", "satire", "article", "effort"],
+                ans: 1,
+            },
+            {
+                q: "The advancement of _____ has led to much more precise surgical interventions.",
+                options: [
+                    "civilization",
+                    "collaboration",
+                    "science",
+                    "structure",
+                ],
+                ans: 2,
+            },
+            {
+                q: "Effective _____ between laboratory researchers and clinicians is vital for drug development.",
+                options: [
+                    "collaboration",
+                    "competition",
+                    "admissions",
+                    "incidence",
+                ],
+                ans: 0,
+            },
+            {
+                q: "The data indicates that, _____, there is a significant correlation between diet and heart health.",
+                options: [
+                    "practically",
+                    "statistically",
+                    "eventually",
+                    "throughout",
+                ],
+                ans: 1,
+            },
+        ],
+        exam3: [
+            {
+                q: "The patient’s _____ from a state of severe illness to full recovery took several months.",
+                options: ["maturity", "extent", "incidence", "journey"],
+                ans: 3,
+            },
+            {
+                q: "The epidemiologist analyzed the upward _____ of the infection rate.",
+                options: ["curve", "article", "structure", "sense"],
+                ans: 0,
+            },
+            {
+                q: "The laboratory results provided _____ evidence that the patient was infected with the virus.",
+                options: ["narrow", "definite", "blissful", "susceptible"],
+                ans: 1,
+            },
+            {
+                q: "The researcher published a detailed _____ regarding the effects of sleep deprivation.",
+                options: ["article", "satire", "effort", "sense"],
+                ans: 0,
+            },
+            {
+                q: "Despite the challenging circumstances, the medical team remained _____ about the surgery's success.",
+                options: ["pessimistic", "neurotic", "optimistic", "intact"],
+                ans: 2,
+            },
+            {
+                q: "A balanced diet is highly _____ in maintaining a healthy immune system.",
+                options: ["beneficial", "susceptible", "narrow", "monumental"],
+                ans: 0,
+            },
+            {
+                q: "Psychological _____ is a key focus in the developmental study of adolescents.",
+                options: ["maturity", "incidence", "expectancy", "ailment"],
+                ans: 0,
+            },
+            {
+                q: "The surgeon assessed the _____ of the tissue damage during the operation.",
+                options: ["maturity", "structure", "extent", "population"],
+                ans: 2,
+            },
+            {
+                q: "The study examined the _____ health of the participants, including mental and physical aspects.",
+                options: ["whole", "narrow", "statistical", "blissful"],
+                ans: 0,
+            },
+            {
+                q: "Modern _____ has provided us with tools to map the entire human genome.",
+                options: ["science", "satire", "article", "effort"],
+                ans: 0,
+            },
+            {
+                q: "The hospital will _____ the new protocols for patient safety tomorrow morning.",
+                options: ["announce", "diminish", "foster", "cope"],
+                ans: 0,
+            },
+            {
+                q: "Great _____ is required to complete such a complex clinical research project.",
+                options: ["incidence", "effort", "maturity", "extent"],
+                ans: 1,
+            },
+            {
+                q: "The cellular _____ must be examined closely to identify any abnormalities.",
+                options: ["article", "journey", "structure", "sense"],
+                ans: 2,
+            },
+            {
+                q: "Elderly patients are often more _____ to pneumonia and other respiratory infections.",
+                options: ["susceptible", "beneficial", "intact", "optimistic"],
+                ans: 0,
+            },
+            {
+                q: "A common _____ in tropical regions is malaria, caused by mosquito bites.",
+                options: [
+                    "maturity",
+                    "civilization",
+                    "ailment",
+                    "collaboration",
+                ],
+                ans: 2,
+            },
+            {
+                q: "Advances in public health have significantly increased life _____ worldwide.",
+                options: ["expectancy", "incidence", "extent", "maturity"],
+                ans: 0,
+            },
+            {
+                q: "The treatment is _____ effective, although some minor side effects may occur.",
+                options: [
+                    "practically",
+                    "statistically",
+                    "eventually",
+                    "throughout",
+                ],
+                ans: 0,
+            },
+            {
+                q: "Many cultures have legends about _____ beings who never age or die.",
+                options: ["immortal", "neurotic", "competitive", "blissful"],
+                ans: 0,
+            },
+            {
+                q: "The pharmaceutical industry is highly _____, with many companies vying for market share.",
+                options: ["intact", "competitive", "beneficial", "definite"],
+                ans: 1,
+            },
+            {
+                q: "If the patient adheres to the medication schedule, they will _____ recover.",
+                options: [
+                    "eventually",
+                    "throughout",
+                    "practically",
+                    "statistically",
+                ],
+                ans: 0,
+            },
+            {
+                q: "A _____ review of the clinical data is necessary before approving the drug.",
+                options: ["monumental", "marvelous", "statistical", "blissful"],
+                ans: 2,
+            },
+            {
+                q: "The difference between the two test results was quite _____, which confused the researchers.",
+                options: ["narrow", "whole", "definite", "intact"],
+                ans: 0,
+            },
+            {
+                q: "Dr. Smith is a _____ figure in the field of oncology and cancer research.",
+                options: ["narrow", "leading", "blissful", "neurotic"],
+                ans: 1,
+            },
+            {
+                q: "New medical discoveries often _____ the way we understand human biology.",
+                options: ["lead", "foster", "diminish", "compose"],
+                ans: 0,
+            },
+            {
+                q: "Certain personality disorders may manifest as _____ or obsessive-compulsive behaviors.",
+                options: ["optimistic", "beneficial", "neurotic", "intact"],
+                ans: 2,
+            },
+            {
+                q: "The hospital's _____ department manages all incoming patient registrations.",
+                options: [
+                    "admissions",
+                    "collaboration",
+                    "incidence",
+                    "expectancy",
+                ],
+                ans: 0,
+            },
+            {
+                q: "Patients experiencing severe anxiety or mood swings may be referred to a _____.",
+                options: ["veteran", "psychiatrist", "scientist", "leader"],
+                ans: 1,
+            },
+            {
+                q: "The healthcare system in that country was _____ a total breakdown during the crisis.",
+                options: [
+                    "on the verge of",
+                    "throughout",
+                    "eventually",
+                    "practically",
+                ],
+                ans: 0,
+            },
+            {
+                q: "The _____ surgeon had performed thousands of successful operations throughout his career.",
+                options: ["neurotic", "leading", "blissful", "veteran"],
+                ans: 3,
+            },
+            {
+                q: "Medical students must learn how to _____ with the stress of long shifts.",
+                options: ["diminish", "announce", "cope", "compose"],
+                ans: 2,
+            },
+            {
+                q: "It is critical to _____ the amount of fluid a patient receives during surgery.",
+                options: ["measure", "foster", "lead", "announce"],
+                ans: 0,
+            },
+            {
+                q: "There is a rising _____ of obesity-related diseases in modern urban societies.",
+                options: ["maturity", "extent", "incidence", "civilization"],
+                ans: 2,
+            },
+            {
+                q: "Psychological interventions can play a major role in preventing _____ in high-risk groups.",
+                options: ["suicide", "ailment", "maturity", "expectancy"],
+                ans: 0,
+            },
+            {
+                q: "Despite the trauma, the patient's vital organs remained _____.",
+                options: ["narrow", "neurotic", "susceptible", "intact"],
+                ans: 3,
+            },
+            {
+                q: "Social support systems are essential for individuals who are _____ or living alone.",
+                options: ["divorced", "maturity", "mortality", "incidence"],
+                ans: 0,
+            },
+            {
+                q: "The patient lost their sense of smell, which affected their _____ of taste.",
+                options: ["structure", "extent", "sense", "effort"],
+                ans: 2,
+            },
+        ],
+    },
 };
