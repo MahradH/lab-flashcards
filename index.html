@@ -1,1287 +1,1969 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مرور کلمات زبان عمومی ۱</title>
-    
-    <link rel="icon" type="image/png" href="logo.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #0ea5e9;
-            --primary-hover: #0284c7;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: rgba(226, 232, 240, 0.8);
-            --shadow-color: rgba(0, 0, 0, 0.04);
-            --card-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.1);
-            --accent-hard: #ef4444;
-            --accent-easy: #10b981;
-            --option-bg: rgba(248, 250, 252, 0.8);
-            --option-hover: #e2e8f0;
-            
-            --bg-base: #f0f9ff;
-            --bg-glow-1: #7dd3fc;
-            --bg-glow-2: #a78bfa;
-        }
-
-        [data-theme="dark"] {
-            --card-bg: rgba(30, 41, 59, 0.85);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(51, 65, 85, 0.8);
-            --shadow-color: rgba(0, 0, 0, 0.15);
-            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
-            --option-bg: rgba(30, 41, 59, 0.7);
-            --option-hover: #334155;
-            
-            --bg-base: #0f172a;
-            --bg-glow-1: #0284c7;
-            --bg-glow-2: #3730a3;
-        }
-
-        * {
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
-        }
-
-        body {
-            background-color: var(--bg-base);
-            margin: 0;
-            padding: 10px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            color: var(--text-main);
-            overflow-x: hidden;
-            position: relative;
-            z-index: 0;
-        }
-
-        /* بهینه سازی انیمیشن پس‌زمینه */
-        .bg-layer {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .bg-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(50px);
-            opacity: 0.5;
-            will-change: transform;
-        }
-
-        .bg-blob-1 {
-            width: 350px; height: 350px;
-            background: var(--bg-glow-1);
-            top: -10%; left: -10%;
-            animation: float1 14s infinite alternate ease-in-out;
-        }
-
-        .bg-blob-2 {
-            width: 450px; height: 450px;
-            background: var(--bg-glow-2);
-            bottom: -15%; right: -10%;
-            animation: float2 18s infinite alternate-reverse ease-in-out;
-        }
-
-        /* کلاس برای خاموش کردن انیمیشن */
-        body.no-anim .bg-blob-1, body.no-anim .bg-blob-2 {
-            animation: none !important;
-        }
-
-        @keyframes float1 {
-            0% { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(35vw, 25vh, 0) scale(1.3); }
-        }
-
-        @keyframes float2 {
-            0% { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(-30vw, -20vh, 0) scale(1.1); }
-        }
-
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 10px;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .top-bar-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .theme-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 8px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 5px var(--shadow-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .mode-switcher {
-            display: flex;
-            background: var(--option-bg);
-            padding: 4px;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
-            flex: 1;
-            overflow-x: auto;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        
-        .mode-switcher::-webkit-scrollbar { display: none; }
-
-        .mode-btn {
-            background: transparent;
-            border: none;
-            padding: 6px 10px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: var(--text-muted);
-            border-radius: 10px;
-            cursor: pointer;
-            white-space: nowrap;
-            flex: 1;
-        }
-
-        .mode-btn.active {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 12px;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 5;
-        }
-
-        .header h1 {
-            margin: 0 0 12px 0;
-            font-size: 1.35rem;
-            color: var(--text-main);
-            font-weight: 800;
-        }
-
-        .selectors-grid {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            margin-bottom: 8px;
-        }
-
-        .custom-select {
-            flex: 1;
-            padding: 10px;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            background-color: var(--card-bg);
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--text-main);
-            outline: none;
-            cursor: pointer;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .custom-select:focus {
-            border-color: var(--primary-color);
-        }
-
-        .hint-text {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4px;
-            margin-bottom: 5px;
-            min-height: 20px;
-        }
-
-        .main-container {
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 15px;
-            z-index: 5;
-        }
-
-        .flashcard-container {
-            height: 240px;
-            perspective: 1000px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transform-style: preserve-3d;
-            box-shadow: var(--card-shadow);
-            border-radius: 24px;
-        }
-
-        .flashcard.is-flipped {
-            transform: rotateY(180deg);
-        }
-
-        .flashcard-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--card-bg);
-            border-radius: 24px;
-            padding: 24px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .flashcard-front {
-            transform: rotateY(0deg);
-        }
-
-        .flashcard-front .word {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            direction: ltr;
-        }
-
-        .flashcard-front .pronunciation {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-
-        .flashcard-back {
-            transform: rotateY(180deg);
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-        }
-
-        .flashcard-back .meaning {
-            font-size: 1.6rem;
-            font-weight: bold;
-            line-height: 1.5;
-        }
-
-        .speaker-btn {
-            background: var(--option-bg);
-            border: none;
-            color: var(--text-main);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 12px;
-            cursor: pointer;
-            z-index: 5;
-        }
-        .speaker-btn:hover { background: var(--option-hover); transform: scale(1.1); }
-
-        .quiz-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .quiz-question {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            direction: ltr;
-            text-align: center;
-        }
-
-        .options-grid {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .option-btn {
-            width: 100%;
-            padding: 14px;
-            text-align: right;
-            background: var(--option-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 14px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .option-btn:hover { background: var(--option-hover); }
-
-        .option-btn.correct {
-            background: var(--accent-easy) !important;
-            color: white !important;
-            border-color: var(--accent-easy) !important;
-        }
-
-        .option-btn.wrong {
-            background: var(--accent-hard) !important;
-            color: white !important;
-            border-color: var(--accent-hard) !important;
-        }
-        
-        .option-btn:disabled { cursor: default; }
-
-        .card-badge {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: white;
-        }
-        .badge-hard { background-color: var(--accent-hard); }
-        .badge-easy { background-color: var(--accent-easy); }
-
-        .bookmark-btn {
-            position: absolute;
-            top: 12px;
-            left: 20px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .bookmark-btn svg { width: 26px; height: 26px; fill: #cbd5e1; transition: fill 0.3s; }
-        .bookmark-btn.is-active svg { fill: #ef4444; }
-
-        .controls {
-            display: flex;
-            gap: 15px;
-            width: 100%;
-            max-width: 400px;
-            z-index: 5;
-        }
-
-        button.nav-btn {
-            flex: 1;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 14px;
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px -1px var(--shadow-color);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        button.nav-btn:active { transform: scale(0.97); }
-        button.nav-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-        .progress {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--text-main);
-            font-weight: bold;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px 18px;
-            border-radius: 20px;
-            box-shadow: 0 2px 4px var(--shadow-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 5;
-        }
-
-        .footer {
-            margin-top: auto;
-            padding-top: 20px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            padding-bottom: 10px;
-            width: 100%;
-            max-width: 400px;
-            z-index: 5;
-        }
-
-        .footer span.heart { color: #e11d48; font-size: 1rem; }
-        .footer a { color: var(--primary-color); text-decoration: none; font-weight: bold; }
-        
-        /* Modal Styles */
-        .credits-link {
-            cursor: pointer;
-            color: var(--primary-color);
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            z-index: 100;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 25px;
-            width: 90%;
-            max-width: 350px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: var(--card-shadow);
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.show .modal-content {
-            transform: scale(1);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px; right: 15px;
-            background: var(--option-bg);
-            border: none;
-            border-radius: 50%;
-            width: 30px; height: 30px;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .credits-section {
-            margin-bottom: 15px;
-            text-align: right;
-        }
-
-        .credits-section h3 { margin-top: 0; color: var(--primary-color); text-align: center; }
-        .credits-section h4 { margin: 10px 0 5px; color: var(--text-main); font-size: 0.95rem; }
-        .credits-section p, .credits-section ul { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
-        .credits-section ul { padding-right: 20px; }
-        .credits-section li { margin-bottom: 3px; }
-
-        .exam-intro { text-align: center; padding: 20px; }
-        .exam-intro h2 { color: var(--primary-color); margin-top: 0;}
-        .exam-intro p { color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; font-size: 0.9rem; }
-        .exam-result-box { text-align: center; padding: 20px; }
-        .exam-result-box h2 { font-size: 2rem; margin: 10px 0; color: var(--primary-color); }
-        .exam-result-box p { color: var(--text-main); font-weight: bold; margin-bottom: 20px; }
-    </style>
-</head>
-<body>
-    
-    <audio id="audio-tap" src="sounds/tap.mp3" preload="auto"></audio>
-    <audio id="audio-success" src="sounds/success.mp3" preload="auto"></audio>
-    <audio id="audio-fail" src="sounds/fail.mp3" preload="auto"></audio>
-
-    <div class="bg-layer">
-        <div class="bg-blob bg-blob-1"></div>
-        <div class="bg-blob bg-blob-2"></div>
-    </div>
-
-    <div class="top-bar">
-        <div class="mode-switcher">
-            <button id="modeFlashcard" class="mode-btn active" onclick="switchMode('flashcard')">مرور با کارت</button>
-            <button id="modeQuiz" class="mode-btn" onclick="switchMode('quiz')">مرور با گزینه</button>
-            <button id="modeExam" class="mode-btn" onclick="switchMode('exam')">آزمون</button>
-        </div>
-
-        <div class="top-bar-actions">
-            <button class="theme-toggle" id="animToggle" onclick="toggleAnimation()" title="توقف/پخش انیمیشن پس‌زمینه">
-                <svg id="animPlayIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg id="animPauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-            </button>
-
-            <button class="theme-toggle" id="muteToggle" onclick="toggleMute()" title="قطع/وصل صدا">
-                <svg id="volumeUpIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                <svg id="volumeMuteIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-            </button>
-
-            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم">
-                <svg id="sunIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            </button>
-        </div>
-    </div>
-
-    <div class="header">
-        <h1>مرور کلمات زبان عمومی ۱</h1>
-        
-        <div class="selectors-grid" id="mainSelectors">
-            <select id="lessonSelect" class="custom-select" onchange="handleFilterChange()"></select>
-            
-            <select id="examSelect" class="custom-select" style="display: none;" onchange="resetExamUI()"></select>
-
-            <select id="filterSelect" class="custom-select" onchange="handleFilterChange()">
-                <option value="all">همه کلمات</option>
-                <option value="hard">فقط سخت 🔥</option>
-                <option value="easy">فقط آسان ✨</option>
-                <option value="bookmarked">نشان‌شده‌ها ❤️</option>
-            </select>
-        </div>
-        
-        <div class="hint-text" id="hintText">برای دیدن معنی، روی کارت ضربه بزنید</div>
-    </div>
-
-    <div class="main-container">
-        
-        <div class="flashcard-container" id="cardContainer" onclick="flipCard()">
-            <div class="flashcard" id="flashcard">
-                <div class="flashcard-face flashcard-front">
-                    <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark(event)" title="نشان کردن کلمه">
-                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    </button>
-                    <div id="difficultyBadge" class="card-badge"></div>
-                    <div class="word" id="en-word">...</div>
-                    <div class="pronunciation" id="fa-pron">...</div>
-                    <button class="speaker-btn" id="speakerBtn" onclick="speakCurrentWord(event)" title="تلفظ صوتی">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                    </button>
-                </div>
-                <div class="flashcard-face flashcard-back">
-                    <div class="meaning" id="fa-meaning">...</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="quiz-box" id="quizContainer" style="display: none;">
-            <div class="quiz-question" id="quizQuestion">Word</div>
-            <div class="options-grid" id="quizOptions"></div>
-        </div>
-
-        <div class="quiz-box" id="examContainer" style="display: none;">
-            <div class="exam-intro" id="examIntro">
-                <h2>آزمون یادگیری</h2>
-                <p>در این بخش می‌توانید با سوالات چهارگزینه‌ای، میزان تسلط خود را در این درس بسنجید. پس از پاسخ به هر سوال، جواب درست نمایش داده می‌شود.</p>
-                <button class="nav-btn" onclick="startExam()">شروع آزمون</button>
-            </div>
-            
-            <div id="examPlay" style="display: none; width: 100%; flex-direction: column; align-items: center;">
-                <div class="quiz-question" style="direction: rtl; font-size: 1.2rem; line-height: 1.6;" id="examQuestionText">سوال؟</div>
-                <div class="options-grid" id="examOptions"></div>
-                <div class="controls" id="examControls" style="margin-top: 15px; width: 100%; max-width: none; gap: 15px;">
-                    <button id="examNextBtn" class="nav-btn" onclick="nextExamQuestion()">&#8594; بعدی</button>
-                    <button id="examPrevBtn" class="nav-btn" onclick="prevExamQuestion()">قبلی &#8592;</button>
-                </div>
-            </div>
-
-            <div class="exam-result-box" id="examResult" style="display: none;">
-                <h2 id="examScoreText">۰٪</h2>
-                <p id="examFeedbackText">عالی بود!</p>
-                <div style="display: flex; gap: 10px;">
-                    <button class="nav-btn" onclick="startExam()">تکرار آزمون</button>
-                    <button class="nav-btn" onclick="switchMode('flashcard')">بازگشت به مرور</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="controls" id="mainControls">
-        <button id="nextBtn" class="nav-btn" onclick="nextWord()">&#8594; بعدی</button>
-        <button id="prevBtn" class="nav-btn" onclick="prevWord()">قبلی &#8592;</button>
-    </div>
-
-    <div class="progress" id="progress">کلمه ۱ از X</div>
-
-    <div class="footer">
-        ساخته شده با <span class="heart">♥</span> در قالب یک پروژه آزاد<br>
-        <span class="credits-link" onclick="toggleModal(true)">لیست تیم توسعه و محتوا (کلیک کنید)</span><br>
-        شما هم در گیتهاب <a href="https://github.com/MahradH/lab-flashcards" target="_blank">مشارکت کنید</a>.
-    </div>
-
-    <div id="creditsModal" class="modal-overlay" onclick="toggleModal(false)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-modal" onclick="toggleModal(false)">&times;</button>
-            <div class="credits-section">
-                <h3>تیم توسعه و محتوا</h3>
-                <p style="text-align: center; margin-bottom: 15px;">با افتخار تقدیم به جامعه علوم آزمایشگاهی</p>
-
-                <h4>مدیریت</h4>
-                <p>فاطمه ابراهیمی</p>
-
-                <h4>برنامه‌نویسی و ساخت فلش‌کارت</h4>
-                <p>مهراد اسدی</p>
-
-                <h4>استخراج واژگان</h4>
-                <ul>
-                    <li><strong>درس ۵ و ۶:</strong> آقای علی احمدی</li>
-                    <li><strong>درس ۷ و ۸:</strong> ملیکا حسینی</li>
-                </ul>
-
-                <h4>طراحی سوالات آزمون</h4>
-                <ul>
-                    <li><strong>درس ۵:</strong> امیر محمد دهقان، ابوالفضل نیازمند، آوین باقر زاده، مریم احراری، امیر حسین محمودی</li>
-                    <li><strong>درس ۶:</strong> غزل چاکر الحسینی، مهدیه نوروزی، مهسا صالحی</li>
-                    <li><strong>درس ۷:</strong> آوین باقر زاده، امیر محمد دهقان</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script src="data.js"></script>
-
-    <script>
-        let currentLessonKey = "";
-        let filteredWords = [];
-        let currentIndex = 0;
-        let isFlipped = false;
-        let bookmarks = [];
-        let currentMode = "flashcard";
-        let isQuizAnswered = false;
-        let isMuted = false;
-        let isAnimDisabled = false;
-
-        let currentExamQuestions = [];
-        let currentExamQuestionIndex = 0;
-        let examUserAnswers = []; 
-        let examShuffledOptions = []; // ذخیره ترتیب رندوم گزینه‌ها
-
-        // سیستم بازنویسی شده آنلاک صوتی
-        function unlockAudioEngine() {
-            const sounds = ['tap', 'success', 'fail'];
-            sounds.forEach(id => {
-                const audio = document.getElementById('audio-' + id);
-                if (audio) {
-                    audio.volume = 0;
-                    audio.play().then(() => {
-                        audio.pause();
-                        audio.currentTime = 0;
-                        audio.volume = 1;
-                    }).catch(e => console.log("Unlock bypassed: " + id));
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>مرور کلمات زبان عمومی ۱</title>
+
+        <link rel="icon" type="image/png" href="logo.png" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            :root {
+                --primary-color: #0ea5e9;
+                --primary-hover: #0284c7;
+                --card-bg: rgba(255, 255, 255, 0.85);
+                --text-main: #0f172a;
+                --text-muted: #64748b;
+                --border-color: rgba(226, 232, 240, 0.8);
+                --shadow-color: rgba(0, 0, 0, 0.04);
+                --card-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.1);
+                --accent-hard: #ef4444;
+                --accent-easy: #10b981;
+                --option-bg: rgba(248, 250, 252, 0.8);
+                --option-hover: #e2e8f0;
+
+                --bg-base: #f0f9ff;
+                --bg-glow-1: #7dd3fc;
+                --bg-glow-2: #a78bfa;
+            }
+
+            [data-theme="dark"] {
+                --card-bg: rgba(30, 41, 59, 0.85);
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+                --border-color: rgba(51, 65, 85, 0.8);
+                --shadow-color: rgba(0, 0, 0, 0.15);
+                --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+                --option-bg: rgba(30, 41, 59, 0.7);
+                --option-hover: #334155;
+
+                --bg-base: #0f172a;
+                --bg-glow-1: #0284c7;
+                --bg-glow-2: #3730a3;
+            }
+
+            * {
+                box-sizing: border-box;
+                font-family:
+                    "Vazirmatn", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                -webkit-tap-highlight-color: transparent;
+                transition:
+                    background-color 0.3s,
+                    border-color 0.3s,
+                    color 0.3s,
+                    transform 0.2s;
+            }
+
+            body {
+                background-color: var(--bg-base);
+                margin: 0;
+                padding: 10px 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                color: var(--text-main);
+                overflow-x: hidden;
+                position: relative;
+                z-index: 0;
+            }
+
+            /* بهینه سازی انیمیشن پس‌زمینه */
+            .bg-layer {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: -1;
+                pointer-events: none;
+                overflow: hidden;
+            }
+
+            .bg-blob {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(50px);
+                opacity: 0.5;
+                will-change: transform;
+            }
+
+            .bg-blob-1 {
+                width: 350px;
+                height: 350px;
+                background: var(--bg-glow-1);
+                top: -10%;
+                left: -10%;
+                animation: float1 14s infinite alternate ease-in-out;
+            }
+
+            .bg-blob-2 {
+                width: 450px;
+                height: 450px;
+                background: var(--bg-glow-2);
+                bottom: -15%;
+                right: -10%;
+                animation: float2 18s infinite alternate-reverse ease-in-out;
+            }
+
+            /* کلاس برای خاموش کردن انیمیشن */
+            body.no-anim .bg-blob-1,
+            body.no-anim .bg-blob-2 {
+                animation: none !important;
+            }
+
+            @keyframes float1 {
+                0% {
+                    transform: translate3d(0, 0, 0) scale(1);
                 }
-            });
-            document.removeEventListener('click', unlockAudioEngine);
-            document.removeEventListener('touchstart', unlockAudioEngine);
-        }
-        document.addEventListener('click', unlockAudioEngine);
-        document.addEventListener('touchstart', unlockAudioEngine);
-
-        const flashcard = document.getElementById('flashcard');
-        const enWordEl = document.getElementById('en-word');
-        const faPronEl = document.getElementById('fa-pron');
-        const faMeaningEl = document.getElementById('fa-meaning');
-        const progressEl = document.getElementById('progress');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const lessonSelect = document.getElementById('lessonSelect');
-        const examSelect = document.getElementById('examSelect');
-        const filterSelect = document.getElementById('filterSelect');
-        const difficultyBadge = document.getElementById('difficultyBadge');
-        const bookmarkBtn = document.getElementById('bookmarkBtn');
-        const speakerBtn = document.getElementById('speakerBtn');
-        const hintText = document.getElementById('hintText');
-        
-        const cardContainer = document.getElementById('cardContainer');
-        const quizContainer = document.getElementById('quizContainer');
-        const examContainer = document.getElementById('examContainer');
-        
-        const mainControls = document.getElementById('mainControls');
-        const mainSelectors = document.getElementById('mainSelectors');
-
-        function toPersianDigits(str) {
-            if (str === null || str === undefined) return '';
-            const id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-            return str.toString().replace(/[0-9]/g, function (w) {
-                return id[+w];
-            });
-        }
-
-        function toggleModal(show) {
-            const modal = document.getElementById('creditsModal');
-            if (show) {
-                modal.classList.add('show');
-            } else {
-                modal.classList.remove('show');
-            }
-        }
-
-        function toggleAnimation() {
-            isAnimDisabled = !isAnimDisabled;
-            localStorage.setItem("mahrad_noanim", isAnimDisabled);
-            updateAnimIcons();
-        }
-
-        function updateAnimIcons() {
-            if (isAnimDisabled) {
-                document.body.classList.add('no-anim');
-                document.getElementById('animPlayIcon').style.display = "block";
-                document.getElementById('animPauseIcon').style.display = "none";
-            } else {
-                document.body.classList.remove('no-anim');
-                document.getElementById('animPlayIcon').style.display = "none";
-                document.getElementById('animPauseIcon').style.display = "block";
-            }
-        }
-
-        function initApp() {
-            bookmarks = JSON.parse(localStorage.getItem("mahrad_bookmarks")) || [];
-            
-            const savedTheme = localStorage.getItem("mahrad_theme") || "light";
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcons(savedTheme);
-
-            isMuted = localStorage.getItem("mahrad_muted") === "true";
-            updateMuteIcons();
-
-            isAnimDisabled = localStorage.getItem("mahrad_noanim") === "true";
-            updateAnimIcons();
-
-            lessonSelect.innerHTML = "";
-            for (let key in lessonsData) {
-                let option = document.createElement("option");
-                option.value = key;
-                option.text = lessonsData[key].title;
-                lessonSelect.appendChild(option);
+                100% {
+                    transform: translate3d(35vw, 25vh, 0) scale(1.3);
+                }
             }
 
-            const savedLesson = localStorage.getItem("mahrad_saved_lesson");
-            const savedIndex = localStorage.getItem("mahrad_saved_index");
-
-            if (savedLesson && lessonsData[savedLesson]) {
-                currentLessonKey = savedLesson;
-                lessonSelect.value = savedLesson;
-            } else {
-                currentLessonKey = Object.keys(lessonsData)[0] || "";
-                lessonSelect.value = currentLessonKey;
+            @keyframes float2 {
+                0% {
+                    transform: translate3d(0, 0, 0) scale(1);
+                }
+                100% {
+                    transform: translate3d(-30vw, -20vh, 0) scale(1.1);
+                }
             }
 
-            updateExamSelectorOptions();
+            .top-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 10px;
+                gap: 10px;
+                z-index: 10;
+            }
 
-            if (savedIndex) currentIndex = parseInt(savedIndex);
-            applyFiltering(false); 
-        }
+            .top-bar-actions {
+                display: flex;
+                gap: 8px;
+            }
 
-        function updateExamSelectorOptions() {
-            examSelect.innerHTML = "";
-            if (examData && examData[currentLessonKey]) {
-                Object.keys(examData[currentLessonKey]).forEach((examKey, index) => {
-                    let option = document.createElement("option");
-                    option.value = examKey;
-                    option.text = toPersianDigits(`آزمون شماره ${index + 1}`);
-                    examSelect.appendChild(option);
+            .theme-toggle {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                color: var(--text-main);
+                padding: 8px;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 2px 5px var(--shadow-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            .mode-switcher {
+                display: flex;
+                background: var(--option-bg);
+                padding: 4px;
+                border-radius: 14px;
+                border: 1px solid var(--border-color);
+                flex: 1;
+                overflow-x: auto;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            .mode-switcher::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mode-btn {
+                background: transparent;
+                border: none;
+                padding: 6px 10px;
+                font-size: 0.8rem;
+                font-weight: bold;
+                color: var(--text-muted);
+                border-radius: 10px;
+                cursor: pointer;
+                white-space: nowrap;
+                flex: 1;
+            }
+
+            .mode-btn.active {
+                background: var(--primary-color);
+                color: white;
+                box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+            }
+
+            .header {
+                text-align: center;
+                margin-bottom: 12px;
+                width: 100%;
+                max-width: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 5;
+            }
+
+            .header h1 {
+                margin: 0 0 12px 0;
+                font-size: 1.35rem;
+                color: var(--text-main);
+                font-weight: 800;
+            }
+
+            .selectors-grid {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .custom-select {
+                flex: 1;
+                padding: 10px;
+                border-radius: 12px;
+                border: 2px solid var(--border-color);
+                background-color: var(--card-bg);
+                font-size: 0.9rem;
+                font-weight: bold;
+                color: var(--text-main);
+                outline: none;
+                cursor: pointer;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            .custom-select:focus {
+                border-color: var(--primary-color);
+            }
+
+            .hint-text {
+                color: var(--text-muted);
+                font-size: 0.85rem;
+                margin-top: 4px;
+                margin-bottom: 5px;
+                min-height: 20px;
+            }
+
+            .main-container {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 15px;
+                z-index: 5;
+            }
+
+            .flashcard-container {
+                height: 240px;
+                perspective: 1000px;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .flashcard {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+                transform-style: preserve-3d;
+                box-shadow: var(--card-shadow);
+                border-radius: 24px;
+            }
+
+            .flashcard.is-flipped {
+                transform: rotateY(180deg);
+            }
+
+            .flashcard-face {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--card-bg);
+                border-radius: 24px;
+                padding: 24px;
+                text-align: center;
+                border: 1px solid var(--border-color);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            .flashcard-front {
+                transform: rotateY(0deg);
+            }
+
+            .flashcard-front .word {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: var(--primary-color);
+                direction: ltr;
+            }
+
+            .flashcard-front .pronunciation {
+                font-size: 1.1rem;
+                color: var(--text-muted);
+                margin-top: 8px;
+            }
+
+            .flashcard-back {
+                transform: rotateY(180deg);
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+            }
+
+            .flashcard-back .meaning {
+                font-size: 1.6rem;
+                font-weight: bold;
+                line-height: 1.5;
+            }
+
+            .speaker-btn {
+                background: var(--option-bg);
+                border: none;
+                color: var(--text-main);
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 12px;
+                cursor: pointer;
+                z-index: 5;
+            }
+            .speaker-btn:hover {
+                background: var(--option-hover);
+                transform: scale(1.1);
+            }
+
+            .quiz-box {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 24px;
+                padding: 20px;
+                box-shadow: var(--card-shadow);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            .quiz-question {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                direction: ltr;
+                text-align: center;
+            }
+
+            .options-grid {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .option-btn {
+                width: 100%;
+                padding: 14px;
+                text-align: right;
+                background: var(--option-bg);
+                border: 1px solid var(--border-color);
+                color: var(--text-main);
+                border-radius: 14px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .option-btn:hover {
+                background: var(--option-hover);
+            }
+
+            .option-btn.correct {
+                background: var(--accent-easy) !important;
+                color: white !important;
+                border-color: var(--accent-easy) !important;
+            }
+
+            .option-btn.wrong {
+                background: var(--accent-hard) !important;
+                color: white !important;
+                border-color: var(--accent-hard) !important;
+            }
+
+            .option-btn:disabled {
+                cursor: default;
+            }
+
+            .card-badge {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                padding: 4px 10px;
+                border-radius: 20px;
+                font-size: 0.75rem;
+                font-weight: bold;
+                color: white;
+            }
+            .badge-hard {
+                background-color: var(--accent-hard);
+            }
+            .badge-easy {
+                background-color: var(--accent-easy);
+            }
+
+            .bookmark-btn {
+                position: absolute;
+                top: 12px;
+                left: 20px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .bookmark-btn svg {
+                width: 26px;
+                height: 26px;
+                fill: #cbd5e1;
+                transition: fill 0.3s;
+            }
+            .bookmark-btn.is-active svg {
+                fill: #ef4444;
+            }
+
+            .controls {
+                display: flex;
+                gap: 15px;
+                width: 100%;
+                max-width: 400px;
+                z-index: 5;
+            }
+
+            button.nav-btn {
+                flex: 1;
+                padding: 12px;
+                font-size: 1rem;
+                font-weight: bold;
+                border: none;
+                border-radius: 14px;
+                background-color: var(--card-bg);
+                color: var(--text-main);
+                border: 1px solid var(--border-color);
+                box-shadow: 0 4px 6px -1px var(--shadow-color);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            button.nav-btn:active {
+                transform: scale(0.97);
+            }
+            button.nav-btn:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .progress {
+                margin-top: 15px;
+                font-size: 0.9rem;
+                color: var(--text-main);
+                font-weight: bold;
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                padding: 6px 18px;
+                border-radius: 20px;
+                box-shadow: 0 2px 4px var(--shadow-color);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                z-index: 5;
+            }
+
+            .footer {
+                margin-top: auto;
+                padding-top: 20px;
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--text-muted);
+                line-height: 1.6;
+                padding-bottom: 10px;
+                width: 100%;
+                max-width: 400px;
+                z-index: 5;
+            }
+
+            .footer span.heart {
+                color: #e11d48;
+                font-size: 1rem;
+            }
+            .footer a {
+                color: var(--primary-color);
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            /* Modal Styles */
+            .credits-link {
+                cursor: pointer;
+                color: var(--primary-color);
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(5px);
+                z-index: 100;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .modal-overlay.show {
+                display: flex;
+                opacity: 1;
+            }
+
+            .modal-content {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 20px;
+                padding: 25px;
+                width: 90%;
+                max-width: 350px;
+                max-height: 80vh;
+                overflow-y: auto;
+                box-shadow: var(--card-shadow);
+                position: relative;
+                transform: scale(0.9);
+                transition: transform 0.3s ease;
+            }
+
+            .modal-overlay.show .modal-content {
+                transform: scale(1);
+            }
+
+            .close-modal {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: var(--option-bg);
+                border: none;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+                color: var(--text-main);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .credits-section {
+                margin-bottom: 15px;
+                text-align: right;
+            }
+
+            .credits-section h3 {
+                margin-top: 0;
+                color: var(--primary-color);
+                text-align: center;
+            }
+            .credits-section h4 {
+                margin: 10px 0 5px;
+                color: var(--text-main);
+                font-size: 0.95rem;
+            }
+            .credits-section p,
+            .credits-section ul {
+                margin: 0;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+            }
+            .credits-section ul {
+                padding-right: 20px;
+            }
+            .credits-section li {
+                margin-bottom: 3px;
+            }
+
+            .exam-intro {
+                text-align: center;
+                padding: 20px;
+            }
+            .exam-intro h2 {
+                color: var(--primary-color);
+                margin-top: 0;
+            }
+            .exam-intro p {
+                color: var(--text-muted);
+                margin-bottom: 20px;
+                line-height: 1.6;
+                font-size: 0.9rem;
+            }
+            .exam-result-box {
+                text-align: center;
+                padding: 20px;
+            }
+            .exam-result-box h2 {
+                font-size: 2rem;
+                margin: 10px 0;
+                color: var(--primary-color);
+            }
+            .exam-result-box p {
+                color: var(--text-main);
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bg-layer">
+            <div class="bg-blob bg-blob-1"></div>
+            <div class="bg-blob bg-blob-2"></div>
+        </div>
+
+        <div class="top-bar">
+            <div class="mode-switcher">
+                <button
+                    id="modeFlashcard"
+                    class="mode-btn active"
+                    onclick="switchMode('flashcard')"
+                >
+                    مرور با کارت
+                </button>
+                <button
+                    id="modeQuiz"
+                    class="mode-btn"
+                    onclick="switchMode('quiz')"
+                >
+                    مرور با گزینه
+                </button>
+                <button
+                    id="modeExam"
+                    class="mode-btn"
+                    onclick="switchMode('exam')"
+                >
+                    آزمون
+                </button>
+            </div>
+
+            <div class="top-bar-actions">
+                <button
+                    class="theme-toggle"
+                    id="animToggle"
+                    onclick="toggleAnimation()"
+                    title="توقف/پخش انیمیشن پس‌زمینه"
+                >
+                    <svg
+                        id="animPlayIcon"
+                        style="display: none"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <svg
+                        id="animPauseIcon"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <rect x="6" y="4" width="4" height="16"></rect>
+                        <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                </button>
+
+                <button
+                    class="theme-toggle"
+                    id="muteToggle"
+                    onclick="toggleMute()"
+                    title="قطع/وصل صدا"
+                >
+                    <svg
+                        id="volumeUpIcon"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <polygon
+                            points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                        ></polygon>
+                        <path
+                            d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"
+                        ></path>
+                    </svg>
+                    <svg
+                        id="volumeMuteIcon"
+                        style="display: none"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <polygon
+                            points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                        ></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                </button>
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    onclick="toggleTheme()"
+                    title="تغییر تم"
+                >
+                    <svg
+                        id="sunIcon"
+                        style="display: none"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line
+                            x1="18.36"
+                            y1="18.36"
+                            x2="19.78"
+                            y2="19.78"
+                        ></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg
+                        id="moonIcon"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>مرور کلمات زبان عمومی ۱</h1>
+
+            <div class="selectors-grid" id="mainSelectors">
+                <select
+                    id="lessonSelect"
+                    class="custom-select"
+                    onchange="handleFilterChange()"
+                ></select>
+
+                <select
+                    id="examSelect"
+                    class="custom-select"
+                    style="display: none"
+                    onchange="resetExamUI()"
+                ></select>
+
+                <select
+                    id="filterSelect"
+                    class="custom-select"
+                    onchange="handleFilterChange()"
+                >
+                    <option value="all">همه کلمات</option>
+                    <option value="hard">فقط سخت 🔥</option>
+                    <option value="easy">فقط آسان ✨</option>
+                    <option value="bookmarked">نشان‌شده‌ها ❤️</option>
+                </select>
+            </div>
+
+            <div class="hint-text" id="hintText">
+                برای دیدن معنی، روی کارت ضربه بزنید
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div
+                class="flashcard-container"
+                id="cardContainer"
+                onclick="flipCard()"
+            >
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <button
+                            class="bookmark-btn"
+                            id="bookmarkBtn"
+                            onclick="toggleBookmark(event)"
+                            title="نشان کردن کلمه"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                />
+                            </svg>
+                        </button>
+                        <div id="difficultyBadge" class="card-badge"></div>
+                        <div class="word" id="en-word">...</div>
+                        <div class="pronunciation" id="fa-pron">...</div>
+                        <button
+                            class="speaker-btn"
+                            id="speakerBtn"
+                            onclick="speakCurrentWord(event)"
+                            title="تلفظ صوتی"
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <polygon
+                                    points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                                ></polygon>
+                                <path
+                                    d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"
+                                ></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <div class="meaning" id="fa-meaning">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-box" id="quizContainer" style="display: none">
+                <div class="quiz-question" id="quizQuestion">Word</div>
+                <div class="options-grid" id="quizOptions"></div>
+            </div>
+
+            <div class="quiz-box" id="examContainer" style="display: none">
+                <div class="exam-intro" id="examIntro">
+                    <h2>آزمون یادگیری</h2>
+                    <p>
+                        در این بخش می‌توانید با سوالات چهارگزینه‌ای، میزان تسلط
+                        خود را در این درس بسنجید. پس از پاسخ به هر سوال، جواب
+                        درست نمایش داده می‌شود.
+                    </p>
+                    <button class="nav-btn" onclick="startExam()">
+                        شروع آزمون
+                    </button>
+                </div>
+
+                <div
+                    id="examPlay"
+                    style="
+                        display: none;
+                        width: 100%;
+                        flex-direction: column;
+                        align-items: center;
+                    "
+                >
+                    <div
+                        class="quiz-question"
+                        style="
+                            direction: rtl;
+                            font-size: 1.2rem;
+                            line-height: 1.6;
+                        "
+                        id="examQuestionText"
+                    >
+                        سوال؟
+                    </div>
+                    <div class="options-grid" id="examOptions"></div>
+                    <div
+                        class="controls"
+                        id="examControls"
+                        style="
+                            margin-top: 15px;
+                            width: 100%;
+                            max-width: none;
+                            gap: 15px;
+                        "
+                    >
+                        <button
+                            id="examNextBtn"
+                            class="nav-btn"
+                            onclick="nextExamQuestion()"
+                        >
+                            &#8594; بعدی
+                        </button>
+                        <button
+                            id="examPrevBtn"
+                            class="nav-btn"
+                            onclick="prevExamQuestion()"
+                        >
+                            قبلی &#8592;
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="exam-result-box"
+                    id="examResult"
+                    style="display: none"
+                >
+                    <h2 id="examScoreText">۰٪</h2>
+                    <p id="examFeedbackText">عالی بود!</p>
+                    <div style="display: flex; gap: 10px">
+                        <button class="nav-btn" onclick="startExam()">
+                            تکرار آزمون
+                        </button>
+                        <button
+                            class="nav-btn"
+                            onclick="switchMode('flashcard')"
+                        >
+                            بازگشت به مرور
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls" id="mainControls">
+            <button id="nextBtn" class="nav-btn" onclick="nextWord()">
+                &#8594; بعدی
+            </button>
+            <button id="prevBtn" class="nav-btn" onclick="prevWord()">
+                قبلی &#8592;
+            </button>
+        </div>
+
+        <div class="progress" id="progress">کلمه ۱ از X</div>
+
+        <div class="footer">
+            ساخته شده با <span class="heart">♥</span> توسط MahradH<br />
+            <span class="credits-link" onclick="toggleModal(true)"
+                >تیم توسعه و محتوا (کلیک کنید)</span
+            ><br />
+            این یک پروژه آزاد و اپن‌سورس است. شما هم می‌توانید در توسعه آن
+            <a href="https://github.com/MahradH/lab-flashcards" target="_blank"
+                >مشارکت کنید</a
+            >.
+        </div>
+
+        <div
+            id="creditsModal"
+            class="modal-overlay"
+            onclick="toggleModal(false)"
+        >
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="close-modal" onclick="toggleModal(false)">
+                    &times;
+                </button>
+                <div class="credits-section">
+                    <h3>تیم توسعه و محتوا</h3>
+                    <p style="text-align: center; margin-bottom: 15px">
+                        با افتخار تقدیم به
+                    </p>
+
+                    <h4>مدیریت</h4>
+                    <p>فاطمه ابراهیمی</p>
+
+                    <h4>ایده و برنامه‌نویسی</h4>
+                    <p>مهراد اسدی</p>
+
+                    <h4>استخراج واژگان</h4>
+                    <ul>
+                        <li><strong>درس ۵ و ۶:</strong> علی احمدی</li>
+                        <li><strong>درس ۷ و ۸:</strong> ملیکا حسینی</li>
+                    </ul>
+
+                    <h4>طراحی سوالات آزمون</h4>
+                    <ul>
+                        <li>
+                            <strong>درس ۵:</strong> امیرمحمد دهقان، ابوالفضل
+                            نیازمند، آوین باقرزاده، مریم احراری، امیرحسین
+                            محمودی
+                        </li>
+                        <li>
+                            <strong>درس ۶:</strong> غزل چاکرالحسینی، مهدیه
+                            نوروزی، مهسا صالحی
+                        </li>
+                        <li>
+                            <strong>درس ۷:</strong> آوین باقرزاده، امیرمحمد
+                            دهقان
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script src="data.js"></script>
+
+        <script>
+            let currentLessonKey = "";
+            let filteredWords = [];
+            let currentIndex = 0;
+            let isFlipped = false;
+            let bookmarks = [];
+            let currentMode = "flashcard";
+            let isQuizAnswered = false;
+            let isMuted = false;
+            let isAnimDisabled = false;
+
+            let currentExamQuestions = [];
+            let currentExamQuestionIndex = 0;
+            let examUserAnswers = [];
+            let examShuffledOptions = []; // ذخیره ترتیب رندوم گزینه‌ها
+
+            // ---------- Sound Engine (Web Audio + Firefox fallback) ----------
+            // وضعیت بی‌صدا
+            let audioEngineReady = false; // آیا موتور آماده است؟
+
+            // ========== بخش Web Audio (برای کروم، اج، سافاری و ...) ==========
+            let audioCtx = null;
+            let soundBuffers = {};
+
+            async function initWebAudio() {
+                if (!(window.AudioContext || window.webkitAudioContext))
+                    return false;
+
+                try {
+                    audioCtx = new (
+                        window.AudioContext || window.webkitAudioContext
+                    )();
+
+                    const sounds = [
+                        { name: "tap", src: "sounds/tap.mp3" },
+                        { name: "success", src: "sounds/success.mp3" },
+                        { name: "fail", src: "sounds/fail.mp3" },
+                    ];
+
+                    // بارگذاری موازی فایل‌ها
+                    await Promise.all(
+                        sounds.map(async (s) => {
+                            const response = await fetch(s.src);
+                            if (!response.ok)
+                                throw new Error(`Failed to fetch ${s.src}`);
+                            const arrayBuffer = await response.arrayBuffer();
+                            const audioBuffer =
+                                await audioCtx.decodeAudioData(arrayBuffer);
+                            soundBuffers[s.name] = audioBuffer;
+                        }),
+                    );
+
+                    // رویدادهای تعلیق و بازگشت به‌صورت خودکار
+                    document.addEventListener("visibilitychange", () => {
+                        if (
+                            !document.hidden &&
+                            audioCtx &&
+                            audioCtx.state === "suspended"
+                        ) {
+                            audioCtx.resume();
+                        }
+                    });
+
+                    return true;
+                } catch (e) {
+                    console.warn("Web Audio init failed, will use fallback", e);
+                    audioCtx = null;
+                    return false;
+                }
+            }
+
+            // ========== بخش Firefox Fallback (Audio Element Pool) ==========
+            let fxFrees = []; // آرایه‌ای از ایندکس‌های آزاد در fxPool
+            let fxPool = []; // آبجکت‌های { type: 'tap', element: Audio, busy: Boolean }
+            let fxElements = {}; // نگهداری عناصر هر تایپ
+
+            const POOL_SIZE = 6; // تعداد نمونه‌های هر نوع صدا
+
+            function initFirefoxFallback() {
+                const types = ["tap", "success", "fail"];
+
+                types.forEach((type) => {
+                    for (let i = 0; i < POOL_SIZE; i++) {
+                        const audio = new Audio(`sounds/${type}.mp3`);
+                        audio.preload = "auto";
+                        audio.load();
+
+                        const item = {
+                            type,
+                            element: audio,
+                            busy: false,
+                        };
+
+                        // وقتی پخش تمام شد (ended) یا خطایی رخ داد، آزادش کن
+                        audio.addEventListener("ended", () => {
+                            item.busy = false;
+                            // شاید بخواهید currentTime صفر شود اینجا
+                            audio.currentTime = 0;
+                        });
+                        audio.addEventListener("error", () => {
+                            item.busy = false;
+                        });
+
+                        fxPool.push(item);
+                        fxFrees.push(fxPool.length - 1);
+                    }
                 });
-            }
-        }
 
-        function playSoundEffect(type) {
-    if (isMuted) return; 
-    
-    const originalAudio = document.getElementById('audio-' + type);
-    if (originalAudio) {
-        // ساخت یک کپی موقت از فایل صوتی برای جلوگیری از تداخل و رفع باگ فایرفاکس
-        const clonedAudio = originalAudio.cloneNode();
-        
-        // پخش کردن نسخه کپی شده
-        clonedAudio.play().catch(e => console.log("Playback prevented:", e));
-        
-        // پس از اتمام صدا، برای جلوگیری از اشغال حافظه (Memory Leak) مرجعش رو پاک می‌کنیم
-        clonedAudio.onended = function() {
-            clonedAudio.remove();
-        };
-    }
-}
-
-        function toggleMute() {
-            isMuted = !isMuted;
-            localStorage.setItem("mahrad_muted", isMuted);
-            updateMuteIcons();
-        }
-
-        function updateMuteIcons() {
-            document.getElementById('volumeUpIcon').style.display = isMuted ? "none" : "block";
-            document.getElementById('volumeMuteIcon').style.display = isMuted ? "block" : "none";
-        }
-
-        function speakCurrentWord(event) {
-            if(event) event.stopPropagation();
-            const wordData = filteredWords[currentIndex];
-            if (!wordData) return;
-
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(wordData.en);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        function switchMode(mode) {
-            currentMode = mode;
-            
-            document.getElementById('modeFlashcard').classList.toggle('active', mode === 'flashcard');
-            document.getElementById('modeQuiz').classList.toggle('active', mode === 'quiz');
-            document.getElementById('modeExam').classList.toggle('active', mode === 'exam');
-
-            cardContainer.style.display = "none";
-            quizContainer.style.display = "none";
-            examContainer.style.display = "none";
-            
-            if(mode === 'exam') {
-                examContainer.style.display = "flex";
-                mainControls.style.display = "none";
-                filterSelect.style.display = "none"; 
-                examSelect.style.display = "block";
-                hintText.textContent = "آزمون ارزیابی یادگیری";
-                resetExamUI();
-            } else {
-                mainControls.style.display = "flex";
-                filterSelect.style.display = "block";
-                examSelect.style.display = "none";
-                
-                if (mode === 'flashcard') {
-                    cardContainer.style.display = "block";
-                    hintText.textContent = "برای دیدن معنی، روی کارت ضربه بزنید";
-                } else if (mode === 'quiz') {
-                    quizContainer.style.display = "flex";
-                    hintText.textContent = "گزینه درست را حدس بزنید!";
-                    isQuizAnswered = false;
-                }
-                updateCard();
-            }
-        }
-
-        function applyFiltering(resetIndex = true) {
-            if (!currentLessonKey || !lessonsData[currentLessonKey]) return;
-            const allWordsInLesson = lessonsData[currentLessonKey].words || [];
-            const activeFilter = filterSelect.value;
-
-            filteredWords = allWordsInLesson.filter(word => {
-                const isBookmarked = bookmarks.includes(`${currentLessonKey}_${word.en}`);
-                if (activeFilter === "hard") return word.difficulty === "hard";
-                if (activeFilter === "easy") return word.difficulty === "easy";
-                if (activeFilter === "bookmarked") return isBookmarked;
-                return true;
-            });
-
-            if (resetIndex || currentIndex >= filteredWords.length) currentIndex = 0;
-            isQuizAnswered = false;
-            updateCard();
-            
-            if(currentMode === 'exam') resetExamUI();
-        }
-
-        function handleFilterChange() {
-            currentLessonKey = lessonSelect.value;
-            updateExamSelectorOptions();
-            if (isFlipped && currentMode === "flashcard") {
-                flipCard();
-                setTimeout(() => { applyFiltering(true); }, 250);
-            } else {
-                applyFiltering(true);
-            }
-        }
-
-        function updateCard() {
-            if(currentMode === 'exam') return;
-
-            const wordData = filteredWords[currentIndex];
-
-            if (!wordData) {
-                enWordEl.textContent = "!خالی";
-                faPronEl.textContent = ""; 
-                faMeaningEl.textContent = "کلمه‌ای پیدا نشد.";
-                document.getElementById('quizQuestion').textContent = "!خالی";
-                document.getElementById('quizOptions').innerHTML = "";
-                prevBtn.disabled = true; nextBtn.disabled = true;
-                progressEl.textContent = toPersianDigits("۰ از ۰");
-                
-                difficultyBadge.style.display = "none";
-                bookmarkBtn.style.display = "none";
-                speakerBtn.style.display = "none";
-                return;
-            }
-
-            difficultyBadge.style.display = "block";
-            bookmarkBtn.style.display = "flex";
-            speakerBtn.style.display = "flex";
-
-            enWordEl.textContent = wordData.en;
-            faPronEl.textContent = wordData.pron || "";
-            faMeaningEl.textContent = wordData.fa;
-
-            if (wordData.difficulty === "hard") {
-                difficultyBadge.textContent = "سخت 🔥";
-                difficultyBadge.className = "card-badge badge-hard";
-            } else {
-                difficultyBadge.textContent = "آسان ✨";
-                difficultyBadge.className = "card-badge badge-easy";
-            }
-
-            const isBookmarked = bookmarks.includes(`${currentLessonKey}_${wordData.en}`);
-            bookmarkBtn.classList.toggle('is-active', isBookmarked);
-            
-            prevBtn.disabled = (currentIndex === 0);
-            nextBtn.disabled = (currentIndex === filteredWords.length - 1);
-            progressEl.textContent = toPersianDigits(`کلمه ${currentIndex + 1} از ${filteredWords.length}`);
-
-            if (currentMode === "quiz") {
-                generateQuizOptions(wordData);
-            }
-
-            localStorage.setItem("mahrad_saved_lesson", currentLessonKey);
-            localStorage.setItem("mahrad_saved_index", currentIndex);
-        }
-
-        function resetExamUI() {
-            document.getElementById('examIntro').style.display = 'block';
-            document.getElementById('examPlay').style.display = 'none';
-            document.getElementById('examResult').style.display = 'none';
-            progressEl.textContent = `آماده برای آزمون`;
-        }
-
-        function startExam() {
-            const selectedExamKey = examSelect.value;
-            if(!examData || !examData[currentLessonKey] || !examData[currentLessonKey][selectedExamKey]) {
-                alert("هنوز آزمونی برای این بخش ثبت نشده است!");
-                return;
-            }
-
-            currentExamQuestions = examData[currentLessonKey][selectedExamKey];
-            currentExamQuestionIndex = 0;
-            examUserAnswers = new Array(currentExamQuestions.length).fill(null);
-            
-            // تولید گزینه‌های رندوم برای هر سوال پیش از شروع آزمون
-            examShuffledOptions = currentExamQuestions.map(q => {
-                let optionsWithOriginalIndex = q.options.map((optText, index) => ({ text: optText, originalIndex: index }));
-                // شافل کردن با حفظ ایندکس اصلی
-                return optionsWithOriginalIndex.sort(() => Math.random() - 0.5);
-            });
-
-            document.getElementById('examIntro').style.display = 'none';
-            document.getElementById('examResult').style.display = 'none';
-            document.getElementById('examPlay').style.display = 'flex';
-            
-            loadExamQuestion();
-        }
-
-        function loadExamQuestion() {
-            const qData = currentExamQuestions[currentExamQuestionIndex];
-            const currentShuffledOpts = examShuffledOptions[currentExamQuestionIndex];
-            
-            document.getElementById('examQuestionText').textContent = qData.q;
-            const optionsContainer = document.getElementById('examOptions');
-            optionsContainer.innerHTML = '';
-
-            const savedAnswerOriginalIndex = examUserAnswers[currentExamQuestionIndex];
-
-            currentShuffledOpts.forEach((optObj, renderIndex) => {
-                const btn = document.createElement('button');
-                btn.className = "option-btn";
-                btn.textContent = optObj.text;
-                
-                if (savedAnswerOriginalIndex !== null) {
-                    btn.disabled = true;
-                    // اگر این گزینه همون دکمه ایه که کاربر قبلا زده
-                    if (optObj.originalIndex === savedAnswerOriginalIndex) {
-                        btn.classList.add(savedAnswerOriginalIndex === qData.ans ? 'correct' : 'wrong');
+                // آنلاک صداها با اولین لمس
+                const unlock = async () => {
+                    for (const item of fxPool) {
+                        const audio = item.element;
+                        try {
+                            audio.volume = 0; // بی‌صدا (فقط برای unlock)
+                            const p = audio.play();
+                            if (p) await p;
+                            audio.pause();
+                            audio.currentTime = 0;
+                            audio.volume = 1;
+                        } catch (e) {
+                            /* نادیده گرفته شود */
+                        }
                     }
-                    // همیشه دکمه درست واقعی رو سبز کن
-                    if (optObj.originalIndex === qData.ans) {
-                        btn.classList.add('correct');
-                    }
+                    document.removeEventListener("pointerdown", unlock);
+                };
+                document.addEventListener("pointerdown", unlock, {
+                    once: false,
+                }); // once: false برای اطمینان
+                // برای موبایل‌ها touchend هم اضافه شود
+                document.addEventListener(
+                    "touchend",
+                    () => {
+                        if (fxPool.length && fxPool[0].element.paused) return; // اگر آنلاک شده کاری نکن
+                        unlock();
+                    },
+                    { once: true },
+                );
+            }
+
+            function playFirefoxSound(type) {
+                if (isMuted) return;
+
+                // یک عنصر آزاد از pool پیدا کن
+                const freeIndex = fxFrees.find(
+                    (idx) => fxPool[idx].type === type && !fxPool[idx].busy,
+                );
+
+                let audio;
+                let busyItem = null;
+
+                if (freeIndex !== undefined) {
+                    busyItem = fxPool[freeIndex];
+                    busyItem.busy = true;
+                    audio = busyItem.element;
+                    // ایندکس را از لیست آزادها حذف کن
+                    fxFrees = fxFrees.filter((i) => i !== freeIndex);
                 } else {
-                    btn.onclick = () => checkExamAnswer(btn, optObj.originalIndex, qData.ans);
+                    // هیچ عنصر آزادی نبود → یک Audio جدید موقت بساز (بعد از اتمام نابود می‌شود)
+                    audio = new Audio(`sounds/${type}.mp3`);
+                    audio.preload = "auto";
+                    // رویداد ended: بعد از پخش نابود شود
+                    audio.addEventListener("ended", () => {
+                        audio.remove();
+                    });
+                    audio.addEventListener("error", () => {
+                        audio.remove();
+                    });
+                    // با busy کاری نداریم
                 }
-                optionsContainer.appendChild(btn);
-            });
 
-            document.getElementById('examPrevBtn').disabled = (currentExamQuestionIndex === 0);
-            document.getElementById('examNextBtn').disabled = (savedAnswerOriginalIndex === null);
+                if (!audio) return;
 
-            if (currentExamQuestionIndex === currentExamQuestions.length - 1) {
-                document.getElementById('examNextBtn').innerHTML = "مشاهده نتیجه";
-            } else {
-                document.getElementById('examNextBtn').innerHTML = "&#8594; بعدی";
-            }
+                // تکنیک فایرفاکس: ابتدا پاز و seek به صفر، سپس در فریم بعدی پخش
+                audio.pause();
+                audio.currentTime = 0;
 
-            progressEl.textContent = toPersianDigits(`سوال ${currentExamQuestionIndex + 1} از ${currentExamQuestions.length}`);
-        }
-
-        function checkExamAnswer(selectedBtn, selectedOriginalIndex, correctIndex) {
-            examUserAnswers[currentExamQuestionIndex] = selectedOriginalIndex;
-            const optionsContainer = document.getElementById('examOptions');
-            const buttons = optionsContainer.querySelectorAll('.option-btn');
-            
-            buttons.forEach(btn => btn.disabled = true);
-
-            if (selectedOriginalIndex === correctIndex) {
-                selectedBtn.classList.add('correct');
-                playSoundEffect('success');
-            } else {
-                selectedBtn.classList.add('wrong');
-                playSoundEffect('fail');
-                // پیدا کردن دکمه درست در گزینه‌های شافل شده برای نمایش سبز رنگ
-                const currentShuffledOpts = examShuffledOptions[currentExamQuestionIndex];
-                const correctRenderIndex = currentShuffledOpts.findIndex(opt => opt.originalIndex === correctIndex);
-                if(correctRenderIndex !== -1) {
-                    buttons[correctRenderIndex].classList.add('correct');
-                }
-            }
-
-            document.getElementById('examNextBtn').disabled = false;
-        }
-
-        function nextExamQuestion() {
-            playSoundEffect('tap'); 
-            currentExamQuestionIndex++;
-            if(currentExamQuestionIndex < currentExamQuestions.length) {
-                loadExamQuestion();
-            } else {
-                finishExam();
-            }
-        }
-
-        function prevExamQuestion() {
-            if (currentExamQuestionIndex > 0) {
-                playSoundEffect('tap'); 
-                currentExamQuestionIndex--;
-                loadExamQuestion();
-            }
-        }
-
-        function finishExam() {
-            document.getElementById('examPlay').style.display = 'none';
-            document.getElementById('examResult').style.display = 'block';
-            
-            let totalCorrect = 0;
-            currentExamQuestions.forEach((q, idx) => {
-                if (examUserAnswers[idx] === q.ans) totalCorrect++;
-            });
-
-            const percentage = Math.round((totalCorrect / currentExamQuestions.length) * 100);
-            document.getElementById('examScoreText').textContent = toPersianDigits(`${percentage}٪`);
-            
-            let feedback = "";
-            if(percentage === 100) feedback = "فوق‌العاده بود! تسلط کامل داری.";
-            else if(percentage >= 70) feedback = "خیلی خوب بود! نیاز به کمی مرور بیشتر داری.";
-            else feedback = "بهتره کلمات این درس رو دوباره با دقت مرور کنی.";
-            
-            document.getElementById('examFeedbackText').textContent = feedback;
-            progressEl.textContent = `پایان آزمون`;
-        }
-
-        function generateQuizOptions(correctWord) {
-            const quizOptions = document.getElementById('quizOptions');
-            document.getElementById('quizQuestion').textContent = correctWord.en;
-            quizOptions.innerHTML = "";
-            
-            const allWordsInLesson = lessonsData[currentLessonKey].words || [];
-            let pool = allWordsInLesson.filter(w => w.en !== correctWord.en);
-            
-            pool.sort(() => 0.5 - Math.random());
-            let choices = pool.slice(0, 3);
-            choices.push(correctWord);
-            
-            choices.sort(() => 0.5 - Math.random());
-
-            choices.forEach(choice => {
-                const btn = document.createElement('button');
-                btn.className = "option-btn";
-                btn.textContent = choice.fa;
-                btn.onclick = () => checkQuizAnswer(btn, choice.en, correctWord.en);
-                quizOptions.appendChild(btn);
-            });
-            isQuizAnswered = false;
-        }
-
-        function checkQuizAnswer(selectedBtn, selectedEn, correctEn) {
-            if (isQuizAnswered) return;
-            isQuizAnswered = true;
-
-            const quizOptions = document.getElementById('quizOptions');
-            const buttons = quizOptions.querySelectorAll('.option-btn');
-            
-            if (selectedEn === correctEn) {
-                selectedBtn.classList.add('correct');
-                playSoundEffect('success');
-            } else {
-                selectedBtn.classList.add('wrong');
-                playSoundEffect('fail');
-                buttons.forEach(btn => {
-                    const currentWordObj = lessonsData[currentLessonKey].words.find(w => w.fa === btn.textContent);
-                    if (currentWordObj && currentWordObj.en === correctEn) {
-                        btn.classList.add('correct');
+                // درخواست پخش در یک میکروتسک یا انیمیشن فریم
+                requestAnimationFrame(() => {
+                    const playPromise = audio.play();
+                    if (playPromise) {
+                        playPromise
+                            .then(() => {
+                                // اگر موقت بود که هیچ، اگر از pool بود busy باقی می‌ماند تا ended
+                            })
+                            .catch((err) => {
+                                console.warn("Firefox play error:", err);
+                                // اگر از pool بود، آزادش کن
+                                if (busyItem) {
+                                    busyItem.busy = false;
+                                    fxFrees.push(fxPool.indexOf(busyItem));
+                                } else {
+                                    audio.remove();
+                                }
+                            });
+                    } else {
+                        // مرورگرهای قدیمی که promise برنمی‌گردانند
+                        if (busyItem) {
+                            busyItem.busy = false;
+                            fxFrees.push(fxPool.indexOf(busyItem));
+                        }
                     }
                 });
             }
-        }
 
-        function toggleBookmark(event) {
-            event.stopPropagation();
-            const wordData = filteredWords[currentIndex];
-            if (!wordData) return;
+            // ========== راه‌اندازی کلی ==========
+            async function initSoundEngine() {
+                const isFirefox = navigator.userAgent.includes("Firefox"); // یا typeof InstallTrigger !== 'undefined'
 
-            const bookmarkKey = `${currentLessonKey}_${wordData.en}`;
-            const index = bookmarks.indexOf(bookmarkKey);
+                if (!isFirefox) {
+                    // اولویت با Web Audio
+                    const webAudioOk = await initWebAudio();
+                    if (webAudioOk) {
+                        audioEngineReady = true;
+                        // آنلاک AudioContext با اولین اشاره‌گر
+                        document.addEventListener(
+                            "pointerdown",
+                            () => {
+                                if (
+                                    audioCtx &&
+                                    audioCtx.state === "suspended"
+                                ) {
+                                    audioCtx.resume();
+                                }
+                            },
+                            { once: true },
+                        );
+                        document.addEventListener(
+                            "touchend",
+                            () => {
+                                if (
+                                    audioCtx &&
+                                    audioCtx.state === "suspended"
+                                ) {
+                                    audioCtx.resume();
+                                }
+                            },
+                            { once: true },
+                        );
+                        return;
+                    }
+                }
 
-            if (index > -1) {
-                bookmarks.splice(index, 1);
-                bookmarkBtn.classList.remove('is-active');
-            } else {
-                bookmarks.push(bookmarkKey);
-                bookmarkBtn.classList.add('is-active');
+                // اگر فایرفاکس بود یا Web Audio شکست خورد → Fallback
+                initFirefoxFallback();
+                audioEngineReady = true;
             }
 
-            localStorage.setItem("mahrad_bookmarks", JSON.stringify(bookmarks));
-            if (filterSelect.value === "bookmarked") {
-                setTimeout(() => { applyFiltering(false); }, 300);
+            // ========== تابع عمومی پخش صدا ==========
+            function playSoundEffect(type) {
+                if (isMuted || !audioEngineReady) return;
+
+                // بررسی کنیم کدام موتور فعال است
+                if (audioCtx && soundBuffers[type]) {
+                    // Web Audio Engine
+                    if (audioCtx.state === "suspended") {
+                        audioCtx.resume(); // تلاش برای رزوم (بدون منتظر ماندن)
+                        return;
+                    }
+
+                    try {
+                        const source = audioCtx.createBufferSource();
+                        source.buffer = soundBuffers[type];
+                        source.connect(audioCtx.destination);
+                        source.start(0);
+                        source.onended = () => source.disconnect();
+                    } catch (e) {
+                        console.warn("WebAudio play error:", e);
+                    }
+                } else if (fxPool.length) {
+                    // Firefox Fallback
+                    playFirefoxSound(type);
+                }
             }
-        }
 
-        function flipCard() {
-            if (filteredWords.length === 0 || currentMode !== "flashcard") return;
-            isFlipped = !isFlipped;
-            flashcard.classList.toggle('is-flipped', isFlipped);
-        }
+            // راه‌اندازی موتور در زمان بارگذاری صفحه
+            initSoundEngine();
 
-        function nextWord() {
-            if (currentIndex < filteredWords.length - 1) {
-                changeWordWithAnimation(() => { currentIndex++; });
+            const flashcard = document.getElementById("flashcard");
+            const enWordEl = document.getElementById("en-word");
+            const faPronEl = document.getElementById("fa-pron");
+            const faMeaningEl = document.getElementById("fa-meaning");
+            const progressEl = document.getElementById("progress");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            const lessonSelect = document.getElementById("lessonSelect");
+            const examSelect = document.getElementById("examSelect");
+            const filterSelect = document.getElementById("filterSelect");
+            const difficultyBadge = document.getElementById("difficultyBadge");
+            const bookmarkBtn = document.getElementById("bookmarkBtn");
+            const speakerBtn = document.getElementById("speakerBtn");
+            const hintText = document.getElementById("hintText");
+
+            const cardContainer = document.getElementById("cardContainer");
+            const quizContainer = document.getElementById("quizContainer");
+            const examContainer = document.getElementById("examContainer");
+
+            const mainControls = document.getElementById("mainControls");
+            const mainSelectors = document.getElementById("mainSelectors");
+
+            function toPersianDigits(str) {
+                if (str === null || str === undefined) return "";
+                const id = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+                return str.toString().replace(/[0-9]/g, function (w) {
+                    return id[+w];
+                });
             }
-        }
 
-        function prevWord() {
-            if (currentIndex > 0) {
-                changeWordWithAnimation(() => { currentIndex--; });
+            function toggleModal(show) {
+                const modal = document.getElementById("creditsModal");
+                if (show) {
+                    modal.classList.add("show");
+                } else {
+                    modal.classList.remove("show");
+                }
             }
-        }
 
-        function changeWordWithAnimation(indexChangeCallback) {
-            playSoundEffect('tap'); 
-            if (isFlipped && currentMode === "flashcard") {
-                flipCard();
-                setTimeout(() => {
+            function toggleAnimation() {
+                isAnimDisabled = !isAnimDisabled;
+                localStorage.setItem("mahrad_noanim", isAnimDisabled);
+                updateAnimIcons();
+            }
+
+            function updateAnimIcons() {
+                if (isAnimDisabled) {
+                    document.body.classList.add("no-anim");
+                    document.getElementById("animPlayIcon").style.display =
+                        "block";
+                    document.getElementById("animPauseIcon").style.display =
+                        "none";
+                } else {
+                    document.body.classList.remove("no-anim");
+                    document.getElementById("animPlayIcon").style.display =
+                        "none";
+                    document.getElementById("animPauseIcon").style.display =
+                        "block";
+                }
+            }
+
+            function initApp() {
+                bookmarks =
+                    JSON.parse(localStorage.getItem("mahrad_bookmarks")) || [];
+
+                const savedTheme =
+                    localStorage.getItem("mahrad_theme") || "light";
+                document.documentElement.setAttribute("data-theme", savedTheme);
+                updateThemeIcons(savedTheme);
+
+                isMuted = localStorage.getItem("mahrad_muted") === "true";
+                updateMuteIcons();
+
+                isAnimDisabled =
+                    localStorage.getItem("mahrad_noanim") === "true";
+                updateAnimIcons();
+
+                lessonSelect.innerHTML = "";
+                for (let key in lessonsData) {
+                    let option = document.createElement("option");
+                    option.value = key;
+                    option.text = lessonsData[key].title;
+                    lessonSelect.appendChild(option);
+                }
+
+                const savedLesson = localStorage.getItem("mahrad_saved_lesson");
+                const savedIndex = localStorage.getItem("mahrad_saved_index");
+
+                if (savedLesson && lessonsData[savedLesson]) {
+                    currentLessonKey = savedLesson;
+                    lessonSelect.value = savedLesson;
+                } else {
+                    currentLessonKey = Object.keys(lessonsData)[0] || "";
+                    lessonSelect.value = currentLessonKey;
+                }
+
+                updateExamSelectorOptions();
+
+                if (savedIndex) currentIndex = parseInt(savedIndex);
+                applyFiltering(false);
+            }
+
+            function updateExamSelectorOptions() {
+                examSelect.innerHTML = "";
+                if (examData && examData[currentLessonKey]) {
+                    Object.keys(examData[currentLessonKey]).forEach(
+                        (examKey, index) => {
+                            let option = document.createElement("option");
+                            option.value = examKey;
+                            option.text = toPersianDigits(
+                                `آزمون شماره ${index + 1}`,
+                            );
+                            examSelect.appendChild(option);
+                        },
+                    );
+                }
+            }
+
+            function toggleMute() {
+                isMuted = !isMuted;
+                localStorage.setItem("mahrad_muted", isMuted);
+                updateMuteIcons();
+            }
+
+            function updateMuteIcons() {
+                document.getElementById("volumeUpIcon").style.display = isMuted
+                    ? "none"
+                    : "block";
+                document.getElementById("volumeMuteIcon").style.display =
+                    isMuted ? "block" : "none";
+            }
+
+            function speakCurrentWord(event) {
+                if (event) event.stopPropagation();
+                const wordData = filteredWords[currentIndex];
+                if (!wordData) return;
+
+                if ("speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(wordData.en);
+                    utterance.lang = "en-US";
+                    utterance.rate = 0.85;
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+
+            function switchMode(mode) {
+                currentMode = mode;
+
+                document
+                    .getElementById("modeFlashcard")
+                    .classList.toggle("active", mode === "flashcard");
+                document
+                    .getElementById("modeQuiz")
+                    .classList.toggle("active", mode === "quiz");
+                document
+                    .getElementById("modeExam")
+                    .classList.toggle("active", mode === "exam");
+
+                cardContainer.style.display = "none";
+                quizContainer.style.display = "none";
+                examContainer.style.display = "none";
+
+                if (mode === "exam") {
+                    examContainer.style.display = "flex";
+                    mainControls.style.display = "none";
+                    filterSelect.style.display = "none";
+                    examSelect.style.display = "block";
+                    hintText.textContent = "آزمون ارزیابی یادگیری";
+                    resetExamUI();
+                } else {
+                    mainControls.style.display = "flex";
+                    filterSelect.style.display = "block";
+                    examSelect.style.display = "none";
+
+                    if (mode === "flashcard") {
+                        cardContainer.style.display = "block";
+                        hintText.textContent =
+                            "برای دیدن معنی، روی کارت ضربه بزنید";
+                    } else if (mode === "quiz") {
+                        quizContainer.style.display = "flex";
+                        hintText.textContent = "گزینه درست را حدس بزنید!";
+                        isQuizAnswered = false;
+                    }
+                    updateCard();
+                }
+            }
+
+            function applyFiltering(resetIndex = true) {
+                if (!currentLessonKey || !lessonsData[currentLessonKey]) return;
+                const allWordsInLesson =
+                    lessonsData[currentLessonKey].words || [];
+                const activeFilter = filterSelect.value;
+
+                filteredWords = allWordsInLesson.filter((word) => {
+                    const isBookmarked = bookmarks.includes(
+                        `${currentLessonKey}_${word.en}`,
+                    );
+                    if (activeFilter === "hard")
+                        return word.difficulty === "hard";
+                    if (activeFilter === "easy")
+                        return word.difficulty === "easy";
+                    if (activeFilter === "bookmarked") return isBookmarked;
+                    return true;
+                });
+
+                if (resetIndex || currentIndex >= filteredWords.length)
+                    currentIndex = 0;
+                isQuizAnswered = false;
+                updateCard();
+
+                if (currentMode === "exam") resetExamUI();
+            }
+
+            function handleFilterChange() {
+                currentLessonKey = lessonSelect.value;
+                updateExamSelectorOptions();
+                if (isFlipped && currentMode === "flashcard") {
+                    flipCard();
+                    setTimeout(() => {
+                        applyFiltering(true);
+                    }, 250);
+                } else {
+                    applyFiltering(true);
+                }
+            }
+
+            function updateCard() {
+                if (currentMode === "exam") return;
+
+                const wordData = filteredWords[currentIndex];
+
+                if (!wordData) {
+                    enWordEl.textContent = "!خالی";
+                    faPronEl.textContent = "";
+                    faMeaningEl.textContent = "کلمه‌ای پیدا نشد.";
+                    document.getElementById("quizQuestion").textContent =
+                        "!خالی";
+                    document.getElementById("quizOptions").innerHTML = "";
+                    prevBtn.disabled = true;
+                    nextBtn.disabled = true;
+                    progressEl.textContent = toPersianDigits("۰ از ۰");
+
+                    difficultyBadge.style.display = "none";
+                    bookmarkBtn.style.display = "none";
+                    speakerBtn.style.display = "none";
+                    return;
+                }
+
+                difficultyBadge.style.display = "block";
+                bookmarkBtn.style.display = "flex";
+                speakerBtn.style.display = "flex";
+
+                enWordEl.textContent = wordData.en;
+                faPronEl.textContent = wordData.pron || "";
+                faMeaningEl.textContent = wordData.fa;
+
+                if (wordData.difficulty === "hard") {
+                    difficultyBadge.textContent = "سخت 🔥";
+                    difficultyBadge.className = "card-badge badge-hard";
+                } else {
+                    difficultyBadge.textContent = "آسان ✨";
+                    difficultyBadge.className = "card-badge badge-easy";
+                }
+
+                const isBookmarked = bookmarks.includes(
+                    `${currentLessonKey}_${wordData.en}`,
+                );
+                bookmarkBtn.classList.toggle("is-active", isBookmarked);
+
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === filteredWords.length - 1;
+                progressEl.textContent = toPersianDigits(
+                    `کلمه ${currentIndex + 1} از ${filteredWords.length}`,
+                );
+
+                if (currentMode === "quiz") {
+                    generateQuizOptions(wordData);
+                }
+
+                localStorage.setItem("mahrad_saved_lesson", currentLessonKey);
+                localStorage.setItem("mahrad_saved_index", currentIndex);
+            }
+
+            function resetExamUI() {
+                document.getElementById("examIntro").style.display = "block";
+                document.getElementById("examPlay").style.display = "none";
+                document.getElementById("examResult").style.display = "none";
+                progressEl.textContent = `آماده برای آزمون`;
+            }
+
+            function startExam() {
+                const selectedExamKey = examSelect.value;
+                if (
+                    !examData ||
+                    !examData[currentLessonKey] ||
+                    !examData[currentLessonKey][selectedExamKey]
+                ) {
+                    alert("هنوز آزمونی برای این بخش ثبت نشده است!");
+                    return;
+                }
+
+                currentExamQuestions =
+                    examData[currentLessonKey][selectedExamKey];
+                currentExamQuestionIndex = 0;
+                examUserAnswers = new Array(currentExamQuestions.length).fill(
+                    null,
+                );
+
+                // تولید گزینه‌های رندوم برای هر سوال پیش از شروع آزمون
+                examShuffledOptions = currentExamQuestions.map((q) => {
+                    let optionsWithOriginalIndex = q.options.map(
+                        (optText, index) => ({
+                            text: optText,
+                            originalIndex: index,
+                        }),
+                    );
+                    // شافل کردن با حفظ ایندکس اصلی
+                    return optionsWithOriginalIndex.sort(
+                        () => Math.random() - 0.5,
+                    );
+                });
+
+                document.getElementById("examIntro").style.display = "none";
+                document.getElementById("examResult").style.display = "none";
+                document.getElementById("examPlay").style.display = "flex";
+
+                loadExamQuestion();
+            }
+
+            function loadExamQuestion() {
+                const qData = currentExamQuestions[currentExamQuestionIndex];
+                const currentShuffledOpts =
+                    examShuffledOptions[currentExamQuestionIndex];
+
+                document.getElementById("examQuestionText").textContent =
+                    qData.q;
+                const optionsContainer = document.getElementById("examOptions");
+                optionsContainer.innerHTML = "";
+
+                const savedAnswerOriginalIndex =
+                    examUserAnswers[currentExamQuestionIndex];
+
+                currentShuffledOpts.forEach((optObj, renderIndex) => {
+                    const btn = document.createElement("button");
+                    btn.className = "option-btn";
+                    btn.textContent = optObj.text;
+
+                    if (savedAnswerOriginalIndex !== null) {
+                        btn.disabled = true;
+                        // اگر این گزینه همون دکمه ایه که کاربر قبلا زده
+                        if (optObj.originalIndex === savedAnswerOriginalIndex) {
+                            btn.classList.add(
+                                savedAnswerOriginalIndex === qData.ans
+                                    ? "correct"
+                                    : "wrong",
+                            );
+                        }
+                        // همیشه دکمه درست واقعی رو سبز کن
+                        if (optObj.originalIndex === qData.ans) {
+                            btn.classList.add("correct");
+                        }
+                    } else {
+                        btn.onclick = () =>
+                            checkExamAnswer(
+                                btn,
+                                optObj.originalIndex,
+                                qData.ans,
+                            );
+                    }
+                    optionsContainer.appendChild(btn);
+                });
+
+                document.getElementById("examPrevBtn").disabled =
+                    currentExamQuestionIndex === 0;
+                document.getElementById("examNextBtn").disabled =
+                    savedAnswerOriginalIndex === null;
+
+                if (
+                    currentExamQuestionIndex ===
+                    currentExamQuestions.length - 1
+                ) {
+                    document.getElementById("examNextBtn").innerHTML =
+                        "مشاهده نتیجه";
+                } else {
+                    document.getElementById("examNextBtn").innerHTML =
+                        "&#8594; بعدی";
+                }
+
+                progressEl.textContent = toPersianDigits(
+                    `سوال ${currentExamQuestionIndex + 1} از ${currentExamQuestions.length}`,
+                );
+            }
+
+            function checkExamAnswer(
+                selectedBtn,
+                selectedOriginalIndex,
+                correctIndex,
+            ) {
+                examUserAnswers[currentExamQuestionIndex] =
+                    selectedOriginalIndex;
+                const optionsContainer = document.getElementById("examOptions");
+                const buttons =
+                    optionsContainer.querySelectorAll(".option-btn");
+
+                buttons.forEach((btn) => (btn.disabled = true));
+
+                if (selectedOriginalIndex === correctIndex) {
+                    selectedBtn.classList.add("correct");
+                    playSoundEffect("success");
+                } else {
+                    selectedBtn.classList.add("wrong");
+                    playSoundEffect("fail");
+                    // پیدا کردن دکمه درست در گزینه‌های شافل شده برای نمایش سبز رنگ
+                    const currentShuffledOpts =
+                        examShuffledOptions[currentExamQuestionIndex];
+                    const correctRenderIndex = currentShuffledOpts.findIndex(
+                        (opt) => opt.originalIndex === correctIndex,
+                    );
+                    if (correctRenderIndex !== -1) {
+                        buttons[correctRenderIndex].classList.add("correct");
+                    }
+                }
+
+                document.getElementById("examNextBtn").disabled = false;
+            }
+
+            function nextExamQuestion() {
+                playSoundEffect("tap");
+                currentExamQuestionIndex++;
+                if (currentExamQuestionIndex < currentExamQuestions.length) {
+                    loadExamQuestion();
+                } else {
+                    finishExam();
+                }
+            }
+
+            function prevExamQuestion() {
+                if (currentExamQuestionIndex > 0) {
+                    playSoundEffect("tap");
+                    currentExamQuestionIndex--;
+                    loadExamQuestion();
+                }
+            }
+
+            function finishExam() {
+                document.getElementById("examPlay").style.display = "none";
+                document.getElementById("examResult").style.display = "block";
+
+                let totalCorrect = 0;
+                currentExamQuestions.forEach((q, idx) => {
+                    if (examUserAnswers[idx] === q.ans) totalCorrect++;
+                });
+
+                const percentage = Math.round(
+                    (totalCorrect / currentExamQuestions.length) * 100,
+                );
+                document.getElementById("examScoreText").textContent =
+                    toPersianDigits(`${percentage}٪`);
+
+                let feedback = "";
+                if (percentage === 100)
+                    feedback = "فوق‌العاده بود! تسلط کامل داری.";
+                else if (percentage >= 70)
+                    feedback = "خیلی خوب بود! نیاز به کمی مرور بیشتر داری.";
+                else
+                    feedback = "بهتره کلمات این درس رو دوباره با دقت مرور کنی.";
+
+                document.getElementById("examFeedbackText").textContent =
+                    feedback;
+                progressEl.textContent = `پایان آزمون`;
+            }
+
+            function generateQuizOptions(correctWord) {
+                const quizOptions = document.getElementById("quizOptions");
+                document.getElementById("quizQuestion").textContent =
+                    correctWord.en;
+                quizOptions.innerHTML = "";
+
+                const allWordsInLesson =
+                    lessonsData[currentLessonKey].words || [];
+                let pool = allWordsInLesson.filter(
+                    (w) => w.en !== correctWord.en,
+                );
+
+                pool.sort(() => 0.5 - Math.random());
+                let choices = pool.slice(0, 3);
+                choices.push(correctWord);
+
+                choices.sort(() => 0.5 - Math.random());
+
+                choices.forEach((choice) => {
+                    const btn = document.createElement("button");
+                    btn.className = "option-btn";
+                    btn.textContent = choice.fa;
+                    btn.onclick = () =>
+                        checkQuizAnswer(btn, choice.en, correctWord.en);
+                    quizOptions.appendChild(btn);
+                });
+                isQuizAnswered = false;
+            }
+
+            function checkQuizAnswer(selectedBtn, selectedEn, correctEn) {
+                if (isQuizAnswered) return;
+                isQuizAnswered = true;
+
+                const quizOptions = document.getElementById("quizOptions");
+                const buttons = quizOptions.querySelectorAll(".option-btn");
+
+                if (selectedEn === correctEn) {
+                    selectedBtn.classList.add("correct");
+                    playSoundEffect("success");
+                } else {
+                    selectedBtn.classList.add("wrong");
+                    playSoundEffect("fail");
+                    buttons.forEach((btn) => {
+                        const currentWordObj = lessonsData[
+                            currentLessonKey
+                        ].words.find((w) => w.fa === btn.textContent);
+                        if (currentWordObj && currentWordObj.en === correctEn) {
+                            btn.classList.add("correct");
+                        }
+                    });
+                }
+            }
+
+            function toggleBookmark(event) {
+                event.stopPropagation();
+                const wordData = filteredWords[currentIndex];
+                if (!wordData) return;
+
+                const bookmarkKey = `${currentLessonKey}_${wordData.en}`;
+                const index = bookmarks.indexOf(bookmarkKey);
+
+                if (index > -1) {
+                    bookmarks.splice(index, 1);
+                    bookmarkBtn.classList.remove("is-active");
+                } else {
+                    bookmarks.push(bookmarkKey);
+                    bookmarkBtn.classList.add("is-active");
+                }
+
+                localStorage.setItem(
+                    "mahrad_bookmarks",
+                    JSON.stringify(bookmarks),
+                );
+                if (filterSelect.value === "bookmarked") {
+                    setTimeout(() => {
+                        applyFiltering(false);
+                    }, 300);
+                }
+            }
+
+            function flipCard() {
+                if (filteredWords.length === 0 || currentMode !== "flashcard")
+                    return;
+                isFlipped = !isFlipped;
+                flashcard.classList.toggle("is-flipped", isFlipped);
+            }
+
+            function nextWord() {
+                if (currentIndex < filteredWords.length - 1) {
+                    changeWordWithAnimation(() => {
+                        currentIndex++;
+                    });
+                }
+            }
+
+            function prevWord() {
+                if (currentIndex > 0) {
+                    changeWordWithAnimation(() => {
+                        currentIndex--;
+                    });
+                }
+            }
+
+            function changeWordWithAnimation(indexChangeCallback) {
+                playSoundEffect("tap");
+                if (isFlipped && currentMode === "flashcard") {
+                    flipCard();
+                    setTimeout(() => {
+                        indexChangeCallback();
+                        updateCard();
+                    }, 250);
+                } else {
                     indexChangeCallback();
                     updateCard();
-                }, 250);
-            } else {
-                indexChangeCallback();
-                updateCard();
+                }
             }
-        }
 
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem("mahrad_theme", newTheme);
-            updateThemeIcons(newTheme);
-        }
+            function toggleTheme() {
+                const currentTheme =
+                    document.documentElement.getAttribute("data-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
 
-        function updateThemeIcons(theme) {
-            if (theme === 'dark') {
-                document.getElementById('sunIcon').style.display = "block";
-                document.getElementById('moonIcon').style.display = "none";
-            } else {
-                document.getElementById('sunIcon').style.display = "none";
-                document.getElementById('moonIcon').style.display = "block";
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("mahrad_theme", newTheme);
+                updateThemeIcons(newTheme);
             }
-        }
 
-        let touchstartX = 0;
-        let touchendX = 0;
-        
-        const interactionArea = document.body;
-        interactionArea.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
-        interactionArea.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-
-        function handleSwipe() {
-            if(currentMode !== 'exam') {
-                if (touchendX < touchstartX - 60) nextWord();
-                if (touchendX > touchstartX + 60) prevWord();
+            function updateThemeIcons(theme) {
+                if (theme === "dark") {
+                    document.getElementById("sunIcon").style.display = "block";
+                    document.getElementById("moonIcon").style.display = "none";
+                } else {
+                    document.getElementById("sunIcon").style.display = "none";
+                    document.getElementById("moonIcon").style.display = "block";
+                }
             }
-        }
 
-        initApp();
-    </script>
-</body>
+            let touchstartX = 0;
+            let touchendX = 0;
+
+            const interactionArea = document.body;
+            interactionArea.addEventListener(
+                "touchstart",
+                (e) => {
+                    touchstartX = e.changedTouches[0].screenX;
+                },
+                { passive: true },
+            );
+
+            interactionArea.addEventListener(
+                "touchend",
+                (e) => {
+                    touchendX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                },
+                { passive: true },
+            );
+
+            function handleSwipe() {
+                if (currentMode !== "exam") {
+                    if (touchendX < touchstartX - 60) nextWord();
+                    if (touchendX > touchstartX + 60) prevWord();
+                }
+            }
+
+            initApp();
+        </script>
+    </body>
 </html>
