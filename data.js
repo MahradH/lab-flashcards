@@ -3462,4 +3462,268 @@ const examData = {
             },
         ],
     },
+    lesson8: {
+        exam1: [
+            {
+                q: "She was very __ to help her friend move to a new apartment.",
+                options: ["willing", "slight", "reserved", "obvious"],
+                ans: 0,
+            },
+            {
+                q: "The cost of houses has been __ rapidly in this area.",
+                options: ["soaring", "shrinking", "hitting", "biting"],
+                ans: 0,
+            },
+            {
+                q: "Do you have health __ that covers dental work?",
+                options: ["insurance", "surgery", "admission", "folklore"],
+                ans: 0,
+            },
+            {
+                q: "The company is __ its operations due to a decrease in sales.",
+                options: ["shrinking", "soaring", "settling", "releasing"],
+                ans: 0,
+            },
+            {
+                q: "The media __ of the event was very detailed.",
+                options: ["coverage", "infection", "longevity", "attitude"],
+                ans: 0,
+            },
+            {
+                q: "Every culture has its own __ full of stories and legends.",
+                options: ["folklore", "variety", "surgery", "operation"],
+                ans: 0,
+            },
+            {
+                q: "I have a __ seat on the plane for the flight to London.",
+                options: ["reserved", "willing", "obvious", "slight"],
+                ans: 0,
+            },
+            {
+                q: "The doctor gave me a __ for some medicine to help me sleep.",
+                options: [
+                    "prescription",
+                    "admission",
+                    "insurance",
+                    "infection",
+                ],
+                ans: 0,
+            },
+            {
+                q: "The ball started to __ the fence when he kicked it hard.",
+                options: ["hit", "soak", "toss", "settle"],
+                ans: 0,
+            },
+            {
+                q: "Mosquito bites often cause a very annoying __.",
+                options: ["itch", "sting", "steam", "pain"],
+                ans: 0,
+            },
+            {
+                q: "I like to relax in the __ after a long and tiring day.",
+                options: ["bathtub", "grocery", "surgery", "pot"],
+                ans: 0,
+            },
+            {
+                q: "You need to __ the clothes in warm water before washing them.",
+                options: ["soak", "toss", "hit", "cover"],
+                ans: 0,
+            },
+            {
+                q: "I always __ the smell of rain with my childhood in the village.",
+                options: ["associate", "settle", "release", "alleviate"],
+                ans: 0,
+            },
+            {
+                q: "She decided to study __ because she loves working with children.",
+                options: ["pediatrics", "surgery", "folklore", "insurance"],
+                ans: 0,
+            },
+            {
+                q: "Keep the food covered to protect it from any __.",
+                options: ["insect", "sting", "itch", "bee"],
+                ans: 0,
+            },
+            {
+                q: "Be careful not to get a spider __ while cleaning the basement.",
+                options: ["bite", "sting", "itch", "hit"],
+                ans: 0,
+            },
+            {
+                q: "The honey was made by the __ in the garden.",
+                options: ["bee", "insect", "ginger", "clove"],
+                ans: 0,
+            },
+            {
+                q: "The scorpion tried to __ the attacker when it felt threatened.",
+                options: ["sting", "bite", "toss", "hit"],
+                ans: 0,
+            },
+            {
+                q: "She drank some __ tea to help with her sore throat.",
+                options: ["ginger", "clove", "steam", "pot"],
+                ans: 0,
+            },
+            {
+                q: "We need to go to the __ to buy fresh vegetables for dinner.",
+                options: ["grocery", "surgery", "bathtub", "prescription"],
+                ans: 0,
+            },
+            {
+                q: "The shop offers a wide __ of products for all customers.",
+                options: ["variety", "coverage", "folklore", "infection"],
+                ans: 0,
+            },
+            {
+                q: "We finally managed to __ the argument and move on.",
+                options: ["settle", "hit", "soak", "toss"],
+                ans: 0,
+            },
+            {
+                q: "There was a __ difference between the two colors, so it was hard to tell.",
+                options: ["slight", "obvious", "willing", "reserved"],
+                ans: 0,
+            },
+            {
+                q: "It is __ that she is lying because she cannot look at you.",
+                options: ["obvious", "slight", "reserved", "willing"],
+                ans: 0,
+            },
+            {
+                q: "Add a few __ to the sauce to give it a strong flavor.",
+                options: ["cloves", "ginger", "insects", "bees"],
+                ans: 0,
+            },
+            {
+                q: "The __ herbs helped the patient recover faster.",
+                options: ["healing", "reserved", "willing", "obvious"],
+                ans: 0,
+            },
+            {
+                q: "Please __ the salad ingredients together in a large bowl.",
+                options: ["toss", "hit", "soak", "settle"],
+                ans: 0,
+            },
+            {
+                q: "Put the soup in a large __ and let it boil.",
+                options: ["pot", "bathtub", "grocery", "surgery"],
+                ans: 0,
+            },
+            {
+                q: "Be careful of the hot __ rising from the boiling water.",
+                options: ["steam", "sting", "itch", "bite"],
+                ans: 0,
+            },
+            {
+                q: "Wash your hands to prevent the spread of __.",
+                options: ["infection", "surgery", "insurance", "coverage"],
+                ans: 0,
+            },
+            {
+                q: "The teacher gave the students medicine for their nasal __.",
+                options: ["congestion", "admission", "operation", "attitude"],
+                ans: 0,
+            },
+            {
+                q: "The company will __ the new product next month.",
+                options: ["release", "settle", "hit", "toss"],
+                ans: 0,
+            },
+            {
+                q: "He took a strong __ to stop the headache.",
+                options: ["painkiller", "prescription", "infection", "surgery"],
+                ans: 0,
+            },
+            {
+                q: "You should keep track of all your travel __ for the report.",
+                options: ["expenses", "admissions", "operations", "attitudes"],
+                ans: 0,
+            },
+            {
+                q: "The doctor said she needs a minor __ on her knee.",
+                options: ["surgery", "insurance", "prescription", "folklore"],
+                ans: 0,
+            },
+            {
+                q: "The __ process for the hospital takes about an hour.",
+                options: ["admission", "variety", "coverage", "sting"],
+                ans: 0,
+            },
+            {
+                q: "The military __ was planned for the middle of the night.",
+                options: ["operation", "insurance", "congestion", "expense"],
+                ans: 0,
+            },
+            {
+                q: "Eating healthy and exercising can help increase your __.",
+                options: ["longevity", "attitude", "coverage", "infection"],
+                ans: 0,
+            },
+            {
+                q: "Your __ towards life determines how you handle stress.",
+                options: ["attitude", "operation", "longevity", "expense"],
+                ans: 0,
+            },
+            {
+                q: "Please __ the furniture with a cloth to keep it clean.",
+                options: ["cover", "release", "settle", "toss"],
+                ans: 0,
+            },
+            {
+                q: "Read the list of __ carefully to ensure you have everything for the cake.",
+                options: [
+                    "ingredients",
+                    "expenses",
+                    "prescriptions",
+                    "operations",
+                ],
+                ans: 0,
+            },
+            {
+                q: "This medicine will help to __ the pain in your back.",
+                options: ["alleviate", "associate", "cover", "settle"],
+                ans: 0,
+            },
+            {
+                q: "The results of the experiment were __ by the lead scientist.",
+                options: ["confirmed", "reserved", "willing", "obvious"],
+                ans: 0,
+            },
+            {
+                q: "__ always believe that good things will happen in the end.",
+                options: ["optimists", "pessimists", "insects", "surgeons"],
+                ans: 0,
+            },
+            {
+                q: "You need to pay the amount __ before we start the work.",
+                options: ["up front", "slight", "obvious", "reserved"],
+                ans: 0,
+            },
+            {
+                q: "Being __ helps you solve problems before they get worse.",
+                options: ["proactive", "reserved", "slight", "obvious"],
+                ans: 0,
+            },
+            {
+                q: "__ focus too much on what could go wrong.",
+                options: [
+                    "pessimists",
+                    "optimists",
+                    "pediatrists",
+                    "ingredients",
+                ],
+                ans: 0,
+            },
+            {
+                q: "We need a new __ to deal with these complex customer issues.",
+                options: ["approach", "surgery", "insurance", "coverage"],
+                ans: 0,
+            },
+            {
+                q: "__ is a useful technique to relieve tension through pressure points.",
+                options: ["acupressure", "surgery", "pediatrics", "infection"],
+                ans: 0,
+            },
+        ],
+    },
 };
