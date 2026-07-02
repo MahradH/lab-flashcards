@@ -2371,6 +2371,484 @@ const lessonsData = {
 };
 
 const examData = {
+    lesson5: {
+        exam1: [
+            {
+                q: "Health programs often try to _ families to provide better care for their children.",
+                options: ["assist", "achieve", "prevent", "raise"],
+                ans: 0,
+            },
+            {
+                q: "Modern _ faces many challenges regarding the mental well-being of the youth.",
+                options: ["burden", "society", "aspect", "pleasure"],
+                ans: 1,
+            },
+            {
+                q: "There is a strong _ among researchers to find a cure for chronic diseases.",
+                options: ["desire", "advantage", "protection", "influence"],
+                ans: 0,
+            },
+            {
+                q: "It is difficult for medical students to _ high grades without constant effort.",
+                options: ["assist", "achieve", "promote", "gain"],
+                ans: 1,
+            },
+            {
+                q: "Early diagnosis can effectively _ the spread of infectious diseases in schools.",
+                options: ["prevent", "influence", "raise", "assist"],
+                ans: 0,
+            },
+            {
+                q: "Deficiencies in _ intake can lead to serious developmental problems.",
+                options: ["moderate", "chronic", "nutritional", "acute"],
+                ans: 2,
+            },
+            {
+                q: "Caring for patients with dementia places a heavy _ on caregivers.",
+                options: ["pleasure", "burden", "aspect", "advantage"],
+                ans: 1,
+            },
+            {
+                q: "Every _ is struggling to balance school pressure with social activities.",
+                options: ["infancy", "adolescent", "society", "childhood"],
+                ans: 1,
+            },
+            {
+                q: "The _ system undergoes significant changes during the puberty stage.",
+                options: ["reproductive", "deadly", "nutritional", "acute"],
+                ans: 0,
+            },
+            {
+                q: "Rising rates of _ among young adults are a major concern for public health officials.",
+                options: ["complication", "suicide", "burden", "aspect"],
+                ans: 1,
+            },
+            {
+                q: "One major _ of early screening is the ability to treat conditions before they worsen.",
+                options: ["advantage", "desire", "pleasure", "protection"],
+                ans: 0,
+            },
+            {
+                q: "He found great _ in helping the underprivileged members of the community.",
+                options: ["aspect", "burden", "society", "pleasure"],
+                ans: 3,
+            },
+            {
+                q: "The child was born _______, which resulted in several health complications.",
+                options: ["prematurely", "approximately", "moderately", "vigorously"],
+                ans: 0,
+            },
+            {
+                q: "The disease spreads _ contaminated water and poor sanitation.",
+                options: ["through", "however", "moreover", "therefore"],
+                ans: 0,
+            },
+            {
+                q: "Surgical interventions always carry a risk of post-operative _ .",
+                options: ["prevention", "protection", "complication", "influence"],
+                ans: 2,
+            },
+            {
+                q: "Individuals who _ weight too quickly may suffer from cardiovascular issues.",
+                options: ["raise", "achieve", "assist", "gain"],
+                ans: 3,
+            },
+            {
+                q: "The study involved _ 500 participants from different regions.",
+                options: ["approximately", "moderately", "however", "therefore"],
+                ans: 0,
+            },
+            {
+                q: "Patients are advised to engage in _ exercise to maintain heart health.",
+                options: ["acute", "moderate", "deadly", "chronic"],
+                ans: 1,
+            },
+            {
+                q: "Athletes need _ training to compete at the professional level.",
+                options: ["moderate", "acute", "vigorous", "chronic"],
+                ans: 2,
+            },
+            {
+                q: "The _ study failed to show significant results, so they started a new one.",
+                options: ["preceding", "deadly", "infancy", "suicide"],
+                ans: 0,
+            },
+            {
+                q: "Drivers who are _ are a major cause of traffic accidents.",
+                options: ["intoxicated", "moderate", "vigorous", "acute"],
+                ans: 0,
+            },
+            {
+                q: "Governments should _ healthier lifestyles to reduce healthcare costs.",
+                options: ["promote", "prevent", "assist", "burden"],
+                ans: 0,
+            },
+            {
+                q: "Peer pressure has a significant _ on the behavior of teenagers.",
+                options: ["desire", "advantage", "influence", "aspect"],
+                ans: 2,
+            },
+            {
+                q: "The charity organization helps to _ funds for impoverished communities.",
+                options: ["gain", "achieve", "decline", "raise"],
+                ans: 3,
+            },
+            {
+                q: "Exercise is good for health; _______, it should not be done excessively.",
+                options: ["however", "moderately", "therefore", "through"],
+                ans: 0,
+            },
+            {
+                q: "The patient was dehydrated; _______, the doctor ordered intravenous fluids.",
+                options: ["therefore", "moreover", "through", "irregular"],
+                ans: 0,
+            },
+            {
+                q: "_ pain requires immediate medical attention to avoid further damage.",
+                options: ["acute", "chronic", "moderate", "nutritional"],
+                ans: 0,
+            },
+            {
+                q: "Managing _ diseases requires long-term commitment and lifestyle changes.",
+                options: ["deadly", "chronic", "protection", "promote"],
+                ans: 1,
+            },
+            {
+                q: "Many adult health issues have their roots in early _ .",
+                options: ["childhood", "infancy", "adolescent", "acute"],
+                ans: 0,
+            },
+            {
+                q: "The focus of modern medicine is shifting toward disease _ .",
+                options: ["influence", "complication", "prevention", "burden"],
+                ans: 2,
+            },
+            {
+                q: "The risk of mortality is highest during _______.",
+                options: ["infancy", "childhood", "adolescent", "elderly"],
+                ans: 0,
+            },
+            {
+                q: "The vaccine offers strong _ against the virus.",
+                options: ["protection", "pleasure", "desire", "advantage"],
+                ans: 0,
+            },
+            {
+                q: "Some types of snake venom can be _ if not treated immediately.",
+                options: ["moderate", "deadly", "vigorous", "nutritional"],
+                ans: 1,
+            },
+            {
+                q: "We must consider every _ of this clinical trial before proceeding.",
+                options: ["adolescent", "pleasure", "burden", "aspect"],
+                ans: 3,
+            },
+            {
+                q: "The therapy is safe; _______, it is highly effective for pain management.",
+                options: ["through", "moreover", "although", "if"],
+                ans: 1,
+            }
+        ],
+        exam2: [
+            {
+                q: "Regular exercise and a balanced diet help people maintain ....health.",
+                options: ["gross", "obtimal", "parental", "cognitive"],
+                ans: 1,
+            },
+            {
+                q: "Technology has changed dramatically over the last .... .",
+                options: ["maturity", "temperament", "decade", "intervention"],
+                ans: 2,
+            },
+            {
+                q: "Good communication between parents and children strengthens __ relationships.",
+                options: ["parental", "gross", "optimal", "cognitive"],
+                ans: 0,
+            },
+            {
+                q: "Sometimes early medical __ can prevent serious problems later.",
+                options: ["maturity", "intervention", "temperament", "decade"],
+                ans: 1,
+            },
+            {
+                q: "A good teacher is __ to students’ questions and needs.",
+                options: ["gross", "mature", "responsive", "cognitive"],
+                ans: 2,
+            },
+            {
+                q: "Emotional __ often develops with age and life experience.",
+                options: ["decade", "maturity", "intervention", "gross"],
+                ans: 1,
+            },
+            {
+                q: "Memory and problem-solving are important __ skills.",
+                options: ["parental", "cognitive", "optimal", "gross"],
+                ans: 1,
+            },
+            {
+                q: "Children have different personalities; some are calm while others have a more active ______.",
+                options: ["decade", "temperament", "intervention", "maturity"],
+                ans: 1,
+            },
+            {
+                q: "He made a __ mistake that embarrassed everyone in the meeting.",
+                options: ["responsive", "cognitive", "gross", "parental"],
+                ans: 2,
+            },
+            {
+                q: "Please double-check the report to __ that all the information is correct.",
+                options: ["ensure", "mature", "intervene", "respond"],
+                ans: 0,
+            },
+            {
+                q: "The police are investigating how the car accident did __ in the middle of the night.",
+                options: ["recognize", "contribute", "occur", "delivery"],
+                ans: 2,
+            },
+            {
+                q: "The local hospital has modern __ to treat patients more effectively.",
+                options: ["hygiene", "facilities", "issues", "Diarrhea"],
+                ans: 1,
+            },
+            {
+                q: "The new smartphone is __ designed for young people who love photography.",
+                options: ["primarily", "complementary", "occur", "recognize"],
+                ans: 0,
+            },
+            {
+                q: "Poor personal __ can lead to the spread of many skin diseases.",
+                options: ["delivery", "hygiene", "facilities", "issues"],
+                ans: 1,
+            },
+            {
+                q: "Drinking dirty water is one of the main causes of __ and dehydration.",
+                options: ["delivery", "Diarrhea", "maturity", "recognize"],
+                ans: 1,
+            },
+            {
+                q: "The company promised that the __ of your order will take less than 48 hours.",
+                options: ["occurrence", "delivery", "hygiene", "issue"],
+                ans: 1,
+            },
+            {
+                q: "Global warming is one of the most important environmental __ of our century.",
+                options: ["issues", "facilities", "Diarrhea", "deliver"],
+                ans: 0,
+            },
+            {
+                q: "After many years, I could hardly __ my old school friend at the airport.",
+                options: ["occur", "recognize", "contribute", "ensure"],
+                ans: 1,
+            },
+            {
+                q: "Scientific studies show that smoking can __ to various heart problems.",
+                options: ["recognize", "delivery", "contribute", "occur"],
+                ans: 2,
+            },
+            {
+                q: "In addition to milk, babies need __ foods like mashed vegetables as they grow.",
+                options: ["complementary", "primarily", "gross", "parental"],
+                ans: 0,
+            },
+            {
+                q: "Clean water and proper waste disposal are necessary to maintain __ conditions in a city.",
+                options: ["respiratory", "sanitary", "contributing", "industrial"],
+                ans: 1,
+            },
+            {
+                q: "Farmers often spray __ on crops to protect them from insects.",
+                options: ["pollution", "stove", "insecticide", "facility"],
+                ans: 2,
+            },
+            {
+                q: "Sleep is __ for both physical and mental health.",
+                options: ["essential", "sanitary", "contributing", "worldwide"],
+                ans: 0,
+            },
+            {
+                q: "Air __ in large cities can seriously affect people’s health.",
+                options: ["stove", "pollution", "maturity", "intervention"],
+                ans: 1,
+            }
+        ],
+        exam3: [
+            {
+                q: "The doctor tried to __ the cause of the illness.",
+                options: ["survive", "determine", "outline", "enhance"],
+                ans: 1,
+            },
+            {
+                q: "People with allergies are often more __ to dust and pollen.",
+                options: ["susceptible", "restrained", "mature", "primary"],
+                ans: 0,
+            },
+            {
+                q: "Reading books can improve your __ health.",
+                options: ["mental", "violent", "neonatal", "overweight"],
+                ans: 0,
+            },
+            {
+                q: "This course will __ your speaking skills.",
+                options: ["decrease", "enhance", "drop", "precede"],
+                ans: 1,
+            },
+            {
+                q: "She is an __ in biology.",
+                options: ["expert", "vehicle", "baseline", "consequence"],
+                ans: 0,
+            },
+            {
+                q: "The police began an __ into the theft.",
+                options: ["investigation", "obesity", "shift", "prenatal"],
+                ans: 0,
+            },
+            {
+                q: "I’m asking __ your last message.",
+                options: ["regarding", "disregarding", "survived", "appropriate"],
+                ans: 0,
+            },
+            {
+                q: "He was punished for __ the rules.",
+                options: ["regarding", "disregarding", "initiating", "enhancing"],
+                ans: 1,
+            },
+            {
+                q: "The __ reason for the delay was bad weather.",
+                options: ["primary", "emotional", "acquired", "violent"],
+                ans: 0,
+            },
+            {
+                q: "The movie showed a very __ scene.",
+                options: ["violent", "mature", "restrained", "baseline"],
+                ans: 0,
+            },
+            {
+                q: "Please wear __ clothes for the interview.",
+                options: ["appropriate", "overactive", "neonatal", "susceptible"],
+                ans: 0,
+            },
+            {
+                q: "The patient __ after the accident.",
+                options: ["survived", "outlined", "initiated", "determined"],
+                ans: 0,
+            },
+            {
+                q: "This skill is ______, not something people are born with.",
+                options: ["acquired", "emotional", "primitive", "restrained"],
+                ans: 0,
+            },
+            {
+                q: "He has the __ to become a great leader.",
+                options: ["potential", "guideline", "vehicle", "consequence"],
+                ans: 0,
+            },
+            {
+                q: "She is still not __ enough to make that decision.",
+                options: ["mature", "dehydrated", "obese", "susceptible"],
+                ans: 0,
+            },
+            {
+                q: "He became very __ during the sad movie.",
+                options: ["emotional", "primary", "violent", "prenatal"],
+                ans: 0,
+            },
+            {
+                q: "The company made several __ in the schedule.",
+                options: ["shifts", "investigations", "vehicles", "guidelines"],
+                ans: 0,
+            },
+            {
+                q: "Follow the safety __ carefully.",
+                options: ["guidelines", "potential", "baseline", "expert"],
+                ans: 0,
+            },
+            {
+                q: "Many animals __ the winter by storing fat.",
+                options: ["survive", "precede", "outline", "determine"],
+                ans: 0,
+            },
+            {
+                q: "We need to __ the project before starting.",
+                options: ["initiate", "enhance", "survive", "disregard"],
+                ans: 0,
+            },
+            {
+                q: "Can you __ the main ideas of the article?",
+                options: ["outline", "restrain", "survive", "determine"],
+                ans: 0,
+            },
+            {
+                q: "The student __ the teacher during the explanation.",
+                options: ["preceded", "determined", "acquired", "enhanced"],
+                ans: 0,
+            },
+            {
+                q: "Regular exercise improves ______.",
+                options: ["fitness", "obesity", "dehydration", "hypertension"],
+                ans: 0,
+            },
+            {
+                q: "Too much fast food can lead to ______.",
+                options: ["obesity", "maturity", "baseline", "investigation"],
+                ans: 0,
+            },
+            {
+                q: "The accident had serious ______.",
+                options: ["consequences", "guidelines", "potentials", "vehicles"],
+                ans: 0,
+            },
+            {
+                q: "Sales __ sharply last month.",
+                options: ["dropped", "survived", "enhanced", "determined"],
+                ans: 0,
+            },
+            {
+                q: "She spoke in a calm and __ voice.",
+                options: ["restrained", "violent", "overactive", "susceptible"],
+                ans: 0,
+            },
+            {
+                q: "The new __ is being repaired.",
+                options: ["vehicle", "guideline", "baseline", "consequence"],
+                ans: 0,
+            },
+            {
+                q: "This measurement will be used as the ______.",
+                options: ["baseline", "neonatal", "susceptible", "emotional"],
+                ans: 0,
+            },
+            {
+                q: "__ care is important before birth.",
+                options: ["prenatal", "obesity", "mental", "violent"],
+                ans: 0,
+            },
+            {
+                q: "__ care is given to newborn babies.",
+                options: ["neonatal", "primary", "acquired", "regarding"],
+                ans: 0,
+            },
+            {
+                q: "After the long trip, he was badly ______.",
+                options: ["dehydrated", "mature", "restrained", "expert"],
+                ans: 0,
+            },
+            {
+                q: "He is ______, so he needs to watch his diet.",
+                options: ["overweight", "neonatal", "susceptible", "baseline"],
+                ans: 0,
+            },
+            {
+                q: "High blood pressure is called ______.",
+                options: ["hypertension", "obesity", "enhancement", "investigation"],
+                ans: 0,
+            },
+            {
+                q: "The child is very __ and can’t sit still.",
+                options: ["overactive", "mature", "violent", "appropriate"],
+                ans: 0,
+            }
+        ]
+    },
     lesson6: {
         exam1: [
             {
