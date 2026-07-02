@@ -3465,6 +3465,228 @@ const examData = {
     lesson8: {
         exam1: [
             {
+                q: "To function correctly, every biological organism must __ certain essential enzymes.",
+                options: ["nix", "trigger", "possess", "boast"],
+                ans: 2,
+            },
+            {
+                q: "Many parents feel deeply __ of their children's academic and professional achievements.",
+                options: ["proud", "queasy", "willing", "effective"],
+                ans: 0,
+            },
+            {
+                q: "Rice is considered a __ food source in many Asian cultures.",
+                options: ["constituent", "remedy", "staple", "batch"],
+                ans: 2,
+            },
+            {
+                q: "It is unprofessional for a clinician to __ about their previous surgical successes during a consultation.",
+                options: ["possess", "boast", "trigger", "counteract"],
+                ans: 1,
+            },
+            {
+                q: "Before hiring a specialist, the hospital must verify their professional __.",
+                options: ["relief", "shortage", "credentials", "event"],
+                ans: 2,
+            },
+            {
+                q: "The __ of the drug must be tested thoroughly before it is approved for public use.",
+                options: ["quality", "spice", "relief", "spring"],
+                ans: 0,
+            },
+            {
+                q: "Continuous clinical __ is necessary to stay updated with new medical technologies.",
+                options: ["evidence", "training", "cure", "event"],
+                ans: 1,
+            },
+            {
+                q: "Medical professionals gain valuable __ through years of practicing in intensive care units.",
+                options: [
+                    "shortage",
+                    "constituent",
+                    "credentials",
+                    "experience",
+                ],
+                ans: 3,
+            },
+            {
+                q: "The committee decided to __ the proposed changes to the safety protocol.",
+                options: ["nix", "trigger", "boast", "possess"],
+                ans: 0,
+            },
+            {
+                q: "The patient felt __ after being administered the strong anesthetic.",
+                options: ["effective", "proud", "queasy", "willing"],
+                ans: 2,
+            },
+            {
+                q: "The sudden news of the diagnosis left the family deeply __.",
+                options: ["constituent", "upset", "effective", "staple"],
+                ans: 1,
+            },
+            {
+                q: "If the patient continues to __, the doctor may need to perform an endoscopy.",
+                options: ["boast", "trigger", "vomit", "counteract"],
+                ans: 2,
+            },
+            {
+                q: "Symptoms of food poisoning often include feeling __.",
+                options: ["nauseous", "proud", "willing", "effective"],
+                ans: 0,
+            },
+            {
+                q: "Water is a vital __ of all living cells.",
+                options: ["batch", "constituent", "remedy", "shortage"],
+                ans: 1,
+            },
+            {
+                q: "The body uses various mechanisms to __ the effects of toxins.",
+                options: ["boast", "nix", "possess", "counteract"],
+                ans: 3,
+            },
+            {
+                q: "The medicine was designed to __ the symptoms of the infection.",
+                options: ["counter", "trigger", "boast", "nix"],
+                ans: 0,
+            },
+            {
+                q: "Adding certain __ to the diet can enhance the flavor of medicinal herbs.",
+                options: ["batch", "spice", "relief", "shortage"],
+                ans: 1,
+            },
+            {
+                q: "The laboratory processed a new __ of blood samples for testing.",
+                options: ["spring", "event", "credentials", "batch"],
+                ans: 3,
+            },
+            {
+                q: "In medicine, there is often a __ between the speed of recovery and the side effects of a drug.",
+                options: ["trade-off", "remedy", "shortage", "relief"],
+                ans: 0,
+            },
+            {
+                q: "There is strong scientific __ supporting the use of this therapy.",
+                options: ["training", "quality", "evidence", "event"],
+                ans: 2,
+            },
+            {
+                q: "Certain environmental factors can __ an allergic reaction in sensitive patients.",
+                options: ["boast", "trigger", "nix", "possess"],
+                ans: 1,
+            },
+            {
+                q: "Unexpected complications may __ during a complex surgical procedure.",
+                options: ["happen", "boast", "nix", "possess"],
+                ans: 0,
+            },
+            {
+                q: "The hospital is facing a critical __ of specialized nursing staff.",
+                options: ["batch", "shortage", "remedy", "spring"],
+                ans: 1,
+            },
+            {
+                q: "The pure water from the mountain __ is used for high-precision laboratory work.",
+                options: ["spring", "spice", "event", "relief"],
+                ans: 0,
+            },
+            {
+                q: "Apply the __ thinly to the affected area of the skin twice a day.",
+                options: ["constituent", "remedy", "ointment", "batch"],
+                ans: 2,
+            },
+            {
+                q: "The patient complained of a sharp pain in his chest, as if he had received a __.",
+                options: ["staple", "relief", "shortage", "punch"],
+                ans: 3,
+            },
+            {
+                q: "The researchers believe they __ when they discovered the link between the two viruses.",
+                options: [
+                    "are upset",
+                    "are onto something",
+                    "are nauseous",
+                    "are proud",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Honey is often used as a natural __ for a sore throat.",
+                options: ["shortage", "trade-off", "remedy", "constituent"],
+                ans: 2,
+            },
+            {
+                q: "__ the side effects are mild, the medication is still highly recommended.",
+                options: ["Quality", "Even", "Experience", "Evidence"],
+                ans: 1,
+            },
+            {
+                q: "The medical __ was attended by doctors from all over the world.",
+                options: ["event", "spring", "batch", "spice"],
+                ans: 0,
+            },
+            {
+                q: "The sudden __ of the specialized equipment delayed the surgery.",
+                options: ["training", "credentials", "quality", "pulling out"],
+                ans: 3,
+            },
+            {
+                q: "The laboratory supplies are organized on a metal __.",
+                options: ["spring", "rack", "batch", "spice"],
+                ans: 1,
+            },
+            {
+                q: "Hygiene and sanitation are essential components of a healthy __.",
+                options: [
+                    "credentials",
+                    "shortage",
+                    "household",
+                    "constituent",
+                ],
+                ans: 2,
+            },
+            {
+                q: "The new antibiotic proved to be highly __ against the bacteria.",
+                options: ["queasy", "effective", "proud", "willing"],
+                ans: 1,
+            },
+            {
+                q: "The patient felt immediate __ after the administration of the painkiller.",
+                options: ["shortage", "trade-off", "event", "relief"],
+                ans: 3,
+            },
+            {
+                q: "The nursing staff is deeply __ the patient's rapid decline in health.",
+                options: [
+                    "concerned about",
+                    "proud of",
+                    "willing to",
+                    "effective at",
+                ],
+                ans: 0,
+            },
+            {
+                q: "The __ of certain medications can lead to increased toxicity in the body.",
+                options: ["training", "overuse", "quality", "evidence"],
+                ans: 1,
+            },
+            {
+                q: "There is no permanent __ for the common cold, but symptoms can be managed.",
+                options: ["shortage", "batch", "cure", "event"],
+                ans: 2,
+            },
+            {
+                q: "The __ was very cooperative during the clinical trial.",
+                options: ["constituent", "remedy", "shortage", "patient"],
+                ans: 3,
+            },
+            {
+                q: "The volunteers were __ to participate in the health awareness campaign.",
+                options: ["nauseous", "willing", "upset", "queasy"],
+                ans: 1,
+            },
+        ],
+        exam2: [
+            {
                 q: "She was very __ to help her friend move to a new apartment.",
                 options: ["willing", "slight", "reserved", "obvious"],
                 ans: 0,
@@ -3722,6 +3944,173 @@ const examData = {
             {
                 q: "__ is a useful technique to relieve tension through pressure points.",
                 options: ["acupressure", "surgery", "pediatrics", "infection"],
+                ans: 0,
+            },
+        ],
+        exam3: [
+            {
+                q: "The patient complained of __ after taking the medicine.",
+                options: ["purity", "credentials", "nausea", "batch"],
+                ans: 2,
+            },
+            {
+                q: "She wore a watch on her __.",
+                options: ["ankle", "wrist", "ingredient", "elbow"],
+                ans: 1,
+            },
+            {
+                q: "He hurt his __ while playing basketball.",
+                options: ["elbow", "purity", "ankle", "wrist"],
+                ans: 0,
+            },
+            {
+                q: "She twisted her __ while running.",
+                options: ["batch", "wrist", "elbow", "ankle"],
+                ans: 3,
+            },
+            {
+                q: "The doctor’s explanation was still __ to the patient.",
+                options: ["conventional", "unclear", "confirmed", "scientific"],
+                ans: 1,
+            },
+            {
+                q: "My muscles feel sore and __ after the workout.",
+                options: ["staple", "achy", "proud", "negligible"],
+                ans: 1,
+            },
+            {
+                q: "If you feel worse, call the clinic __.",
+                options: [
+                    "immediately",
+                    "scientifically",
+                    "fruitlessly",
+                    "occasionally",
+                ],
+                ans: 0,
+            },
+            {
+                q: "Please __ the juice into the glass.",
+                options: ["confirm", "squeeze", "boast", "treat"],
+                ans: 1,
+            },
+            {
+                q: "I like all fruits, __ apples and grapes.",
+                options: [
+                    "negligible",
+                    "especially",
+                    "conventional",
+                    "forthwith",
+                ],
+                ans: 1,
+            },
+            {
+                q: "He has an __ headache, but it is not serious.",
+                options: ["fruitless", "occasional", "cranked", "pure"],
+                ans: 1,
+            },
+            {
+                q: "This is the most __ way to treat the illness.",
+                options: [
+                    "forbidding",
+                    "negligible",
+                    "conventional",
+                    "unclear",
+                ],
+                ans: 2,
+            },
+            {
+                q: "Could you do me a __ and help me study?",
+                options: ["ingredient", "diarrhea", "counteract", "favor"],
+                ans: 3,
+            },
+            {
+                q: "Their search for the missing key was __.",
+                options: ["immediate", "scientific", "fruitless", "proud"],
+                ans: 2,
+            },
+            {
+                q: "The drug must be tested __ before it is sold.",
+                options: [
+                    "occasionally",
+                    "scientifically",
+                    "fruitlessly",
+                    "conventionally",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Milk is an important __ in this recipe.",
+                options: ["evidence", "ingredient", "elbow", "favor"],
+                ans: 1,
+            },
+            {
+                q: "Bright colors can __ the reader’s attention.",
+                options: ["deal with", "catch", "trigger", "confirm"],
+                ans: 1,
+            },
+            {
+                q: "The __ of medicine has gone up this year.",
+                options: ["purity", "price", "batch", "queue"],
+                ans: 1,
+            },
+            {
+                q: "This factory can __ medical equipment.",
+                options: ["treat", "manufacture", "confirm", "trigger"],
+                ans: 1,
+            },
+            {
+                q: "The dark mountain path looked __ at night.",
+                options: ["negligible", "forbidding", "proud", "conventional"],
+                ans: 1,
+            },
+            {
+                q: "Doctors must __ many kinds of patients every day.",
+                options: ["boast about", "deal with", "squeeze", "confirm"],
+                ans: 1,
+            },
+            {
+                q: "The clinic was crowded __ a shortage of staff.",
+                options: [
+                    "especially",
+                    "due to",
+                    "occasionally",
+                    "immediately",
+                ],
+                ans: 1,
+            },
+            {
+                q: "The side effect was so small that it was __.",
+                options: ["forbidding", "negligible", "fruitless", "achy"],
+                ans: 1,
+            },
+            {
+                q: "The __ of the water was tested in the laboratory.",
+                options: ["price", "evidence", "purity", "favor"],
+                ans: 2,
+            },
+            {
+                q: "Doctors __ infections with the right medicine.",
+                options: ["catch", "boast", "treat", "confirm"],
+                ans: 2,
+            },
+            {
+                q: "The little __ was walking very unsteadily.",
+                options: ["constituent", "toddler", "spring", "batch"],
+                ans: 1,
+            },
+            {
+                q: "The baby is usually __ when he is tired.",
+                options: ["conventional", "pure", "cranky", "scientifically"],
+                ans: 2,
+            },
+            {
+                q: "The doctor said the infant’s crying was caused by __.",
+                options: ["nausea", "colic", "clearness", "favor"],
+                ans: 1,
+            },
+            {
+                q: "Spoiled food can cause __.",
+                options: ["diarrhea", "credentials", "elbow", "batch"],
                 ans: 0,
             },
         ],
