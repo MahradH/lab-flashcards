@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>مرور کلمات زبان عمومی ۱</title>
+        <title>آموزش زبان انگلیسی — فلش‌کارت و خواندن</title>
 
         <link rel="icon" type="image/png" href="logo.png" />
 
@@ -13,6 +13,7 @@
             href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap"
             rel="stylesheet"
         />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
         <style>
             :root {
@@ -650,8 +651,435 @@
                 margin-bottom: 20px;
             }
         </style>
+        <style id="readingStyles">
+#readingView{
+  --bg:#f4f6f9;
+  --card:#ffffff;
+  --text:#1f2937;
+  --secondary:#6b7280;
+  --border:#e5e7eb;
+  --primary:#2563eb;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}[data-theme="dark"] #readingView{
+  --bg:#111827;
+  --card:#1f2937;
+  --text:#f3f4f6;
+  --secondary:#9ca3af;
+  --border:#374151;
+  --primary:#3b82f6;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}#readingView *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}#readingView{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}#readingView .sidebar{
+  width:300px;
+  position:sticky;
+  top:84px;
+  height:calc(100vh - 104px);
+  padding:28px;
+  background:var(--card);
+
+  border:1px solid var(--border);
+  border-radius:36px;
+  overflow-y:auto;
+  flex-shrink:0;
+  box-shadow:
+    0 25px 50px rgba(0,0,0,.08),
+    0 10px 25px rgba(0,0,0,.05);
+  transition:.3s ease;
+}#readingView .sidebar:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 35px 70px rgba(0,0,0,.12),
+    0 15px 35px rgba(0,0,0,.08);
+}#readingView .logo{
+  margin-bottom:24px;
+  padding-bottom:20px;
+  text-align:center;
+
+  border-bottom:1px solid var(--border);
+}#readingView .lesson-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}#readingView .lesson-item{
+  padding:16px 20px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  cursor:pointer;
+  transition:.25s;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}#readingView .lesson-num{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--primary);
+}#readingView .lesson-title-sub{
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.4;
+}#readingView .lesson-item:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 24px rgba(0,0,0,.08);
+}#readingView .lesson-item.active{
+
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa
+  );
+  border-color:transparent;
+  box-shadow:0 12px 30px rgba(37,99,235,.35);
+}#readingView .lesson-item.active .lesson-num{
+  color:rgba(255,255,255,0.9);
+}#readingView .lesson-item.active .lesson-title-sub{
+  color:#fff;
+}#readingView .content{
+  flex:1;
+  min-width:0;
+
+  padding:20px;
+}#readingView .lesson-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:32px;
+  padding:32px;
+  box-shadow:0 25px 50px rgba(0,0,0,.06);
+  backdrop-filter:blur(20px);
+}#readingView .lesson-card h1{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:12px;
+}#readingView .section{
+  margin-top:24px;
+  border:1px solid var(--border);
+
+  border-radius:18px;
+  overflow:hidden;
+}#readingView .section-header{
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  background:rgba(0,0,0,.03);
+  user-select:none;
+}#readingView .section-header .chevron-icon{
+  transition:transform 0.25s ease;
+}#readingView .section.collapsed .chevron-icon{
+  transform:rotate(-90deg);
+}#readingView .section-body{
+  padding:22px;
+}#readingView .hidden{
+  display:none !important;
+}#readingView .search-hidden{
+  display:none !important;
+}#readingView .search-box-container{
+  margin-bottom:20px;
+}#readingView .search-input-wrapper{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  background:var(--bg);
+  border:1px solid var(--border);
+  padding:10px 16px;
+  border-radius:14px;
+  color:var(--secondary);
+}#readingView .search-input-wrapper input{
+  border:none;
+  background:transparent;
+  color:var(--text);
+  font-size:15px;
+  width:100%;
+  outline:none;
+}#readingView .reading-block{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+
+}#readingView .reading-block:last-child{
+  margin-bottom:0;
+}#readingView .english{
+  margin:18px 0;
+  line-height:1.9;
+  font-size:19px;
+  font-weight:500;
+  color:var(--text);
+}#readingView .persian{
+  direction:rtl;
+  font-family:Vazirmatn,sans-serif;
+  color:var(--secondary);
+  line-height:2;
+  font-size:16px;
+  font-weight:300;
+
+}#readingView .custom-highlight{
+  background-color:#fef08a;
+  color:#1e3a8a;
+  padding:2px 4px;
+  border-radius:4px;
+  cursor:pointer;
+  border-bottom:2px solid #eab308;
+  transition:background-color 0.2s;
+}[data-theme="dark"] .custom-highlight #readingView{
+  background-color:#3e3a1f;
+  color:#fef08a;
+  border-bottom:2px solid #ca8a04;
+}#readingView .custom-highlight:hover{
+  background-color:#fde047;
+}[data-theme="dark"] .custom-highlight:hover #readingView{
+  background-color:#4e4822;
+}#readingView audio{
+  width:100%;
+  margin-top:16px;
+}#readingView .vocab-item, #readingView .marked-item{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--border);
+}#readingView .vocab-item:last-child, #readingView .marked-item:last-child{
+  border-bottom:none;
+}#readingView .word{
+  font-size:18px;
+  font-weight:600;
+}#readingView .pronunciation{
+  color:var(--secondary);
+  margin-top:4px;
+  font-size:14px;
+}#readingView .translation{
+  margin-top:8px;
+  font-family:Vazirmatn,sans-serif;
+  direction:rtl;
+  font-weight:400;
+
+}#readingView .vocab-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}#readingView .action-btn{
+  width:38px;
+  height:38px;
+  border:none;
+  background:none;
+  color:var(--secondary);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  transition:all 0.2s ease;
+}#readingView .action-btn:hover{
+  background:rgba(0,0,0,.05);
+  color:var(--primary);
+  transform:scale(1.05);
+}[data-theme="dark"] .action-btn:hover #readingView{
+  background:rgba(255,255,255,.05);
+}#readingView .mark-btn{
+  width:38px;
+  height:38px;
+  background:none;
+  border:none;
+  color:var(--secondary);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.2s;
+}#readingView .mark-btn.marked{
+  color:#eab308;
+}#readingView .mark-btn:hover{
+  transform:scale(1.1);
+}#readingView .empty-state{
+  color:var(--secondary);
+  text-align:center;
+  padding:30px 0;
+}#readingView .app-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}[data-theme="dark"] .app-header #readingView{
+  background:rgba(17,24,39,.75);
+}#readingView .header-center{display:flex;gap:8px;}#readingView .icon-btn, #readingView .page-btn{
+  width:42px;height:42px;border:none;border-radius:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);color:var(--text);
+  border:1px solid var(--border);transition:.2s;
+}#readingView .icon-btn:hover, #readingView .page-btn:hover, #readingView .sky-banner:hover{transform:translateY(-2px);}#readingView .page-btn.active{background:var(--primary);color:#fff;border-color:transparent;}#readingView .app-container{
+  display:flex;
+  gap:24px;
+  padding:20px;
+  min-height:calc(100vh - 64px);
+}#readingView .sky-banner{
+
+  display:flex;justify-content:center;align-items:center;
+  width:max-content;margin:20px auto;padding:10px 18px;
+  border-radius:999px;background:var(--card);
+  border:1px solid var(--border);color:var(--secondary);
+  box-shadow:var(--shadow);cursor:pointer;transition:.2s;
+  font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+}#readingView .sky-banner:hover{color:var(--primary);}#readingView .sidebar.hidden-sidebar{
+    display:none;
+}#readingView .content{
+    flex:1;
+}
+
+@media(max-width:900px){#readingView .app-container{
+    padding:12px;
+    gap:12px;
+  }#readingView .sidebar{
+    position: fixed;
+    top: 0;
+    left: -320px; /* منو را در حالت عادی خارج از صفحه نگه می‌دارد */
+    width: 300px;
+    max-width: 85%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0 36px 36px 0; /* گرد کردن لبه‌های سمت راست منو */
+    z-index: 10005; /* قرارگیری روی تمامی المان‌ها */
+    box-shadow: 10px 0 40px rgba(0,0,0,.15);
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* انیمیشن نرم ورود و خروج */
+    display: block !important;
+  }#readingView /* وقتی کلاس mobile-show فعال شود، منو ظاهر می‌شود */
+  .sidebar.mobile-show{
+    left: 0 !important;
+  }#readingView .content{
+    padding:0;
+  }
+}#readingView .sky-modal{
+  position:fixed;inset:0;display:none;justify-content:center;align-items:center;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(10px);z-index:9999;padding:24px;
+}#readingView .sky-modal.active{display:flex;}#readingView .sky-card{
+  position:relative;width:100%;max-width:420px;background:var(--card);
+  border:1px solid var(--border);border-radius:28px;padding:36px;text-align:center;
+
+  box-shadow:var(--shadow);
+}#readingView .sky-card h2{margin-bottom:12px;}#readingView .sky-card p{color:var(--secondary);line-height:1.8;}#readingView .sky-close{
+  position:absolute;top:14px;right:18px;border:none;background:none;
+  color:var(--secondary);font-size:30px;cursor:pointer;
+}#readingView .app-header{
+    position: sticky;
+}#readingView #developerBtn{
+    position:absolute;
+    left:72px;      /* adjust if needed */
+    top:50%;
+    transform:translateY(-50%);
+}
+        </style>
+        <style>
+/* ==== combined-site shell ==== */
+.shell-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 4px 0 6px;
+    position: relative;
+    z-index: 1300;
+}
+.shell-tabs {
+    display: flex;
+    gap: 6px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    border-radius: 999px;
+    box-shadow: var(--card-shadow);
+}
+.shell-tab {
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.shell-tab:hover { color: var(--text-main); }
+.shell-tab.active {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+#flashView, #readingView { width: 100%; }
+#flashView[hidden], #readingView[hidden] { display: none !important; }
+#flashView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#readingView {
+    direction: ltr;
+    font-family: Inter, Vazirmatn, sans-serif;
+}
+#readingView .book-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+#readingView .book-btn {
+    flex: 1;
+    padding: 9px 0;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#readingView .book-btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.28);
+}
+#readingView .reading-pair {
+    border-bottom: 1px dashed var(--border);
+    padding: 8px 0;
+}
+#readingView .reading-pair:last-child { border-bottom: none; }
+#readingView .reading-pair p { margin: 4px 0 8px; }
+#readingView .reading-pairs { margin-top: 8px; }
+/* ==== end shell ==== */
+</style>
     </head>
     <body>
+<nav class="shell-nav">
+            <div class="shell-tabs">
+                <button id="tabFlash" class="shell-tab active" onclick="switchView('flash')">🎯 فلش‌کارت‌ها</button>
+                <button id="tabRead" class="shell-tab" onclick="switchView('reading')">📖 متن خواندن</button>
+            </div>
+        </nav>
+        <div id="flashView" class="app-view">
         <div class="bg-layer">
             <div class="bg-blob bg-blob-1"></div>
             <div class="bg-blob bg-blob-2"></div>
@@ -804,9 +1232,13 @@
         </div>
 
         <div class="header">
-            <h1>مرور کلمات زبان عمومی ۱</h1>
+            <h1 id="mainTitle">مرور کلمات زبان عمومی ۱</h1>
 
             <div class="selectors-grid" id="mainSelectors">
+                <select id="bookSelect" class="custom-select" onchange="switchBook(this.value)">
+                    <option value="b1">زبان عمومی ۱</option>
+                    <option value="b2">زبان عمومی ۲</option>
+                </select>
                 <select
                     id="lessonSelect"
                     class="custom-select"
@@ -1049,9 +1481,200 @@
             </div>
         </div>
 
-        <script src="data.js"></script>
+        </div>
+        <div id="readingView" class="app-view" hidden>
 
+<div class="app-header">
+  <button id="lessonToggle" class="icon-btn">
+    <svg width="20" height="20" viewBox="0 
+
+0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+   <button id="developerBtn" class="icon-btn" title="Developer Team">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+        </button>
+
+  <div class="header-center">
+    <button class="page-btn active" data-page="lessons" title="Lessons">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"></path></svg>
+    </button>
+
+    <button class="page-btn" data-page="marked" title="Marked Words">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+    </button>
+  </div>
+
+  <button id="readingThemeToggle" class="icon-btn"></button>
+</div>
+
+<div class="sky-banner" id="openSkyModal">
+  ✦ made by Sky ✦
+</div>
+
+
+<div class="app-container">
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">
+      <div style="
+        width:72px;
+        height:72px;
+        margin:0 auto 16px;
+        border-radius:22px;
+        background:linear-gradient(135deg,#2563eb,#60a5fa);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:white;
+        box-shadow:0 12px 25px rgba(37,99,235,.35);
+      ">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+
+stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"></path></svg>
+      </div>
+      <h2>English Learning</h2>
+    </div>
+    <div class="book-switch" id="readingBookSwitch">
+      <button class="book-btn active" data-book="1" onclick="switchReadingBook('1')">English 1</button>
+      <button class="book-btn" data-book="2" onclick="switchReadingBook('2')">English 2</button>
+    </div>
+    <div id="lessonList" class="lesson-list"></div>
+  </aside>
+
+  <main class="content">
+    <section id="lessonsPage"></section>
+
+    <section id="markedPage" class="hidden">
+      <div class="lesson-card">
+        <h1>Marked Words</h1>
+        <div class="search-box-container">
+          <div class="search-input-wrapper">
+
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="markedSearchInput" placeholder="Search marked words..." oninput="onMarkedSearch(this.value)">
+          </div>
+        </div>
+        <div id="markedWordsContainer"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="sky-modal" id="developerModal">
+    <div class="sky-card">
+        <button class="sky-close" id="closeDeveloperModal">&times;</button>
+
+        <h2>Developer Team</h2>
+
+        <div style="margin-top:25px;text-align:left;line-height:2.1">
+
+            <div style="margin-bottom:18px;">
+                <div style="font-size:13px;color:var(--secondary);">
+                    Project Manager
+                </div>
+
+                <div style="font-size:19px;font-weight:700;">
+                    Fatemeh Ebrahimi
+                </div>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <div style="font-size:13px;color:var(--secondary);">
+                    Developer
+                </div>
+
+                <div style="font-size:19px;font-weight:700;">
+                    Amir Salar Sahampour
+                </div>
+            </div>
+
+            <div>
+                <div style="font-size:13px;color:var(--secondary);">
+                    Voice Narration
+                </div>
+
+                <div style="font-size:19px;font-weight:700;">
+                    Hossein Hosseini<br>
+                    Saria Moradi
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="sky-modal" id="skyModal">
+  <div class="sky-card">
+    <button class="sky-close" id="closeSkyModal">&times;</button>
+    <h2>What are you looking for?</h2>
+  </div>
+        </div>
+        <script src="data.js"></script>
+        <script src="data-en2.js"></script>
+        <script src="reading-data-1.js"></script>
+        <script src="reading-data-2.js"></script>
         <script>
+// ==== book switcher (English 1 / English 2) ====
+            let activeBook =
+                localStorage.getItem("mahrad_book") === "b2" ? "b2" : "b1";
+            function getBookData() {
+                return activeBook === "b2" ? lessonsData2 : lessonsData;
+            }
+            function getExamData() {
+                return activeBook === "b2" ? examData2 : examData;
+            }
+            function savedLessonKey() {
+                return activeBook === "b2"
+                    ? "mahrad_saved_lesson_b2"
+                    : "mahrad_saved_lesson";
+            }
+            function savedIndexKey() {
+                return activeBook === "b2"
+                    ? "mahrad_saved_index_b2"
+                    : "mahrad_saved_index";
+            }
+            function populateLessonSelect() {
+                lessonSelect.innerHTML = "";
+                for (let key in getBookData()) {
+                    let option = document.createElement("option");
+                    option.value = key;
+                    option.text = getBookData()[key].title;
+                    lessonSelect.appendChild(option);
+                }
+            }
+            function switchBook(book) {
+                if (book === activeBook) return;
+                activeBook = book;
+                localStorage.setItem("mahrad_book", book);
+                populateLessonSelect();
+                const saved = localStorage.getItem(savedLessonKey());
+                if (saved && getBookData()[saved]) {
+                    currentLessonKey = saved;
+                } else {
+                    currentLessonKey = Object.keys(getBookData())[0] || "";
+                }
+                lessonSelect.value = currentLessonKey;
+                const titleEl = document.getElementById("mainTitle");
+                if (titleEl) {
+                    titleEl.textContent =
+                        activeBook === "b2"
+                            ? "مرور کلمات زبان عمومی ۲"
+                            : "مرور کلمات زبان عمومی ۱";
+                }
+                updateExamSelectorOptions();
+                resetExamUI();
+                applyFiltering();
+            }
+            // ====
             let currentLessonKey = "";
             let filteredWords = [];
             let currentIndex = 0;
@@ -1406,21 +2029,21 @@
                 updateAnimIcons();
 
                 lessonSelect.innerHTML = "";
-                for (let key in lessonsData) {
+                for (let key in getBookData()) {
                     let option = document.createElement("option");
                     option.value = key;
-                    option.text = lessonsData[key].title;
+                    option.text = getBookData()[key].title;
                     lessonSelect.appendChild(option);
                 }
 
-                const savedLesson = localStorage.getItem("mahrad_saved_lesson");
-                const savedIndex = localStorage.getItem("mahrad_saved_index");
+                const savedLesson = localStorage.getItem(savedLessonKey());
+                const savedIndex = localStorage.getItem(savedIndexKey());
 
-                if (savedLesson && lessonsData[savedLesson]) {
+                if (savedLesson && getBookData()[savedLesson]) {
                     currentLessonKey = savedLesson;
                     lessonSelect.value = savedLesson;
                 } else {
-                    currentLessonKey = Object.keys(lessonsData)[0] || "";
+                    currentLessonKey = Object.keys(getBookData())[0] || "";
                     lessonSelect.value = currentLessonKey;
                 }
 
@@ -1432,8 +2055,8 @@
 
             function updateExamSelectorOptions() {
                 examSelect.innerHTML = "";
-                if (examData && examData[currentLessonKey]) {
-                    Object.keys(examData[currentLessonKey]).forEach(
+                if (getExamData() && getExamData()[currentLessonKey]) {
+                    Object.keys(getExamData()[currentLessonKey]).forEach(
                         (examKey, index) => {
                             let option = document.createElement("option");
                             option.value = examKey;
@@ -1517,9 +2140,9 @@
             }
 
             function applyFiltering(resetIndex = true) {
-                if (!currentLessonKey || !lessonsData[currentLessonKey]) return;
+                if (!currentLessonKey || !getBookData()[currentLessonKey]) return;
                 const allWordsInLesson =
-                    lessonsData[currentLessonKey].words || [];
+                    getBookData()[currentLessonKey].words || [];
                 const activeFilter = filterSelect.value;
 
                 filteredWords = allWordsInLesson.filter((word) => {
@@ -1622,16 +2245,16 @@
             function startExam() {
                 const selectedExamKey = examSelect.value;
                 if (
-                    !examData ||
-                    !examData[currentLessonKey] ||
-                    !examData[currentLessonKey][selectedExamKey]
+                    !getExamData() ||
+                    !getExamData()[currentLessonKey] ||
+                    !getExamData()[currentLessonKey][selectedExamKey]
                 ) {
                     alert("هنوز آزمونی برای این بخش ثبت نشده است!");
                     return;
                 }
 
                 currentExamQuestions =
-                    examData[currentLessonKey][selectedExamKey];
+                    getExamData()[currentLessonKey][selectedExamKey];
                 currentExamQuestionIndex = 0;
                 examUserAnswers = new Array(currentExamQuestions.length).fill(
                     null,
@@ -1808,7 +2431,7 @@
                 quizOptions.innerHTML = "";
 
                 const allWordsInLesson =
-                    lessonsData[currentLessonKey].words || [];
+                    getBookData()[currentLessonKey].words || [];
                 let pool = allWordsInLesson.filter(
                     (w) => w.en !== correctWord.en,
                 );
@@ -1844,7 +2467,7 @@
                     selectedBtn.classList.add("wrong");
                     playSoundEffect("fail");
                     buttons.forEach((btn) => {
-                        const currentWordObj = lessonsData[
+                        const currentWordObj = getBookData()[
                             currentLessonKey
                         ].words.find((w) => w.fa === btn.textContent);
                         if (currentWordObj && currentWordObj.en === correctEn) {
@@ -1925,6 +2548,8 @@
 
                 document.documentElement.setAttribute("data-theme", newTheme);
                 localStorage.setItem("mahrad_theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+                if (typeof applyTheme === "function") applyTheme(newTheme);
                 updateThemeIcons(newTheme);
             }
 
@@ -1960,6 +2585,7 @@
             );
 
             function handleSwipe() {
+                if (document.getElementById("flashView")?.hidden) return;
                 if (currentMode !== "exam") {
                     if (touchendX < touchstartX - 60) nextWord();
                     if (touchendX > touchstartX + 60) prevWord();
@@ -1967,6 +2593,533 @@
             }
 
             initApp();
+        </script>
+        <script>
+
+const MARKED_KEY = "marked_words";
+let activeReadingBook =
+    localStorage.getItem("mahrad_rbook") === "2" ? "2" : "1";
+function lastLessonKey() {
+    return "last_lesson_id_b" + activeReadingBook;
+}
+
+const SVG_CHEVRON = `<svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+const SVG_STAR_FILLED = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+const SVG_STAR_OUTLINE = `<svg width="20" height="20" viewBox="0 0 24 
+
+24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+const SVG_SPEAKER = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
+const SVG_SEARCH = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`;
+
+const SVG_SUN = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+const SVG_MOON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-
+
+linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+
+const developerBtn = document.getElementById("developerBtn");
+const developerModal = document.getElementById("developerModal");
+const closeDeveloperModal = document.getElementById("closeDeveloperModal");
+
+developerBtn.onclick = () => {
+    developerModal.classList.add("active");
+};
+
+closeDeveloperModal.onclick = () => {
+    developerModal.classList.remove("active");
+};
+
+developerModal.onclick = (e) => {
+    if (e.target === developerModal) {
+        developerModal.classList.remove("active");
+    }
+};
+
+
+
+let sectionOpenStates = {
+  reading: true,
+  vocabulary: true,
+  grammar: true
+};
+
+function loadLessons() {
+  return activeReadingBook === "2" ? readingLessons2 : readingLessons1;
+}
+
+function getMarkedWords() {
+
+  return JSON.parse(localStorage.getItem(MARKED_KEY)) || [];
+}
+
+function saveMarkedWords(words) {
+  localStorage.setItem(MARKED_KEY, JSON.stringify(words));
+}
+
+let lessons = loadLessons();
+let currentLesson = lessons[0];
+
+const savedLessonId = localStorage.getItem(lastLessonKey());
+if (savedLessonId) {
+  const found = lessons.find(l => l.id == savedLessonId);
+  if (found) currentLesson = found;
+}
+
+function switchReadingBook(book) {
+    if (book === activeReadingBook) return;
+    activeReadingBook = book;
+    localStorage.setItem("mahrad_rbook", book);
+    lessons = loadLessons();
+    currentLesson = lessons[0];
+    const savedId = localStorage.getItem(lastLessonKey());
+    if (savedId) {
+        const found = lessons.find((l) => l.id == savedId);
+        if (found) currentLesson = found;
+    }
+    document.querySelectorAll("#readingBookSwitch .book-btn").forEach((b) => {
+        b.classList.toggle("active", b.dataset.book === book);
+    });
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) {
+        sidebar.classList.remove("mobile-show");
+        sidebar.classList.remove("hidden-sidebar");
+    }
+    renderSidebar();
+    renderLesson();
+    renderMarkedWords();
+}
+
+function renderSidebar() {
+  const list = document.getElementById("lessonList");
+  list.innerHTML = "";
+
+  lessons.forEach((lesson, index) => {
+    const item = document.createElement("div");
+    item.className = "lesson-item";
+    if (currentLesson.id === lesson.id) {
+      item.classList.add("active");
+    }
+
+    const padIdx = String(index + 1).padStart(2, '0');
+    item.innerHTML = `
+      <div class="lesson-num">${lesson.unit ? "Unit " + lesson.unit : "Lesson " + lesson.id}</div>
+      <div class="lesson-title-sub">${lesson.title}</div>
+    `;
+
+
+    item.onclick = () => {
+      currentLesson = lesson;
+      localStorage.setItem(lastLessonKey(), lesson.id);
+      renderSidebar();
+      renderLesson();
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.remove("mobile-show");
+    };
+
+    list.appendChild(item);
+  });
+}
+
+function speakWord(word) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    window.speechSynthesis.speak(utterance);
+  }
+}
+
+function listenSelection(event, lessonId, sectionIdx) {
+  const selection = window.getSelection();
+  const selectedText = selection.toString().trim();
+  if (selectedText.length > 1) {
+    let highlights = JSON.parse(localStorage.getItem('app_highlights')) || {};
+    const key = `${lessonId}_${sectionIdx}`;
+    if (!highlights[key]) highlights[key] = [];
+    if (!highlights[key].includes(selectedText)) {
+
+      highlights[key].push(selectedText);
+      localStorage.setItem('app_highlights', JSON.stringify(highlights));
+      renderLesson();
+    }
+    selection.removeAllRanges();
+  }
+}
+
+function removeHighlight(event, lessonId, sectionIdx, text) {
+  event.stopPropagation();
+  let highlights = JSON.parse(localStorage.getItem('app_highlights')) || {};
+  const key = `${lessonId}_${sectionIdx}`;
+  if (highlights[key]) {
+    highlights[key] = highlights[key].filter(t => t.toLowerCase() !== text.toLowerCase());
+    localStorage.setItem('app_highlights', 
+
+JSON.stringify(highlights));
+    renderLesson();
+  }
+}
+
+function highlightText(text, lessonId, sectionIdx) {
+  const highlights = JSON.parse(localStorage.getItem('app_highlights')) || {};
+  const key = `${lessonId}_${sectionIdx}`;
+  const list = highlights[key];
+  if (!list || list.length === 0) return text;
+
+  let html = text;
+  const sorted = [...new Set(list)].sort((a, b) => b.length - a.length);
+  sorted.forEach(h => {
+    if (!h.trim()) return;
+    const escaped = h.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+
+    const regex = new RegExp(`(${escaped})`, 'gi');
+    const safeH = h.replace(/'/g, "\\'");
+    html = html.replace(regex, `<mark class="custom-highlight" onclick="removeHighlight(event, ${lessonId}, ${sectionIdx}, '${safeH}')" title="Click to remove highlight">$1</mark>`);
+  });
+  return html;
+}
+
+function renderLesson() {
+  const marked = getMarkedWords();
+  const lessonIndex = lessons.findIndex(l => l.id === currentLesson.id) + 1;
+  const padIdx = String(lessonIndex).padStart(2, '0');
+
+  
+
+document.getElementById("lessonsPage").innerHTML = `
+    <div class="lesson-card">
+      <h1>${currentLesson.unit ? "Unit " + currentLesson.unit : "Lesson " + padIdx}: ${currentLesson.title}</h1>
+
+      <div class="section ${sectionOpenStates.reading ? '' : 'collapsed'}">
+        <div class="section-header" onclick="toggleSection('reading', this)">
+          <h2>Reading</h2>
+          ${SVG_CHEVRON}
+        </div>
+
+        <div class="section-body ${sectionOpenStates.reading ? '' : 'hidden'}">
+          ${currentLesson.readingSections.map((section, idx) => {
+            const processedEnglish = section.english
+                ? highlightText(section.english, currentLesson.id, idx)
+                : "";
+            return `
+              <div class="reading-block">
+                <h3>${section.title}</h3>
+                ${!section.audio ? "" : Array.isArray(section.audio)
+                  ? section.audio.map(audio => `
+                      <audio controls preload="metadata"><source src="${audio}" type="audio/mp4"></audio>
+                    `).join("")
+                  : `<audio controls preload="metadata"><source src="${section.audio}" type="audio/mp4"></audio>`
+                }
+                ${section.pairs
+                  ? `<div class="reading-pairs">${section.pairs
+                        .map(
+                          (p) => `
+                      <div class="reading-pair">
+                        <p class="english" onmouseup="listenSelection(event, ${currentLesson.id}, ${idx})">${highlightText(p.en, currentLesson.id, idx)}</p>
+                        <p class="persian">${p.fa}</p>
+                      </div>`,
+                        )
+                        .join("")}</div>`
+                  : `<p class="english" onmouseup="listenSelection(event, ${currentLesson.id}, ${idx})">${processedEnglish}</p>
+                <p class="persian">${section.persian}</p>`}
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+
+      <div class="section ${sectionOpenStates.vocabulary ? '' : 'collapsed'}">
+        <div class="section-header" onclick="toggleSection('vocabulary', this)">
+          <h2>Vocabulary</h2>
+          ${SVG_CHEVRON}
+        </div>
+
+        <div class="section-body ${sectionOpenStates.vocabulary ? '' : 'hidden'}">
+          <div class="search-box-container">
+            <div class="search-input-wrapper">
+
+              ${SVG_SEARCH}
+              <input type="text" id="vocabSearchInput" placeholder="Search words or meanings..." oninput="onVocabSearch(this.value)">
+            </div>
+          </div>
+          <div class="vocab-body-container">
+            ${currentLesson.vocabulary.map(item => `
+              <div class="vocab-item" data-word="${item.word.toLowerCase()}" data-meaning="${item.meaning.toLowerCase()}">
+                <div>
+                  <div class="word">${item.word}</div>
+                  <div class="pronunciation">${item.pronunciation}</div>
+                  <div class="translation">${item.meaning}</div>
+
+                </div>
+                <div class="vocab-actions">
+                  <button class="action-btn" onclick="speakWord('${item.word.replace(/'/g, "\\'")}')" title="Listen pronunciation">
+                    ${SVG_SPEAKER}
+                  </button>
+                  <button
+                    class="mark-btn ${marked.includes(item.word) ? "marked" : ""}"
+                    data-word="${item.word}"
+                    onclick="toggleMark('${item.word.replace(/'/g, "\\'")}', this)">
+                    ${marked.includes(item.word) ? SVG_STAR_FILLED : SVG_STAR_OUTLINE}
+                  </button>
+                </div>
+              </div>
+
+            `).join("")}
+          </div>
+        </div>
+      </div>
+
+      ${currentLesson.grammar ? `<div class="section ${sectionOpenStates.grammar ? '' : 'collapsed'}">
+        <div class="section-header" onclick="toggleSection('grammar', this)">
+          <h2>${currentLesson.grammar.title}</h2>
+          ${SVG_CHEVRON}
+        </div>
+
+        <div class="section-body ${sectionOpenStates.grammar ? '' : 'hidden'}">
+          <p>${currentLesson.grammar.content}</p>
+        </div>
+
+      </div>` : ""}
+    </div>
+  `;
+}
+
+function toggleSection(sectionKey, element) {
+  sectionOpenStates[sectionKey] = !sectionOpenStates[sectionKey];
+  const body = element.nextElementSibling;
+  const section = element.parentElement;
+  if (sectionOpenStates[sectionKey]) {
+    body.classList.remove('hidden');
+    section.classList.remove('collapsed');
+  } else {
+    body.classList.add('hidden');
+    section.classList.add('collapsed');
+  }
+}
+
+function toggleMark(word, btn) {
+
+  let marked = getMarkedWords();
+  const isMarked = marked.includes(word);
+  if (isMarked) {
+    marked = marked.filter(item => item !== word);
+  } else {
+    marked.push(word);
+  }
+  saveMarkedWords(marked);
+
+  const allButtons = document.querySelectorAll(`.mark-btn[data-word="${word}"]`);
+  allButtons.forEach(b => {
+    if (isMarked) {
+      b.classList.remove('marked');
+      b.innerHTML = SVG_STAR_OUTLINE;
+    } else {
+      b.classList.add('marked');
+      b.innerHTML = SVG_STAR_FILLED;
+    }
+
+  });
+
+  renderMarkedWords();
+}
+
+function onVocabSearch(query) {
+  const lower = query.toLowerCase().trim();
+  const items = document.querySelectorAll('.vocab-body-container .vocab-item');
+  items.forEach(item => {
+    const word = item.getAttribute('data-word');
+    const meaning = item.getAttribute('data-meaning');
+    if (word.includes(lower) || meaning.includes(lower)) {
+      item.classList.remove('search-hidden');
+    } else {
+      item.classList.add('search-hidden');
+    }
+
+  });
+}
+
+function onMarkedSearch(query) {
+  const lower = query.toLowerCase().trim();
+  const items = document.querySelectorAll('#markedWordsContainer .marked-item');
+  items.forEach(item => {
+    const word = item.getAttribute('data-word');
+    const meaning = item.getAttribute('data-meaning');
+    if (word.includes(lower) || meaning.includes(lower)) {
+      item.classList.remove('search-hidden');
+    } else {
+      item.classList.add('search-hidden');
+    }
+  });
+}
+
+
+function renderMarkedWords() {
+  const container = document.getElementById("markedWordsContainer");
+  const marked = getMarkedWords();
+  const words = [];
+
+  lessons.forEach(lesson => {
+    lesson.vocabulary.forEach(item => {
+      if (marked.includes(item.word) && !words.some(w => w.word === item.word)) {
+        words.push(item);
+      }
+    });
+  });
+
+  if (words.length === 0) {
+    container.innerHTML = `<div class="empty-state">No marked words yet.</div>`;
+
+    return;
+  }
+
+  container.innerHTML = words.map(item => `
+    <div class="marked-item" data-word="${item.word.toLowerCase()}" data-meaning="${item.meaning.toLowerCase()}">
+      <div>
+        <div class="word">${item.word}</div>
+        <div class="pronunciation">${item.pronunciation}</div>
+        <div class="translation">${item.meaning}</div>
+      </div>
+      <div class="vocab-actions">
+        <button class="action-btn" onclick="speakWord('${item.word.replace(/'/g, "\\'")}')" title="Listen pronunciation">
+
+          ${SVG_SPEAKER}
+        </button>
+        <button
+          class="mark-btn marked"
+          data-word="${item.word}"
+          onclick="toggleMark('${item.word.replace(/'/g, "\\'")}', this)">
+          ${SVG_STAR_FILLED}
+        </button>
+      </div>
+    </div>
+  `).join("");
+  
+  const searchInput = document.getElementById("markedSearchInput");
+  if(searchInput && searchInput.value) {
+    onMarkedSearch(searchInput.value);
+  }
+}
+
+document.querySelectorAll(".page-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".page-btn").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    document.getElementById("lessonsPage").classList.add("hidden");
+    document.getElementById("markedPage").classList.add("hidden");
+    document.getElementById(button.dataset.page + "Page").classList.remove("hidden");
+  });
+});
+
+const readingThemeToggle = 
+
+document.getElementById("readingThemeToggle");
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("theme", theme);
+  localStorage.setItem("mahrad_theme", theme);
+  readingThemeToggle.innerHTML = theme === "dark" ? SVG_SUN : SVG_MOON;
+  if (typeof updateThemeIcons === "function") updateThemeIcons(theme);
+}
+
+readingThemeToggle.onclick = () => {
+  const currentTheme = document.documentElement.dataset.theme;
+  applyTheme(currentTheme === "dark" ? "light" : "dark");
+};
+
+const savedTheme =
+    localStorage.getItem("mahrad_theme") || localStorage.getItem("theme");
+
+if (savedTheme) {
+  applyTheme(savedTheme);
+} else {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(prefersDark ? 'dark' : 'light');
+}
+
+renderSidebar();
+renderLesson();
+renderMarkedWords();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.getElementById("sidebar");
+  const lessonToggle = document.getElementById("lessonToggle");
+
+  lessonToggle?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    sidebar?.classList.toggle("mobile-show");
+  });
+
+  document.addEventListener("click", (e) => {
+    // اگر خارج از سایدبار و دکمه همبرگری کلیک شد، سایدبار بسته شود
+    if (sidebar && !sidebar.contains(e.target) && e.target !== lessonToggle && !lessonToggle.contains(e.target)) {
+      sidebar.classList.remove("mobile-show");
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (sidebar && !sidebar.contains(e.target) && e.target !== lessonToggle) {
+      sidebar.classList.remove("mobile-show");
+    }
+  });
+
+  const skyBanner = document.getElementById("openSkyModal");
+  const skyModal = document.getElementById("skyModal");
+  const closeSkyModal = document.getElementById("closeSkyModal");
+
+  skyBanner?.addEventListener("click", () => {
+    skyModal?.classList.add("active");
+  });
+
+  closeSkyModal?.addEventListener("click", () => {
+    skyModal?.classList.remove("active");
+  });
+
+  skyModal?.addEventListener("click", (event) => {
+    if (event.target === skyModal) {
+      skyModal.classList.remove("active");
+    }
+  });
+});
+const lessonToggle = document.getElementById("lessonToggle");const sidebar = document.getElementById("sidebar");
+lessonToggle.addEventListener("click", () => {    sidebar.classList.toggle("hidden-sidebar");});
+        </script>
+        <script>
+
+// ==== combined-site shell ====
+function switchView(v) {
+    const toReading = v === "reading";
+    document.getElementById("flashView").hidden = toReading;
+    document.getElementById("readingView").hidden = !toReading;
+    document.getElementById("tabFlash").classList.toggle("active", !toReading);
+    document.getElementById("tabRead").classList.toggle("active", toReading);
+    localStorage.setItem("mahrad_view", v);
+    if (toReading) {
+        renderSidebar();
+        renderLesson();
+        renderMarkedWords();
+    }
+    window.scrollTo(0, 0);
+}
+(function initShell() {
+    const bookSel = document.getElementById("bookSelect");
+    if (bookSel) bookSel.value = activeBook;
+    const titleEl = document.getElementById("mainTitle");
+    if (titleEl) {
+        titleEl.textContent =
+            activeBook === "b2"
+                ? "مرور کلمات زبان عمومی ۲"
+                : "مرور کلمات زبان عمومی ۱";
+    }
+    document.querySelectorAll("#readingBookSwitch .book-btn").forEach((b) => {
+        b.classList.toggle("b2", activeReadingBook === "2");
+        b.classList.toggle("active", b.dataset.book === activeReadingBook);
+    });
+    switchView(
+        localStorage.getItem("mahrad_view") === "reading" ? "reading" : "flash",
+    );
+})();
+// ==== end shell ====
         </script>
     </body>
 </html>
