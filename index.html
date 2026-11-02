@@ -223,14 +223,32 @@
             }
 
             .selectors-grid {
-                display: flex;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
                 gap: 10px;
                 width: 100%;
                 margin-bottom: 8px;
             }
 
+            /* unit select gets its own full-width row (titles can be long) */
+            #lessonSelect {
+                grid-row: 1;
+                grid-column: 1 / -1;
+            }
+            #bookSelect {
+                grid-row: 2;
+                grid-column: 1;
+            }
+            #filterSelect,
+            #examSelect {
+                grid-row: 2;
+                grid-column: 2;
+            }
+
             .custom-select {
-                flex: 1;
+                min-width: 0;
+                max-width: 100%;
+                width: 100%;
                 padding: 10px;
                 border-radius: 12px;
                 border: 2px solid var(--border-color);
@@ -240,6 +258,7 @@
                 color: var(--text-main);
                 outline: none;
                 cursor: pointer;
+                text-overflow: ellipsis;
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
             }
@@ -254,6 +273,40 @@
                 margin-top: 4px;
                 margin-bottom: 5px;
                 min-height: 20px;
+            }
+
+            /* small screens: keep every control reachable */
+            @media (max-width: 430px) {
+                body {
+                    padding: 8px 8px;
+                }
+                .header h1 {
+                    font-size: 1.15rem;
+                }
+                .selectors-grid {
+                    gap: 8px;
+                }
+                .custom-select {
+                    padding: 9px 6px;
+                    font-size: 0.82rem;
+                }
+                .mode-btn {
+                    padding: 6px 6px;
+                    font-size: 0.74rem;
+                }
+                .flashcard-container {
+                    height: 225px;
+                }
+                .flashcard-front .word {
+                    font-size: 2rem;
+                }
+                .flashcard-back .meaning {
+                    font-size: 1.3rem;
+                }
+                .shell-tab {
+                    padding: 8px 14px;
+                    font-size: 13px;
+                }
             }
 
             .main-container {
@@ -312,6 +365,8 @@
                 font-weight: bold;
                 color: var(--primary-color);
                 direction: ltr;
+                overflow-wrap: anywhere;
+                line-height: 1.3;
             }
 
             .flashcard-front .pronunciation {
@@ -331,6 +386,9 @@
                 font-size: 1.6rem;
                 font-weight: bold;
                 line-height: 1.5;
+                overflow-wrap: anywhere;
+                max-height: 100%;
+                overflow-y: auto;
             }
 
             .speaker-btn {
@@ -1069,6 +1127,214 @@
 #readingView .reading-pair:last-child { border-bottom: none; }
 #readingView .reading-pair p { margin: 4px 0 8px; }
 #readingView .reading-pairs { margin-top: 8px; }
+
+/* vocabulary-link on/off switch (reading sidebar) */
+#readingView .vocab-link-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 9px 10px;
+    border-radius: 12px;
+    border: 1.5px dashed var(--border);
+    background: var(--card);
+    color: var(--secondary);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#readingView .vocab-link-toggle:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+#readingView .vocab-link-toggle.on {
+    border-style: solid;
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.08);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+#readingView .vocab-link-toggle .vlt-icon {
+    font-size: 15px;
+    filter: grayscale(0.4);
+    transition: filter 0.2s ease;
+}
+#readingView .vocab-link-toggle.on .vlt-icon { filter: none; }
+
+/* ==== vocabulary links inside reading texts ==== */
+#readingView .vocab-link {
+    color: var(--primary);
+    border-bottom: 1.5px dotted var(--primary);
+    cursor: pointer;
+    padding: 0 1px;
+    border-radius: 3px;
+    transition: background 0.15s ease, color 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+#readingView .vocab-link:hover,
+#readingView .vocab-link:active {
+    background: rgba(37, 99, 235, 0.14);
+    color: var(--primary);
+}
+#readingView .vocab-link.is-open {
+    background: var(--primary);
+    color: #fff;
+    border-bottom-color: transparent;
+}
+
+/* pulse on the flashcard after jumping to it from a reading link */
+@keyframes vpopJumpPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.55); }
+    70% { box-shadow: 0 0 0 18px rgba(37, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+.flashcard.vpop-jump {
+    animation: vpopJumpPulse 1.3s ease-out 2;
+}
+
+/* word popup (shared, sits at body level) */
+.vpop {
+    position: fixed;
+    inset: 0;
+    z-index: 9700;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.vpop[hidden] { display: none; }
+.vpop-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: vpopFade 0.2s ease;
+}
+.vpop-card {
+    position: relative;
+    width: min(430px, 100%);
+    max-height: 86vh;
+    overflow-y: auto;
+    background: var(--card-bg);
+    color: var(--text-main);
+    border-radius: 22px 22px 0 0;
+    padding: 26px 22px calc(24px + env(safe-area-inset-bottom));
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: vpopUp 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+}
+@keyframes vpopUp {
+    from { transform: translateY(60px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes vpopFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.vpop-close {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+.vpop-close:hover { background: var(--option-hover); color: var(--text-main); }
+.vpop-word {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    direction: ltr;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+}
+.vpop-pron {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+.vpop-fa {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+.vpop-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    min-height: 22px;
+}
+.vpop-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--accent-easy);
+}
+.vpop-badge.hard { background: var(--accent-hard); }
+.vpop-src {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+.vpop-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+.vpop-btn {
+    flex: 1;
+    padding: 12px 10px;
+    border-radius: 14px;
+    border: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.12s ease, filter 0.15s ease;
+}
+.vpop-btn:active { transform: scale(0.97); }
+.vpop-listen {
+    background: var(--option-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+.vpop-listen:hover { background: var(--option-hover); }
+.vpop-go {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+}
+.vpop-go:hover { filter: brightness(1.06); }
+@media (min-width: 640px) {
+    .vpop { align-items: center; }
+    .vpop-card {
+        border-radius: 22px;
+        border-bottom: 1px solid var(--border-color);
+        animation: vpopPop 0.24s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    }
+    @keyframes vpopPop {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+}
+
 /* ==== end shell ==== */
 </style>
     </head>
@@ -1076,9 +1342,29 @@
 <nav class="shell-nav">
             <div class="shell-tabs">
                 <button id="tabFlash" class="shell-tab active" onclick="switchView('flash')">🎯 فلش‌کارت‌ها</button>
-                <button id="tabRead" class="shell-tab" onclick="switchView('reading')">📖 متن خواندن</button>
+                <button id="tabRead" class="shell-tab" onclick="switchView('reading')">📖 متن دروس</button>
             </div>
         </nav>
+
+        <!-- popup: word card shared by the reading view's vocabulary links -->
+        <div class="vpop" id="vocabPopup" hidden>
+            <div class="vpop-backdrop" onclick="closeVocabPopup()"></div>
+            <div class="vpop-card" role="dialog" aria-modal="true">
+                <button class="vpop-close" onclick="closeVocabPopup()" aria-label="بستن">✕</button>
+                <div class="vpop-word" id="vpopWord" dir="ltr"></div>
+                <div class="vpop-pron" id="vpopPron"></div>
+                <div class="vpop-fa" id="vpopFa"></div>
+                <div class="vpop-meta">
+                    <span class="vpop-badge" id="vpopBadge"></span>
+                    <span class="vpop-src" id="vpopSrc"></span>
+                </div>
+                <div class="vpop-actions">
+                    <button class="vpop-btn vpop-listen" id="vpopListen">🔊 گوش دادن</button>
+                    <button class="vpop-btn vpop-go" id="vpopGo">مشاهده کارت ↗</button>
+                </div>
+            </div>
+        </div>
+
         <div id="flashView" class="app-view">
         <div class="bg-layer">
             <div class="bg-blob bg-blob-1"></div>
@@ -1545,6 +1831,17 @@ stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.
       <button class="book-btn active" data-book="1" onclick="switchReadingBook('1')">English 1</button>
       <button class="book-btn" data-book="2" onclick="switchReadingBook('2')">English 2</button>
     </div>
+
+    <button
+      id="vocabLinkToggle"
+      class="vocab-link-toggle"
+      onclick="toggleVocabLinks()"
+      aria-pressed="true"
+      title="کلماتی که در فلش‌کارت‌ها هستند در متن با رنگ و خط‌چین نمایش داده شوند"
+    >
+      <span class="vlt-icon">🔗</span>
+      <span id="vocabLinkToggleLabel">پیوند کلمات: روشن</span>
+    </button>
     <div id="lessonList" class="lesson-list"></div>
   </aside>
 
@@ -2231,8 +2528,8 @@ stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.
                     generateQuizOptions(wordData);
                 }
 
-                localStorage.setItem("mahrad_saved_lesson", currentLessonKey);
-                localStorage.setItem("mahrad_saved_index", currentIndex);
+                localStorage.setItem(savedLessonKey(), currentLessonKey);
+                localStorage.setItem(savedIndexKey(), currentIndex);
             }
 
             function resetExamUI() {
@@ -2881,6 +3178,10 @@ document.getElementById("lessonsPage").innerHTML = `
       </div>` : ""}
     </div>
   `;
+
+  // wrap flashcard vocabulary found in the English text
+  // (linkVocabWords lives in a later script block; guard the first paint)
+  if (typeof linkVocabWords === "function") linkVocabWords();
 }
 
 function toggleSection(sectionKey, element) {
@@ -3087,6 +3388,242 @@ lessonToggle.addEventListener("click", () => {    sidebar.classList.toggle("hidd
         <script>
 
 // ==== combined-site shell ====
+// ==== vocabulary links inside reading texts ====
+// Every word of a reading that also exists in the flashcards (either book)
+// becomes a tappable link that opens a word card with a jump-to-flashcard action.
+let vocabLinksOn = localStorage.getItem("mahrad_vocab_links") !== "0";
+let VOCAB_INDEX = null; // Map<lowercase word, entry[]>
+let vpopCurrentLink = null;
+
+function buildVocabIndex() {
+    if (VOCAB_INDEX) return VOCAB_INDEX;
+    VOCAB_INDEX = new Map();
+    const add = (data, book) => {
+        if (!data) return;
+        for (const key in data) {
+            const lesson = data[key];
+            (lesson.words || []).forEach((w) => {
+                const k = w.en.toLowerCase().trim();
+                if (!k) return;
+                if (!VOCAB_INDEX.has(k)) VOCAB_INDEX.set(k, []);
+                VOCAB_INDEX.get(k).push({
+                    en: w.en,
+                    pron: w.pron || "",
+                    fa: w.fa,
+                    difficulty: w.difficulty || "easy",
+                    book,
+                    lessonKey: key,
+                    title: lesson.title || key,
+                });
+            });
+        }
+    };
+    add(typeof lessonsData !== "undefined" ? lessonsData : null, "b1");
+    add(typeof lessonsData2 !== "undefined" ? lessonsData2 : null, "b2");
+    return VOCAB_INDEX;
+}
+
+function linkVocabWords() {
+    const root = document.getElementById("lessonsPage");
+    if (!root || !vocabLinksOn) return;
+    const idx = buildVocabIndex();
+    if (!idx.size) return;
+
+    root.querySelectorAll("p.english").forEach((p) => {
+        const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+                if (!node.nodeValue || !node.nodeValue.trim())
+                    return NodeFilter.FILTER_REJECT;
+                const parent = node.parentElement;
+                if (
+                    !parent ||
+                    parent.closest(
+                        ".vocab-link, mark, button, a, input, audio, .persian",
+                    )
+                )
+                    return NodeFilter.FILTER_REJECT;
+                return NodeFilter.FILTER_ACCEPT;
+            },
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+
+        nodes.forEach((node) => {
+            const text = node.nodeValue;
+            const tokens = [...text.matchAll(/[A-Za-z][A-Za-z'\u2019-]*/g)];
+            if (!tokens.length) return;
+            const frag = document.createDocumentFragment();
+            let last = 0;
+            let i = 0;
+            let linked = false;
+            while (i < tokens.length) {
+                let matchedKey = null;
+                let matchedN = 0;
+                const maxN = Math.min(3, tokens.length - i);
+                for (let n = maxN; n >= 1; n--) {
+                    const slice = tokens.slice(i, i + n);
+                    let gapsOk = true;
+                    for (let j = 1; j < n; j++) {
+                        const gap = text.slice(
+                            slice[j - 1].index + slice[j - 1][0].length,
+                            slice[j].index,
+                        );
+                        if (!/^\s+$/.test(gap)) {
+                            gapsOk = false;
+                            break;
+                        }
+                    }
+                    if (!gapsOk) continue;
+                    const key = slice
+                        .map((t) => t[0])
+                        .join(" ")
+                        .toLowerCase();
+                    if (idx.has(key)) {
+                        matchedKey = key;
+                        matchedN = n;
+                        break;
+                    }
+                }
+                if (matchedKey) {
+                    const first = tokens[i];
+                    const lastTok = tokens[i + matchedN - 1];
+                    const start = first.index;
+                    const end = lastTok.index + lastTok[0].length;
+                    frag.appendChild(
+                        document.createTextNode(text.slice(last, start)),
+                    );
+                    const span = document.createElement("span");
+                    span.className = "vocab-link";
+                    span.dataset.word = matchedKey;
+                    span.textContent = text.slice(start, end);
+                    frag.appendChild(span);
+                    last = end;
+                    i += matchedN;
+                    linked = true;
+                } else {
+                    i++;
+                }
+            }
+            if (!linked) return;
+            frag.appendChild(document.createTextNode(text.slice(last)));
+            node.parentNode.replaceChild(frag, node);
+        });
+    });
+}
+
+function toggleVocabLinks() {
+    vocabLinksOn = !vocabLinksOn;
+    localStorage.setItem("mahrad_vocab_links", vocabLinksOn ? "1" : "0");
+    updateVocabLinkToggle();
+    renderLesson();
+}
+
+function updateVocabLinkToggle() {
+    const btn = document.getElementById("vocabLinkToggle");
+    if (!btn) return;
+    btn.classList.toggle("on", vocabLinksOn);
+    btn.setAttribute("aria-pressed", String(vocabLinksOn));
+    const label = document.getElementById("vocabLinkToggleLabel");
+    if (label)
+        label.textContent = vocabLinksOn
+            ? "پیوند کلمات: روشن"
+            : "پیوند کلمات: خاموش";
+}
+
+// delegate clicks on any linked word (works across re-renders)
+document.addEventListener("click", (e) => {
+    const link = e.target.closest && e.target.closest(".vocab-link");
+    if (!link) return;
+    e.stopPropagation();
+    const key = link.dataset.word;
+    const entries = buildVocabIndex().get(key);
+    if (!entries || !entries.length) return;
+    if (vpopCurrentLink === link && !document.getElementById("vocabPopup").hidden) {
+        closeVocabPopup();
+        return;
+    }
+    openVocabPopup(link, entries);
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeVocabPopup();
+});
+
+function openVocabPopup(link, entries) {
+    const popup = document.getElementById("vocabPopup");
+    const prefer = activeReadingBook === "2" ? "b2" : "b1";
+    const entry = entries.find((x) => x.book === prefer) || entries[0];
+
+    document.getElementById("vpopWord").textContent = entry.en;
+    document.getElementById("vpopPron").textContent = entry.pron;
+    document.getElementById("vpopFa").textContent = entry.fa;
+
+    const badge = document.getElementById("vpopBadge");
+    badge.textContent =
+        entry.difficulty === "hard" ? "سخت 🔥" : "آسان ✨";
+    badge.classList.toggle("hard", entry.difficulty === "hard");
+
+    const bookName = entry.book === "b2" ? "زبان عمومی ۲" : "زبان عمومی ۱";
+    document.getElementById("vpopSrc").textContent =
+        `${bookName} · ${entry.title}` +
+        (entries.length > 1 ? ` (+${entries.length - 1} نسخه دیگر)` : "");
+
+    const listenBtn = document.getElementById("vpopListen");
+    listenBtn.onclick = () => speakWord(entry.en);
+
+    const goBtn = document.getElementById("vpopGo");
+    goBtn.onclick = () => jumpToFlashcard(entry);
+
+    if (vpopCurrentLink) vpopCurrentLink.classList.remove("is-open");
+    vpopCurrentLink = link;
+    link.classList.add("is-open");
+
+    popup.hidden = false;
+    // speak once on open for instant feedback
+    speakWord(entry.en);
+}
+
+function closeVocabPopup() {
+    const popup = document.getElementById("vocabPopup");
+    if (!popup || popup.hidden) return;
+    popup.hidden = true;
+    if (vpopCurrentLink) {
+        vpopCurrentLink.classList.remove("is-open");
+        vpopCurrentLink = null;
+    }
+}
+
+function jumpToFlashcard(entry) {
+    closeVocabPopup();
+    switchView("flash");
+    if (currentMode !== "flashcard") switchMode("flashcard");
+    if (activeBook !== entry.book) switchBook(entry.book);
+    // reset filter so the word is guaranteed visible
+    filterSelect.value = "all";
+    lessonSelect.value = entry.lessonKey;
+    currentLessonKey = entry.lessonKey;
+    updateExamSelectorOptions();
+    applyFiltering(true);
+    const target = entry.en.toLowerCase();
+    const idx = filteredWords.findIndex(
+        (w) => w.en.toLowerCase() === target,
+    );
+    if (idx >= 0) {
+        currentIndex = idx;
+        updateCard();
+    }
+    setTimeout(() => {
+        const card = document.getElementById("flashcard");
+        if (card) {
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+            card.classList.remove("vpop-jump");
+            void card.offsetWidth; // restart animation
+            card.classList.add("vpop-jump");
+            setTimeout(() => card.classList.remove("vpop-jump"), 1400);
+        }
+    }, 60);
+}
+
 function switchView(v) {
     const toReading = v === "reading";
     document.getElementById("flashView").hidden = toReading;
@@ -3115,6 +3652,7 @@ function switchView(v) {
         b.classList.toggle("b2", activeReadingBook === "2");
         b.classList.toggle("active", b.dataset.book === activeReadingBook);
     });
+    updateVocabLinkToggle();
     switchView(
         localStorage.getItem("mahrad_view") === "reading" ? "reading" : "flash",
     );
