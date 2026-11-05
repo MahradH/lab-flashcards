@@ -587,99 +587,6 @@
                 font-weight: bold;
             }
 
-            /* Modal Styles */
-            .credits-link {
-                cursor: pointer;
-                color: var(--primary-color);
-                font-weight: bold;
-                text-decoration: underline;
-            }
-
-            .modal-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.6);
-                backdrop-filter: blur(5px);
-                z-index: 100;
-                display: none;
-                justify-content: center;
-                align-items: center;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .modal-overlay.show {
-                display: flex;
-                opacity: 1;
-            }
-
-            .modal-content {
-                background: var(--card-bg);
-                border: 1px solid var(--border-color);
-                border-radius: 20px;
-                padding: 25px;
-                width: 90%;
-                max-width: 350px;
-                max-height: 80vh;
-                overflow-y: auto;
-                box-shadow: var(--card-shadow);
-                position: relative;
-                transform: scale(0.9);
-                transition: transform 0.3s ease;
-            }
-
-            .modal-overlay.show .modal-content {
-                transform: scale(1);
-            }
-
-            .close-modal {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                background: var(--option-bg);
-                border: none;
-                border-radius: 50%;
-                width: 30px;
-                height: 30px;
-                font-size: 1.2rem;
-                color: var(--text-main);
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .credits-section {
-                margin-bottom: 15px;
-                text-align: right;
-            }
-
-            .credits-section h3 {
-                margin-top: 0;
-                color: var(--primary-color);
-                text-align: center;
-            }
-            .credits-section h4 {
-                margin: 10px 0 5px;
-                color: var(--text-main);
-                font-size: 0.95rem;
-            }
-            .credits-section p,
-            .credits-section ul {
-                margin: 0;
-                font-size: 0.85rem;
-                color: var(--text-muted);
-            }
-            .credits-section ul {
-                padding-right: 20px;
-            }
-            .credits-section li {
-                margin-bottom: 3px;
-            }
-
             .exam-intro {
                 text-align: center;
                 padding: 20px;
@@ -1342,7 +1249,7 @@
 <nav class="shell-nav">
             <div class="shell-tabs">
                 <button id="tabFlash" class="shell-tab active" onclick="switchView('flash')">🎯 فلش‌کارت‌ها</button>
-                <button id="tabRead" class="shell-tab" onclick="switchView('reading')">📖 متن دروس</button>
+                <button id="tabRead" class="shell-tab" hidden onclick="switchView('reading')">📖 متن دروس</button>
             </div>
         </nav>
 
@@ -1708,63 +1615,12 @@
 
         <div class="footer">
             ساخته شده با <span class="heart">♥</span> توسط MahradH<br />
-            <span class="credits-link" onclick="toggleModal(true)"
-                >تیم توسعه و محتوا (کلیک کنید)</span
-            ><br />
+            محصول انجمن علمی دانشجویی آینده<br />
+            به درخواست فاطمه ابراهیمی، مدیر تیم زبان عمومی<br />
             این یک پروژه آزاد و اپن‌سورس است. شما هم می‌توانید در توسعه آن
             <a href="https://github.com/MahradH/lab-flashcards" target="_blank"
                 >مشارکت کنید</a
             >.
-        </div>
-
-        <div
-            id="creditsModal"
-            class="modal-overlay"
-            onclick="toggleModal(false)"
-        >
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <button class="close-modal" onclick="toggleModal(false)">
-                    &times;
-                </button>
-                <div class="credits-section">
-                    <h3>تیم توسعه و محتوا</h3>
-                    <p style="text-align: center; margin-bottom: 15px">
-                        با افتخار تقدیم به
-                    </p>
-
-                    <h4>مدیریت</h4>
-                    <p>فاطمه ابراهیمی</p>
-
-                    <h4>ایده و برنامه‌نویسی</h4>
-                    <p>مهراد اسدی</p>
-
-                    <h4>استخراج واژگان</h4>
-                    <ul>
-                        <li><strong>درس ۵ و ۶:</strong> علی احمدی</li>
-                        <li><strong>درس ۷ و ۸:</strong> ملیکا حسینی</li>
-                    </ul>
-
-                    <h4>طراحی سوالات آزمون</h4>
-                    <ul>
-                        <li>
-                            <strong>درس ۵:</strong> امیرمحمد دهقان، ابوالفضل
-                            نیازمند، آوین باقرزاده، مریم احراری، امیرحسین محمودی
-                        </li>
-                        <li>
-                            <strong>درس ۶:</strong> غزل چاکرالحسینی، مهدیه
-                            نوروزی، مهسا صالحی
-                        </li>
-                        <li>
-                            <strong>درس ۷:</strong> آوین باقرزاده، امیرمحمد
-                            دهقان
-                        </li>
-                        <li>
-                            <strong>درس ۸:</strong> آوین باقرزاده، امیرمحمد
-                            دهقان
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
         </div>
@@ -1874,21 +1730,31 @@ stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.
 
             <div style="margin-bottom:18px;">
                 <div style="font-size:13px;color:var(--secondary);">
-                    Project Manager
+                    توسعه‌دهنده
                 </div>
 
                 <div style="font-size:19px;font-weight:700;">
-                    Fatemeh Ebrahimi
+                    MahradH
                 </div>
             </div>
 
             <div style="margin-bottom:18px;">
                 <div style="font-size:13px;color:var(--secondary);">
-                    Developer
+                    محصول
                 </div>
 
                 <div style="font-size:19px;font-weight:700;">
-                    Amir Salar Sahampour
+                    انجمن علمی دانشجویی آینده
+                </div>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <div style="font-size:13px;color:var(--secondary);">
+                    به درخواست
+                </div>
+
+                <div style="font-size:19px;font-weight:700;">
+                    فاطمه ابراهیمی، مدیر تیم زبان عمومی
                 </div>
             </div>
 
@@ -1920,6 +1786,10 @@ stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.
         <script src="reading-data-1.js"></script>
         <script src="reading-data-2.js"></script>
         <script>
+// ==== reading module is temporarily disabled (development not finished) ====
+// Its code and data are kept intact; only the entry point is switched off.
+const FEATURES = { reading: false };
+
 // ==== book switcher (English 1 / English 2) ====
             let activeBook =
                 localStorage.getItem("mahrad_book") === "b2" ? "b2" : "b1";
@@ -2276,15 +2146,6 @@ stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.
                 return str.toString().replace(/[0-9]/g, function (w) {
                     return id[+w];
                 });
-            }
-
-            function toggleModal(show) {
-                const modal = document.getElementById("creditsModal");
-                if (show) {
-                    modal.classList.add("show");
-                } else {
-                    modal.classList.remove("show");
-                }
             }
 
             function toggleAnimation() {
@@ -3625,7 +3486,10 @@ function jumpToFlashcard(entry) {
 }
 
 function switchView(v) {
-    const toReading = v === "reading";
+    const toReading = v === "reading" && FEATURES.reading;
+    if (v === "reading" && !FEATURES.reading) {
+        v = "flash";
+    }
     document.getElementById("flashView").hidden = toReading;
     document.getElementById("readingView").hidden = !toReading;
     document.getElementById("tabFlash").classList.toggle("active", !toReading);
@@ -3653,8 +3517,12 @@ function switchView(v) {
         b.classList.toggle("active", b.dataset.book === activeReadingBook);
     });
     updateVocabLinkToggle();
+    document.getElementById("tabRead").hidden = !FEATURES.reading;
     switchView(
-        localStorage.getItem("mahrad_view") === "reading" ? "reading" : "flash",
+        FEATURES.reading &&
+            localStorage.getItem("mahrad_view") === "reading"
+            ? "reading"
+            : "flash",
     );
 })();
 // ==== end shell ====
