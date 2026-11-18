@@ -721,7 +721,6 @@
   border-radius:32px;
   padding:32px;
   box-shadow:0 25px 50px rgba(0,0,0,.06);
-  backdrop-filter:blur(20px);
 }#readingView .lesson-card h1{
   font-size:28px;
   font-weight:700;
@@ -947,6 +946,25 @@
   color: var(--primary);
   background: rgba(37, 99, 235, .08);
   border-color: rgba(37, 99, 235, .2);
+}
+
+@media (max-width: 600px) {
+  #readingView .audio-player-row {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  #readingView .audio-progress-row {
+    order: -1;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  #readingView .audio-player-row button {
+    flex-shrink: 0;
+  }
 }
 
 [data-theme="dark"] #readingView .reading-audio-player {
@@ -3047,52 +3065,15 @@ function speakWord(word) {
 }
 
 function listenSelection(event, lessonId, sectionIdx) {
-  const selection = window.getSelection();
-  const selectedText = selection.toString().trim();
-  if (selectedText.length > 1) {
-    let highlights = JSON.parse(localStorage.getItem('app_highlights')) || {};
-    const key = `${lessonId}_${sectionIdx}`;
-    if (!highlights[key]) highlights[key] = [];
-    if (!highlights[key].includes(selectedText)) {
-
-      highlights[key].push(selectedText);
-      localStorage.setItem('app_highlights', JSON.stringify(highlights));
-      renderLesson();
-    }
-    selection.removeAllRanges();
-  }
+  // Automatic text highlighting disabled.
 }
 
 function removeHighlight(event, lessonId, sectionIdx, text) {
-  event.stopPropagation();
-  let highlights = JSON.parse(localStorage.getItem('app_highlights')) || {};
-  const key = `${lessonId}_${sectionIdx}`;
-  if (highlights[key]) {
-    highlights[key] = highlights[key].filter(t => t.toLowerCase() !== text.toLowerCase());
-    localStorage.setItem('app_highlights', 
-
-JSON.stringify(highlights));
-    renderLesson();
-  }
+  // Custom text highlighting disabled.
 }
 
 function highlightText(text, lessonId, sectionIdx) {
-  const highlights = JSON.parse(localStorage.getItem('app_highlights')) || {};
-  const key = `${lessonId}_${sectionIdx}`;
-  const list = highlights[key];
-  if (!list || list.length === 0) return text;
-
-  let html = text;
-  const sorted = [...new Set(list)].sort((a, b) => b.length - a.length);
-  sorted.forEach(h => {
-    if (!h.trim()) return;
-    const escaped = h.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-
-    const regex = new RegExp(`(${escaped})`, 'gi');
-    const safeH = h.replace(/'/g, "\\'");
-    html = html.replace(regex, `<mark class="custom-highlight" onclick="removeHighlight(event, ${lessonId}, ${sectionIdx}, '${safeH}')" title="Click to remove highlight">$1</mark>`);
-  });
-  return html;
+  return text;
 }
 
 // ---------- Reading Audio Player ----------
