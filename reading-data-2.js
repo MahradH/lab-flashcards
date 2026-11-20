@@ -1370,5 +1370,939 @@ const readingLessons2 = [
         "meaning": "روستا"
       }
     ]
-  }
+  },
+{
+  "id": 2,
+  "unit": 2,
+  "title": "Meditation",
+  "titleFa": "مدیتیشن",
+  "readingSections": [
+    {
+      "title": "Paragraph 1",
+        "audio": [
+          "audio/English-2/Unit2-Para1.m4a",
+          "audio/English-2/درس۲-پارا۱.m4a"
+        ],
+      "english": "1. Meditation is a mental exercise in which we direct our mind to think inwardly by shutting our sense organs to external stimulations.\n\nNormally in a conscious state, we use our sense organs freely seeing pictures, listening to music, eating sweets, smelling scents, or touching the nose with the hand.\n\nThese sense organs continuously stimulate the brain, thereby producing various responses in the psychosomatic apparatus of the body depending upon the severity and extent of the external stimuli.\n\nHowever, by the constant practice of meditation, one can voluntarily reduce these bodily responses to a bare minimum so that the mind can be directed to perform more useful and fruitful functions.",
+      "persian": "۱. مدیتیشن یک تمرین ذهنی است که در آن با بستن اندام‌های حسی خود در برابر تحریکات بیرونی، ذهن خود را به سمت تفکر درونی هدایت می‌کنیم.\n\nمعمولاً در حالت هوشیار، از اندام‌های حسی خود برای دیدن تصاویر، گوش دادن به موسیقی، خوردن شیرینی، بوییدن عطرها یا لمس کردن بینی با دست آزادانه استفاده می‌کنیم.\n\nاین اندام‌های حسی به‌طور مداوم مغز را تحریک می‌کنند و در نتیجه پاسخ‌های مختلفی را در دستگاه روان‌تنی بدن، بسته به شدت و میزان محرک‌های خارجی، ایجاد می‌کنند.\n\nبا این حال، با تمرین مداوم مراقبه، می‌توان به‌طور ارادی این پاسخ‌های بدن را به حداقل ممکن کاهش داد تا ذهن بتواند به انجام عملکردهای مفیدتر و پربارتری هدایت شود."
+    },
+    {
+      "title": "Paragraph 2",
+        "audio": [
+          "audio/English-2/Unit2-Para2.m4a",
+          "audio/English-2/درس۲-پارا۲.m4a"
+        ],
+      "english": "2. By the constant practice of meditation one can also gradually develop voluntary control over various involuntary vital functions of the body, such as the beating of the heart, the digestion of food or the absorption of oxygen from the lungs, which are normally carried out spontaneously under the control of the autonomic nervous system.\n\nBy meditation, a person can also learn to stabilize his emotional changes, thereby restraining abnormal functions of various vital organs of the body.\n\nOrdinarily, there are two planes in which the mind functions, the conscious and the unconscious.\n\nYet, there can be one more plane which is higher than both, one where the mind goes beyond the level of self-consciousness.\n\nThis is called superconsciousness. How can this be attained? When a man goes to sleep, he enters the plane of subconsciousness; on waking up, he regains his consciousness and becomes a normal person.\n\nBut when a person has attained superconsciousness, usually through the prolonged practice of meditation, on returning to the conscious state he becomes a different person having acquired greater knowledge and wisdom.\n\nAfter practicing the Kundalini type of meditation for many years, Gopikrishna described his great experience of attaining superconsciousness and the subsequent remarkable events that occurred in his life.",
+      "persian": "۲. با تمرین مداوم مراقبه همچنین می‌توان به‌تدریج کنترل ارادی بر عملکردهای غیرارادی و حیاتی مختلف بدن، مانند ضربان قلب، هضم غذا یا جذب اکسیژن از ریه‌ها را ایجاد کرد؛ عملکردهایی که معمولاً به‌طور خودبه‌خود تحت کنترل سیستم عصبی خودمختار انجام می‌شوند.\n\nبا مدیتیشن، فرد همچنین می‌تواند یاد بگیرد که تغییرات عاطفی خود را تثبیت کند و از این طریق عملکردهای غیرعادی اندام‌های حیاتی مختلف بدن را مهار کند.\n\nبه‌طور معمول، دو سطح وجود دارد که ذهن در آن‌ها فعالیت می‌کند: خودآگاه و ناخودآگاه.\n\nبا این حال، می‌تواند سطح دیگری نیز وجود داشته باشد که از هر دوی آن‌ها بالاتر است؛ سطحی که ذهن از سطح خودآگاهی فراتر می‌رود.\n\nبه این حالت ابرآگاهی گفته می‌شود. چگونه می‌توان به آن دست یافت؟ وقتی انسان به خواب می‌رود، وارد سطح ناخودآگاه می‌شود؛ پس از بیدار شدن، هوشیاری خود را دوباره به دست می‌آورد و به فردی عادی تبدیل می‌شود.\n\nاما هنگامی که شخصی به ابرآگاهی دست یافته باشد، معمولاً از طریق تمرین طولانی‌مدت مدیتیشن، با بازگشت به حالت خودآگاه به فردی متفاوت تبدیل می‌شود که دانش و خرد بیشتری کسب کرده است.\n\nگوپیکریشنا پس از تمرین نوع مراقبه کوندالینی برای سال‌ها، تجربه بزرگ خود از دستیابی به ابرآگاهی و رویدادهای قابل‌توجه بعدی را که در زندگی‌اش رخ داد، شرح داد."
+    },
+    {
+      "title": "Paragraph 3",
+        "audio": [
+          "audio/English-2/Unit2-Para3.m4a",
+          "audio/English-2/درس۲-پارا۳.m4a"
+        ],
+      "english": "3. Thus, meditation can be used as a powerful instrument to restrain the sense organs, control the autonomic nervous system and also attain the state of superconsciousness.",
+      "persian": "۳. بنابراین، مدیتیشن می‌تواند به‌عنوان ابزاری قدرتمند برای مهار اندام‌های حسی، کنترل سیستم عصبی خودمختار و همچنین رسیدن به حالت ابرآگاهی مورد استفاده قرار گیرد."
+    },
+    {
+      "title": "Paragraph 4 — Methods of Meditation",
+        "audio": [
+          "audio/English-2/Unit2-Para4.m4a",
+          "audio/English-2/درس۲-پارا۴.m4a"
+        ],
+      "english": "Methods of Meditation\n\n4. There are many methods of meditation. The sage Patanjali describes eight steps to achieve the goal of superconsciousness.\n\nThis cannot be reached suddenly or accidentally.\n\nOne will have to gradually improve one’s social and personal behavior, by regular practice of yogic exercises, breath control, and various mental exercises. Buddha, 2500 years ago, described the vipasana method of meditation in which a person sits in a comfortable posture with eyes closed and directs his attention to the tip of his nose to observe his breath continuously.\n\nBy this simple procedure, one learns to practice concentration of the mind. Gradually, one can make use of this method for meditation on any noble object to attain peace and happiness.\n\nRecently, Maharishi Mahesh Yogi described a simple method popularly known as transcendental meditation. Here again, the person assumes a comfortable sitting position with eyes closed and turns his attention inwards to control his internal environment.\n\nThen, he repeats certain sacred words called “mantra” and portrays the gods Vishnu, Shiva and Brahama for about 20 minutes.\n\nThroughout the period of meditation, the person concentrates on prayer and communication with deity and avoids all mental distractions.",
+      "persian": "روش‌های مدیتیشن\n\n۴. روش‌های زیادی برای مدیتیشن وجود دارد. حکیم پاتانجلی هشت گام را برای رسیدن به هدف ابرآگاهی شرح می‌دهد.\n\nاین حالت را نمی‌توان به‌طور ناگهانی یا تصادفی به دست آورد.\n\nفرد باید به‌تدریج رفتار اجتماعی و شخصی خود را با تمرین منظم تمرینات یوگا، کنترل تنفس و تمرینات ذهنی مختلف بهبود بخشد. بودا، ۲۵۰۰ سال پیش، روش مدیتیشن ویپاسانا را توصیف کرد که در آن فرد در حالتی راحت با چشمان بسته می‌نشیند و توجه خود را به نوک بینی معطوف می‌کند تا تنفس خود را به‌طور مداوم مشاهده کند.\n\nبا این روش ساده، فرد یاد می‌گیرد تمرکز ذهن را تمرین کند. به‌تدریج می‌توان از این روش برای مراقبه بر هر موضوع والا و ارزشمند، به‌منظور رسیدن به آرامش و شادی، استفاده کرد.\n\nاخیراً ماهاریشی ماهش یوگی روش ساده‌ای را توصیف کرده است که به‌طور گسترده با نام مدیتیشن متعالی شناخته می‌شود. در این روش نیز فرد با چشمان بسته وضعیت نشستن راحتی به خود می‌گیرد و توجه خود را به درون معطوف می‌کند تا محیط داخلی خود را کنترل کند.\n\nسپس، کلمات مقدس مشخصی به نام «مانترا» را تکرار می‌کند و خدایان ویشنو، شیوا و برهما را برای حدود ۲۰ دقیقه به تصویر می‌کشد.\n\nدر تمام مدت مدیتیشن، فرد بر دعا و ارتباط با معبود تمرکز می‌کند و از هرگونه حواس‌پرتی ذهنی دوری می‌کند."
+    },
+    {
+      "title": "Paragraph 5",
+        "audio": [
+          "audio/English-2/Unit2-Para5.m4a",
+          "audio/English-2/درس۲-پارا۵.m4a"
+        ],
+      "english": "5. Taking into account all these different methods, Benson has described a simple method of meditation for beginners as follows:\n\n(a) A quiet environment: For this, it is necessary to have a quiet room, one usually kept for worship. This helps to eliminate distraction.\n\n(b) A passive attitude: One should not bother about any disturbing thoughts that come to one’s mind during meditation but should try to concentrate on the objects chosen.\n\n(c) A comfortable position: A comfortable sitting posture is desirable. If this is not feasible, one can also adopt a lying-down posture, but should not go to sleep.\n\n(d) A mental device for concentration: In order to shift the mind from external objects to internal thoughts, one should repeat silently sacred words known as “mantra” for about 20 minutes, with eyes fully closed. Such meditation should be carried out twice a day morning and evening.",
+      "persian": "۵. بنسون با در نظر گرفتن تمام این روش‌های مختلف، یک روش ساده مراقبه را برای مبتدیان به شرح زیر توصیف کرده است:\n\n(الف) محیطی آرام: برای این منظور، داشتن اتاقی آرام که معمولاً برای عبادت نگهداری می‌شود ضروری است. این کار به از بین بردن حواس‌پرتی کمک می‌کند.\n\n(ب) نگرش منفعلانه: فرد نباید درباره افکار مزاحمی که در حین مراقبه به ذهنش می‌رسند نگران باشد، بلکه باید سعی کند روی موضوعات انتخاب‌شده تمرکز کند.\n\n(ج) وضعیت راحت: وضعیت نشستن راحت مطلوب است. اگر این امکان‌پذیر نباشد، می‌توان وضعیت درازکش را نیز اتخاذ کرد، اما نباید به خواب رفت.\n\n(د) یک وسیله ذهنی برای تمرکز: برای تغییر جهت ذهن از اشیای بیرونی به افکار درونی، باید کلمات مقدسی را که با نام «مانترا» شناخته می‌شوند، حدود ۲۰ دقیقه با چشمان کاملاً بسته و به‌صورت بی‌صدا تکرار کرد. چنین مراقبه‌ای باید دو بار در روز، صبح و عصر، انجام شود."
+    },
+    {
+      "title": "Paragraph 6",
+        "audio": [
+          "audio/English-2/Unit2-Para6.m4a",
+          "audio/English-2/درس۲-پارا۶.m4a"
+        ],
+      "english": "6. In order to study the utility of these methods, and also to know the degree of attainment in each individual case, a biofeedback system has been introduced, using an electronic instrument that can amplify the various psychosomatic changes in the body such as blood pressure, heart rate, muscle tension, skin temperature and brainwave patterns.\n\nBy observing one’s own bodily functions with this device, one can gradually, through meditation, develop a mental power to control the involuntary functions described above.",
+      "persian": "۶. به‌منظور بررسی کاربرد این روش‌ها و همچنین آگاهی از میزان دستیابی در هر مورد، یک سیستم بیوفیدبک با استفاده از یک ابزار الکترونیکی معرفی شده است که می‌تواند تغییرات روان‌تنی مختلف بدن مانند فشار خون، ضربان قلب، تنش عضلانی، دمای پوست و الگوهای امواج مغزی را تقویت کند.\n\nبا مشاهده عملکردهای بدن خود به کمک این دستگاه، می‌توان به‌تدریج و از طریق مدیتیشن، قدرت ذهنی لازم برای کنترل عملکردهای غیرارادی توضیح‌داده‌شده در بالا را ایجاد کرد."
+    },
+    {
+      "title": "Paragraph 7 — Results",
+        "audio": [
+          "audio/English-2/Unit2-Para7.m4a",
+          "audio/English-2/درس۲-پارا۷.m4a"
+        ],
+      "english": "Results\n\n7. Recently a number of studies have been conducted to assess the value of meditation during health and disease.\n\nBiochemical studies have indicated that after ten days of intensive vipasana type of meditation, there was an improvement in mental activity with greater tranquility of mind as evidenced by a significant increase in the neurohumoral contents of the blood, such as catecholamines, histamine, acetylcholine and their related enzymes and with a decrease in the plasma cortisol level.\n\nWallace and Benson, who conducted extensive studies on transcendental meditation, observed that the electroencephalograph showed an increase in the alphawave activity indicating greater tranquility of mind.\n\nThey also observed a decrease in the heart beat and a %20 decrease in oxygen consumption. There was also a marked increase in skin resistance.\n\nIn several subsequent studies, this method has been used clinically in cases of hypertension, drug addiction, alcoholism, etc. with beneficial results.\n\nBy coupling meditation with biofeedback, one can successfully treat a large number of patients with stress disorders.",
+      "persian": "نتایج\n\n۷. اخیراً تعدادی از مطالعات برای ارزیابی ارزش مدیتیشن در دوران سلامت و بیماری انجام شده است.\n\nمطالعات بیوشیمیایی نشان داده‌اند که پس از ده روز مدیتیشن فشرده از نوع ویپاسانا، فعالیت ذهنی بهبود یافته و آرامش ذهن بیشتر شده است. این موضوع با افزایش قابل‌توجه مواد نوروهومورال خون، مانند کاتکول‌آمین‌ها، هیستامین، استیل‌کولین و آنزیم‌های مرتبط با آن‌ها، و نیز کاهش سطح کورتیزول پلاسما مشخص شده است.\n\nوالاس و بنسون که مطالعات گسترده‌ای درباره مدیتیشن متعالی انجام دادند، مشاهده کردند که الکتروانسفالوگراف افزایش فعالیت امواج آلفا را نشان می‌دهد که بیانگر آرامش بیشتر ذهن است.\n\nآن‌ها همچنین کاهش ضربان قلب و کاهش ۲۰ درصدی مصرف اکسیژن را مشاهده کردند. افزایش قابل‌توجهی نیز در مقاومت پوست وجود داشت.\n\nدر چندین مطالعه بعدی، این روش به‌صورت بالینی در موارد فشار خون بالا، اعتیاد به مواد مخدر، اعتیاد به الکل و موارد دیگر، با نتایج مفید مورد استفاده قرار گرفته است.\n\nبا همراه کردن مدیتیشن با بیوفیدبک، می‌توان تعداد زیادی از بیماران مبتلا به اختلالات استرس را با موفقیت درمان کرد."
+    },
+    {
+      "title": "Paragraph 8",
+        "audio": [
+          "audio/English-2/Unit2-Para8.m4a",
+          "audio/English-2/درس۲-پارا۸.m4a"
+        ],
+      "english": "8. The promotion of mental health can also be obtained by using other methods of meditation: Zen meditation as practiced in Japan, Suffism as in the Middle East, and autogenic training as in Western countries.\n\nRecently, Kundalini meditation has also been used with great benefit not only for improving the level of consciousness, but also in the treatment of certain mental illnesses.",
+      "persian": "۸. ارتقای سلامت روان را می‌توان با استفاده از روش‌های دیگر مدیتیشن نیز به دست آورد: مراقبه ذن که در ژاپن انجام می‌شود، تصوف در خاورمیانه و آموزش اتوژنیک در کشورهای غربی.\n\nاخیراً مدیتیشن کوندالینی نه‌تنها برای بهبود سطح هوشیاری، بلکه در درمان برخی از بیماری‌های روانی نیز با فواید زیادی مورد استفاده قرار گرفته است."
+    },
+    {
+      "title": "Paragraph 9",
+        "audio": [
+          "audio/English-2/Unit2-Para9.m4a",
+          "audio/English-2/درس۲-پارا۹.m4a"
+        ],
+      "english": "9. There is great scope for the use of meditation in the preventive, promotive and curative aspects of mental health.\n\nHowever, there is an urgent need to conduct scientific studies and develop standardization of this simple, inexpensive, yet powerful technique for the promotion of mental health so that people all over the world can use it.",
+      "persian": "۹. زمینه زیادی برای استفاده از مراقبه در جنبه‌های پیشگیرانه، ترویجی و درمانی سلامت روان وجود دارد.\n\nبا این حال، نیاز فوری به انجام مطالعات علمی و استانداردسازی این تکنیک ساده، ارزان و در عین حال قدرتمند برای ارتقای سلامت روان وجود دارد تا مردم در سراسر جهان بتوانند از آن استفاده کنند."
+    }
+  ],
+  "exercises": {
+    "title": "Exercise A — True or False",
+    "questions": [
+      {
+        "number": 1,
+        "en": "Meditation is the practice of using sense organs freely.",
+        "fa": "مدیتیشن تمرین استفاده آزادانه از اندام‌های حسی است.",
+        "answer": "F"
+      },
+      {
+        "number": 2,
+        "en": "The severity of the external stimuli determines various psychosomatic responses.",
+        "fa": "شدت محرک‌های بیرونی پاسخ‌های روان‌تنی مختلفی را تعیین می‌کند.",
+        "answer": "T"
+      },
+      {
+        "number": 3,
+        "en": "Practice of meditation leads to involuntary reduction of psychosomatic responses.",
+        "fa": "تمرین مراقبه منجر به کاهش غیرارادی پاسخ‌های روان‌تنی می‌شود.",
+        "answer": "F"
+      },
+      {
+        "number": 4,
+        "en": "The digestion of food or the heartbeat happens spontaneously in the body as opposed to the absorption of oxygen.",
+        "fa": "هضم غذا یا ضربان قلب به‌طور خودبه‌خود در بدن اتفاق می‌افتد و برخلاف جذب اکسیژن است.",
+        "answer": "F"
+      },
+      {
+        "number": 5,
+        "en": "In the state of subconsciousness, the individual is wiser and gains more knowledge.",
+        "fa": "در حالت ناخودآگاه، فرد عاقل‌تر است و دانش بیشتری به دست می‌آورد.",
+        "answer": "F"
+      },
+      {
+        "number": 6,
+        "en": "An increase in histamine, acetylcholine, etc. in the blood indicates the individual’s peace of mind.",
+        "fa": "افزایش هیستامین، استیل‌کولین و غیره در خون نشان‌دهنده آرامش فرد است.",
+        "answer": "T"
+      },
+      {
+        "number": 7,
+        "en": "Different types of meditation can help the treatment of different mental disorders.",
+        "fa": "انواع مختلف مدیتیشن می‌توانند به درمان اختلالات روانی مختلف کمک کنند.",
+        "answer": "T"
+      },
+      {
+        "number": 8,
+        "en": "The practice of meditation is not standardized around the world yet.",
+        "fa": "تمرین مدیتیشن هنوز در سراسر جهان استاندارد نشده است.",
+        "answer": "T"
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "direct",
+      "pronunciation": "",
+      "meaning": "جهت دادن، سو دادن"
+    },
+    {
+      "word": "exercise",
+      "pronunciation": "",
+      "meaning": "تمرین"
+    },
+    {
+      "word": "mental",
+      "pronunciation": "",
+      "meaning": "ذهنی"
+    },
+    {
+      "word": "sense",
+      "pronunciation": "",
+      "meaning": "حس"
+    },
+    {
+      "word": "external",
+      "pronunciation": "",
+      "meaning": "بیرونی"
+    },
+    {
+      "word": "stimulations",
+      "pronunciation": "",
+      "meaning": "تحریکات"
+    },
+    {
+      "word": "inwardly",
+      "pronunciation": "",
+      "meaning": "درونی، در باطن"
+    },
+    {
+      "word": "freely",
+      "pronunciation": "",
+      "meaning": "آزادانه"
+    },
+    {
+      "word": "state",
+      "pronunciation": "",
+      "meaning": "حالت"
+    },
+    {
+      "word": "conscious",
+      "pronunciation": "",
+      "meaning": "هوشیار، آگاه"
+    },
+    {
+      "word": "sweets",
+      "pronunciation": "",
+      "meaning": "شیرینی"
+    },
+    {
+      "word": "smelling",
+      "pronunciation": "",
+      "meaning": "بوییدن"
+    },
+    {
+      "word": "scents",
+      "pronunciation": "",
+      "meaning": "بوها، عطرها"
+    },
+    {
+      "word": "touching",
+      "pronunciation": "",
+      "meaning": "لمس کردن"
+    },
+    {
+      "word": "nose",
+      "pronunciation": "",
+      "meaning": "بینی"
+    },
+    {
+      "word": "continuously",
+      "pronunciation": "",
+      "meaning": "به‌طور مداوم"
+    },
+    {
+      "word": "stimulate",
+      "pronunciation": "",
+      "meaning": "تحریک کردن"
+    },
+    {
+      "word": "various",
+      "pronunciation": "",
+      "meaning": "مختلف"
+    },
+    {
+      "word": "responses",
+      "pronunciation": "",
+      "meaning": "پاسخ‌ها"
+    },
+    {
+      "word": "psychosomatic",
+      "pronunciation": "",
+      "meaning": "روان‌تنی"
+    },
+    {
+      "word": "apparatus",
+      "pronunciation": "",
+      "meaning": "دستگاه"
+    },
+    {
+      "word": "depending upon",
+      "pronunciation": "",
+      "meaning": "بسته به"
+    },
+    {
+      "word": "severity",
+      "pronunciation": "",
+      "meaning": "شدت"
+    },
+    {
+      "word": "extent",
+      "pronunciation": "",
+      "meaning": "وسعت، میزان"
+    },
+    {
+      "word": "stimuli",
+      "pronunciation": "",
+      "meaning": "محرک‌ها"
+    },
+    {
+      "word": "constant",
+      "pronunciation": "",
+      "meaning": "ثابت، مداوم"
+    },
+    {
+      "word": "voluntarily",
+      "pronunciation": "",
+      "meaning": "به‌طور ارادی"
+    },
+    {
+      "word": "reduce",
+      "pronunciation": "",
+      "meaning": "کاهش دادن"
+    },
+    {
+      "word": "bodily",
+      "pronunciation": "",
+      "meaning": "بدنی"
+    },
+    {
+      "word": "perform",
+      "pronunciation": "",
+      "meaning": "انجام دادن"
+    },
+    {
+      "word": "fruitful",
+      "pronunciation": "",
+      "meaning": "پربار، مفید"
+    },
+    {
+      "word": "develop",
+      "pronunciation": "",
+      "meaning": "توسعه دادن"
+    },
+    {
+      "word": "voluntary",
+      "pronunciation": "",
+      "meaning": "ارادی"
+    },
+    {
+      "word": "gradually",
+      "pronunciation": "",
+      "meaning": "به‌تدریج"
+    },
+    {
+      "word": "involuntary",
+      "pronunciation": "",
+      "meaning": "غیرارادی"
+    },
+    {
+      "word": "vital",
+      "pronunciation": "",
+      "meaning": "حیاتی"
+    },
+    {
+      "word": "beating",
+      "pronunciation": "",
+      "meaning": "ضربان"
+    },
+    {
+      "word": "lungs",
+      "pronunciation": "",
+      "meaning": "ریه‌ها"
+    },
+    {
+      "word": "absorption",
+      "pronunciation": "",
+      "meaning": "جذب"
+    },
+    {
+      "word": "digestion",
+      "pronunciation": "",
+      "meaning": "هضم"
+    },
+    {
+      "word": "autonomic",
+      "pronunciation": "",
+      "meaning": "خودمختار"
+    },
+    {
+      "word": "spontaneously",
+      "pronunciation": "",
+      "meaning": "خودبه‌خود"
+    },
+    {
+      "word": "carried out",
+      "pronunciation": "",
+      "meaning": "انجام‌شده"
+    },
+    {
+      "word": "restraining",
+      "pronunciation": "",
+      "meaning": "مهار کردن"
+    },
+    {
+      "word": "emotional",
+      "pronunciation": "",
+      "meaning": "عاطفی"
+    },
+    {
+      "word": "stabilize",
+      "pronunciation": "",
+      "meaning": "تثبیت کردن"
+    },
+    {
+      "word": "abnormal",
+      "pronunciation": "",
+      "meaning": "غیرطبیعی"
+    },
+    {
+      "word": "ordinarily",
+      "pronunciation": "",
+      "meaning": "به‌طور معمول"
+    },
+    {
+      "word": "unconscious",
+      "pronunciation": "",
+      "meaning": "ناخودآگاه"
+    },
+    {
+      "word": "mind",
+      "pronunciation": "",
+      "meaning": "ذهن"
+    },
+    {
+      "word": "self-consciousness",
+      "pronunciation": "",
+      "meaning": "خودآگاهی"
+    },
+    {
+      "word": "plane",
+      "pronunciation": "",
+      "meaning": "سطح"
+    },
+    {
+      "word": "superconsciousness",
+      "pronunciation": "",
+      "meaning": "ابرآگاهی"
+    },
+    {
+      "word": "attained",
+      "pronunciation": "",
+      "meaning": "به‌دست‌آوردن"
+    },
+    {
+      "word": "subconsciousness",
+      "pronunciation": "",
+      "meaning": "ناخودآگاه"
+    },
+    {
+      "word": "waking up",
+      "pronunciation": "",
+      "meaning": "بیدار شدن"
+    },
+    {
+      "word": "regains",
+      "pronunciation": "",
+      "meaning": "دوباره به‌دست می‌آورد"
+    },
+    {
+      "word": "returning",
+      "pronunciation": "",
+      "meaning": "بازگشت"
+    },
+    {
+      "word": "prolonged",
+      "pronunciation": "",
+      "meaning": "طولانی‌مدت"
+    },
+    {
+      "word": "through",
+      "pronunciation": "",
+      "meaning": "از طریق"
+    },
+    {
+      "word": "wisdom",
+      "pronunciation": "",
+      "meaning": "خرد، عقل"
+    },
+    {
+      "word": "greater",
+      "pronunciation": "",
+      "meaning": "بیشتر"
+    },
+    {
+      "word": "acquire",
+      "pronunciation": "",
+      "meaning": "کسب کردن"
+    },
+    {
+      "word": "subsequent",
+      "pronunciation": "",
+      "meaning": "بعدی، متعاقب"
+    },
+    {
+      "word": "great",
+      "pronunciation": "",
+      "meaning": "بزرگ، عالی"
+    },
+    {
+      "word": "describe",
+      "pronunciation": "",
+      "meaning": "توصیف کردن"
+    },
+    {
+      "word": "events",
+      "pronunciation": "",
+      "meaning": "رویدادها"
+    },
+    {
+      "word": "remarkable",
+      "pronunciation": "",
+      "meaning": "قابل‌توجه"
+    },
+    {
+      "word": "occurred",
+      "pronunciation": "",
+      "meaning": "رخ داد"
+    },
+    {
+      "word": "attain",
+      "pronunciation": "",
+      "meaning": "دستیابی، رسیدن به"
+    },
+    {
+      "word": "instrument",
+      "pronunciation": "",
+      "meaning": "ابزار"
+    },
+    {
+      "word": "sage",
+      "pronunciation": "",
+      "meaning": "حکیم"
+    },
+    {
+      "word": "goal",
+      "pronunciation": "",
+      "meaning": "هدف"
+    },
+    {
+      "word": "achieve",
+      "pronunciation": "",
+      "meaning": "دستیابی"
+    },
+    {
+      "word": "suddenly",
+      "pronunciation": "",
+      "meaning": "ناگهانی"
+    },
+    {
+      "word": "accidentally",
+      "pronunciation": "",
+      "meaning": "تصادفی"
+    },
+    {
+      "word": "reach",
+      "pronunciation": "",
+      "meaning": "رسیدن به"
+    },
+    {
+      "word": "social",
+      "pronunciation": "",
+      "meaning": "اجتماعی"
+    },
+    {
+      "word": "improve",
+      "pronunciation": "",
+      "meaning": "بهبود بخشیدن"
+    },
+    {
+      "word": "behavior",
+      "pronunciation": "",
+      "meaning": "رفتار"
+    },
+    {
+      "word": "regular",
+      "pronunciation": "",
+      "meaning": "منظم"
+    },
+    {
+      "word": "breath",
+      "pronunciation": "",
+      "meaning": "تنفس"
+    },
+    {
+      "word": "comfortable",
+      "pronunciation": "",
+      "meaning": "راحت"
+    },
+    {
+      "word": "posture",
+      "pronunciation": "",
+      "meaning": "وضعیت بدن"
+    },
+    {
+      "word": "tip",
+      "pronunciation": "",
+      "meaning": "نوک"
+    },
+    {
+      "word": "observe",
+      "pronunciation": "",
+      "meaning": "مشاهده کردن"
+    },
+    {
+      "word": "simple",
+      "pronunciation": "",
+      "meaning": "ساده"
+    },
+    {
+      "word": "procedure",
+      "pronunciation": "",
+      "meaning": "روش، فرایند"
+    },
+    {
+      "word": "concentration",
+      "pronunciation": "",
+      "meaning": "تمرکز"
+    },
+    {
+      "word": "noble",
+      "pronunciation": "",
+      "meaning": "والا، شریف"
+    },
+    {
+      "word": "peace",
+      "pronunciation": "",
+      "meaning": "آرامش"
+    },
+    {
+      "word": "object",
+      "pronunciation": "",
+      "meaning": "موضوع، هدف"
+    },
+    {
+      "word": "assumes",
+      "pronunciation": "",
+      "meaning": "به خود می‌گیرد"
+    },
+    {
+      "word": "popularly",
+      "pronunciation": "",
+      "meaning": "به‌طور گسترده"
+    },
+    {
+      "word": "inwards",
+      "pronunciation": "",
+      "meaning": "به سمت داخل"
+    },
+    {
+      "word": "internal",
+      "pronunciation": "",
+      "meaning": "درونی"
+    },
+    {
+      "word": "transcendental",
+      "pronunciation": "",
+      "meaning": "متعالی"
+    },
+    {
+      "word": "environment",
+      "pronunciation": "",
+      "meaning": "محیط"
+    },
+    {
+      "word": "portray",
+      "pronunciation": "",
+      "meaning": "به تصویر کشیدن"
+    },
+    {
+      "word": "sacred",
+      "pronunciation": "",
+      "meaning": "مقدس"
+    },
+    {
+      "word": "certain",
+      "pronunciation": "",
+      "meaning": "مشخص، معین"
+    },
+    {
+      "word": "throughout",
+      "pronunciation": "",
+      "meaning": "در سراسر"
+    },
+    {
+      "word": "period",
+      "pronunciation": "",
+      "meaning": "دوره زمانی"
+    },
+    {
+      "word": "concentrates",
+      "pronunciation": "",
+      "meaning": "تمرکز می‌کند"
+    },
+    {
+      "word": "prayer",
+      "pronunciation": "",
+      "meaning": "دعا"
+    },
+    {
+      "word": "avoid",
+      "pronunciation": "",
+      "meaning": "دوری کردن"
+    },
+    {
+      "word": "deity",
+      "pronunciation": "",
+      "meaning": "معبود"
+    },
+    {
+      "word": "communication",
+      "pronunciation": "",
+      "meaning": "ارتباط"
+    },
+    {
+      "word": "distractions",
+      "pronunciation": "",
+      "meaning": "حواس‌پرتی‌ها"
+    },
+    {
+      "word": "quiet",
+      "pronunciation": "",
+      "meaning": "آرام، ساکت"
+    },
+    {
+      "word": "eliminate",
+      "pronunciation": "",
+      "meaning": "از بین بردن"
+    },
+    {
+      "word": "worship",
+      "pronunciation": "",
+      "meaning": "عبادت"
+    },
+    {
+      "word": "passive",
+      "pronunciation": "",
+      "meaning": "منفعل"
+    },
+    {
+      "word": "attitude",
+      "pronunciation": "",
+      "meaning": "نگرش"
+    },
+    {
+      "word": "bother about",
+      "pronunciation": "",
+      "meaning": "نگران بودن، آزار دادن"
+    },
+    {
+      "word": "disturbing",
+      "pronunciation": "",
+      "meaning": "مزاحم"
+    },
+    {
+      "word": "feasible",
+      "pronunciation": "",
+      "meaning": "امکان‌پذیر"
+    },
+    {
+      "word": "lying-down",
+      "pronunciation": "",
+      "meaning": "درازکش"
+    },
+    {
+      "word": "device",
+      "pronunciation": "",
+      "meaning": "دستگاه، وسیله"
+    },
+    {
+      "word": "utility",
+      "pronunciation": "",
+      "meaning": "کاربرد، سودمندی"
+    },
+    {
+      "word": "degree",
+      "pronunciation": "",
+      "meaning": "درجه، میزان"
+    },
+    {
+      "word": "individual",
+      "pronunciation": "",
+      "meaning": "فردی"
+    },
+    {
+      "word": "attainment",
+      "pronunciation": "",
+      "meaning": "دستیابی"
+    },
+    {
+      "word": "introduce",
+      "pronunciation": "",
+      "meaning": "معرفی کردن"
+    },
+    {
+      "word": "brainwave",
+      "pronunciation": "",
+      "meaning": "موج مغزی"
+    },
+    {
+      "word": "pattern",
+      "pronunciation": "",
+      "meaning": "الگو"
+    },
+    {
+      "word": "above",
+      "pronunciation": "",
+      "meaning": "بالا، پیش‌گفته"
+    },
+    {
+      "word": "results",
+      "pronunciation": "",
+      "meaning": "نتایج"
+    },
+    {
+      "word": "conduct",
+      "pronunciation": "",
+      "meaning": "انجام دادن"
+    },
+    {
+      "word": "assess",
+      "pronunciation": "",
+      "meaning": "ارزیابی کردن"
+    },
+    {
+      "word": "intensive",
+      "pronunciation": "",
+      "meaning": "فشرده، شدید"
+    },
+    {
+      "word": "indicated",
+      "pronunciation": "",
+      "meaning": "نشان داده‌اند"
+    },
+    {
+      "word": "improvement",
+      "pronunciation": "",
+      "meaning": "بهبود"
+    },
+    {
+      "word": "tranquility",
+      "pronunciation": "",
+      "meaning": "آرامش"
+    },
+    {
+      "word": "significant",
+      "pronunciation": "",
+      "meaning": "قابل‌توجه"
+    },
+    {
+      "word": "evidence",
+      "pronunciation": "",
+      "meaning": "شواهد"
+    },
+    {
+      "word": "decrease",
+      "pronunciation": "",
+      "meaning": "کاهش"
+    },
+    {
+      "word": "contents",
+      "pronunciation": "",
+      "meaning": "محتویات"
+    },
+    {
+      "word": "extensive",
+      "pronunciation": "",
+      "meaning": "گسترده"
+    },
+    {
+      "word": "consumption",
+      "pronunciation": "",
+      "meaning": "مصرف"
+    },
+    {
+      "word": "resistance",
+      "pronunciation": "",
+      "meaning": "مقاومت"
+    },
+    {
+      "word": "addiction",
+      "pronunciation": "",
+      "meaning": "اعتیاد"
+    },
+    {
+      "word": "coupling",
+      "pronunciation": "",
+      "meaning": "همراه کردن"
+    },
+    {
+      "word": "disorders",
+      "pronunciation": "",
+      "meaning": "اختلالات"
+    },
+    {
+      "word": "patients",
+      "pronunciation": "",
+      "meaning": "بیماران"
+    },
+    {
+      "word": "training",
+      "pronunciation": "",
+      "meaning": "آموزش"
+    },
+    {
+      "word": "obtain",
+      "pronunciation": "",
+      "meaning": "به‌دست آوردن"
+    },
+    {
+      "word": "promotion",
+      "pronunciation": "",
+      "meaning": "ارتقا"
+    },
+    {
+      "word": "benefit",
+      "pronunciation": "",
+      "meaning": "فایده، سود"
+    },
+    {
+      "word": "treatment",
+      "pronunciation": "",
+      "meaning": "درمان"
+    },
+    {
+      "word": "preventive",
+      "pronunciation": "",
+      "meaning": "پیشگیرانه"
+    },
+    {
+      "word": "promotive",
+      "pronunciation": "",
+      "meaning": "ترویجی"
+    },
+    {
+      "word": "curative",
+      "pronunciation": "",
+      "meaning": "درمانی"
+    },
+    {
+      "word": "aspect",
+      "pronunciation": "",
+      "meaning": "جنبه"
+    },
+    {
+      "word": "urgent",
+      "pronunciation": "",
+      "meaning": "فوری"
+    },
+    {
+      "word": "scientific",
+      "pronunciation": "",
+      "meaning": "علمی"
+    },
+    {
+      "word": "inexpensive",
+      "pronunciation": "",
+      "meaning": "ارزان"
+    },
+    {
+      "word": "expensive",
+      "pronunciation": "",
+      "meaning": "گران"
+    }
+  ]
+}
 ];
