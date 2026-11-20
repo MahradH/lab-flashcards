@@ -2305,4 +2305,745 @@ const readingLessons2 = [
     }
   ]
 }
+,
+{
+  "id": 3,
+  "unit": 3,
+  "title": "The mosquito: Public enemy No.1",
+  "titleFa": "پشه: دشمن عمومی شماره ۱",
+  "readingSections": [
+    {
+        "title": "Paragraph 1",
+        "audio": ["audio/English-2/Unit3-Para1.m4a", "audio/English-2/درس۳-پارا۱.m4a"],
+        "english": "1. Human malaria is normally transmitted from one person to another by the bite of a female anopheles mosquito infected with malaria parasites.\n\nIt is only the female anopheles mosquito that bites and feeds on people.\n\nThe male mosquitoes feed only on plant juices and thus do not play any role in the transmission of the disease.\n\nThe females need blood as a source of protein for the development and maturation of their eggs. Their mouth parts have developed so that they can pierce through the skin and blood vessels and suck blood.\n\nThey also excrete anticoagulants to prevent the blood from clotting as they feed.",
+        "persian": "۱. مالاریای انسانی به طور معمول از طریق نیش پشه آنوفل ماده آلوده به انگل مالاریا، از فردی به فرد دیگر منتقل می‌شود.\n\nفقط پشه آنوفل ماده است که مردم را نیش می‌زند و از آنها تغذیه می‌کند.\n\nپشه‌های نر فقط از شیره گیاهان تغذیه می‌کنند و بنابراین هیچ نقشی در انتقال بیماری ندارند.\n\nماده‌ها به خون به عنوان منبع پروتئین برای رشد و بلوغ تخم‌های خود نیاز دارند. قسمت‌های دهان آنها طوری رشد کرده است که می‌توانند پوست و رگ‌های خونی را سوراخ کرده و خون را بمکند.\n\nآنها همچنین مواد ضدانعقاد را دفع می‌کنند تا از لخته شدن خون در حین تغذیه جلوگیری کنند."
+    },
+    {
+        "title": "Paragraph 2",
+        "audio": ["audio/English-2/Unit3-Para2.m4a", "audio/English-2/درس۳-پارا۲.m4a"],
+        "english": "2. There are some 400 species of anopheles mosquitoes, but only about 70 species are known to be responsible for transmitting malaria.\n\nAbout 30 are of major importance, responsible for a significant amount of all malaria cases.\n\nIn Africa the most important vectors are members of the Anopheles gambiae group and A. funestus.",
+        "persian": "۲. حدود ۴۰۰ گونه پشه آنوفل وجود دارد، اما تنها حدود ۷۰ گونه مسئول انتقال مالاریا شناخته شده‌اند.\n\nحدود ۳۰ گونه از اهمیت عمده‌ای برخوردارند و مسئول مقدار قابل توجهی از همه موارد مالاریا هستند.\n\nدر آفریقا مهم‌ترین ناقلان اعضای گروه Anopheles gambiae و A. funestus هستند."
+    },
+    {
+        "title": "Paragraph 3",
+        "audio": ["audio/English-2/Unit3-Para3.m4a", "audio/English-2/درس۳-پارا۳.m4a"],
+        "english": "3. It is not clearly known why some species of mosquito are susceptible to malaria infection and others are not, or why some are more effective in transmitting the disease than others.\n\nThese differences are partly explained by the way they feed, how long they live and how many there are. Some vectors feed exclusively on humans every 2 to 3 days while others feed either on humans or other animals, as opportunities arise.",
+        "persian": "۳. مشخص نیست چرا برخی از گونه‌های پشه مستعد ابتلا به عفونت مالاریا هستند و برخی دیگر خیر، یا چرا برخی از آن‌ها در انتقال بیماری مؤثرتر از بقیه هستند.\n\nاین تفاوت‌ها تا حدی با نحوه تغذیه آن‌ها، مدت زندگی و تعدادشان توضیح داده می‌شود. برخی ناقل‌ها هر ۲ تا ۳ روز یک‌بار به‌طور انحصاری از انسان تغذیه می‌کنند، در حالی که برخی دیگر در صورت فراهم شدن فرصت، از انسان یا سایر حیوانات تغذیه می‌کنند."
+    },
+    {
+        "title": "Paragraph 4",
+        "audio": ["audio/English-2/Unit3-Para4.m4a", "audio/English-2/درس۳-پارا۴.m4a"],
+        "english": "4. Mosquitoes have four distinct stages in their life history - the egg, the larva, the pupa and the adult. The first three stages occur in water while the adult is an active flying insect.\n\nAnopheles eggs are laid singly on the water surface and hatch into the larval stage within one to three days.",
+        "persian": "۴. پشه‌ها چهار مرحله متمایز در چرخه زندگی خود دارند: تخم، لارو، شفیره و بالغ. سه مرحله اول در آب رخ می‌دهد، در حالی که پشه بالغ حشره‌ای فعال و پروازی است.\n\nتخم‌های آنوفل به‌صورت جداگانه روی سطح آب گذاشته می‌شوند و ظرف یک تا سه روز باز شده و وارد مرحله لاروی می‌شوند."
+    },
+    {
+        "title": "Paragraph 5",
+        "audio": ["audio/English-2/Unit3-Para5.m4a", "audio/English-2/درس۳-پارا۵.m4a"],
+        "english": "5. The larva is an active feeder and obtains its food from the water in which it lives.\n\nAfter about ten days, the larva molts into a pupa, which also lives in water. It does not feed, but has to come to the surface from time to time for air.\n\nAfter one to four days, the pupal skin splits and the adult mosquito slowly works its way out.\n\nIt rests briefly on the water surface and then flies away. The adult has an average flight range of one to two kilometers. Its life span can vary from a few hours to a few months.",
+        "persian": "۵. لارو به‌طور فعال تغذیه می‌کند و غذای خود را از آبی که در آن زندگی می‌کند به دست می‌آورد.\n\nپس از حدود ده روز، لارو پوست‌اندازی می‌کند و به شفیره تبدیل می‌شود که آن هم در آب زندگی می‌کند. شفیره تغذیه نمی‌کند، اما باید هر از گاهی برای دریافت هوا به سطح آب بیاید.\n\nپس از یک تا چهار روز، پوست شفیره شکافته می‌شود و پشه بالغ به‌آرامی از آن خارج می‌شود.\n\nپشه بالغ کمی روی سطح آب استراحت می‌کند و سپس پرواز می‌کند. برد پروازی متوسط آن یک تا دو کیلومتر است و طول عمرش می‌تواند از چند ساعت تا چند ماه متغیر باشد."
+    },
+    {
+        "title": "Paragraph 6",
+        "audio": ["audio/English-2/Unit3-Para6.m4a", "audio/English-2/درس۳-پارا۶.m4a"],
+        "english": "6. Anopheles mosquitoes have successfully adapted so that they can breed in almost any stagnant sheet of water from lakes down to temporary pools, cattle hoof prints and discarded containers. They can thrive in fresh or brackish waters.",
+        "persian": "۶. پشه‌های آنوفل به‌خوبی سازگار شده‌اند و می‌توانند تقریباً در هر پهنه آب راکدی، از دریاچه‌ها گرفته تا آبگیرهای موقت، جای پای دام‌ها و ظروف دورریخته‌شده، تولیدمثل کنند. آن‌ها می‌توانند در آب شیرین یا لب‌شور رشد کنند."
+    },
+    {
+        "title": "Paragraph 7",
+        "audio": ["audio/English-2/Unit3-Para7.m4a", "audio/English-2/درس۳-پارا۷.m4a"],
+        "english": "7. Malaria transmission can be prevented or reduced through different control methods directed against the aquatic stages and the adult mosquitoes. The most direct and obvious precaution is to avoid being bitten by mosquitoes.",
+        "persian": "۷. انتقال مالاریا را می‌توان از طریق روش‌های مختلف کنترل که مراحل آبزی و پشه‌های بالغ را هدف قرار می‌دهند، پیشگیری یا کاهش داد. مستقیم‌ترین و واضح‌ترین اقدام احتیاطی، جلوگیری از گزیده‌شدن توسط پشه‌هاست."
+    },
+    {
+        "title": "Paragraph 8",
+        "audio": ["audio/English-2/Unit3-Para8.m4a", "audio/English-2/درس۳-پارا۸.m4a"],
+        "english": "8. Locating houses, villages and settlements away from major breeding sites will reduce the threat of mosquito bites. But this will call for a good water supply that is not dependent on water where the mosquitoes breed. Improved housing design and construction to prevent mosquitoes from entering and resting indoors would also reduce the danger of bites.",
+        "persian": "۸. قرار دادن خانه‌ها، روستاها و سکونتگاه‌ها به دور از محل‌های اصلی تولیدمثل، خطر گزش پشه را کاهش می‌دهد. اما این کار به منبع آب مناسبی نیاز دارد که وابسته به آب محل تولیدمثل پشه‌ها نباشد. بهبود طراحی و ساخت خانه‌ها برای جلوگیری از ورود پشه‌ها و استراحت آن‌ها در داخل خانه نیز خطر گزش را کاهش می‌دهد."
+    },
+    {
+        "title": "Paragraph 9",
+        "audio": ["audio/English-2/Unit3-Para9.m4a", "audio/English-2/درس۳-پارا۹.m4a"],
+        "english": "9. Many mosquito breeding sites such as domestic water storage containers, abandoned mines, pits resulting from housing and road building, wells, drains and irrigation systems are created by people themselves. People can take action to counter some of these.",
+        "persian": "۹. بسیاری از محل‌های تولیدمثل پشه، مانند مخازن ذخیره آب خانگی، معادن متروکه، گودال‌های ایجادشده در اثر خانه‌سازی و جاده‌سازی، چاه‌ها، زهکش‌ها و سیستم‌های آبیاری، توسط خود مردم ایجاد می‌شوند. مردم می‌توانند برای مقابله با برخی از این موارد اقدام کنند."
+    },
+    {
+        "title": "Paragraph 10",
+        "audio": ["audio/English-2/Unit3-Para10.m4a", "audio/English-2/درس۳-پارا۱۰.m4a"],
+        "english": "10. Chemical compounds such as temephos can kill the larvae in the water but they are only suitable when breeding sites are few and the areas involved are limited. Of course, toxic substances must not be applied to water used for drinking or washing.",
+        "persian": "۱۰. ترکیبات شیمیایی مانند تمفوس می‌توانند لاروهای موجود در آب را از بین ببرند، اما فقط زمانی مناسب‌اند که محل‌های تولیدمثل کم و مناطق درگیر محدود باشند. البته مواد سمی نباید در آبی که برای آشامیدن یا شست‌وشو استفاده می‌شود، به‌کار برده شوند."
+    },
+    {
+        "title": "Paragraph 11",
+        "audio": ["audio/English-2/Unit3-Para11.m4a", "audio/English-2/درس۳-پارا۱۱.m4a"],
+        "english": "11. Standing pools of water near houses should be filled or drained off and irrigation canals should be properly maintained and cleared of vegetation to allow the free flow of water. Periodical drying and flooding of rice fields for short periods to disrupt the mosquito life stages have proved effective in some countries.",
+        "persian": "۱۱. آبگیرهای راکد نزدیک خانه‌ها باید پر یا تخلیه شوند و کانال‌های آبیاری باید به‌درستی نگهداری و از پوشش گیاهی پاک‌سازی شوند تا جریان آزاد آب برقرار باشد. خشک‌کردن دوره‌ای و غرقاب‌کردن مزارع برنج برای دوره‌های کوتاه، به‌منظور مختل‌کردن مراحل زندگی پشه، در برخی کشورها مؤثر بوده است."
+    },
+    {
+        "title": "Paragraph 12",
+        "audio": ["audio/English-2/Unit3-Para12.m4a", "audio/English-2/درس۳-پارا۱۲.m4a"],
+        "english": "12. Some types of fish eat mosquito larvae. Certain so-called “annual fish” (genus Notobranchius) can survive droughts and may be used in bodies of water that are not permanent.\n\nThe use of larvivorous fish is ideal for community involvement. It is best if these fish can be bred along with types that can be eaten, as the breeding of such fish gives an additional financial motivation!\n\nFish that feed on plants can also help to keep the edges of canals and drains free of vegetation, facilitating the free flow of water.",
+        "persian": "۱۲. برخی از انواع ماهی‌ها لارو پشه را می‌خورند. بعضی از ماهی‌های موسوم به «ماهی‌های سالانه» (از جنس Notobranchius) می‌توانند خشکسالی را تحمل کنند و ممکن است در پهنه‌های آبی غیردائمی به کار گرفته شوند.\n\nاستفاده از ماهی‌های لاروخوار برای مشارکت جامعه ایده‌آل است. بهتر است این ماهی‌ها همراه با گونه‌های خوراکی پرورش داده شوند، زیرا پرورش چنین ماهی‌هایی انگیزه مالی بیشتری ایجاد می‌کند.\n\nماهی‌هایی که از گیاهان تغذیه می‌کنند نیز می‌توانند به پاک نگه‌داشتن کناره کانال‌ها و زهکش‌ها از پوشش گیاهی کمک کنند و جریان آزاد آب را تسهیل کنند."
+    },
+    {
+        "title": "Paragraph 13",
+        "audio": ["audio/English-2/Unit3-Para13.m4a", "audio/English-2/درس۳-پارا۱۳.m4a"],
+        "english": "13. Different types of insecticides are available to kill adult mosquitoes. The “knock-down” insecticides are effective for a matter of days while the “residual” insecticides may last for months.",
+        "persian": "۱۳. انواع مختلفی از حشره‌کش‌ها برای از بین بردن پشه‌های بالغ وجود دارند. حشره‌کش‌های «ناک‌داون» فقط برای چند روز مؤثرند، درحالی‌که حشره‌کش‌های «باقی‌مانده» ممکن است ماه‌ها دوام داشته باشند."
+    },
+    {
+        "title": "Paragraph 14",
+        "audio": ["audio/English-2/Unit3-Para14.m4a", "audio/English-2/درس۳-پارا۱۴.m4a"],
+        "english": "14. DDT has been the most widely used residual insecticide since its introduction in the 1940s. It is also the cheapest and safest for indoor use against adult mosquitoes which feed and rest inside houses.\n\nUse of residual insecticides is advocated only to control malaria outbreaks, and in selected situations.\n\nThe use of insecticide spraying on a large scale or for long periods is not sustainable because of the high costs, problems with spraying, and mosquito resistance to insecticides.",
+        "persian": "۱۴. DDT از زمان معرفی آن در دهه ۱۹۴۰، پرکاربردترین حشره‌کش باقی‌مانده بوده است. همچنین ارزان‌ترین و ایمن‌ترین گزینه برای استفاده در فضای داخلی خانه علیه پشه‌های بالغی است که در داخل خانه‌ها تغذیه و استراحت می‌کنند.\n\nاستفاده از حشره‌کش‌های باقی‌مانده فقط برای کنترل طغیان‌های مالاریا و در شرایط منتخب توصیه می‌شود.\n\nاستفاده از سم‌پاشی حشره‌کش در مقیاس گسترده یا برای مدت طولانی به دلیل هزینه‌های بالا، مشکلات سم‌پاشی و مقاومت پشه‌ها در برابر حشره‌کش‌ها پایدار نیست."
+    },
+    {
+        "title": "Paragraph 15",
+        "audio": ["audio/English-2/Unit3-Para15.m4a", "audio/English-2/درس۳-پارا۱۵.m4a"],
+        "english": "15. Spraying in the air with “knock-down” insecticides is useful when prompt action is called for, for example during epidemics and when large populations congregate outdoors at night.\n\nThe operation is extremely costly and must be carefully timed to coincide with times when mosquitoes fly around.",
+        "persian": "۱۵. سم‌پاشی در هوا با حشره‌کش‌های «ناک‌داون» زمانی مفید است که اقدام فوری لازم باشد؛ برای مثال، هنگام همه‌گیری‌ها و زمانی که جمعیت زیادی از پشه‌ها شب‌ها در فضای باز تجمع می‌کنند.\n\nاین عملیات بسیار پرهزینه است و باید با دقت زمان‌بندی شود تا با زمان پرواز پشه‌ها هم‌زمان باشد."
+    },
+    {
+        "title": "Paragraph 16",
+        "audio": ["audio/English-2/Unit3-Para16.m4a", "audio/English-2/درس۳-پارا۱۶.m4a"],
+        "english": "16. Thus, various options exist for controlling vector mosquitoes. These differ in efficacy and input requirements such as finance, technical expertise, manpower and community involvement.\n\nWhen appropriately used, each method can make a valuable contribution to the control of malaria.\n\nWith a better understanding of how the mosquito breeds and lives, it will be possible to target control efforts even more successfully against this Public Enemy No. 1 in many countries.",
+        "persian": "۱۶. بنابراین، گزینه‌های مختلفی برای کنترل پشه‌های ناقل وجود دارد. این روش‌ها از نظر اثربخشی و منابع موردنیاز، مانند بودجه، تخصص فنی، نیروی انسانی و مشارکت جامعه، با یکدیگر تفاوت دارند.\n\nدر صورت استفاده مناسب، هر روش می‌تواند سهم ارزشمندی در کنترل مالاریا داشته باشد.\n\nبا درک بهتر نحوه تولیدمثل و زندگی پشه، می‌توان تلاش‌های کنترلی را با موفقیت بیشتری علیه این دشمن عمومی شماره ۱ در بسیاری از کشورها هدف‌گذاری کرد."
+    }
+],
+  "exercises": {
+    "title": "Exercises",
+    "questions": []
+  },
+  "vocabulary": [
+    {
+        "word": "parasite",
+        "pronunciation": "",
+        "meaning": "انگل"
+    },
+    {
+        "word": "mosquito",
+        "pronunciation": "",
+        "meaning": "پشه"
+    },
+    {
+        "word": "bite",
+        "pronunciation": "",
+        "meaning": "گاز گرفتن، نیش زدن"
+    },
+    {
+        "word": "transmit",
+        "pronunciation": "",
+        "meaning": "انتقال دادن"
+    },
+    {
+        "word": "feed",
+        "pronunciation": "",
+        "meaning": "تغذیه کردن"
+    },
+    {
+        "word": "plant",
+        "pronunciation": "",
+        "meaning": "گیاه"
+    },
+    {
+        "word": "plant juices",
+        "pronunciation": "",
+        "meaning": "شیره گیاهان"
+    },
+    {
+        "word": "transmission",
+        "pronunciation": "",
+        "meaning": "انتقال"
+    },
+    {
+        "word": "pierce",
+        "pronunciation": "",
+        "meaning": "سوراخ کردن"
+    },
+    {
+        "word": "mouth",
+        "pronunciation": "",
+        "meaning": "دهان"
+    },
+    {
+        "word": "maturation",
+        "pronunciation": "",
+        "meaning": "بلوغ"
+    },
+    {
+        "word": "vessel",
+        "pronunciation": "",
+        "meaning": "رگ"
+    },
+    {
+        "word": "suck blood",
+        "pronunciation": "",
+        "meaning": "خون مکیدن"
+    },
+    {
+        "word": "clot",
+        "pronunciation": "",
+        "meaning": "لخته شدن"
+    },
+    {
+        "word": "anticoagulants",
+        "pronunciation": "",
+        "meaning": "ضدانعقادها"
+    },
+    {
+        "word": "excrete",
+        "pronunciation": "",
+        "meaning": "دفع کردن"
+    },
+    {
+        "word": "species",
+        "pronunciation": "",
+        "meaning": "گونه‌ها"
+    },
+    {
+        "word": "responsible for",
+        "pronunciation": "",
+        "meaning": "مسئول"
+    },
+    {
+        "word": "significant",
+        "pronunciation": "",
+        "meaning": "قابل توجه"
+    },
+    {
+        "word": "major",
+        "pronunciation": "",
+        "meaning": "مهم، اصلی"
+    },
+    {
+        "word": "vector",
+        "pronunciation": "",
+        "meaning": "ناقل"
+    },
+    {
+        "word": "infection",
+        "pronunciation": "",
+        "meaning": "عفونت"
+    },
+    {
+        "word": "susceptible",
+        "pronunciation": "",
+        "meaning": "مستعد"
+    },
+    {
+        "word": "clearly",
+        "pronunciation": "",
+        "meaning": "به‌وضوح"
+    },
+    {
+        "word": "effective",
+        "pronunciation": "",
+        "meaning": "مؤثر"
+    },
+    {
+        "word": "exclusively",
+        "pronunciation": "",
+        "meaning": "منحصراً، فقط"
+    },
+    {
+        "word": "explain",
+        "pronunciation": "",
+        "meaning": "توضیح دادن"
+    },
+    {
+        "word": "partly",
+        "pronunciation": "",
+        "meaning": "تاحدی"
+    },
+    {
+        "word": "arise",
+        "pronunciation": "",
+        "meaning": "به‌وجود آمدن"
+    },
+    {
+        "word": "opportunities",
+        "pronunciation": "",
+        "meaning": "فرصت‌ها"
+    },
+    {
+        "word": "pupa",
+        "pronunciation": "",
+        "meaning": "شفیره"
+    },
+    {
+        "word": "larva",
+        "pronunciation": "",
+        "meaning": "لارو"
+    },
+    {
+        "word": "distinct",
+        "pronunciation": "",
+        "meaning": "متمایز"
+    },
+    {
+        "word": "insect",
+        "pronunciation": "",
+        "meaning": "حشره"
+    },
+    {
+        "word": "laid",
+        "pronunciation": "",
+        "meaning": "گذاشته‌شده"
+    },
+    {
+        "word": "singly",
+        "pronunciation": "",
+        "meaning": "جداگانه"
+    },
+    {
+        "word": "hatch",
+        "pronunciation": "",
+        "meaning": "از تخم درآمدن"
+    },
+    {
+        "word": "surface",
+        "pronunciation": "",
+        "meaning": "سطح"
+    },
+    {
+        "word": "stage",
+        "pronunciation": "",
+        "meaning": "مرحله"
+    },
+    {
+        "word": "within",
+        "pronunciation": "",
+        "meaning": "ظرف"
+    },
+    {
+        "word": "obtain",
+        "pronunciation": "",
+        "meaning": "به‌دست آوردن"
+    },
+    {
+        "word": "molt",
+        "pronunciation": "",
+        "meaning": "پوست‌اندازی کردن"
+    },
+    {
+        "word": "split",
+        "pronunciation": "",
+        "meaning": "شکافته شدن"
+    },
+    {
+        "word": "pupal skin",
+        "pronunciation": "",
+        "meaning": "پوست شفیره"
+    },
+    {
+        "word": "briefly",
+        "pronunciation": "",
+        "meaning": "برای مدت کوتاه"
+    },
+    {
+        "word": "average",
+        "pronunciation": "",
+        "meaning": "میانگین، متوسط"
+    },
+    {
+        "word": "life span",
+        "pronunciation": "",
+        "meaning": "طول عمر"
+    },
+    {
+        "word": "stagnant",
+        "pronunciation": "",
+        "meaning": "راکد"
+    },
+    {
+        "word": "breed",
+        "pronunciation": "",
+        "meaning": "تولیدمثل کردن"
+    },
+    {
+        "word": "adapted",
+        "pronunciation": "",
+        "meaning": "سازگارشده"
+    },
+    {
+        "word": "cattle",
+        "pronunciation": "",
+        "meaning": "دام‌ها"
+    },
+    {
+        "word": "pool",
+        "pronunciation": "",
+        "meaning": "آبگیر"
+    },
+    {
+        "word": "temporary",
+        "pronunciation": "",
+        "meaning": "موقت"
+    },
+    {
+        "word": "container",
+        "pronunciation": "",
+        "meaning": "ظرف"
+    },
+    {
+        "word": "discarded",
+        "pronunciation": "",
+        "meaning": "دورریخته‌شده"
+    },
+    {
+        "word": "hoof",
+        "pronunciation": "",
+        "meaning": "سُم"
+    },
+    {
+        "word": "brackish water",
+        "pronunciation": "",
+        "meaning": "آب لب‌شور"
+    },
+    {
+        "word": "thrive",
+        "pronunciation": "",
+        "meaning": "رشد کردن"
+    },
+    {
+        "word": "aquatic",
+        "pronunciation": "",
+        "meaning": "آبزی"
+    },
+    {
+        "word": "obvious",
+        "pronunciation": "",
+        "meaning": "واضح"
+    },
+    {
+        "word": "precaution",
+        "pronunciation": "",
+        "meaning": "اقدام احتیاطی"
+    },
+    {
+        "word": "settlement",
+        "pronunciation": "",
+        "meaning": "سکونتگاه"
+    },
+    {
+        "word": "construction",
+        "pronunciation": "",
+        "meaning": "ساخت‌وساز"
+    },
+    {
+        "word": "threat",
+        "pronunciation": "",
+        "meaning": "تهدید"
+    },
+    {
+        "word": "supply",
+        "pronunciation": "",
+        "meaning": "تأمین، منبع"
+    },
+    {
+        "word": "resting",
+        "pronunciation": "",
+        "meaning": "استراحت کردن"
+    },
+    {
+        "word": "indoors",
+        "pronunciation": "",
+        "meaning": "درون خانه"
+    },
+    {
+        "word": "dependent on",
+        "pronunciation": "",
+        "meaning": "وابسته به"
+    },
+    {
+        "word": "abandoned",
+        "pronunciation": "",
+        "meaning": "متروکه"
+    },
+    {
+        "word": "pit",
+        "pronunciation": "",
+        "meaning": "گودال"
+    },
+    {
+        "word": "mine",
+        "pronunciation": "",
+        "meaning": "معدن"
+    },
+    {
+        "word": "well",
+        "pronunciation": "",
+        "meaning": "چاه"
+    },
+    {
+        "word": "drain",
+        "pronunciation": "",
+        "meaning": "زهکش"
+    },
+    {
+        "word": "irrigation",
+        "pronunciation": "",
+        "meaning": "آبیاری"
+    },
+    {
+        "word": "counter",
+        "pronunciation": "",
+        "meaning": "مقابله کردن"
+    },
+    {
+        "word": "apply",
+        "pronunciation": "",
+        "meaning": "به‌کار بردن"
+    },
+    {
+        "word": "substance",
+        "pronunciation": "",
+        "meaning": "ماده"
+    },
+    {
+        "word": "toxic",
+        "pronunciation": "",
+        "meaning": "سمی"
+    },
+    {
+        "word": "compound",
+        "pronunciation": "",
+        "meaning": "ترکیب"
+    },
+    {
+        "word": "standing",
+        "pronunciation": "",
+        "meaning": "راکد"
+    },
+    {
+        "word": "drain off",
+        "pronunciation": "",
+        "meaning": "تخلیه کردن"
+    },
+    {
+        "word": "vegetation",
+        "pronunciation": "",
+        "meaning": "پوشش گیاهی"
+    },
+    {
+        "word": "maintain",
+        "pronunciation": "",
+        "meaning": "نگهداری کردن"
+    },
+    {
+        "word": "rice fields",
+        "pronunciation": "",
+        "meaning": "مزارع برنج"
+    },
+    {
+        "word": "flow",
+        "pronunciation": "",
+        "meaning": "جریان"
+    },
+    {
+        "word": "periodical",
+        "pronunciation": "",
+        "meaning": "دوره‌ای"
+    },
+    {
+        "word": "drying",
+        "pronunciation": "",
+        "meaning": "خشک‌کردن"
+    },
+    {
+        "word": "flooding",
+        "pronunciation": "",
+        "meaning": "غرقاب‌کردن"
+    },
+    {
+        "word": "disrupt",
+        "pronunciation": "",
+        "meaning": "مختل کردن"
+    },
+    {
+        "word": "annual fish",
+        "pronunciation": "",
+        "meaning": "ماهی سالانه"
+    },
+    {
+        "word": "drought",
+        "pronunciation": "",
+        "meaning": "خشکسالی"
+    },
+    {
+        "word": "permanent",
+        "pronunciation": "",
+        "meaning": "دائمی"
+    },
+    {
+        "word": "larvivorous",
+        "pronunciation": "",
+        "meaning": "لاروخوار"
+    },
+    {
+        "word": "community",
+        "pronunciation": "",
+        "meaning": "جامعه"
+    },
+    {
+        "word": "additional",
+        "pronunciation": "",
+        "meaning": "اضافی"
+    },
+    {
+        "word": "financial",
+        "pronunciation": "",
+        "meaning": "مالی"
+    },
+    {
+        "word": "motivation",
+        "pronunciation": "",
+        "meaning": "انگیزه"
+    },
+    {
+        "word": "edge",
+        "pronunciation": "",
+        "meaning": "لبه، کناره"
+    },
+    {
+        "word": "facilitating",
+        "pronunciation": "",
+        "meaning": "تسهیل‌کننده"
+    },
+    {
+        "word": "residual",
+        "pronunciation": "",
+        "meaning": "باقی‌مانده"
+    },
+    {
+        "word": "insecticide",
+        "pronunciation": "",
+        "meaning": "حشره‌کش"
+    },
+    {
+        "word": "for a matter of days",
+        "pronunciation": "",
+        "meaning": "برای چند روز"
+    },
+    {
+        "word": "cheapest",
+        "pronunciation": "",
+        "meaning": "ارزان‌ترین"
+    },
+    {
+        "word": "introduction",
+        "pronunciation": "",
+        "meaning": "معرفی"
+    },
+    {
+        "word": "widely",
+        "pronunciation": "",
+        "meaning": "به‌طور گسترده"
+    },
+    {
+        "word": "outbreak",
+        "pronunciation": "",
+        "meaning": "طغیان، شیوع"
+    },
+    {
+        "word": "advocate",
+        "pronunciation": "",
+        "meaning": "توصیه کردن"
+    },
+    {
+        "word": "resistance",
+        "pronunciation": "",
+        "meaning": "مقاومت"
+    },
+    {
+        "word": "sustainable",
+        "pronunciation": "",
+        "meaning": "پایدار"
+    },
+    {
+        "word": "spraying",
+        "pronunciation": "",
+        "meaning": "سم‌پاشی"
+    },
+    {
+        "word": "congregate",
+        "pronunciation": "",
+        "meaning": "تجمع کردن"
+    },
+    {
+        "word": "prompt",
+        "pronunciation": "",
+        "meaning": "فوری"
+    },
+    {
+        "word": "epidemic",
+        "pronunciation": "",
+        "meaning": "همه‌گیری"
+    },
+    {
+        "word": "extremely",
+        "pronunciation": "",
+        "meaning": "بسیار"
+    },
+    {
+        "word": "operation",
+        "pronunciation": "",
+        "meaning": "عملیات"
+    },
+    {
+        "word": "coincide",
+        "pronunciation": "",
+        "meaning": "هم‌زمان شدن"
+    },
+    {
+        "word": "requirement",
+        "pronunciation": "",
+        "meaning": "نیازمندی"
+    },
+    {
+        "word": "efficacy",
+        "pronunciation": "",
+        "meaning": "اثربخشی"
+    },
+    {
+        "word": "differ",
+        "pronunciation": "",
+        "meaning": "متفاوت بودن"
+    },
+    {
+        "word": "manpower",
+        "pronunciation": "",
+        "meaning": "نیروی انسانی"
+    },
+    {
+        "word": "expertise",
+        "pronunciation": "",
+        "meaning": "تخصص"
+    },
+    {
+        "word": "finance",
+        "pronunciation": "",
+        "meaning": "بودجه"
+    },
+    {
+        "word": "appropriately",
+        "pronunciation": "",
+        "meaning": "به‌طور مناسب"
+    },
+    {
+        "word": "contribution",
+        "pronunciation": "",
+        "meaning": "سهم"
+    },
+    {
+        "word": "target",
+        "pronunciation": "",
+        "meaning": "هدف قرار دادن"
+    },
+    {
+        "word": "public enemy",
+        "pronunciation": "",
+        "meaning": "دشمن عمومی"
+    }
+]
+}
 ];
