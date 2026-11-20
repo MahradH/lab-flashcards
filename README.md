@@ -121,7 +121,7 @@ const lessonsData = {
         words: [
             {
                 en: "apple",
-                pron: "اَپِل",
+                pron: "/ˈæpəl/",
                 fa: "سیب",
                 difficulty: "easy"
             }
@@ -133,7 +133,7 @@ const lessonsData = {
 | فیلد       | توضیح                         |
 | ---------- | ----------------------------- |
 | en         | کلمه انگلیسی                  |
-| pron       | تلفظ فارسی                    |
+| pron       | تلفظ IPA آمریکایی (با تکیه)     |
 | fa         | معنی فارسی                    |
 | difficulty | سطح دشواری (`easy` یا `hard`) |
 
