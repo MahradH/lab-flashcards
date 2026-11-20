@@ -1981,10 +1981,50 @@ const FEATURES = { reading: true };
                     ? "mahrad_saved_lesson_b2"
                     : "mahrad_saved_lesson";
             }
-            function savedIndexKey() {
-                return activeBook === "b2"
-                    ? "mahrad_saved_index_b2"
-                    : "mahrad_saved_index";
+            // ---- local memory (filter / position / exam / quiz) ----
+            function filterKey() {
+                return "mahrad_filter_" + activeBook;
+            }
+            function positionsKey() {
+                return "mahrad_positions_" + activeBook;
+            }
+            function loadPositions() {
+                try {
+                    return JSON.parse(localStorage.getItem(positionsKey())) || {};
+                } catch (e) {
+                    return {};
+                }
+            }
+            function savePositions(map) {
+                localStorage.setItem(positionsKey(), JSON.stringify(map));
+            }
+            function positionKey(lessonKey, filter) {
+                return lessonKey + "|" + filter;
+            }
+            function getSavedPosition(lessonKey, filter) {
+                const map = loadPositions();
+                const value = map[positionKey(lessonKey, filter)];
+                return typeof value === "number" && isFinite(value) ? value : null;
+            }
+            // Remembers where the user was for the current lesson + filter,
+            // so switching to نشان‌شده‌ها and back does not restart from word 1.
+            function saveCurrentPosition() {
+                if (!currentLessonKey || !filterSelect) return;
+                const map = loadPositions();
+                const key = positionKey(currentLessonKey, filterSelect.value);
+                if (map[key] === currentIndex) return;
+                map[key] = currentIndex;
+                savePositions(map);
+            }
+            function persistFlashcardState() {
+                if (!currentLessonKey || !getBookData()[currentLessonKey]) return;
+                localStorage.setItem(savedLessonKey(), currentLessonKey);
+                localStorage.setItem(filterKey(), filterSelect.value);
+                saveCurrentPosition();
+            }
+            function restoreFilterValue(value) {
+                const allowed = ["all", "hard", "easy", "bookmarked"];
+                filterSelect.value = allowed.includes(value) ? value : "all";
             }
             function populateLessonSelect() {
                 lessonSelect.innerHTML = "";
@@ -1997,6 +2037,7 @@ const FEATURES = { reading: true };
             }
             function switchBook(book) {
                 if (book === activeBook) return;
+                saveCurrentPosition();
                 activeBook = book;
                 localStorage.setItem("mahrad_book", book);
                 populateLessonSelect();
@@ -2007,6 +2048,7 @@ const FEATURES = { reading: true };
                     currentLessonKey = Object.keys(getBookData())[0] || "";
                 }
                 lessonSelect.value = currentLessonKey;
+                restoreFilterValue(localStorage.getItem(filterKey()));
                 const titleEl = document.getElementById("mainTitle");
                 if (titleEl) {
                     titleEl.textContent =
@@ -2016,7 +2058,7 @@ const FEATURES = { reading: true };
                 }
                 updateExamSelectorOptions();
                 resetExamUI();
-                applyFiltering();
+                applyFiltering(true);
             }
             // ====
             let currentLessonKey = "";
@@ -2372,7 +2414,6 @@ const FEATURES = { reading: true };
                 }
 
                 const savedLesson = localStorage.getItem(savedLessonKey());
-                const savedIndex = localStorage.getItem(savedIndexKey());
 
                 if (savedLesson && getBookData()[savedLesson]) {
                     currentLessonKey = savedLesson;
@@ -2384,8 +2425,31 @@ const FEATURES = { reading: true };
 
                 updateExamSelectorOptions();
 
-                if (savedIndex) currentIndex = parseInt(savedIndex);
-                applyFiltering(false);
+                // restore the last filter used in this book
+                restoreFilterValue(localStorage.getItem(filterKey()));
+
+                // migrate the old memory format (a single index per book)
+                if (!localStorage.getItem(positionsKey())) {
+                    const legacyIndex = localStorage.getItem(
+                        activeBook === "b2"
+                            ? "mahrad_saved_index_b2"
+                            : "mahrad_saved_index",
+                    );
+                    if (legacyIndex !== null && savedLesson) {
+                        const map = {};
+                        map[positionKey(savedLesson, "all")] =
+                            parseInt(legacyIndex, 10) || 0;
+                        savePositions(map);
+                    }
+                }
+
+                applyFiltering(true);
+
+                // restore the last mode (flashcard / quiz / exam)
+                const savedMode = localStorage.getItem("mahrad_mode");
+                if (savedMode === "quiz" || savedMode === "exam") {
+                    switchMode(savedMode);
+                }
             }
 
             function updateExamSelectorOptions() {
@@ -2434,6 +2498,7 @@ const FEATURES = { reading: true };
 
             function switchMode(mode) {
                 currentMode = mode;
+                localStorage.setItem("mahrad_mode", mode);
 
                 document
                     .getElementById("modeFlashcard")
@@ -2492,8 +2557,18 @@ const FEATURES = { reading: true };
                     return true;
                 });
 
-                if (resetIndex || currentIndex >= filteredWords.length)
-                    currentIndex = 0;
+                if (resetIndex) {
+                    // each lesson + filter remembers its own position
+                    const saved = getSavedPosition(
+                        currentLessonKey,
+                        activeFilter,
+                    );
+                    currentIndex = saved === null ? 0 : saved;
+                }
+                if (currentIndex >= filteredWords.length)
+                    currentIndex = Math.max(0, filteredWords.length - 1);
+                if (currentIndex < 0) currentIndex = 0;
+
                 isQuizAnswered = false;
                 updateCard();
 
@@ -2517,6 +2592,7 @@ const FEATURES = { reading: true };
                 if (currentMode === "exam") return;
 
                 const wordData = filteredWords[currentIndex];
+                persistFlashcardState();
 
                 if (!wordData) {
                     enWordEl.textContent = "!خالی";
@@ -2565,9 +2641,6 @@ const FEATURES = { reading: true };
                 if (currentMode === "quiz") {
                     generateQuizOptions(wordData);
                 }
-
-                localStorage.setItem(savedLessonKey(), currentLessonKey);
-                localStorage.setItem(savedIndexKey(), currentIndex);
             }
 
             function resetExamUI() {
